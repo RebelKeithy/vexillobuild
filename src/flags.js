@@ -119,7 +119,7 @@ export const LEVELS = [
             overlays: [
                 { type: 'pall', color: 'white', borderColor: 'white', widthRatio: 20/60, edgeLine: { yStart: 1 }, y_offset: 100 },
                 { type: 'pall', color: 'green', borderColor: 'white', widthRatio: 12/60, edgeLine: { yStart: 1 }, y_offset: 100 },
-                { type: 'triangle', position: 'hoist', color: 'black', borderColor: 'gold', height: 36/60, vertexXRatio: 27/90 }
+                { type: 'triangle', position: 'hoist', color: 'black', borderColor: 'gold', height: 36/60, vertexXRatio: 27/60 }
             ],
             symbols: []
         }

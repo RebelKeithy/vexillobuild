@@ -478,8 +478,17 @@ export const FlagPreview = ({flagState, onInteraction, selectedElement, currentL
         if (highlightMode === 'hover' && !currentlyHovered) return null;
 
         // Intelligent Matching for Overlays
-        const myTypeIndex = overlays.slice(0, index).filter(o => o.type === overlay.type && o.corner === overlay.corner).length;
-        const targetOverlaysOfType = currentLevel?.target.overlays.filter(o => o.type === overlay.type && o.corner === overlay.corner) || [];
+        // We only filter by corner if the overlay type implies a corner (like triangle-corner)
+        // Otherwise we just match by type order (pall, triangle, etc)
+        const isCornerType = ['triangle-corner'].includes(overlay.type);
+        const filterFn = (o) => {
+            if (o.type !== overlay.type) return false;
+            if (isCornerType) return o.corner === overlay.corner;
+            return true;
+        };
+
+        const myTypeIndex = overlays.slice(0, index).filter(filterFn).length;
+        const targetOverlaysOfType = currentLevel?.target.overlays.filter(filterFn) || [];
         const targetOverride = targetOverlaysOfType[myTypeIndex] || targetOverlaysOfType[0] || {};
 
         const {color: _c, borderColor: _bc, ...geoProps} = targetOverride;

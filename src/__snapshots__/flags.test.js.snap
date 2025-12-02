@@ -1562,7 +1562,7 @@ exports[`Flag Snapshots renders South Africa correctly 1`] = `
         <polygon
           class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
           fill="#000000"
-          points="0,40 60,100 0,160"
+          points="0,40 90,100 0,160"
           stroke="#FFD700"
           stroke-linejoin="round"
           stroke-width="8"
