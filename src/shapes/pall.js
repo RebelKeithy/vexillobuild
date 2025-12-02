@@ -14,8 +14,6 @@ export function generatePallPoints({
     let c_start = 0; // center_y_start
     let c_split = 0; // center_split_x
 
-    console.log({ center_split_x, edge_split_x, center_y_start, edge_y_start });
-
     // --- SOLVER LOGIC ---
     // We need to determine the slope 'm' and the Center Line parameters.
 
@@ -41,7 +39,6 @@ export function generatePallPoints({
         c_start = edge_y_start + v_shift;
         // Center split x found by intersection of center line (y = mx + c_start) with (y = mid_y)
         c_split = (m !== 0) ? (mid_y - c_start) / m : edge_split_x;
-        console.log(`Computed Center Split: ${c_split} (m = ${m})`)
     }
 
     // CASE 3: Center Split + Edge Start (Mixed)

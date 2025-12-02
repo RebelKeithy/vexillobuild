@@ -48,8 +48,13 @@ const resolveColor = (key, idx = 0) => {
 
 const SHAPE_GENERATORS = {
     triangle: ({w, h, args}) => {
-        const vx = args.vertexXRatio ? h * args.vertexXRatio : (h * Math.sqrt(3)) / 2 * 0.7;
-        return `0,0 ${vx},${h / 2} 0,${h}`;
+        const th = args.height ? h * args.height : h
+        let vx = args.vertexXRatio ? h * args.vertexXRatio : w * 0.5
+        if (args.equilateral) {
+            vx = th * Math.sqrt(3) / 2
+        }
+        console.log(`h: ${h} vx: ${vx} th: ${th}`)
+        return `0,${h/2 - th/2} ${vx},${h/2} 0,${th/2 + h/2}`;
     },
     triangleCorner: ({w, h, args}) => {
         const ratio = args.widthRatio || 0.5;
@@ -59,7 +64,7 @@ const SHAPE_GENERATORS = {
         return '';
     },
     pall: ({w, h, args}) => {
-        const width = args.widthRatio || h * 0.2
+        const width = h * args.widthRatio || h * 0.2
         let center_split_x = args.centerSplitX
         let edge_split_x = args.edgeSplitX
         if (!center_split_x && !edge_split_x) {
@@ -472,7 +477,11 @@ export const FlagPreview = ({flagState, onInteraction, selectedElement, currentL
         if (highlightMode === 'selection' && !currentlySelected) return null;
         if (highlightMode === 'hover' && !currentlyHovered) return null;
 
-        const targetOverride = currentLevel?.target.overlays.find(o => o.type === overlay.type && o.corner === overlay.corner) || {};
+        // Intelligent Matching for Overlays
+        const myTypeIndex = overlays.slice(0, index).filter(o => o.type === overlay.type && o.corner === overlay.corner).length;
+        const targetOverlaysOfType = currentLevel?.target.overlays.filter(o => o.type === overlay.type && o.corner === overlay.corner) || [];
+        const targetOverride = targetOverlaysOfType[myTypeIndex] || targetOverlaysOfType[0] || {};
+
         const {color: _c, borderColor: _bc, ...geoProps} = targetOverride;
         const mergedOverlay = {...overlay, ...geoProps};
 

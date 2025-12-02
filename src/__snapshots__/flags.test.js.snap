@@ -1306,7 +1306,7 @@ exports[`Flag Snapshots renders Czech Republic correctly 1`] = `
         <polygon
           class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
           fill="#00205B"
-          points="0,0 121.2435565298214,100 0,200"
+          points="0,0 150,100 0,200"
           stroke="none"
           stroke-linejoin="round"
           stroke-width="0"
@@ -1543,36 +1543,26 @@ exports[`Flag Snapshots renders South Africa correctly 1`] = `
             y="100"
           />
         </g>
-        <g
+        <polygon
           class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
-        >
-          <path
-            d="M 121.2435565298214,100 L 310,100"
-            stroke="#FFFFFF"
-            stroke-width="56"
-          />
-          <path
-            d="M -10,-10 L 121.2435565298214,100 L -10,210"
-            fill="none"
-            stroke="#FFFFFF"
-            stroke-width="56"
-          />
-          <path
-            d="M 121.2435565298214,100 L 310,100"
-            stroke="#007A3D"
-            stroke-width="44"
-          />
-          <path
-            d="M -10,-10 L 121.2435565298214,100 L -10,210"
-            fill="none"
-            stroke="#007A3D"
-            stroke-width="44"
-          />
-        </g>
+          fill="#FFFFFF"
+          points="300,66.66666666666667 160.09252125773315,66.66666666666667 0,-40.06168083848876 0,40.06168083848876 89.90747874226686,100 0,159.93831916151123 0,240.06168083848877 160.09252125773315,133.33333333333331 300,133.33333333333331"
+          stroke="#FFFFFF"
+          stroke-linejoin="round"
+          stroke-width="8"
+        />
+        <polygon
+          class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+          fill="#007A3D"
+          points="300,80 156.0555127546399,80 0,-24.03700850309326 0,24.03700850309326 113.94448724536011,100 0,175.96299149690674 0,224.03700850309326 156.0555127546399,120 300,120"
+          stroke="#FFFFFF"
+          stroke-linejoin="round"
+          stroke-width="8"
+        />
         <polygon
           class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
           fill="#000000"
-          points="0,0 115.47,100 0,200"
+          points="0,40 60,100 0,160"
           stroke="#FFD700"
           stroke-linejoin="round"
           stroke-width="8"

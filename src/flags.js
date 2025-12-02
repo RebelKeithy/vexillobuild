@@ -83,7 +83,7 @@ export const LEVELS = [
         target: {
             base: { type: 'horizontal-stripes', count: 5, colors: ['blue', 'white'] },
             overlays: [
-                { type: 'triangle', position: 'hoist', color: 'red', vertexXRatio: 13/15 }
+                { type: 'triangle', position: 'hoist', color: 'red', vertexXRatio: 13/15, widthRatio: 1/3, heightRatio: 1/2 }
             ],
             symbols: [
                 { type: 'star', color: 'white', parentIndex: 0, scale: 1/3 /0.15 }
@@ -117,8 +117,9 @@ export const LEVELS = [
         target: {
             base: { type: 'bisection-horizontal', colors: ['red', 'blue'] },
             overlays: [
-                { type: 'pall', color: 'green', borderColor: 'white', edgeLine: { yStart: 1 }, y_offset: 100 },
-                { type: 'triangle', position: 'hoist', color: 'black', borderColor: 'gold', vertexXRatio: 0.57735 }
+                { type: 'pall', color: 'white', borderColor: 'white', widthRatio: 20/60, edgeLine: { yStart: 1 }, y_offset: 100 },
+                { type: 'pall', color: 'green', borderColor: 'white', widthRatio: 12/60, edgeLine: { yStart: 1 }, y_offset: 100 },
+                { type: 'triangle', position: 'hoist', color: 'black', borderColor: 'gold', height: 36/60, vertexXRatio: 27/90 }
             ],
             symbols: []
         }
