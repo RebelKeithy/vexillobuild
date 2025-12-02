@@ -83,10 +83,10 @@ export const LEVELS = [
         target: {
             base: { type: 'horizontal-stripes', count: 5, colors: ['blue', 'white'] },
             overlays: [
-                { type: 'triangle', position: 'hoist', color: 'red' }
+                { type: 'triangle', position: 'hoist', color: 'red', vertexXRatio: 13/15 }
             ],
             symbols: [
-                { type: 'star', color: 'white', parentIndex: 0 }
+                { type: 'star', color: 'white', parentIndex: 0, scale: 1/3 /0.15 }
             ]
         }
     },
@@ -266,6 +266,68 @@ export const LEVELS = [
         aspectRatio: 1/2,
         target: {
             base: { type: 'horizontal-stripes', count: 3, colors: ['red', 'blue', 'orange'] },
+            overlays: [],
+            symbols: []
+        }
+    },
+    {
+        id: 16,
+        name: "Australia",
+        difficulty: "Advanced",
+        description: "The Commonwealth Star and the Southern Cross.",
+        hint: "Blue field. Union Jack in Canton. Large 7-point star below it. Southern Cross on the fly.",
+        aspectRatio: 1/2,
+        target: {
+            base: { type: 'solid', colors: ['blue'] },
+            overlays: [
+                { type: 'canton', position: 'top-left', color: 'blue', widthRatio: 0.5, heightRatio: 0.5 }
+            ],
+            symbols: [
+                // Union Jack (Use aspect ratio 2 to stretch it)
+                {
+                    type: 'seal',
+                    src: 'https://upload.wikimedia.org/wikipedia/commons/a/a5/Flag_of_the_United_Kingdom_%281-2%29.svg',
+                    parentIndex: 0,
+                    scale: 3.33,
+                    aspectRatio: 2
+                },
+                // Commonwealth Star (7 points)
+                // baseR is already 0.15h, which matches spec, so scale should be 1.0
+                {
+                    type: 'star',
+                    color: 'white',
+                    points: 7,
+                    innerRadius: 0.4,
+                    scale: 1.0,
+                    xOffset: -0.25,
+                    yOffset: 0.25
+                },
+                // Southern Cross (Crux)
+                // Major stars are 1/7 width diameter => radius 1/14 (~0.071). 0.071 / 0.15 base ≈ 0.47
+                // Minor star is 1/12 width diameter => radius 1/24 (~0.042). 0.042 / 0.15 base ≈ 0.28
+
+                // Gamma Crucis (Top)
+                { type: 'star', color: 'white', points: 7, innerRadius: 0.4, scale: 0.47, xOffset: 0.25, yOffset: -0.35 },
+                // Alpha Crucis (Bottom)
+                { type: 'star', color: 'white', points: 7, innerRadius: 0.4, scale: 0.47, xOffset: 0.25, yOffset: 0.35 },
+                // Beta Crucis (Left)
+                { type: 'star', color: 'white', points: 7, innerRadius: 0.4, scale: 0.47, xOffset: 0.10, yOffset: 0.02 },
+                // Delta Crucis (Right)
+                { type: 'star', color: 'white', points: 7, innerRadius: 0.4, scale: 0.47, xOffset: 0.40, yOffset: -0.05 },
+                // Epsilon Crucis (Small, 5pt)
+                { type: 'star', color: 'white', points: 5, innerRadius: 0.38, scale: 0.28, xOffset: 0.32, yOffset: 0.16 },
+            ]
+        }
+    },
+    {
+        id: 17,
+        name: "Austria",
+        difficulty: "Novice",
+        description: "The Highland.",
+        hint: "Red, White, Red",
+        aspectRatio: 2/3,
+        target: {
+            base: { type: 'horizontal-stripes', count: 3, colors: ['red', 'white', 'red'] },
             overlays: [],
             symbols: []
         }

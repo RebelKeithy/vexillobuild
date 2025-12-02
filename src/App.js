@@ -13,9 +13,12 @@ import {
   Moon,
   Stamp,
   Cog,
-  Sun
+  Sun,
+  MousePointer2
 } from 'lucide-react';
 import {LEVELS} from "./flags";
+
+// --- DATA: LEVELS ---
 
 // --- CONSTANTS & UTILITIES ---
 
@@ -23,7 +26,7 @@ const COLORS = {
   white: '#FFFFFF',
   black: '#000000',
   red: '#EF3340',
-  blue: '#0055A4',
+  blue: '#00205B', // Darker blue for Australia/UK match
   lightBlue: '#69B3E7',
   green: '#007A3D',
   gold: '#FFD700',
@@ -37,7 +40,7 @@ const resolveColor = (key, idx = 0) => {
   return PLACEHOLDER_GREYS[idx % PLACEHOLDER_GREYS.length];
 };
 
-// --- SHAPE & PATH GENERATORS ---
+// --- SHAPE GENERATORS ---
 
 const SHAPE_GENERATORS = {
   triangle: ({ w, h, args }) => {
@@ -45,106 +48,86 @@ const SHAPE_GENERATORS = {
     return `0,0 ${vx},${h/2} 0,${h}`;
   },
   triangleCorner: ({ w, h, args }) => {
-    // Creates right-angled triangles in corners.
-    // widthRatio determines how far along the x-axis the hypotenuse ends.
     const ratio = args.widthRatio || 0.5;
     const corner = args.corner || 'bottom-left';
-
-    if (corner === 'bottom-left') {
-      return `0,0 0,${h} ${w * ratio},${h}`;
-    }
-    if (corner === 'bottom-right') {
-      return `${w},0 ${w},${h} ${w - (w * ratio)},${h}`;
-    }
+    if (corner === 'bottom-left') return `0,0 0,${h} ${w * ratio},${h}`;
+    if (corner === 'bottom-right') return `${w},0 ${w},${h} ${w - (w * ratio)},${h}`;
     return '';
   },
   pall: ({ w, h, args }) => {
     const barW = h * (args.widthRatio || 0.22);
-    const crotchX = (barW / 2) / Math.tan(30 * Math.PI / 180);
-    const chevron = `M -10,0 L ${crotchX},${h/2} L -10,${h}`;
-    const tail = `M ${crotchX},${h/2} L ${w + 10},${h/2}`;
-    return { chevron, tail, strokeWidth: barW };
+    const crotchX = args.vertexXRatio
+        ? h * args.vertexXRatio
+        : (h * Math.sqrt(3)) / 2 * 0.7;
+    const path = `
+      M -10,-10 L ${crotchX},${h/2} L -10,${h+10} 
+      M ${crotchX},${h/2} L ${w + 10},${h/2}
+    `;
+    return { path, strokeWidth: barW };
   },
-  star: ({ cx, cy, r, rotation = 0 }) => {
+  star: ({ cx, cy, r, args }) => {
+    const pointsCount = args.points || 5;
+    const innerRadius = args.innerRadius || (pointsCount === 5 ? 0.382 : 0.4);
+    const rotation = args.rotation || 0;
+
     const points = [];
     const offset = (rotation * Math.PI) / 180;
-    for(let i=0; i<10; i++) {
-      const ang = (i * 36) * (Math.PI/180) - (Math.PI/2) + offset;
-      const rad = i % 2 === 0 ? r : r/2.618;
+
+    for(let i=0; i < pointsCount * 2; i++) {
+      const ang = (i * Math.PI) / pointsCount - (Math.PI/2) + offset;
+      const rad = i % 2 === 0 ? r : r * innerRadius;
       points.push(`${cx + rad * Math.cos(ang)},${cy + rad * Math.sin(ang)}`);
     }
     return points.join(' ');
   },
   risingSun: ({ cx, cy, r, args }) => {
-    // 7 Full Points for Antigua
-    // We draw a semi-circle + rays.
-    // Antigua sun: The rays emanate from the horizon.
     const points = 9;
     const innerR = r * 0.5;
-
     let polyPoints = [];
-
     for(let i = 0; i < (points * 2) - 1; i++) {
       const isTip = i % 2 === 0;
       const currentRadius = isTip ? r : innerR;
-
-      // Distribute points evenly along the arc
       const pct = i / ((points * 2) - 2);
       const angle = Math.PI + (pct * Math.PI);
-
       const x = cx + currentRadius * Math.cos(angle);
       const y = cy + currentRadius * Math.sin(angle);
       polyPoints.push(`${x},${y}`);
     }
-
     return `M ${cx - innerR},${cy} L ${polyPoints.join(' L ')} L ${cx + innerR},${cy} Z`;
   },
   crescentStar: ({ cx, cy, h, args }) => {
     const rOuter = h * (args.outerRadius || 0.25);
     const rInner = h * (args.innerRadius || 0.2);
     const rStar = h * (args.starRadius || 0.125);
-
     const xInner = args.innerOffset !== undefined ? h * args.innerOffset : h * 0.1;
     const xStar = args.starOffset ? h * args.starOffset : h * 0.1;
     const starRot = args.starRotation || 0;
-
     const d = xInner;
     const a = (rOuter*rOuter - rInner*rInner + d*d) / (2*d);
     const term = rOuter*rOuter - a*a;
-
     let hDist = 0;
     if (term > 0.0001) hDist = Math.sqrt(term);
     else return "";
-
     const xIntersect = a;
     const yIntersect = hDist;
     const largeArcInner = xIntersect > xInner ? 1 : 0;
-
     const crescentPath = `
       M ${cx + xIntersect},${cy - yIntersect} 
       A ${rOuter} ${rOuter} 0 1 0 ${cx + xIntersect},${cy + yIntersect}
       A ${rInner} ${rInner} 0 ${largeArcInner} 1 ${cx + xIntersect},${cy - yIntersect} 
       Z
     `;
-
-    const starPath = SHAPE_GENERATORS.star({
-      cx: cx + xStar,
-      cy: cy,
-      r: rStar,
-      rotation: starRot
-    });
-
+    const starPath = SHAPE_GENERATORS.star({ cx: cx + xStar, cy, r: rStar, args: { ...args, rotation: starRot } });
     const starPoly = `M ${starPath.split(' ')[0]} L ${starPath.split(' ').slice(1).join(' L ')} Z`;
-
     return `${crescentPath} ${starPoly}`;
   }
 };
 
 // --- HELPER COMPONENTS ---
 
-const DraggableColor = ({ colorKey, colorValue }) => {
+const DraggableColor = ({ colorKey, colorValue, isSelected, onClick }) => {
   const handleDragStart = (e) => {
-    e.dataTransfer.setData("color", colorKey);
+    e.dataTransfer.setData("application/json", JSON.stringify({ source: 'palette', color: colorKey }));
     e.dataTransfer.effectAllowed = "copy";
   };
 
@@ -152,7 +135,8 @@ const DraggableColor = ({ colorKey, colorValue }) => {
       <div
           draggable
           onDragStart={handleDragStart}
-          className="w-10 h-10 md:w-12 md:h-12 rounded-full border-2 border-white/20 shadow-md cursor-grab active:cursor-grabbing hover:scale-110 transition-transform relative group"
+          onClick={() => onClick(colorKey)}
+          className={`w-10 h-10 md:w-12 md:h-12 rounded-full border-2 shadow-md cursor-pointer active:cursor-grabbing hover:scale-110 transition-all relative group ${isSelected ? 'border-white ring-2 ring-blue-400 scale-110' : 'border-white/20'}`}
           style={{ backgroundColor: colorValue }}
           title={colorKey}
       >
@@ -161,149 +145,144 @@ const DraggableColor = ({ colorKey, colorValue }) => {
   );
 };
 
-// --- RENDER ENGINE ---
-// ... (Keep your imports, LEVELS, COLORS, and PLACEHOLDER_GREYS as they are)
-
-// ... (Keep SHAPE_GENERATORS as is)
-
-// ... (Keep DraggableColor as is)
-
-// --- UPDATED RENDER ENGINE ---
-
-const FlagPreview = ({ flagState, onColorDrop, currentLevelId }) => {
+const FlagPreview = ({ flagState, onInteraction, selectedElement, currentLevelId }) => {
   const { base, overlays, symbols } = flagState;
   const [hovered, setHovered] = useState(null);
+
   const currentLevel = useMemo(() => LEVELS.find(l => l.id === currentLevelId), [currentLevelId]);
 
   const width = 300;
   const ratio = currentLevel?.aspectRatio || 2/3;
   const height = width * ratio;
 
-  const isHovered = (type, index, subIndex) =>
-      hovered && hovered.type === type && hovered.index === index && hovered.subIndex === subIndex;
+  const isSelected = (type, index) =>
+      selectedElement && selectedElement.type === type && selectedElement.index === index;
 
-  const bindEvents = (type, index, subIndex = null) => ({
+  const isHovered = (type, index) =>
+      hovered && hovered.type === type && hovered.index === index;
+
+  // --- INTERACTION HANDLER ---
+  const bindEvents = (type, index) => ({
     onDragOver: (e) => {
       e.preventDefault();
       e.dataTransfer.dropEffect = "copy";
-      if (!isHovered(type, index, subIndex)) setHovered({ type, index, subIndex });
+      if (!isHovered(type, index)) setHovered({ type, index });
     },
     onDrop: (e) => {
       e.preventDefault();
       e.stopPropagation();
       setHovered(null);
-      const color = e.dataTransfer.getData("color");
-      if (color && onColorDrop) onColorDrop(type, index, subIndex, color);
+      const rawData = e.dataTransfer.getData("application/json");
+      if (rawData) {
+        try {
+          const data = JSON.parse(rawData);
+          if (data.source === 'palette') {
+            onInteraction('drop', { target: { type, index }, data });
+          }
+        } catch (err) { console.error(err); }
+      }
     },
-    onMouseEnter: () => setHovered({ type, index, subIndex }),
+    onClick: (e) => {
+      e.stopPropagation();
+      onInteraction('click', { type, index });
+    },
+    onMouseEnter: () => setHovered({ type, index }),
     onMouseLeave: () => setHovered(null),
-    className: "cursor-pointer transition-opacity hover:opacity-90"
+    className: "cursor-pointer transition-opacity hover:opacity-90 outline-none"
   });
 
-  // Helper for "Pop Out" styles
-  const getHighlightStyles = (isActive) => {
-    if (!isActive) return {};
+  const getHighlightStyles = (active, isSelection = false) => {
+    if (!active) return {};
     return {
-      stroke: '#FACC15',
-      strokeWidth: 4,
-      // This ensures the shape scales from its own center
+      stroke: isSelection ? '#3B82F6' : '#FACC15',
+      strokeWidth: isSelection ? 6 : 4,
       style: {
         transform: 'scale(1.05)',
         transformBox: 'fill-box',
         transformOrigin: 'center',
         transition: 'transform 0.1s ease-out',
-        filter: 'drop-shadow(0 0 8px rgba(0,0,0,0.5))'
+        filter: isSelection ? 'drop-shadow(0 0 10px rgba(59, 130, 246, 0.6))' : 'drop-shadow(0 0 8px rgba(0,0,0,0.5))',
+        pointerEvents: 'none'
       },
-      className: 'pointer-events-none' // Pass clicks through the highlight to the real shape below
+      className: 'pointer-events-none'
     };
   };
 
   // --- RENDERERS ---
 
-  const renderBase = (onlyHighlightIndex = null) => {
+  const renderBase = (highlightMode = null) => {
     const { type, colors, count, ratios } = base;
 
     const renderRect = (idx, x, y, w, h) => {
-      // If we are only rendering the highlight, skip indices that don't match
-      if (onlyHighlightIndex !== null && idx !== onlyHighlightIndex) return null;
+      const currentlySelected = isSelected('base', idx);
+      const currentlyHovered = isHovered('base', idx);
 
-      const highlightProps = onlyHighlightIndex !== null ? getHighlightStyles(true) : {};
-      const fill = onlyHighlightIndex !== null ? 'none' : resolveColor(colors[idx], idx);
+      if (highlightMode === 'selection' && !currentlySelected) return null;
+      if (highlightMode === 'hover' && !currentlyHovered) return null;
 
-      // Note: For the base layer, we usually don't scale/pop-out because it breaks the flag bounds.
-      // We just apply the stroke.
-      if (onlyHighlightIndex !== null) {
+      const highlightProps = highlightMode ? getHighlightStyles(true, highlightMode === 'selection') : {};
+      const fill = highlightMode ? 'none' : resolveColor(colors[idx], idx);
+
+      if (highlightMode) {
         delete highlightProps.style;
-        highlightProps.strokeWidth = 6;
-        highlightProps.stroke = "#FACC15";
+        highlightProps.strokeWidth = highlightMode === 'selection' ? 8 : 6;
+        highlightProps.strokeOpacity = 0.8;
+        highlightProps.style = { pointerEvents: 'none' };
       }
+
+      const interactionProps = !highlightMode ? bindEvents('base', idx) : {};
 
       return (
           <rect
-              key={idx}
+              key={`${idx}-${highlightMode}`}
               x={x} y={y} width={w} height={h}
               fill={fill}
-              {...(!onlyHighlightIndex ? bindEvents('base', idx) : {})}
+              {...interactionProps}
               {...highlightProps}
           />
       );
     };
 
-    // Logic duplicated from original to calculate positions
     switch (type) {
       case 'solid':
         return <g>{renderRect(0, 0, 0, width, height)}</g>;
       case 'vertical-tricolor':
-        return (
-            <g>
-              {[0, 1, 2].map(i => renderRect(i, (width/3)*i, 0, width/3, height))}
-            </g>
-        );
+        return <g>{[0, 1, 2].map(i => renderRect(i, (width/3)*i, 0, width/3, height))}</g>;
       case 'horizontal-stripes':
         const c = count || 3;
         if (ratios && ratios.length === c) {
           const totalRatio = ratios.reduce((a, b) => a + b, 0);
           const unitHeight = height / totalRatio;
           let currentY = 0;
-          return (
-              <g>
-                {ratios.map((r, i) => {
-                  const h = r * unitHeight;
-                  const colorIdx = colors.length === 2 ? i % 2 : i;
-                  const rect = renderRect(colorIdx, 0, currentY, width, h);
-                  currentY += h;
-                  return rect;
-                })}
-              </g>
-          );
+          return <g>{ratios.map((r, i) => {
+            const h = r * unitHeight;
+            const colorIdx = colors.length === 2 ? i % 2 : i;
+            const rEl = renderRect(colorIdx, 0, currentY, width, h);
+            currentY += h;
+            return rEl;
+          })}</g>;
         } else {
           const h = height / c;
-          return (
-              <g>
-                {Array.from({ length: c }).map((_, i) => {
-                  const colorIdx = colors.length === 2 ? i % 2 : i;
-                  return renderRect(colorIdx, 0, i*h, width, h);
-                })}
-              </g>
-          );
+          return <g>{Array.from({ length: c }).map((_, i) => {
+            const colorIdx = colors.length === 2 ? i % 2 : i;
+            return renderRect(colorIdx, 0, i*h, width, h);
+          })}</g>;
         }
       case 'bisection-horizontal':
-        return (
-            <g>
-              {[0, 1].map(i => renderRect(i, 0, (height/2)*i, width, height/2))}
-            </g>
-        );
+        return <g>{[0, 1].map(i => renderRect(i, 0, (height/2)*i, width, height/2))}</g>;
       case 'bisection-vertical':
-        return (
-            <g>
-              {[0, 1].map(i => renderRect(i, (width/2)*i, 0, width/2, height))}
-            </g>
-        );
+        return <g>{[0, 1].map(i => renderRect(i, (width/2)*i, 0, width/2, height))}</g>;
       default: return null;
     }
   };
 
-  const renderOverlay = (overlay, index, isHighlight = false) => {
+  const renderOverlay = (overlay, index, highlightMode = null) => {
+    const currentlySelected = isSelected('overlay', index);
+    const currentlyHovered = isHovered('overlay', index);
+
+    if (highlightMode === 'selection' && !currentlySelected) return null;
+    if (highlightMode === 'hover' && !currentlyHovered) return null;
+
     const targetOverride = currentLevel?.target.overlays.find(o => o.type === overlay.type && o.corner === overlay.corner) || {};
     const { color: _c, borderColor: _bc, ...geoProps } = targetOverride;
     const mergedOverlay = { ...overlay, ...geoProps };
@@ -312,13 +291,14 @@ const FlagPreview = ({ flagState, onColorDrop, currentLevelId }) => {
     const borderColor = mergedOverlay.borderColor ? COLORS[mergedOverlay.borderColor] : 'none';
     const borderW = mergedOverlay.borderColor ? height * 0.04 : 0;
 
-    const styles = getHighlightStyles(isHighlight);
+    const styles = highlightMode ? getHighlightStyles(true, highlightMode === 'selection') : {};
+
     const props = {
-      fill: isHighlight ? 'none' : color,
-      stroke: isHighlight ? styles.stroke : borderColor,
-      strokeWidth: isHighlight ? styles.strokeWidth : borderW,
-      ...(!isHighlight ? bindEvents('overlay', index) : {}),
-      ...(isHighlight ? styles : {})
+      fill: highlightMode ? 'none' : color,
+      stroke: highlightMode ? styles.stroke : borderColor,
+      strokeWidth: highlightMode ? styles.strokeWidth : borderW,
+      ...(!highlightMode ? bindEvents('overlay', index) : {}),
+      ...(highlightMode ? styles : {})
     };
 
     if (mergedOverlay.type === 'triangle') {
@@ -336,19 +316,16 @@ const FlagPreview = ({ flagState, onColorDrop, currentLevelId }) => {
     }
     if (mergedOverlay.type === 'pall') {
       const { chevron, tail, strokeWidth } = SHAPE_GENERATORS.pall({ w: width, h: height, args: mergedOverlay });
-
-      // For pall highlight, we group them to ensure the whole shape pops
-      if (isHighlight) {
+      if (highlightMode) {
         return (
             <g key={index} {...styles}>
-              <path d={tail} stroke="#FACC15" strokeWidth={strokeWidth + 10} />
-              <path d={chevron} stroke="#FACC15" strokeWidth={strokeWidth + 10} fill="none" />
+              <path d={tail} stroke={styles.stroke} strokeWidth={strokeWidth + 10} />
+              <path d={chevron} stroke={styles.stroke} strokeWidth={strokeWidth + 10} fill="none" />
             </g>
         )
       }
-
       return (
-          <g key={index} {...(!isHighlight ? bindEvents('overlay', index) : {})}>
+          <g key={index} {...(!highlightMode ? bindEvents('overlay', index) : {})}>
             {mergedOverlay.borderColor && (
                 <>
                   <path d={tail} stroke={COLORS[mergedOverlay.borderColor]} strokeWidth={strokeWidth + (height*0.06)} />
@@ -363,8 +340,25 @@ const FlagPreview = ({ flagState, onColorDrop, currentLevelId }) => {
     return null;
   };
 
-  const renderSymbol = (symbol, index, isHighlight = false) => {
-    const targetOverride = currentLevel?.target.symbols.find(s => s.type === symbol.type) || {};
+  const renderSymbol = (symbol, index, highlightMode = null) => {
+    const currentlySelected = isSelected('symbol', index);
+    const currentlyHovered = isHovered('symbol', index);
+
+    // --- CRITICAL FIX START: Intelligent Matching ---
+    // Instead of using .find() which just gets the first match (causing stacking),
+    // we match the n-th user symbol of type T to the n-th target symbol of type T.
+
+    // 1. Calculate which "number" symbol of this type we are rendering (e.g., "I am the 2nd Star")
+    const myTypeIndex = symbols.slice(0, index).filter(s => s.type === symbol.type).length;
+
+    // 2. Get all target symbols of this type
+    const targetSymbolsOfType = currentLevel?.target.symbols.filter(s => s.type === symbol.type) || [];
+
+    // 3. Pick the corresponding target configuration, or fall back to the first one if we exceed count
+    const targetOverride = targetSymbolsOfType[myTypeIndex] || targetSymbolsOfType[0] || {};
+
+    // --- CRITICAL FIX END ---
+
     const { color: _c, ...geoProps } = targetOverride;
     const mergedSymbol = { ...symbol, ...geoProps };
 
@@ -373,6 +367,7 @@ const FlagPreview = ({ flagState, onColorDrop, currentLevelId }) => {
     let scale = mergedSymbol.scale || 1;
     let baseR = height * 0.15;
 
+    if (mergedSymbol.xOffset) cx += width * mergedSymbol.xOffset;
     if (mergedSymbol.yOffset) cy += height * mergedSymbol.yOffset;
 
     if (mergedSymbol.parentIndex !== null && overlays[mergedSymbol.parentIndex]) {
@@ -390,16 +385,15 @@ const FlagPreview = ({ flagState, onColorDrop, currentLevelId }) => {
     }
 
     const color = resolveColor(mergedSymbol.color, index, 5);
-    const styles = getHighlightStyles(isHighlight);
+    const styles = highlightMode ? getHighlightStyles(true, highlightMode === 'selection') : {};
     const commonProps = {
-      fill: isHighlight ? 'none' : color,
-      display: 'block', // fixes mask issues sometimes
-      ...(!isHighlight ? bindEvents('symbol', index) : {}),
-      ...(isHighlight ? styles : {})
+      fill: highlightMode ? 'none' : color,
+      display: 'block',
+      ...(!highlightMode ? bindEvents('symbol', index) : {}),
+      ...(highlightMode ? styles : {})
     };
 
-    // If highlighting, ensure stroke is set on the element
-    if(isHighlight) {
+    if(highlightMode) {
       commonProps.stroke = styles.stroke;
       commonProps.strokeWidth = styles.strokeWidth;
     }
@@ -408,65 +402,45 @@ const FlagPreview = ({ flagState, onColorDrop, currentLevelId }) => {
       const pathData = SHAPE_GENERATORS.risingSun({ cx, cy, r: baseR * scale, args: mergedSymbol });
       return <path key={index} d={pathData} {...commonProps} />;
     }
-
     if (mergedSymbol.type === 'crescent-star') {
       const pathData = SHAPE_GENERATORS.crescentStar({ cx, cy, h: height, args: mergedSymbol });
       return <path key={index} d={pathData} {...commonProps} />;
     }
-
     if (mergedSymbol.type === 'seal' && mergedSymbol.src) {
-      const size = baseR * scale * 2;
-      const imgProps = { ...commonProps };
-      if(isHighlight) {
-        // Images can't simply be stroked, so we stroke a rect around it or scaling applies via 'styles'
-        return <rect x={cx - size/2} y={cy - size/2} width={size} height={size} fill="none" {...imgProps} />
-      }
-      return (
-          <image
-              key={index}
-              href={mergedSymbol.src}
-              x={cx - size/2}
-              y={cy - size/2}
-              width={size}
-              height={size}
-              {...imgProps}
-          />
-      );
-    }
+      const h = baseR * scale * 2;
+      const w = mergedSymbol.aspectRatio ? h * mergedSymbol.aspectRatio : h;
 
+      const imgProps = { ...commonProps };
+      if(highlightMode) return <rect x={cx - w/2} y={cy - h/2} width={w} height={h} fill="none" {...imgProps} />
+      return <image key={index} href={mergedSymbol.src} x={cx - w/2} y={cy - h/2} width={w} height={h} {...imgProps} />;
+    }
     if (mergedSymbol.type === 'external' && mergedSymbol.src) {
       const size = baseR * scale * 2;
-      // ForeignObjects are tricky to scale cleanly without artifacts, but CSS transform works
       return (
           <foreignObject key={index} x={cx - size/2} y={cy - size/2} width={size} height={size} {...commonProps}>
             <div style={{
               width: '100%', height: '100%',
-              backgroundColor: isHighlight ? 'transparent' : color,
+              backgroundColor: highlightMode ? 'transparent' : color,
               WebkitMaskImage: `url(${mergedSymbol.src})`, maskImage: `url(${mergedSymbol.src})`,
               WebkitMaskSize: 'contain', maskSize: 'contain',
               WebkitMaskRepeat: 'no-repeat', maskRepeat: 'no-repeat', maskPosition: 'center',
-              border: isHighlight ? '4px solid #FACC15' : 'none'
+              border: highlightMode ? (highlightMode === 'selection' ? '4px solid #3B82F6' : '4px solid #FACC15') : 'none'
             }} />
           </foreignObject>
       );
     }
-
     if (mergedSymbol.type === 'star') {
-      const pts = SHAPE_GENERATORS.star({ cx, cy, r: baseR * scale });
+      const pts = SHAPE_GENERATORS.star({ cx, cy, r: baseR * scale, args: mergedSymbol });
       return <polygon key={index} points={pts} {...commonProps} />;
     }
-
     if (mergedSymbol.type === 'circle') {
       const r = baseR * scale * 1.5;
       return <circle key={index} cx={cx} cy={cy} r={r} {...commonProps} />;
     }
-
     if (mergedSymbol.type === 'star-field') {
       const fieldW = mergedSymbol.parentIndex !== null ? cx * 2 : width * 0.4;
       const fieldH = mergedSymbol.parentIndex !== null ? cy * 2 : height * 0.54;
-      if (isHighlight) return <rect width={fieldW} height={fieldH} fill="none" stroke="#FACC15" strokeWidth={4} />;
-
-      // Logic for stars (implied simple placement)
+      if (highlightMode) return <rect width={fieldW} height={fieldH} fill="none" {...commonProps} />;
       const rows=5, cols=6;
       const stepX = fieldW / (cols+1);
       const stepY = fieldH / (rows+1);
@@ -477,40 +451,49 @@ const FlagPreview = ({ flagState, onColorDrop, currentLevelId }) => {
               const c = (i%cols) + 1;
               return <circle key={i} cx={c*stepX} cy={r*stepY} r={height*0.012} fill={color} />
             })}
-            {/* Invisible rect to catch mouse events over the gaps between stars */}
             <rect width={fieldW} height={fieldH} fill="transparent" />
           </g>
       );
     }
-
     return null;
   };
 
   return (
       <div className="w-full flex justify-center bg-gray-100 rounded-lg p-4 shadow-inner">
-        <svg viewBox={`0 0 ${width} ${height}`} style={{ width: '100%', height: 'auto', maxWidth: '300px', backgroundColor: '#fff' }} className="shadow-xl">
+        <svg
+            viewBox={`0 0 ${width} ${height}`}
+            style={{ width: '100%', height: 'auto', maxWidth: '300px', backgroundColor: '#fff' }}
+            className="shadow-xl select-none"
+        >
           <mask id="flag-mask"><rect width={width} height={height} fill="white" /></mask>
 
-          {/* MAIN LAYER STACK: Base -> Overlays -> Symbols */}
+          {/* MAIN LAYER */}
           <g mask="url(#flag-mask)">
             {renderBase()}
-            {overlays.map((o, i) => renderOverlay(o, i, false))}
-            {symbols.map((s, i) => renderSymbol(s, i, false))}
+            {overlays.map((o, i) => renderOverlay(o, i))}
+            {symbols.map((s, i) => renderSymbol(s, i))}
           </g>
 
-          {/* BORDER (Permanent) */}
+          {/* BORDER */}
           <rect width={width} height={height} fill="none" stroke="#ddd" strokeWidth="1" className="pointer-events-none" />
 
-          {/* HIGHLIGHT LAYER: Renders ON TOP of everything (Outside Mask usually, or inside if preferred) */}
-          {/* We render ONLY the item that is currently hovered */}
-          {hovered && (
-              <g>
-                {hovered.type === 'base' && renderBase(hovered.index)}
-                {hovered.type === 'overlay' && renderOverlay(overlays[hovered.index], hovered.index, true)}
-                {hovered.type === 'symbol' && renderSymbol(symbols[hovered.index], hovered.index, true)}
+          {/* SELECTION HIGHLIGHT LAYER (PERSISTENT) */}
+          {selectedElement && (
+              <g className="pointer-events-none" style={{ pointerEvents: 'none' }}>
+                {selectedElement.type === 'base' && renderBase('selection')}
+                {selectedElement.type === 'overlay' && renderOverlay(overlays[selectedElement.index], selectedElement.index, 'selection')}
+                {selectedElement.type === 'symbol' && renderSymbol(symbols[selectedElement.index], selectedElement.index, 'selection')}
               </g>
           )}
 
+          {/* HOVER HIGHLIGHT LAYER (TRANSIENT) */}
+          {hovered && (
+              <g className="pointer-events-none" style={{ pointerEvents: 'none' }}>
+                {hovered.type === 'base' && renderBase('hover')}
+                {hovered.type === 'overlay' && renderOverlay(overlays[hovered.index], hovered.index, 'hover')}
+                {hovered.type === 'symbol' && renderSymbol(symbols[hovered.index], hovered.index, 'hover')}
+              </g>
+          )}
         </svg>
       </div>
   );
@@ -520,68 +503,130 @@ const FlagPreview = ({ flagState, onColorDrop, currentLevelId }) => {
 // --- MAIN APP ---
 
 export default function App() {
-  const [currentLevelId, setCurrentLevelId] = useState(1);
+  const [currentLevelId, setCurrentLevelId] = useState(16); // Default to Australia for debugging
   const [gameState, setGameState] = useState(null);
   const [activeTab, setActiveTab] = useState('base');
   const [feedback, setFeedback] = useState(null);
 
+  // Interaction States
+  const [selectedColor, setSelectedColor] = useState(null);
+  const [selectedElement, setSelectedElement] = useState(null);
+
   const level = useMemo(() => LEVELS.find(l => l.id === currentLevelId), [currentLevelId]);
 
   useEffect(() => {
-    // When level changes, initialize state.
-    // CRITICAL: We must copy ratios from the level target if they exist for the initial pattern.
-    const initialBaseType = 'solid'; // Default starting point is solid to encourage building
-
+    const initialBaseType = 'solid';
     setGameState({
-      base: {
-        type: initialBaseType,
-        colors: [null, null, null],
-        count: null, // Slider default
-        ratios: null // Will be populated if user selects matching type
-      },
+      base: { type: initialBaseType, colors: [null, null, null], count: null, ratios: null },
       overlays: [],
       symbols: []
     });
     setFeedback(null);
     setActiveTab('base');
+    setSelectedColor(null);
+    setSelectedElement(null);
   }, [currentLevelId]);
 
-  const updateState = (section, idx, key, val) => {
+  // --- CORE STATE UPDATERS ---
+
+  const updateColor = (type, index, color) => {
+    setGameState(prev => {
+      const next = { ...prev };
+      if (type === 'base') {
+        const c = [...next.base.colors];
+        c[index] = color;
+        next.base.colors = c;
+      } else if (type === 'overlay') {
+        const arr = [...next.overlays];
+        arr[index] = { ...arr[index], color: color };
+        next.overlays = arr;
+      } else if (type === 'symbol') {
+        const arr = [...next.symbols];
+        arr[index] = { ...arr[index], color: color };
+        next.symbols = arr;
+      }
+      return next;
+    });
+  };
+
+  const updateProp = (section, idx, key, val) => {
     setGameState(prev => {
       const next = { ...prev };
       if (section === 'base') {
-        // If we are changing the base type, check if the NEW type matches the level target
-        // If so, automatically bring in the ratios to help the user.
         if (key === 'type') {
           next.base.type = val;
           if (level.target.base.type === val && level.target.base.ratios) {
             next.base.ratios = level.target.base.ratios;
           } else {
-            next.base.ratios = null; // Reset ratios for non-matching types
+            next.base.ratios = null;
           }
         } else if (key === 'count') {
           next.base.count = val;
-        } else {
-          // Colors
-          const c = [...next.base.colors];
-          c[idx] = val;
-          next.base.colors = c;
         }
       } else {
         const arr = [...next[section]];
-        if (key) arr[idx] = { ...arr[idx], [key]: val };
-        else arr[idx] = { ...arr[idx], color: val };
+        arr[idx] = { ...arr[idx], [key]: val };
         next[section] = arr;
       }
       return next;
     });
   };
 
-  const handleDrop = (type, idx, subIdx, color) => updateState(type === 'base' ? 'base' : type + 's', idx, null, color);
+  // --- INTERACTION HANDLERS ---
 
-  // Generic add/remove helpers
+  const handlePaletteClick = (colorKey) => {
+    if (selectedElement) {
+      // If a shape is selected, apply this color to it immediately
+      updateColor(selectedElement.type, selectedElement.index, colorKey);
+    } else {
+      // Toggle selection of color
+      if (selectedColor === colorKey) setSelectedColor(null);
+      else setSelectedColor(colorKey);
+    }
+  };
+
+  const handleFlagInteraction = (action, payload) => {
+    const { type, index } = payload.target || payload;
+
+    if (action === 'click') {
+      if (selectedColor) {
+        // Painting mode
+        updateColor(type, index, selectedColor);
+      } else {
+        // Selection mode
+        if (selectedElement && selectedElement.type === type && selectedElement.index === index) {
+          setSelectedElement(null); // Deselect
+        } else {
+          setSelectedElement({ type, index });
+          // Switch tab to match selection
+          setActiveTab(type === 'base' ? 'base' : type + 's');
+        }
+      }
+    } else if (action === 'drop') {
+      const { data } = payload;
+      if (data.source === 'palette') {
+        // Standard drop from palette
+        updateColor(type, index, data.color);
+      }
+    }
+  };
+
+  const handleBackgroundClick = (e) => {
+    // Deselect if clicking pure background
+    if (e.target.dataset.bg) {
+      setSelectedColor(null);
+      setSelectedElement(null);
+    }
+  };
+
+  // --- GENERIC HELPERS ---
   const addItem = (section, item) => setGameState(p => ({ ...p, [section]: [...p[section], item] }));
-  const removeItem = (section, idx) => setGameState(p => ({ ...p, [section]: p[section].filter((_, i) => i !== idx) }));
+  const removeItem = (section, idx) => {
+    setGameState(p => ({ ...p, [section]: p[section].filter((_, i) => i !== idx) }));
+    if (selectedElement && selectedElement.type === (section === 'overlays' ? 'overlay' : 'symbol') && selectedElement.index === idx) {
+      setSelectedElement(null);
+    }
+  };
 
   const validate = () => {
     const t = level.target;
@@ -621,10 +666,7 @@ export default function App() {
       const uType = u.symbols[i].type === 'external' ? 'external' : u.symbols[i].type;
 
       if (tType !== uType) return setFeedback({ type: 'error', msg: `Symbol ${i+1} mismatch.` });
-
-      // Skip color check for Seal
       if (tType === 'seal') continue;
-
       if (t.symbols[i].color !== u.symbols[i].color)
         return setFeedback({ type: 'error', msg: `Symbol ${i+1} mismatch.` });
     }
@@ -635,7 +677,8 @@ export default function App() {
   if (!gameState) return <div className="p-10 text-center">Loading...</div>;
 
   return (
-      <div className="min-h-screen bg-slate-900 text-slate-100 font-sans">
+      <div className="min-h-screen bg-slate-900 text-slate-100 font-sans" onClick={handleBackgroundClick} data-bg="true">
+
         <header className="bg-slate-800 p-4 shadow border-b border-slate-700 sticky top-0 z-50">
           <div className="max-w-6xl mx-auto flex justify-between items-center">
             <div className="flex items-center gap-2 text-xl font-bold">
@@ -651,8 +694,8 @@ export default function App() {
           </div>
         </header>
 
-        <main className="max-w-6xl mx-auto p-4 grid md:grid-cols-12 gap-8">
-          <div className="md:col-span-7 flex flex-col gap-6">
+        <main className="max-w-6xl mx-auto p-4 grid md:grid-cols-12 gap-8" data-bg="true">
+          <div className="md:col-span-7 flex flex-col gap-6" data-bg="true">
             <div className="bg-slate-800 p-6 rounded-xl border border-slate-700">
               <div className="flex justify-between">
                 <h2 className="text-2xl font-bold">{level.name}</h2>
@@ -661,11 +704,36 @@ export default function App() {
               <p className="text-slate-400">{level.description}</p>
             </div>
 
-            <div className="bg-white/5 p-6 rounded-xl border border-white/10 flex flex-col items-center min-h-[350px]">
-              <div className="flex gap-2 mb-6 bg-slate-800/50 p-2 rounded-full">
-                {Object.keys(COLORS).map(k => <DraggableColor key={k} colorKey={k} colorValue={COLORS[k]} />)}
+            <div className="bg-white/5 p-6 rounded-xl border border-white/10 flex flex-col items-center min-h-[400px]" data-bg="true">
+              <div className="flex flex-wrap justify-center gap-2 mb-6 bg-slate-800/50 p-2 rounded-xl border border-slate-700">
+                {/* PALETTE */}
+                {Object.keys(COLORS).map(k => (
+                    <DraggableColor
+                        key={k}
+                        colorKey={k}
+                        colorValue={COLORS[k]}
+                        isSelected={selectedColor === k}
+                        onClick={handlePaletteClick}
+                    />
+                ))}
               </div>
-              <FlagPreview flagState={gameState} onColorDrop={handleDrop} currentLevelId={currentLevelId} />
+
+              <div className="relative group">
+                {/* Visual Hint for Interactions */}
+                <div className="absolute -top-8 left-0 right-0 text-center text-xs text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                  <span className="flex items-center justify-center gap-2">
+                    <MousePointer2 size={12}/> Click to Select / Paint
+                  </span>
+                </div>
+
+                <FlagPreview
+                    flagState={gameState}
+                    onInteraction={handleFlagInteraction}
+                    selectedElement={selectedElement}
+                    currentLevelId={currentLevelId}
+                />
+              </div>
+
               {feedback && (
                   <div className={`mt-4 px-4 py-2 rounded flex items-center gap-2 ${feedback.type === 'success' ? 'bg-green-900/50 text-green-200' : 'bg-red-900/50 text-red-200'}`}>
                     {feedback.type === 'success' ? <Trophy size={16} /> : <CheckCircle2 size={16} />}
@@ -674,18 +742,18 @@ export default function App() {
               )}
             </div>
 
-            <button onClick={validate} className="w-full py-4 bg-blue-600 hover:bg-blue-500 rounded-xl font-bold text-lg flex justify-center gap-2">
+            <button onClick={validate} className="w-full py-4 bg-blue-600 hover:bg-blue-500 rounded-xl font-bold text-lg flex justify-center gap-2 transition-colors">
               <CheckCircle2 /> Validate
             </button>
           </div>
 
-          <div className="md:col-span-5 bg-slate-800 rounded-xl border border-slate-700 flex flex-col h-[600px]">
+          <div className="md:col-span-5 bg-slate-800 rounded-xl border border-slate-700 flex flex-col h-[600px] overflow-hidden">
             <div className="flex border-b border-slate-700">
               {['base', 'overlays', 'symbols'].map(tab => (
                   <button
                       key={tab}
                       onClick={() => setActiveTab(tab)}
-                      className={`flex-1 py-3 capitalize font-bold ${activeTab === tab ? 'bg-slate-700 text-white' : 'text-slate-400 hover:bg-slate-700/50'}`}
+                      className={`flex-1 py-3 capitalize font-bold transition-colors ${activeTab === tab ? 'bg-slate-700 text-white' : 'text-slate-400 hover:bg-slate-700/50'}`}
                   >
                     {tab}
                   </button>
@@ -699,8 +767,8 @@ export default function App() {
                       {['vertical-tricolor', 'horizontal-stripes', 'bisection-horizontal', 'bisection-vertical', 'solid'].map(t => (
                           <button
                               key={t}
-                              onClick={() => updateState('base', null, 'type', t)}
-                              className={`p-3 rounded border text-sm capitalize ${gameState.base.type === t ? 'bg-blue-600 border-blue-400' : 'bg-slate-700 border-slate-600'}`}
+                              onClick={() => updateProp('base', null, 'type', t)}
+                              className={`p-3 rounded border text-sm capitalize transition-all ${gameState.base.type === t ? 'bg-blue-600 border-blue-400 ring-2 ring-blue-400/30' : 'bg-slate-700 border-slate-600 hover:border-slate-500'}`}
                           >
                             {t.replace('-', ' ')}
                           </button>
@@ -709,7 +777,7 @@ export default function App() {
                     {gameState.base.type === 'horizontal-stripes' && (
                         <div className="mt-4">
                           <label className="text-xs font-bold uppercase text-slate-500">Stripes: {gameState.base.count || 3}</label>
-                          <input type="range" min="2" max="13" value={gameState.base.count || 3} onChange={(e) => updateState('base', null, 'count', parseInt(e.target.value))} className="w-full" />
+                          <input type="range" min="2" max="13" value={gameState.base.count || 3} onChange={(e) => updateProp('base', null, 'count', parseInt(e.target.value))} className="w-full accent-blue-500" />
                         </div>
                     )}
                   </>
@@ -718,30 +786,36 @@ export default function App() {
               {activeTab === 'overlays' && (
                   <>
                     {gameState.overlays.map((o, i) => (
-                        <div key={i} className="bg-slate-700/50 p-3 rounded border border-slate-600 relative">
-                          <button onClick={() => removeItem('overlays', i)} className="absolute top-2 right-2 hover:text-red-400">&times;</button>
+                        <div
+                            key={i}
+                            className={`bg-slate-700/50 p-3 rounded border relative transition-all ${
+                                selectedElement?.type === 'overlay' && selectedElement?.index === i ? 'border-blue-400 ring-1 ring-blue-400' : 'border-slate-600'
+                            }`}
+                            onClick={() => setSelectedElement({type: 'overlay', index: i})}
+                        >
+                          <button onClick={(e) => { e.stopPropagation(); removeItem('overlays', i); }} className="absolute top-2 right-2 hover:text-red-400">&times;</button>
                           <div className="text-sm font-bold text-blue-300 mb-2">{o.type}</div>
-                          <label className="flex gap-2 text-xs">
-                            <input type="checkbox" checked={!!o.borderColor} onChange={(e) => updateState('overlays', i, 'borderColor', e.target.checked ? 'white' : null)} />
+                          <label className="flex gap-2 text-xs cursor-pointer">
+                            <input type="checkbox" checked={!!o.borderColor} onChange={(e) => updateProp('overlays', i, 'borderColor', e.target.checked ? 'white' : null)} />
                             Border
                           </label>
                           {o.type === 'triangle-corner' && (
                               <div className="mt-2 text-xs flex gap-2">
-                                <label>
-                                  <input type="radio" checked={o.corner === 'bottom-left'} onChange={() => updateState('overlays', i, 'corner', 'bottom-left')} /> B-Left
+                                <label className="cursor-pointer">
+                                  <input type="radio" checked={o.corner === 'bottom-left'} onChange={() => updateProp('overlays', i, 'corner', 'bottom-left')} /> B-Left
                                 </label>
-                                <label>
-                                  <input type="radio" checked={o.corner === 'bottom-right'} onChange={() => updateState('overlays', i, 'corner', 'bottom-right')} /> B-Right
+                                <label className="cursor-pointer">
+                                  <input type="radio" checked={o.corner === 'bottom-right'} onChange={() => updateProp('overlays', i, 'corner', 'bottom-right')} /> B-Right
                                 </label>
                               </div>
                           )}
                         </div>
                     ))}
                     <div className="grid grid-cols-2 gap-2 mt-4">
-                      <button onClick={() => addItem('overlays', { type: 'triangle', color: null, position: 'hoist' })} className="p-2 bg-slate-700 rounded text-xs flex flex-col items-center gap-1"><Triangle size={14}/> Triangle</button>
-                      <button onClick={() => addItem('overlays', { type: 'canton', color: null, position: 'top-left' })} className="p-2 bg-slate-700 rounded text-xs flex flex-col items-center gap-1"><Square size={14}/> Canton</button>
-                      <button onClick={() => addItem('overlays', { type: 'pall', color: null })} className="p-2 bg-slate-700 rounded text-xs flex flex-col items-center gap-1"><Layout size={14}/> Pall</button>
-                      <button onClick={() => addItem('overlays', { type: 'triangle-corner', color: null, corner: 'bottom-left', widthRatio: 0.5 })} className="p-2 bg-slate-700 rounded text-xs flex flex-col items-center gap-1"><Triangle className="rotate-90" size={14}/> Corner Tri</button>
+                      <button onClick={() => addItem('overlays', { type: 'triangle', color: null, position: 'hoist' })} className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors"><Triangle size={14}/> Triangle</button>
+                      <button onClick={() => addItem('overlays', { type: 'canton', color: null, position: 'top-left' })} className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors"><Square size={14}/> Canton</button>
+                      <button onClick={() => addItem('overlays', { type: 'pall', color: null })} className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors"><Layout size={14}/> Pall</button>
+                      <button onClick={() => addItem('overlays', { type: 'triangle-corner', color: null, corner: 'bottom-left', widthRatio: 0.5 })} className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors"><Triangle className="rotate-90" size={14}/> Corner Tri</button>
                     </div>
                   </>
               )}
@@ -749,15 +823,22 @@ export default function App() {
               {activeTab === 'symbols' && (
                   <>
                     {gameState.symbols.map((s, i) => (
-                        <div key={i} className="bg-slate-700/50 p-3 rounded border border-slate-600 relative">
-                          <button onClick={() => removeItem('symbols', i)} className="absolute top-2 right-2 hover:text-red-400">&times;</button>
+                        <div
+                            key={i}
+                            className={`bg-slate-700/50 p-3 rounded border relative transition-all ${
+                                selectedElement?.type === 'symbol' && selectedElement?.index === i ? 'border-blue-400 ring-1 ring-blue-400' : 'border-slate-600'
+                            }`}
+                            onClick={() => setSelectedElement({type: 'symbol', index: i})}
+                        >
+                          <button onClick={(e) => { e.stopPropagation(); removeItem('symbols', i); }} className="absolute top-2 right-2 hover:text-red-400">&times;</button>
                           <div className="text-sm font-bold text-yellow-500 mb-2">
                             {s.type === 'external' ? 'Image' : s.type === 'seal' ? 'Seal' : s.type}
                           </div>
                           <select
-                              className="w-full bg-slate-800 text-xs p-1 rounded border border-slate-600"
+                              className="w-full bg-slate-800 text-xs p-1 rounded border border-slate-600 outline-none focus:border-blue-400"
                               value={s.parentIndex ?? -1}
-                              onChange={(e) => updateState('symbols', i, 'parentIndex', parseInt(e.target.value) === -1 ? null : parseInt(e.target.value))}
+                              onChange={(e) => updateProp('symbols', i, 'parentIndex', parseInt(e.target.value) === -1 ? null : parseInt(e.target.value))}
+                              onClick={(e) => e.stopPropagation()}
                           >
                             <option value={-1}>Center</option>
                             {gameState.overlays.map((o, idx) => <option key={idx} value={idx}>Layer {idx+1} ({o.type})</option>)}
@@ -765,15 +846,15 @@ export default function App() {
                         </div>
                     ))}
                     <div className="grid grid-cols-5 gap-2 mt-4">
-                      <button onClick={() => addItem('symbols', { type: 'star', color: null })} className="p-2 bg-slate-700 rounded text-xs flex flex-col items-center gap-1"><Star size={14}/> Star</button>
-                      <button onClick={() => addItem('symbols', { type: 'circle', color: null })} className="p-2 bg-slate-700 rounded text-xs flex flex-col items-center gap-1"><Circle size={14}/> Circle</button>
-                      <button onClick={() => addItem('symbols', { type: 'crescent-star', color: null })} className="p-2 bg-slate-700 rounded text-xs flex flex-col items-center gap-1"><Moon size={14}/> Crescent</button>
-                      <button onClick={() => addItem('symbols', { type: 'star-field', color: null })} className="p-2 bg-slate-700 rounded text-xs flex flex-col items-center gap-1"><Layout size={14}/> Field</button>
-                      <button onClick={() => addItem('symbols', { type: 'external', src: 'https://upload.wikimedia.org/wikipedia/commons/b/b7/Albanian_Eagle.svg', color: null })} className="p-2 bg-slate-700 rounded text-xs flex flex-col items-center gap-1"><ImageIcon size={14}/> Eagle</button>
-                      <button onClick={() => addItem('symbols', { type: 'seal', src: 'https://upload.wikimedia.org/wikipedia/commons/4/4e/Coat_of_arms_of_Andorra.svg', color: null })} className="p-2 bg-slate-700 rounded text-xs flex flex-col items-center gap-1"><Stamp size={14}/> Seal</button>
-                      <button onClick={() => addItem('symbols', { type: 'external', src: 'https://upload.wikimedia.org/wikipedia/commons/0/02/Machete_and_Gear.svg', color: null })} className="p-2 bg-slate-700 rounded text-xs flex flex-col items-center gap-1"><Cog size={14}/> Gear</button>
-                      <button onClick={() => addItem('symbols', { type: 'rising-sun', color: null })} className="p-2 bg-slate-700 rounded text-xs flex flex-col items-center gap-1"><Sun size={14}/> Rising Sun</button>
-                      <button onClick={() => addItem('symbols', { type: 'seal', src: 'https://upload.wikimedia.org/wikipedia/commons/9/9d/Sol_de_Mayo-Bandera_de_Argentina.svg', color: null })} className="p-2 bg-slate-700 rounded text-xs flex flex-col items-center gap-1"><Sun size={14}/> Sun of May</button>
+                      <button onClick={() => addItem('symbols', { type: 'star', color: null })} className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors"><Star size={14}/> Star</button>
+                      <button onClick={() => addItem('symbols', { type: 'circle', color: null })} className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors"><Circle size={14}/> Circle</button>
+                      <button onClick={() => addItem('symbols', { type: 'crescent-star', color: null })} className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors"><Moon size={14}/> Crescent</button>
+                      <button onClick={() => addItem('symbols', { type: 'star-field', color: null })} className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors"><Layout size={14}/> Field</button>
+                      <button onClick={() => addItem('symbols', { type: 'external', src: 'https://upload.wikimedia.org/wikipedia/commons/b/b7/Albanian_Eagle.svg', color: null })} className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors"><ImageIcon size={14}/> Eagle</button>
+                      <button onClick={() => addItem('symbols', { type: 'seal', src: 'https://upload.wikimedia.org/wikipedia/commons/4/4e/Coat_of_arms_of_Andorra.svg', color: null })} className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors"><Stamp size={14}/> Seal</button>
+                      <button onClick={() => addItem('symbols', { type: 'external', src: 'https://upload.wikimedia.org/wikipedia/commons/0/02/Machete_and_Gear.svg', color: null })} className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors"><Cog size={14}/> Gear</button>
+                      <button onClick={() => addItem('symbols', { type: 'rising-sun', color: null })} className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors"><Sun size={14}/> Rising Sun</button>
+                      <button onClick={() => addItem('symbols', { type: 'seal', src: 'https://upload.wikimedia.org/wikipedia/commons/9/9d/Sol_de_Mayo-Bandera_de_Argentina.svg', color: null })} className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors"><Sun size={14}/> Sun of May</button>
                     </div>
                   </>
               )}
