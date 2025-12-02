@@ -331,5 +331,85 @@ export const LEVELS = [
             overlays: [],
             symbols: []
         }
+    },
+    {
+        id: 18,
+        name: "Azerbaijan",
+        difficulty: "Intermediate",
+        description: "The Land of Fire.",
+        hint: "Blue, Red, Green horizontal stripes. White Crescent and 8-pointed Star in the center.",
+        aspectRatio: 1/2,
+        target: {
+            base: { type: 'horizontal-stripes', count: 3, colors: ['lightBlue', 'red', 'green'] },
+            overlays: [],
+            symbols: [
+                {
+                    type: 'crescent-star',
+                    color: 'white',
+                    outerRadius: 3/20,
+                    innerRadius: 1/8,
+                    innerOffset: 1/30,
+                    starOuterRadius: 1/12,
+                    starInnerRadius: 1/2,
+                    starOffset: 2/5-3/20-1/12,
+                    starRotation: 90,
+                    starPoints: 8
+                }
+            ]
+        }
+    },
+    {
+        id: 19,
+        name: "The Bahamas",
+        difficulty: "Intermediate",
+        description: "700 islands and cays.",
+        hint: "Horizontal stripes: Aquamarine, Gold, Aquamarine. Black Triangle at hoist.",
+        aspectRatio: 1/2,
+        target: {
+            base: { type: 'horizontal-stripes', count: 3, colors: ['aquamarine', 'gold', 'aquamarine'] },
+            overlays: [
+                { type: 'triangle', position: 'hoist', color: 'black', vertexXRatio: 13/15 }
+            ],
+            symbols: []
+        }
+    },
+    {
+        id: 20,
+        name: "Bahrain",
+        difficulty: "Intermediate",
+        description: "The Pearl of the Gulf.",
+        hint: "White band on the left, Red on the right, separated by 5 white triangles.",
+        aspectRatio: 3/5,
+        target: {
+            base: { 
+                type: 'serrated-vertical', 
+                colors: ['white', 'red'],
+                count: 5,
+                xRatio: 0.25,
+                serrationDepth: 0.15 
+            },
+            overlays: [],
+            symbols: []
+        }
+    },
+    {
+        id: 21,
+        name: "Bangladesh",
+        difficulty: "Intermediate",
+        description: "The Red Disc.",
+        hint: "Green field with a large Red disk shifted slightly to the hoist.",
+        aspectRatio: 3/5,
+        target: {
+            base: { type: 'solid', colors: ['green'] },
+            overlays: [],
+            symbols: [
+                {
+                    type: 'circle',
+                    color: 'red',
+                    scale: 1.5,
+                    xOffset: -0.05
+                }
+            ]
+        }
     }
 ];

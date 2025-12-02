@@ -29,6 +29,7 @@ const COLORS = {
   blue: '#00205B', // Darker blue for Australia/UK match
   lightBlue: '#69B3E7',
   green: '#007A3D',
+  aquamarine: '#00778B',
   gold: '#FFD700',
   orange: '#FF6600',
 };
@@ -98,7 +99,7 @@ const SHAPE_GENERATORS = {
   crescentStar: ({ cx, cy, h, args }) => {
     const rOuter = h * (args.outerRadius || 0.25);
     const rInner = h * (args.innerRadius || 0.2);
-    const rStar = h * (args.starRadius || 0.125);
+    const rStar = h * (args.starOuterRadius || args.starRadius || 0.125);
     const xInner = args.innerOffset !== undefined ? h * args.innerOffset : h * 0.1;
     const xStar = args.starOffset ? h * args.starOffset : h * 0.1;
     const starRot = args.starRotation || 0;
@@ -117,7 +118,14 @@ const SHAPE_GENERATORS = {
       A ${rInner} ${rInner} 0 ${largeArcInner} 1 ${cx + xIntersect},${cy - yIntersect} 
       Z
     `;
-    const starPath = SHAPE_GENERATORS.star({ cx: cx + xStar, cy, r: rStar, args: { ...args, rotation: starRot } });
+    
+    const starArgs = {
+      points: args.starPoints || args.points || 5,
+      innerRadius: args.starInnerRadius,
+      rotation: starRot
+    };
+    
+    const starPath = SHAPE_GENERATORS.star({ cx: cx + xStar, cy, r: rStar, args: starArgs });
     const starPoly = `M ${starPath.split(' ')[0]} L ${starPath.split(' ').slice(1).join(' L ')} Z`;
     return `${crescentPath} ${starPoly}`;
   }
@@ -145,7 +153,7 @@ const DraggableColor = ({ colorKey, colorValue, isSelected, onClick }) => {
   );
 };
 
-const FlagPreview = ({ flagState, onInteraction, selectedElement, currentLevelId }) => {
+export const FlagPreview = ({ flagState, onInteraction, selectedElement, currentLevelId }) => {
   const { base, overlays, symbols } = flagState;
   const [hovered, setHovered] = useState(null);
 
@@ -213,7 +221,7 @@ const FlagPreview = ({ flagState, onInteraction, selectedElement, currentLevelId
   const renderBase = (highlightMode = null) => {
     const { type, colors, count, ratios } = base;
 
-    const renderRect = (idx, x, y, w, h) => {
+    const renderRect = (idx, x, y, w, h, uniqueKey = idx) => {
       const currentlySelected = isSelected('base', idx);
       const currentlyHovered = isHovered('base', idx);
 
@@ -234,7 +242,7 @@ const FlagPreview = ({ flagState, onInteraction, selectedElement, currentLevelId
 
       return (
           <rect
-              key={`${idx}-${highlightMode}`}
+              key={`${uniqueKey}-${highlightMode}`}
               x={x} y={y} width={w} height={h}
               fill={fill}
               {...interactionProps}
@@ -257,7 +265,7 @@ const FlagPreview = ({ flagState, onInteraction, selectedElement, currentLevelId
           return <g>{ratios.map((r, i) => {
             const h = r * unitHeight;
             const colorIdx = colors.length === 2 ? i % 2 : i;
-            const rEl = renderRect(colorIdx, 0, currentY, width, h);
+            const rEl = renderRect(colorIdx, 0, currentY, width, h, i);
             currentY += h;
             return rEl;
           })}</g>;
@@ -265,13 +273,74 @@ const FlagPreview = ({ flagState, onInteraction, selectedElement, currentLevelId
           const h = height / c;
           return <g>{Array.from({ length: c }).map((_, i) => {
             const colorIdx = colors.length === 2 ? i % 2 : i;
-            return renderRect(colorIdx, 0, i*h, width, h);
+            return renderRect(colorIdx, 0, i*h, width, h, i);
           })}</g>;
         }
       case 'bisection-horizontal':
         return <g>{[0, 1].map(i => renderRect(i, 0, (height/2)*i, width, height/2))}</g>;
       case 'bisection-vertical':
         return <g>{[0, 1].map(i => renderRect(i, (width/2)*i, 0, width/2, height))}</g>;
+      case 'serrated-vertical':
+        const sCount = count || 5;
+        const sRatio = base.xRatio || 0.25;
+        const sDepth = base.serrationDepth || 0.15;
+
+        // Background (Right side color) - covers whole flag
+        // We render this as index 1.
+        const bgRect = renderRect(1, 0, 0, width, height);
+
+        // Foreground (Left side color) - serrated polygon
+        // We render this as index 0.
+        
+        // Calculate points for serrated edge
+        const toothH = height / sCount;
+        const xValley = width * sRatio;
+        const xPeak = xValley + (width * sDepth);
+        
+        let pts = [`0,0`, `${xValley},0`];
+        for (let i = 0; i < sCount; i++) {
+            const yTop = i * toothH;
+            const yTip = yTop + (toothH / 2);
+            const yBot = (i + 1) * toothH;
+            pts.push(`${xPeak},${yTip}`);
+            pts.push(`${xValley},${yBot}`);
+        }
+        pts.push(`0,${height}`);
+        const pointsStr = pts.join(' ');
+
+        // Custom render for polygon to reuse interaction/highlight logic
+        const renderPoly = () => {
+             const idx = 0;
+             const currentlySelected = isSelected('base', idx);
+             const currentlyHovered = isHovered('base', idx);
+             
+             if (highlightMode === 'selection' && !currentlySelected) return null;
+             if (highlightMode === 'hover' && !currentlyHovered) return null;
+             
+             const highlightProps = highlightMode ? getHighlightStyles(true, highlightMode === 'selection') : {};
+             const fill = highlightMode ? 'none' : resolveColor(colors[idx], idx);
+             
+              if (highlightMode) {
+                delete highlightProps.style;
+                highlightProps.strokeWidth = highlightMode === 'selection' ? 8 : 6;
+                highlightProps.strokeOpacity = 0.8;
+                highlightProps.style = { pointerEvents: 'none' };
+              }
+
+              const interactionProps = !highlightMode ? bindEvents('base', idx) : {};
+              
+              return (
+                  <polygon 
+                    key={`poly-${idx}-${highlightMode}`}
+                    points={pointsStr}
+                    fill={fill}
+                    {...interactionProps}
+                    {...highlightProps}
+                  />
+              );
+        };
+
+        return <g>{bgRect}{renderPoly()}</g>;
       default: return null;
     }
   };
@@ -764,7 +833,7 @@ export default function App() {
               {activeTab === 'base' && (
                   <>
                     <div className="grid grid-cols-2 gap-2">
-                      {['vertical-tricolor', 'horizontal-stripes', 'bisection-horizontal', 'bisection-vertical', 'solid'].map(t => (
+                      {['vertical-tricolor', 'horizontal-stripes', 'bisection-horizontal', 'bisection-vertical', 'solid', 'serrated-vertical'].map(t => (
                           <button
                               key={t}
                               onClick={() => updateProp('base', null, 'type', t)}
@@ -774,10 +843,19 @@ export default function App() {
                           </button>
                       ))}
                     </div>
-                    {gameState.base.type === 'horizontal-stripes' && (
+                    {(gameState.base.type === 'horizontal-stripes' || gameState.base.type === 'serrated-vertical') && (
                         <div className="mt-4">
-                          <label className="text-xs font-bold uppercase text-slate-500">Stripes: {gameState.base.count || 3}</label>
-                          <input type="range" min="2" max="13" value={gameState.base.count || 3} onChange={(e) => updateProp('base', null, 'count', parseInt(e.target.value))} className="w-full accent-blue-500" />
+                          <label className="text-xs font-bold uppercase text-slate-500">
+                            {gameState.base.type === 'serrated-vertical' ? 'Serrations' : 'Stripes'}: {gameState.base.count || (gameState.base.type === 'serrated-vertical' ? 5 : 3)}
+                          </label>
+                          <input
+                              type="range"
+                              min="2"
+                              max="13"
+                              value={gameState.base.count || (gameState.base.type === 'serrated-vertical' ? 5 : 3)}
+                              onChange={(e) => updateProp('base', null, 'count', parseInt(e.target.value))}
+                              className="w-full accent-blue-500"
+                          />
                         </div>
                     )}
                   </>

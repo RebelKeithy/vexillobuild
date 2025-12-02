@@ -1,70 +1,58 @@
-# Getting Started with Create React App
+# VexilloBuild
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**VexilloBuild** is an interactive React application that challenges players to reconstruct flags from around the world. By selecting the correct patterns, colors, overlays, and symbols, you learn about vexillology while testing your memory and attention to detail.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+-   **Interactive Flag Builder:** Construct flags layer by layer using an SVG-based rendering engine.
+-   **Multiple Levels:** Progress through levels of increasing difficulty, from simple tricolors to complex designs with multiple symbols.
+-   **Validation System:** Get instant feedback on your flag's accuracy, including patterns, colors, and symbol placement.
+-   **Hints & History:** Learn interesting facts and get hints about each flag's design.
+-   **Responsive Design:** Built with Tailwind CSS for a modern, accessible interface.
 
-### `npm start`
+## Tech Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+-   **React 19**
+-   **Tailwind CSS**
+-   **Lucide React** (Icons)
+-   **Jest** (Testing)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Getting Started
 
-### `npm test`
+1.  **Install dependencies:**
+    ```bash
+    npm install
+    ```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2.  **Run the application:**
+    ```bash
+    npm start
+    ```
+    Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-### `npm run build`
+## Testing
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+This project uses snapshot tests to ensure the flag rendering logic remains consistent.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Running Tests
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+npm test
+```
 
-### `npm run eject`
+### Snapshot Tests
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Tests are defined in `src/flags.test.js`. They verify that the `FlagPreview` component renders each flag correctly according to its configuration.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+-   If you make intentional changes to the flag rendering logic or the flag definitions, the snapshots might fail.
+-   To update the snapshots, run:
+    ```bash
+    npm test -- -u
+    ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Project Structure
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+-   `src/App.js`: Main application logic, state management, and UI components.
+-   `src/flags.js`: Configuration file defining all flag levels, including their shapes, colors, and construction rules.
+-   `src/flags.test.js`: Snapshot tests for flag rendering.
+-   `src/index.js`: Entry point.
