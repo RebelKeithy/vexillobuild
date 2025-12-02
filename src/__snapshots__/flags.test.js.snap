@@ -1547,19 +1547,23 @@ exports[`Flag Snapshots renders South Africa correctly 1`] = `
           class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
         >
           <path
+            d="M 121.2435565298214,100 L 310,100"
             stroke="#FFFFFF"
             stroke-width="56"
           />
           <path
+            d="M -10,-10 L 121.2435565298214,100 L -10,210"
             fill="none"
             stroke="#FFFFFF"
             stroke-width="56"
           />
           <path
+            d="M 121.2435565298214,100 L 310,100"
             stroke="#007A3D"
             stroke-width="44"
           />
           <path
+            d="M -10,-10 L 121.2435565298214,100 L -10,210"
             fill="none"
             stroke="#007A3D"
             stroke-width="44"

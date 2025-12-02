@@ -117,7 +117,7 @@ export const LEVELS = [
         target: {
             base: { type: 'bisection-horizontal', colors: ['red', 'blue'] },
             overlays: [
-                { type: 'pall', color: 'green', borderColor: 'white' },
+                { type: 'pall', color: 'green', borderColor: 'white', edgeLine: { yStart: 1 }, y_offset: 100 },
                 { type: 'triangle', position: 'hoist', color: 'black', borderColor: 'gold', vertexXRatio: 0.57735 }
             ],
             symbols: []
