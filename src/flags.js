@@ -411,5 +411,96 @@ export const LEVELS = [
                 }
             ]
         }
+    },
+    {
+        id: 22,
+        name: "Barbados",
+        difficulty: "Intermediate",
+        description: "The Broken Trident.",
+        hint: "Vertical bands: Blue, Gold, Blue. Black Trident in the center.",
+        aspectRatio: 2/3,
+        target: {
+            base: { type: 'vertical-tricolor', colors: ['blue', 'gold', 'blue'] },
+            overlays: [],
+            symbols: [
+                {
+                    type: 'external',
+                    src: 'https://upload.wikimedia.org/wikipedia/commons/a/a7/Barbados_trident.svg',
+                    color: 'black',
+                    scale: 1.6
+                }
+            ]
+        }
+    },
+    {
+        id: 23,
+        name: "Belarus",
+        difficulty: "Intermediate",
+        description: "The Red and Green.",
+        hint: "Red over Green (2:1 ratio). Vertical red-on-white decorative pattern at the hoist.",
+        aspectRatio: 1/2,
+        target: {
+            base: { 
+                type: 'horizontal-stripes', 
+                count: 2, 
+                colors: ['red', 'green'],
+                ratios: [2, 1]
+            },
+            overlays: [],
+            symbols: [
+                {
+                    type: 'external',
+                    src: 'https://upload.wikimedia.org/wikipedia/commons/9/99/Belarus_flag_pattern.svg',
+                    color: null,
+                    rotation: 90,
+                    aspectRatio: 4.5,
+                    scale: 0.74,
+                    xOffset: -0.444
+                }
+            ]
+        }
+    },
+    {
+        id: 24,
+        name: "Belgium",
+        difficulty: "Novice",
+        description: "The Black, Yellow, and Red.",
+        hint: "Vertical bands: Black, Yellow, Red.",
+        aspectRatio: 13/15,
+        target: {
+            base: { type: 'vertical-tricolor', colors: ['black', 'gold', 'red'] },
+            overlays: [],
+            symbols: []
+        }
+    },
+    {
+        id: 25,
+        name: "Belize",
+        difficulty: "Intermediate",
+        description: "Sub Umbra Floreo.",
+        hint: "Blue field. Top/Bottom narrow Red stripes. Large White Center Disk with Coat of Arms.",
+        aspectRatio: 2/3,
+        target: {
+            base: { 
+                type: 'horizontal-stripes', 
+                count: 3, 
+                colors: ['red', 'blue', 'red'],
+                ratios: [1, 10, 1]
+            },
+            overlays: [],
+            symbols: [
+                {
+                    type: 'circle',
+                    color: 'white',
+                    scale: 1.4
+                },
+                {
+                    type: 'seal',
+                    src: 'https://upload.wikimedia.org/wikipedia/commons/d/dd/Coat_of_arms_of_Belize.svg',
+                    color: null,
+                    scale: 1.7
+                }
+            ]
+        }
     }
 ];

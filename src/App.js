@@ -14,7 +14,9 @@ import {
   Stamp,
   Cog,
   Sun,
-  MousePointer2
+  MousePointer2,
+  Anchor,
+  GripVertical
 } from 'lucide-react';
 import {LEVELS} from "./flags";
 
@@ -484,9 +486,19 @@ export const FlagPreview = ({ flagState, onInteraction, selectedElement, current
       return <image key={index} href={mergedSymbol.src} x={cx - w/2} y={cy - h/2} width={w} height={h} {...imgProps} />;
     }
     if (mergedSymbol.type === 'external' && mergedSymbol.src) {
-      const size = baseR * scale * 2;
+      const h = baseR * scale * 2;
+      const w = mergedSymbol.aspectRatio ? h * mergedSymbol.aspectRatio : h;
+      const rotation = mergedSymbol.rotation || 0;
+      const transform = rotation ? `rotate(${rotation} ${cx} ${cy})` : undefined;
+
+      if (mergedSymbol.color === null || mergedSymbol.color === undefined) {
+          const imgProps = { ...commonProps };
+          if(highlightMode) return <rect x={cx - w/2} y={cy - h/2} width={w} height={h} transform={transform} fill="none" {...imgProps} />
+          return <image key={index} href={mergedSymbol.src} x={cx - w/2} y={cy - h/2} width={w} height={h} transform={transform} {...imgProps} />;
+      }
+
       return (
-          <foreignObject key={index} x={cx - size/2} y={cy - size/2} width={size} height={size} {...commonProps}>
+          <foreignObject key={index} x={cx - w/2} y={cy - h/2} width={w} height={h} transform={transform} {...commonProps}>
             <div style={{
               width: '100%', height: '100%',
               backgroundColor: highlightMode ? 'transparent' : color,
@@ -933,6 +945,8 @@ export default function App() {
                       <button onClick={() => addItem('symbols', { type: 'external', src: 'https://upload.wikimedia.org/wikipedia/commons/0/02/Machete_and_Gear.svg', color: null })} className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors"><Cog size={14}/> Gear</button>
                       <button onClick={() => addItem('symbols', { type: 'rising-sun', color: null })} className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors"><Sun size={14}/> Rising Sun</button>
                       <button onClick={() => addItem('symbols', { type: 'seal', src: 'https://upload.wikimedia.org/wikipedia/commons/9/9d/Sol_de_Mayo-Bandera_de_Argentina.svg', color: null })} className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors"><Sun size={14}/> Sun of May</button>
+                      <button onClick={() => addItem('symbols', { type: 'external', src: 'https://upload.wikimedia.org/wikipedia/commons/a/a7/Barbados_trident.svg', color: null })} className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors"><Anchor size={14}/> Trident</button>
+                      <button onClick={() => addItem('symbols', { type: 'external', src: 'https://upload.wikimedia.org/wikipedia/commons/9/99/Belarus_flag_pattern.svg', color: null, rotation: 90, aspectRatio: 4.5 })} className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors"><GripVertical size={14}/> Pattern</button>
                     </div>
                   </>
               )}
