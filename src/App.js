@@ -203,6 +203,24 @@ const renderFlagBase = ({type, width, height, colors, count, ratios, baseState =
             return <g>{[0, 1].map(i => _renderRect(i, 0, (height / 2) * i, width, height / 2))}</g>;
         case 'bisection-vertical':
             return <g>{[0, 1].map(i => _renderRect(i, (width / 2) * i, 0, width / 2, height))}</g>;
+        case 'bisection-diagonal-left':
+            const p1_r = `0,0 ${width},0 0,${height}`;
+            const p2_r = `0,${height} ${width},${height} ${width},0`;
+            return (
+                <g>
+                    {renderPolygon ? renderPolygon(0, p1_r, 0) : <polygon points={p1_r} fill={colors[0]}/>}
+                    {renderPolygon ? renderPolygon(1, p2_r, 1) : <polygon points={p2_r} fill={colors[1]}/>}
+                </g>
+            );
+        case 'bisection-diagonal-right':
+            const p1_l = `0,0 ${width},0 ${width},${height}`;
+            const p2_l = `0,0 0,${height} ${width},${height}`;
+            return (
+                <g>
+                    {renderPolygon ? renderPolygon(0, p1_l, 0) : <polygon points={p1_l} fill={colors[0]}/>}
+                    {renderPolygon ? renderPolygon(1, p2_l, 1) : <polygon points={p2_l} fill={colors[1]}/>}
+                </g>
+            );
         case 'serrated-vertical':
             const sCount = count || 5;
             const sRatio = baseState.xRatio || 0.25;
@@ -262,6 +280,10 @@ export const BaseOptionPreview = ({type}) => {
                 return {colors: [yellow, greyBg]};
             case 'bisection-vertical':
                 return {colors: [yellow, greyBg]};
+            case 'bisection-diagonal-left':
+                return {colors: [yellow, greyBg]};
+            case 'bisection-diagonal-right':
+                return {colors: [yellow, greyBg]};
             case 'serrated-vertical':
                 // Serrated: index 0 (foreground) = yellow, index 1 (bg) = greyBg
                 return {colors: [yellow, greyBg], count: 3, baseState: {xRatio: 0.4, serrationDepth: 0.2}};
@@ -300,6 +322,11 @@ const renderFlagOverlay = ({type, width, height, overlayConfig, renderShape}) =>
         case 'pall':
             const pallPoints = SHAPE_GENERATORS.pall({w: width, h: height, args: overlayConfig});
             return renderShape('polygon', {points: pallPoints, strokeLinejoin: "round"});
+        case 'side':
+            const sW = width * (overlayConfig.widthRatio || 0.33);
+            const side = overlayConfig.side || 'left';
+            const sX = side === 'right' ? width - sW : 0;
+            return renderShape('rect', {x: sX, width: sW, height});
         default:
             return null;
     }
@@ -339,7 +366,7 @@ export const FlagPreview = ({flagState, onInteraction, selectedElement, currentL
 
     const currentLevel = useMemo(() => LEVELS.find(l => l.id === currentLevelId), [currentLevelId]);
 
-    const width = 300;
+    const width = 600;
     const ratio = currentLevel?.aspectRatio || 2 / 3;
     const height = width * ratio;
 
@@ -659,7 +686,7 @@ export const FlagPreview = ({flagState, onInteraction, selectedElement, currentL
         <div className="w-full flex justify-center bg-gray-100 rounded-lg p-4 shadow-inner">
             <svg
                 viewBox={`0 0 ${width} ${height}`}
-                style={{width: '100%', height: 'auto', maxWidth: '300px', backgroundColor: '#fff'}}
+                style={{width: '100%', height: 'auto', maxWidth: '600px', backgroundColor: '#fff'}}
                 className="shadow-xl select-none"
             >
                 <mask id="flag-mask">
@@ -928,7 +955,7 @@ export default function App() {
                             ))}
                         </div>
 
-                        <div className="relative group">
+                        <div className="relative group w-full">
                             {/* Visual Hint for Interactions */}
                             <div
                                 className="absolute -top-8 left-0 right-0 text-center text-xs text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
@@ -978,7 +1005,7 @@ export default function App() {
                         {activeTab === 'base' && (
                             <>
                                 <div className="grid grid-cols-2 gap-2">
-                                    {['vertical-tricolor', 'horizontal-stripes', 'bisection-horizontal', 'bisection-vertical', 'solid', 'serrated-vertical'].map(t => (
+                                    {['vertical-tricolor', 'horizontal-stripes', 'bisection-horizontal', 'bisection-vertical', 'bisection-diagonal-left', 'bisection-diagonal-right', 'solid', 'serrated-vertical'].map(t => (
                                         <button
                                             key={t}
                                             onClick={() => updateProp('base', null, 'type', t)}
@@ -988,7 +1015,7 @@ export default function App() {
                                                 className="w-full aspect-[3/2] bg-slate-800/50 rounded overflow-hidden shadow-sm">
                                                 <BaseOptionPreview type={t}/>
                                             </div>
-                                            <span className="font-medium text-xs">{t.replace('-', ' ')}</span>
+                                            <span className="font-medium text-xs">{t.replace('-', ' ').replace('bisection diagonal', 'diagonal')}</span>
                                         </button>
                                     ))}
                                 </div>
@@ -1042,6 +1069,18 @@ export default function App() {
                                                 </label>
                                             </div>
                                         )}
+                                        {o.type === 'side' && (
+                                            <div className="mt-2 text-xs flex gap-2">
+                                                <label className="cursor-pointer">
+                                                    <input type="radio" checked={o.side !== 'right'}
+                                                           onChange={() => updateProp('overlays', i, 'side', 'left')}/> Left
+                                                </label>
+                                                <label className="cursor-pointer">
+                                                    <input type="radio" checked={o.side === 'right'}
+                                                           onChange={() => updateProp('overlays', i, 'side', 'right')}/> Right
+                                                </label>
+                                            </div>
+                                        )}
                                     </div>
                                 ))}
                                 <div className="grid grid-cols-2 gap-2 mt-4">
@@ -1092,6 +1131,19 @@ export default function App() {
                                             }}/>
                                         </div>
                                         <span className="font-medium">Corner Tri</span>
+                                    </button>
+                                    <button onClick={() => addItem('overlays', {
+                                        type: 'side',
+                                        color: null,
+                                        side: 'left',
+                                        widthRatio: 0.33
+                                    })}
+                                            className="flex flex-col items-center gap-2 p-2 bg-slate-700 hover:bg-slate-600 rounded border border-slate-600 text-xs transition-all">
+                                        <div
+                                            className="w-full aspect-[3/2] bg-slate-800/50 rounded overflow-hidden shadow-sm">
+                                            <OverlayOptionPreview type="side" defaultProps={{side: 'left', widthRatio: 0.33}}/>
+                                        </div>
+                                        <span className="font-medium">Side</span>
                                     </button>
                                 </div>
                             </>
@@ -1186,6 +1238,14 @@ export default function App() {
                                     })}
                                             className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
                                         <Anchor size={14}/> Trident
+                                    </button>
+                                    <button onClick={() => addItem('symbols', {
+                                        type: 'external',
+                                        src: 'https://upload.wikimedia.org/wikipedia/commons/6/6c/Dragon_from_Flag_of_Bhutan.svg',
+                                        color: null
+                                    })}
+                                            className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
+                                        <ImageIcon size={14}/> Dragon
                                     </button>
                                     <button onClick={() => addItem('symbols', {
                                         type: 'external',

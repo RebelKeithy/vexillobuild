@@ -503,5 +503,41 @@ export const LEVELS = [
                 }
             ]
         }
+    },
+    {
+        id: 26,
+        name: "Benin",
+        difficulty: "Novice",
+        description: "The Green, Yellow and Red.",
+        hint: "Vertical Green band at the hoist. Yellow and Red horizontal bands.",
+        aspectRatio: 2/3,
+        target: {
+            base: { type: 'bisection-horizontal', colors: ['gold', 'red'] },
+            overlays: [
+                { type: 'side', color: 'green', widthRatio: 0.4, side: 'left' }
+            ],
+            symbols: []
+        }
+    },
+    {
+        id: 27,
+        name: "Bhutan",
+        difficulty: "Expert",
+        description: "The Dragon Flag.",
+        hint: "Diagonal Yellow (Top-Left) and Orange (Bottom-Right) split. Large white dragon.",
+        aspectRatio: 2/3,
+        target: {
+            base: { type: 'bisection-diagonal-left', colors: ['gold', 'orange'] },
+            overlays: [],
+            symbols: [
+                {
+                    type: 'external',
+                    src: 'https://upload.wikimedia.org/wikipedia/commons/6/6c/Dragon_from_Flag_of_Bhutan.svg',
+                    color: null,
+                    aspectRatio: 102/74,
+                    scale: 3.3 * 74/90
+                }
+            ]
+        }
     }
 ];
