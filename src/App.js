@@ -3,8 +3,6 @@ import {
     CheckCircle2,
     Flag,
     Star,
-    Square,
-    Triangle,
     Circle,
     HelpCircle,
     Trophy,
@@ -53,7 +51,6 @@ const SHAPE_GENERATORS = {
         if (args.equilateral) {
             vx = th * Math.sqrt(3) / 2
         }
-        console.log(`h: ${h} vx: ${vx} th: ${th}`)
         return `0,${h/2 - th/2} ${vx},${h/2} 0,${th/2 + h/2}`;
     },
     triangleCorner: ({w, h, args}) => {
@@ -141,6 +138,26 @@ const SHAPE_GENERATORS = {
         const starPath = SHAPE_GENERATORS.star({cx: cx + xStar, cy, r: rStar, args: starArgs});
         const starPoly = `M ${starPath.split(' ')[0]} L ${starPath.split(' ').slice(1).join(' L ')} Z`;
         return `${crescentPath} ${starPoly}`;
+    },
+    diamond: ({h, w, cx, cy, width, height, args}) => {
+        width = args.widthRatio ? args.widthRatio : width;
+        height = args.heightRatio || height;
+        console.log(`Diamond params: ${h}, ${w}, ${cx}, ${cy}, ${width}, ${height}`)
+        const x1 = h * cx + w / 2 - h * width / 2;
+        const x2 = h * cx + w / 2;
+        const x3 = h * cx + w / 2 + h * width / 2;
+        const y1 = h * cy + h / 2 + h * height / 2;
+        const y2 = h * cy + h / 2;
+        const y3 = h * cy + h / 2 - h * height / 2;
+        console.log(`Diamond points: ${x1}`)
+        const points = [
+            `${x1},${y2}`,
+            `${x2},${y3}`,
+            `${x3},${y2}`,
+            `${x2},${y1}`
+        ]
+        console.log(`Diamond points: ${points.join(' ')}`)
+        return points.join(' ');
     }
 };
 
@@ -327,6 +344,14 @@ const renderFlagOverlay = ({type, width, height, overlayConfig, renderShape}) =>
             const side = overlayConfig.side || 'left';
             const sX = side === 'right' ? width - sW : 0;
             return renderShape('rect', {x: sX, width: sW, height});
+        case 'diamond':
+            console.log(`DIAMOND OVERLAY CONFIG: ${JSON.stringify(overlayConfig, null, 2)}`)
+            const cx = 0;
+            const cy = 0;
+            const diamond_height = 0.75;
+            const diamond_width = 0.75 * width / height;
+            const points = SHAPE_GENERATORS.diamond({w: width, h: height, cx, cy, width: diamond_width, height: diamond_height, args: overlayConfig});
+            return renderShape('polygon', {points: points, strokeLinejoin: "round"});
         default:
             return null;
     }
@@ -517,6 +542,7 @@ export const FlagPreview = ({flagState, onInteraction, selectedElement, currentL
         const myTypeIndex = overlays.slice(0, index).filter(filterFn).length;
         const targetOverlaysOfType = currentLevel?.target.overlays.filter(filterFn) || [];
         const targetOverride = targetOverlaysOfType[myTypeIndex] || targetOverlaysOfType[0] || {};
+        console.log(`Target Overlays of Type ${overlay.type}: ${JSON.stringify(targetOverlaysOfType, null, 2)}`)
 
         const {color: _c, borderColor: _bc, ...geoProps} = targetOverride;
         const mergedOverlay = {...overlay, ...geoProps};
@@ -1144,6 +1170,14 @@ export default function App() {
                                             <OverlayOptionPreview type="side" defaultProps={{side: 'left', widthRatio: 0.33}}/>
                                         </div>
                                         <span className="font-medium">Side</span>
+                                    </button>
+                                    <button onClick={() => addItem('overlays', {type: 'diamond', color: null})}
+                                            className="flex flex-col items-center gap-2 p-2 bg-slate-700 hover:bg-slate-600 rounded border border-slate-600 text-xs transition-all">
+                                        <div
+                                            className="w-full aspect-[3/2] bg-slate-800/50 rounded overflow-hidden shadow-sm">
+                                            <OverlayOptionPreview type="diamond"/>
+                                        </div>
+                                        <span className="font-medium">Diamond</span>
                                     </button>
                                 </div>
                             </>

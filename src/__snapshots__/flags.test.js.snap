@@ -1224,6 +1224,328 @@ exports[`Flag Snapshots renders Bhutan correctly 1`] = `
 </div>
 `;
 
+exports[`Flag Snapshots renders Bolivia correctly 1`] = `
+<div>
+  <div
+    class="w-full flex justify-center bg-gray-100 rounded-lg p-4 shadow-inner"
+  >
+    <svg
+      class="shadow-xl select-none"
+      style="width: 100%; height: auto; max-width: 600px; background-color: rgb(255, 255, 255);"
+      viewBox="0 0 600 409.09090909090907"
+    >
+      <mask
+        id="flag-mask"
+      >
+        <rect
+          fill="white"
+          height="409.09090909090907"
+          width="600"
+        />
+      </mask>
+      <g
+        mask="url(#flag-mask)"
+      >
+        <g>
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#EF3340"
+            height="136.36363636363635"
+            width="600"
+            x="0"
+            y="0"
+          />
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#FFD700"
+            height="136.36363636363635"
+            width="600"
+            x="0"
+            y="136.36363636363635"
+          />
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#007A3D"
+            height="136.36363636363635"
+            width="600"
+            x="0"
+            y="272.7272727272727"
+          />
+        </g>
+        <image
+          class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+          display="block"
+          fill="#E2E8F0"
+          height="135"
+          href="https://upload.wikimedia.org/wikipedia/commons/0/06/Coat_of_arms_of_Bolivia.svg"
+          width="155.76923076923075"
+          x="222.11538461538464"
+          y="137.04545454545453"
+        />
+      </g>
+      <rect
+        class="pointer-events-none"
+        fill="none"
+        height="409.09090909090907"
+        stroke="#ddd"
+        stroke-width="1"
+        width="600"
+      />
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`Flag Snapshots renders Bosnia and Herzegovina correctly 1`] = `
+<div>
+  <div
+    class="w-full flex justify-center bg-gray-100 rounded-lg p-4 shadow-inner"
+  >
+    <svg
+      class="shadow-xl select-none"
+      style="width: 100%; height: auto; max-width: 600px; background-color: rgb(255, 255, 255);"
+      viewBox="0 0 600 300"
+    >
+      <mask
+        id="flag-mask"
+      >
+        <rect
+          fill="white"
+          height="300"
+          width="600"
+        />
+      </mask>
+      <g
+        mask="url(#flag-mask)"
+      >
+        <g>
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#00205B"
+            height="300"
+            width="600"
+            x="0"
+            y="0"
+          />
+        </g>
+        <polygon
+          class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+          display="block"
+          fill="#FFFFFF"
+          points="102,-25.859999999999985 107.05201424345381,-10.313501066652659 123.39877161664096,-10.312882373436302 110.17433075755685,-0.7039989333473122 115.22516817658064,14.842882373436332 102,5.235000000000015 88.77483182341936,14.842882373436332 93.82566924244315,-0.7039989333473113 80.60122838335904,-10.312882373436299 96.94798575654619,-10.313501066652659"
+        />
+        <polygon
+          class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+          display="block"
+          fill="#FFFFFF"
+          points="139.5,11.64 144.5520142434538,27.186498933347327 160.89877161664094,27.187117626563683 147.67433075755685,36.79600106665267 152.72516817658064,52.34288237343632 139.5,42.735 126.27483182341936,52.34288237343632 131.32566924244315,36.79600106665267 118.10122838335904,27.187117626563687 134.4479857565462,27.186498933347327"
+        />
+        <polygon
+          class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+          display="block"
+          fill="#FFFFFF"
+          points="177,49.14 182.0520142434538,64.68649893334732 198.39877161664094,64.68711762656369 185.17433075755685,74.29600106665268 190.22516817658064,89.84288237343631 177,80.235 163.77483182341936,89.84288237343631 168.82566924244315,74.29600106665268 155.60122838335906,64.68711762656369 171.9479857565462,64.68649893334732"
+        />
+        <polygon
+          class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+          display="block"
+          fill="#FFFFFF"
+          points="214.5,86.64 219.5520142434538,102.18649893334732 235.89877161664094,102.18711762656369 222.67433075755685,111.79600106665268 227.72516817658064,127.34288237343631 214.5,117.735 201.27483182341936,127.34288237343631 206.32566924244315,111.79600106665268 193.10122838335906,102.18711762656369 209.4479857565462,102.18649893334732"
+        />
+        <polygon
+          class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+          display="block"
+          fill="#FFFFFF"
+          points="252,124.13999999999999 257.0520142434538,139.6864989333473 273.39877161664094,139.68711762656366 260.17433075755685,149.29600106665265 265.22516817658067,164.8428823734363 252,155.23499999999999 238.77483182341936,164.8428823734363 243.82566924244315,149.29600106665265 230.60122838335906,139.68711762656366 246.9479857565462,139.6864989333473"
+        />
+        <polygon
+          class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+          display="block"
+          fill="#FFFFFF"
+          points="289.5,161.64 294.5520142434538,177.1864989333473 310.89877161664094,177.18711762656366 297.67433075755685,186.79600106665265 302.72516817658067,202.3428823734363 289.5,192.73499999999999 276.27483182341933,202.3428823734363 281.32566924244315,186.79600106665265 268.10122838335906,177.18711762656366 284.4479857565462,177.1864989333473"
+        />
+        <polygon
+          class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+          display="block"
+          fill="#FFFFFF"
+          points="327,199.14 332.0520142434538,214.6864989333473 348.39877161664094,214.68711762656366 335.17433075755685,224.29600106665265 340.22516817658067,239.8428823734363 327,230.23499999999999 313.77483182341933,239.8428823734363 318.82566924244315,224.29600106665265 305.60122838335906,214.68711762656366 321.9479857565462,214.6864989333473"
+        />
+        <polygon
+          class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+          display="block"
+          fill="#FFFFFF"
+          points="364.5,236.64 369.5520142434538,252.1864989333473 385.89877161664094,252.18711762656366 372.67433075755685,261.79600106665265 377.72516817658067,277.3428823734363 364.5,267.735 351.27483182341933,277.3428823734363 356.32566924244315,261.79600106665265 343.10122838335906,252.18711762656366 359.4479857565462,252.1864989333473"
+        />
+        <polygon
+          class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+          display="block"
+          fill="#FFFFFF"
+          points="402,274.14 407.0520142434538,289.6864989333473 423.39877161664094,289.6871176265637 410.17433075755685,299.29600106665265 415.22516817658067,314.8428823734363 402,305.235 388.77483182341933,314.8428823734363 393.82566924244315,299.29600106665265 380.60122838335906,289.6871176265637 396.9479857565462,289.6864989333473"
+        />
+      </g>
+      <rect
+        class="pointer-events-none"
+        fill="none"
+        height="300"
+        stroke="#ddd"
+        stroke-width="1"
+        width="600"
+      />
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`Flag Snapshots renders Botswana correctly 1`] = `
+<div>
+  <div
+    class="w-full flex justify-center bg-gray-100 rounded-lg p-4 shadow-inner"
+  >
+    <svg
+      class="shadow-xl select-none"
+      style="width: 100%; height: auto; max-width: 600px; background-color: rgb(255, 255, 255);"
+      viewBox="0 0 600 400"
+    >
+      <mask
+        id="flag-mask"
+      >
+        <rect
+          fill="white"
+          height="400"
+          width="600"
+        />
+      </mask>
+      <g
+        mask="url(#flag-mask)"
+      >
+        <g>
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#69B3E7"
+            height="150"
+            width="600"
+            x="0"
+            y="0"
+          />
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#FFFFFF"
+            height="16.666666666666668"
+            width="600"
+            x="0"
+            y="150"
+          />
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#000000"
+            height="66.66666666666667"
+            width="600"
+            x="0"
+            y="166.66666666666666"
+          />
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#FFFFFF"
+            height="16.666666666666668"
+            width="600"
+            x="0"
+            y="233.33333333333331"
+          />
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#69B3E7"
+            height="150"
+            width="600"
+            x="0"
+            y="249.99999999999997"
+          />
+        </g>
+      </g>
+      <rect
+        class="pointer-events-none"
+        fill="none"
+        height="400"
+        stroke="#ddd"
+        stroke-width="1"
+        width="600"
+      />
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`Flag Snapshots renders Brazil correctly 1`] = `
+<div>
+  <div
+    class="w-full flex justify-center bg-gray-100 rounded-lg p-4 shadow-inner"
+  >
+    <svg
+      class="shadow-xl select-none"
+      style="width: 100%; height: auto; max-width: 600px; background-color: rgb(255, 255, 255);"
+      viewBox="0 0 600 420"
+    >
+      <mask
+        id="flag-mask"
+      >
+        <rect
+          fill="white"
+          height="420"
+          width="600"
+        />
+      </mask>
+      <g
+        mask="url(#flag-mask)"
+      >
+        <g>
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#007A3D"
+            height="420"
+            width="600"
+            x="0"
+            y="0"
+          />
+        </g>
+        <polygon
+          class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+          fill="#FFD700"
+          points="51,210 300,51 549,210 300,369"
+          stroke="none"
+          stroke-linejoin="round"
+          stroke-width="0"
+        />
+        <image
+          class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+          display="block"
+          fill="#E2E8F0"
+          height="391.85999999999996"
+          href="Flag-of-Brazil-06.svg"
+          width="391.85999999999996"
+          x="104.07000000000002"
+          y="14.070000000000022"
+        />
+        <circle
+          class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+          cx="300"
+          cy="210"
+          display="block"
+          fill="#00205B"
+          r="105"
+        />
+      </g>
+      <rect
+        class="pointer-events-none"
+        fill="none"
+        height="420"
+        stroke="#ddd"
+        stroke-width="1"
+        width="600"
+      />
+    </svg>
+  </div>
+</div>
+`;
+
 exports[`Flag Snapshots renders Chile correctly 1`] = `
 <div>
   <div

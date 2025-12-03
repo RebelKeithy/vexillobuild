@@ -539,5 +539,101 @@ export const LEVELS = [
                 }
             ]
         }
+    },
+    {
+        id: 28,
+        name: "Bolivia",
+        difficulty: "Intermediate",
+        description: "La Tricolor.",
+        hint: "Horizontal bands: Red, Yellow, Green. Coat of Arms in the center.",
+        aspectRatio: 15/22,
+        target: {
+            base: { type: 'horizontal-stripes', count: 3, colors: ['red', 'gold', 'green'] },
+            overlays: [],
+            symbols: [
+                {
+                    type: 'seal',
+                    src: 'https://upload.wikimedia.org/wikipedia/commons/0/06/Coat_of_arms_of_Bolivia.svg',
+                    color: null,
+                    aspectRatio: 150/130,
+                    scale: 1.1
+                }
+            ]
+        }
+    },
+    {
+        id: 29,
+        name: "Bosnia and Herzegovina",
+        difficulty: "Intermediate",
+        description: "The Heart-Shaped Land.",
+        hint: "Blue field. Yellow Right Triangle. Diagonal line of white stars (7 full, 2 half).",
+        aspectRatio: 1/2,
+        target: {
+            base: { type: 'solid', colors: ['blue'] },
+            overlays: [
+                {
+                    type: 'polygon',
+                    colors: ['gold'],
+                    points: [{x: 0.17, y: 0}, {x: 0.67, y: 0}, {x: 0.67, y: 1}]
+                }
+            ],
+            symbols: [
+                // 9 stars distributed along the diagonal from (0.17, 0) to (0.67, 1).
+                // Formula: x = 0.17 + (y / 2). y steps by 0.125.
+                { type: 'star', color: 'white', points: 5, scale: 0.5, xOffset: -0.33, yOffset: -0.5112 },   // Top (Cut off)
+                { type: 'star', color: 'white', points: 5, scale: 0.5, xOffset: -0.2675, yOffset: -0.3862 },
+                { type: 'star', color: 'white', points: 5, scale: 0.5, xOffset: -0.205, yOffset: -0.2612 },
+                { type: 'star', color: 'white', points: 5, scale: 0.5, xOffset: -0.1425, yOffset: -0.1362 },
+                { type: 'star', color: 'white', points: 5, scale: 0.5, xOffset: -0.08, yOffset: -0.0112 },   // Center
+                { type: 'star', color: 'white', points: 5, scale: 0.5, xOffset: -0.0175, yOffset: 0.1138 },
+                { type: 'star', color: 'white', points: 5, scale: 0.5, xOffset: 0.045, yOffset: 0.2388 },
+                { type: 'star', color: 'white', points: 5, scale: 0.5, xOffset: 0.1075, yOffset: 0.3638 },
+                { type: 'star', color: 'white', points: 5, scale: 0.5, xOffset: 0.17, yOffset: 0.4888 }      // Bottom (Cut off)
+            ]
+        }
+    },
+    {
+        id: 30,
+        name: "Botswana",
+        difficulty: "Novice",
+        description: "Pula (Rain).",
+        hint: "Light Blue field. Central horizontal Black stripe with White borders.",
+        aspectRatio: 2/3,
+        target: {
+            base: {
+                type: 'horizontal-stripes',
+                count: 5,
+                colors: ['lightBlue', 'white', 'black', 'white', 'lightBlue'],
+                ratios: [9, 1, 4, 1, 9]
+            },
+            overlays: [],
+            symbols: []
+        }
+    },
+    {
+        id: 31,
+        name: "Brazil",
+        difficulty: "Advanced",
+        description: "Ordem e Progresso.",
+        hint: "Green field. Yellow Rhombus. Blue Celestial Globe with 27 stars.",
+        aspectRatio: 7/10,
+        target: {
+            base: { type: 'solid', colors: ['green'] },
+            overlays: [
+                { type: 'diamond', color: 'gold', widthRatio: 1660/1400, heightRatio: 1060/1400 }
+            ],
+            symbols: [
+                {
+                    type: 'external',
+                    src: 'Flag-of-Brazil-06.svg',
+                    scale: 3.11
+                },
+                {
+                    type: 'circle',
+                    color: 'blue',
+                    scale: 0.5 / 1.5 / 0.15 / 2
+                }
+            ]
+        }
     }
 ];
