@@ -80,8 +80,8 @@ export const SymbolLayer = ({
         const pathData = SHAPE_GENERATORS.risingSun({cx, cy, r, args: mergedSymbol});
         return <path key={index} d={pathData} {...commonProps} />;
     }
-    if (mergedSymbol.type === 'crescent-star') {
-        const pathData = SHAPE_GENERATORS.crescentStar({cx, cy, h: height, args: mergedSymbol});
+    if (mergedSymbol.type === 'crescent') {
+        const pathData = SHAPE_GENERATORS.crescent({cx, cy, h: height, args: mergedSymbol});
         return <path key={index} d={pathData} {...commonProps} />;
     }
     if (mergedSymbol.type === 'seal' && mergedSymbol.src) {

@@ -56,7 +56,7 @@ export const SymbolControls = ({gameState, selectedElement, setSelectedElement, 
                         className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
                     <Circle size={14}/> Circle
                 </button>
-                <button onClick={() => addItem('symbols', {type: 'crescent-star', color: null})}
+                <button onClick={() => addItem('symbols', {type: 'crescent', color: null})}
                         className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
                     <Moon size={14}/> Crescent
                 </button>

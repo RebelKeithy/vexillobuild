@@ -14,7 +14,7 @@ export const ControlPanel = ({
     addItem
 }) => {
     return (
-        <div className="md:col-span-5 bg-slate-800 rounded-xl border border-slate-700 flex flex-col h-[600px] overflow-hidden">
+        <div className="md:col-span-5 bg-slate-800 rounded-xl border border-slate-700 flex flex-col h-[720px] overflow-hidden">
             <div className="flex border-b border-slate-700">
                 {['base', 'overlays', 'symbols'].map(tab => (
                     <button

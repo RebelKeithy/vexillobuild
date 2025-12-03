@@ -171,14 +171,19 @@ export const LEVELS = [
             overlays: [],
             symbols: [
                 {
-                    type: 'crescent-star',
+                    type: 'crescent',
                     color: 'red',
                     outerRadius: 0.25,
                     innerRadius: 0.2,
-                    innerOffset: 0.0603814,
-                    starRadius: 0.125,
-                    starOffset: 0.1011271,
-                    starRotation: 90
+                    innerOffset: 0.0603814
+                },
+                {
+                    type: 'star',
+                    color: 'red',
+                    radius: 2.5/20,
+                    xOffset: 2.02/30,
+                    points: 5,
+                    rotation: 90
                 }
             ]
         }
@@ -363,16 +368,20 @@ export const LEVELS = [
             overlays: [],
             symbols: [
                 {
-                    type: 'crescent-star',
+                    type: 'crescent',
                     color: 'white',
                     outerRadius: 3/20,
                     innerRadius: 1/8,
-                    innerOffset: 1/30,
-                    starOuterRadius: 1/12,
-                    starInnerRadius: 1/2,
-                    starOffset: 2/5-3/20-1/12,
-                    starRotation: 90,
-                    starPoints: 8
+                    innerOffset: 1/30
+                },
+                {
+                    type: 'star',
+                    color: 'white',
+                    radius: 1/12,
+                    innerRadius: 1/2,
+                    xOffset: 2/10-3/40-1/24,
+                    rotation: 90,
+                    points: 8
                 }
             ]
         }

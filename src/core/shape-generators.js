@@ -159,13 +159,10 @@ export const SHAPE_GENERATORS = {
         }
         return `M ${cx - innerR},${cy} L ${polyPoints.join(' L ')} L ${cx + innerR},${cy} Z`;
     },
-    crescentStar: ({cx, cy, h, args}) => {
+    crescent: ({cx, cy, h, args}) => {
         const rOuter = h * (args.outerRadius || 0.25);
         const rInner = h * (args.innerRadius || 0.2);
-        const rStar = h * (args.starOuterRadius || args.starRadius || 0.125);
         const xInner = args.innerOffset !== undefined ? h * args.innerOffset : h * 0.1;
-        const xStar = args.starOffset ? h * args.starOffset : h * 0.1;
-        const starRot = args.starRotation || 0;
         const d = xInner;
         const a = (rOuter * rOuter - rInner * rInner + d * d) / (2 * d);
         const term = rOuter * rOuter - a * a;
@@ -175,22 +172,12 @@ export const SHAPE_GENERATORS = {
         const xIntersect = a;
         const yIntersect = hDist;
         const largeArcInner = xIntersect > xInner ? 1 : 0;
-        const crescentPath = `
-      M ${cx + xIntersect},${cy - yIntersect} 
+        return `
+      M ${cx + xIntersect},${cy - yIntersect}
       A ${rOuter} ${rOuter} 0 1 0 ${cx + xIntersect},${cy + yIntersect}
-      A ${rInner} ${rInner} 0 ${largeArcInner} 1 ${cx + xIntersect},${cy - yIntersect} 
+      A ${rInner} ${rInner} 0 ${largeArcInner} 1 ${cx + xIntersect},${cy - yIntersect}
       Z
     `;
-
-        const starArgs = {
-            points: args.starPoints || args.points || 5,
-            innerRadius: args.starInnerRadius,
-            rotation: starRot
-        };
-
-        const starPath = SHAPE_GENERATORS.star({cx: cx + xStar, cy, r: rStar, args: starArgs});
-        const starPoly = `M ${starPath.split(' ')[0]} L ${starPath.split(' ').slice(1).join(' L ')} Z`;
-        return `${crescentPath} ${starPoly}`;
     },
     diamond: ({h, w, cx, cy, width, height, args}) => {
         width = args.widthRatio ? args.widthRatio : width;
