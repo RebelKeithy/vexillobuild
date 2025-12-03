@@ -2235,6 +2235,148 @@ exports[`Flag Snapshots renders Chile correctly 1`] = `
 </div>
 `;
 
+exports[`Flag Snapshots renders China correctly 1`] = `
+<div>
+  <div
+    class="w-full flex justify-center bg-gray-100 rounded-lg p-4 shadow-inner"
+  >
+    <svg
+      class="shadow-xl select-none"
+      style="width: 100%; height: auto; max-width: 600px; background-color: rgb(255, 255, 255);"
+      viewBox="0 0 600 400"
+    >
+      <mask
+        id="flag-mask"
+      >
+        <rect
+          fill="white"
+          height="400"
+          width="600"
+        />
+      </mask>
+      <g
+        mask="url(#flag-mask)"
+      >
+        <g>
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#DE2910"
+            height="400"
+            width="600"
+            x="0"
+            y="0"
+          />
+        </g>
+        <polygon
+          class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+          display="block"
+          fill="#FFDE00"
+          points="99.99999999999997,40 113.47203798254345,81.4573304889262 157.0633909777092,81.45898033750316 121.79821535348489,107.08266951107379 135.26711513754836,148.54101966249686 99.99999999999997,122.92 64.73288486245158,148.54101966249686 78.20178464651505,107.0826695110738 42.93660902229075,81.45898033750316 86.52796201745649,81.4573304889262"
+        />
+        <g>
+          <polygon
+            fill="#FFDE00"
+            points="201.5065244534824,6.465389666755456 205.9972037809969,20.28449982973086 220.52765477938547,20.285049779256507 208.77259623797738,28.826279503780054 213.26222949933185,42.6457295542544 201.5065244534824,34.10538966675546 189.75081940763295,42.6457295542544 194.24045266898742,28.826279503780057 182.48539412757933,20.28504977925651 197.0158451259679,20.28449982973086"
+          />
+          <polygon
+            fill="#FFDE00"
+            points="244.0332124362145,49.6836107629168 248.523891763729,63.5027209258922 263.0543427621176,63.503270875417854 251.2992842207095,72.0445005999414 255.78891748206397,85.86395065041575 244.0332124362145,77.3236107629168 232.27750739036506,85.86395065041575 236.76714065171953,72.0445005999414 225.01208211031144,63.503270875417854 239.5425331087,63.502720925892206"
+          />
+          <polygon
+            fill="#FFDE00"
+            points="244.0332124362145,110.3163892370832 248.523891763729,124.1354994000586 263.0543427621176,124.13604934958425 251.2992842207095,132.6772790741078 255.78891748206397,146.49672912458215 244.0332124362145,137.95638923708321 232.27750739036506,146.49672912458215 236.76714065171953,132.6772790741078 225.01208211031144,124.13604934958425 239.5425331087,124.1354994000586"
+          />
+          <polygon
+            fill="#FFDE00"
+            points="201.5065244534824,153.53461033324453 205.9972037809969,167.35372049621992 220.52765477938547,167.35427044574558 208.77259623797738,175.89550017026912 213.26222949933185,189.71495022074348 201.5065244534824,181.17461033324452 189.75081940763295,189.71495022074348 194.24045266898742,175.89550017026912 182.48539412757933,167.35427044574558 197.0158451259679,167.35372049621992"
+          />
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="transparent"
+            height="191.24956055398803"
+            stroke="none"
+            stroke-width="0"
+            width="88.56894863453826"
+            x="178.48539412757933"
+            y="2.4653896667554562"
+          />
+        </g>
+      </g>
+      <rect
+        class="pointer-events-none"
+        fill="none"
+        height="400"
+        stroke="#ddd"
+        stroke-width="1"
+        width="600"
+      />
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`Flag Snapshots renders Colombia correctly 1`] = `
+<div>
+  <div
+    class="w-full flex justify-center bg-gray-100 rounded-lg p-4 shadow-inner"
+  >
+    <svg
+      class="shadow-xl select-none"
+      style="width: 100%; height: auto; max-width: 600px; background-color: rgb(255, 255, 255);"
+      viewBox="0 0 600 400"
+    >
+      <mask
+        id="flag-mask"
+      >
+        <rect
+          fill="white"
+          height="400"
+          width="600"
+        />
+      </mask>
+      <g
+        mask="url(#flag-mask)"
+      >
+        <g>
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#FCD116"
+            height="200"
+            width="600"
+            x="0"
+            y="0"
+          />
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#003893"
+            height="100"
+            width="600"
+            x="0"
+            y="200"
+          />
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#CE1126"
+            height="100"
+            width="600"
+            x="0"
+            y="300"
+          />
+        </g>
+      </g>
+      <rect
+        class="pointer-events-none"
+        fill="none"
+        height="400"
+        stroke="#ddd"
+        stroke-width="1"
+        width="600"
+      />
+    </svg>
+  </div>
+</div>
+`;
+
 exports[`Flag Snapshots renders Cuba correctly 1`] = `
 <div>
   <div

@@ -41,11 +41,18 @@ const calculateStarPositions = (count, cx, cy, r, args) => {
             });
         }
     } else if (actualLayout === 'arc') {
-        // Arrange stars in a full circle
+        // Arrange stars in an arc (full circle or partial)
         // Use explicit circleRadius if provided, otherwise use legacy spacing calculation
         const arcRadius = args.circleRadius || (r * (args.spacing || 2.5) * 1.5);
-        const startAngle = -Math.PI / 2; // Start from top (12 o'clock position)
-        const angleStep = (2 * Math.PI) / count; // Full circle
+
+        // Support custom arc span (default: full circle)
+        const arcSpan = args.arcSpan !== undefined ? args.arcSpan : (2 * Math.PI); // Full circle by default
+        const startAngle = args.startAngle !== undefined ? args.startAngle : -Math.PI / 2; // Top by default
+
+        // For full circle (or very close to it), divide by count to avoid overlap
+        // For partial arcs, divide by count-1 to place stars at endpoints
+        const isFullCircle = Math.abs(arcSpan - 2 * Math.PI) < 0.01;
+        const angleStep = isFullCircle ? arcSpan / count : arcSpan / (count === 1 ? 1 : (count - 1));
 
         for (let i = 0; i < count; i++) {
             const angle = startAngle + i * angleStep;

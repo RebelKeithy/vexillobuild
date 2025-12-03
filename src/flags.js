@@ -761,7 +761,8 @@ export const LEVELS = [
                     radius: 17/360,
                     xOffset: -76/612,
                     yOffset: 45/360,
-                    circleRadius: 19 / 72
+                    circleRadius: 19 / 72,
+                    arcSpan: 2 * Math.PI  // Full circle
                 }
             ]
         }
@@ -859,6 +860,63 @@ export const LEVELS = [
         },
         target: {
             base: { type: 'vertical-tricolor', colors: ['blue', 'gold', 'red'] },
+            overlays: [],
+            symbols: []
+        }
+    },
+    {
+        id: 40,
+        name: "China",
+        difficulty: "Intermediate",
+        description: "Five Stars, One Nation.",
+        hint: "Red field. One large gold star in the upper left. Four smaller gold stars in an arc to its right.",
+        aspectRatio: 2/3,
+        colorOverrides: {
+            'red': '#DE2910',
+            'gold': '#FFDE00'
+        },
+        target: {
+            base: { type: 'solid', colors: ['red'] },
+            overlays: [],
+            symbols: [
+                {
+                    type: 'star',
+                    color: 'gold',
+                    points: 5,
+                    radius: 3/20,
+                    xOffset: -0.5 + 5/30,
+                    yOffset: -0.5 + 5/20
+                },
+                {
+                    type: 'star',
+                    color: 'gold',
+                    points: 5,
+                    count: 4,
+                    layout: 'arc',
+                    radius: 1/20,
+                    xOffset: -6.5/30,
+                    yOffset: -0.5 + 5/20,
+                    circleRadius: 0.2,
+                    startAngle: -1.166,  // Start at upper-right diagonal
+                    arcSpan: 2.332      // Span 90 degrees (vertical arc)
+                }
+            ]
+        }
+    },
+    {
+        id: 41,
+        name: "Colombia",
+        difficulty: "Novice",
+        description: "Yellow, Blue, and Red.",
+        hint: "Three horizontal stripes: Yellow (larger), Blue, Red.",
+        aspectRatio: 2/3,
+        colorOverrides: {
+            'gold': '#FCD116',
+            'blue': '#003893',
+            'red': '#CE1126'
+        },
+        target: {
+            base: { type: 'horizontal-stripes', count: 3, colors: ['gold', 'blue', 'red'], ratios: [2, 1, 1] },
             overlays: [],
             symbols: []
         }
