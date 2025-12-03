@@ -68,7 +68,7 @@ export const SymbolControls = ({gameState, selectedElement, setSelectedElement, 
                         className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
                     <ImageIcon size={14}/> Eagle
                 </button>
-                <button onClick={() => addItem('symbols', {type: 'seal', src: 'https://upload.wikimedia.org/wikipedia/commons/4/4e/Coat_of_arms_of_Andorra.svg', color: null})}
+                <button onClick={() => addItem('symbols', {type: 'seal', color: null})}
                         className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
                     <Stamp size={14}/> Seal
                 </button>

@@ -245,6 +245,14 @@ export const SymbolLayer = ({
     }
     if (mergedSymbol.type === 'circle') {
         const circleR = mergedSymbol.radius !== undefined ? height * mergedSymbol.radius : r * 1.5;
+
+        // Support aspectRatio to create ovals/ellipses
+        if (mergedSymbol.aspectRatio) {
+            const ry = circleR;
+            const rx = circleR * mergedSymbol.aspectRatio;
+            return <ellipse key={index} cx={cx} cy={cy} rx={rx} ry={ry} {...commonProps} />;
+        }
+
         return <circle key={index} cx={cx} cy={cy} r={circleR} {...commonProps} />;
     }
     if (mergedSymbol.type === 'star-field') {

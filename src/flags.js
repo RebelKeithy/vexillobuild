@@ -1009,5 +1009,85 @@ export const LEVELS = [
                 }
             ]
         }
+    },
+    {
+        id: 44,
+        name: "Costa Rica",
+        difficulty: "Intermediate",
+        description: "Pura Vida.",
+        hint: "Five horizontal stripes: Blue, White, Red (double width), White, Blue. Coat of arms on the red stripe.",
+        aspectRatio: 3/5,
+        colorOverrides: {
+            'blue': '#002B7F',
+            'red': '#CE1126'
+        },
+        target: {
+            base: {
+                type: 'horizontal-stripes',
+                count: 5,
+                colors: ['blue', 'white', 'red', 'white', 'blue'],
+                ratios: [1, 1, 2, 1, 1]
+            },
+            overlays: [],
+            symbols: [
+                {
+                    type: 'circle',
+                    color: 'white',
+                    scale: 0.675,
+                    aspectRatio: 10/12,
+                    xOffset: -0.5 + 0.3
+                },
+                {
+                    type: 'seal',
+                    src: 'https://upload.wikimedia.org/wikipedia/commons/8/84/Coat_of_arms_of_Costa_Rica.svg',
+                    color: null,
+                    aspectRatio: 11/12,
+                    scale: 0.85,
+                    xOffset: -0.5 + 0.3
+                }
+            ]
+        }
+    },
+    {
+        id: 45,
+        name: "Ivory Coast",
+        difficulty: "Novice",
+        description: "Côte d'Ivoire.",
+        hint: "Three vertical stripes: Orange, White, Green.",
+        aspectRatio: 2/3,
+        colorOverrides: {
+            'orange': '#F77F00'
+        },
+        target: {
+            base: { type: 'vertical-tricolor', colors: ['orange', 'white', 'green'] },
+            overlays: [],
+            symbols: []
+        }
+    },
+    {
+        id: 46,
+        name: "Croatia",
+        difficulty: "Intermediate",
+        description: "The Checkered Shield.",
+        hint: "Three horizontal stripes: Red, White, Blue. Checkered coat of arms in the center.",
+        aspectRatio: 1/2,
+        colorOverrides: {
+            'red': '#E1000F',
+            'blue': '#000091'
+        },
+        target: {
+            base: { type: 'horizontal-stripes', count: 3, colors: ['red', 'white', 'blue'] },
+            overlays: [],
+            symbols: [
+                {
+                    type: 'seal',
+                    src: 'https://upload.wikimedia.org/wikipedia/commons/c/c9/Coat_of_arms_of_Croatia.svg',
+                    color: null,
+                    aspectRatio: 9/12,
+                    scale: 2.05,
+                    yOffset: -0.055,
+                }
+            ]
+        }
     }
 ];
