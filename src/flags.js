@@ -1156,5 +1156,104 @@ export const LEVELS = [
                 }
             ]
         }
+    },
+    {
+        id: 50,
+        name: "Dominican Republic",
+        difficulty: "Intermediate",
+        description: "Dios, Patria, Libertad.",
+        hint: "Quartered blue and red. White centered cross. Coat of arms in center.",
+        aspectRatio: 2/3,
+        colorOverrides: {
+            'blue': '#002D62',
+            'red': '#CE1126'
+        },
+        target: {
+            base: { type: 'quartered', colors: ['blue', 'red', 'red', 'blue'] },
+            overlays: [
+                { type: 'cross', color: 'white', crossWidth: 0.2 }
+            ],
+            symbols: [
+                {
+                    type: 'seal',
+                    src: 'https://upload.wikimedia.org/wikipedia/commons/2/26/Coat_of_arms_of_the_Dominican_Republic.svg',
+                    color: null,
+                    scale: 0.65
+                }
+            ]
+        }
+    },
+    {
+        id: 51,
+        name: "Ecuador",
+        difficulty: "Intermediate",
+        description: "Dios, patria y libertad.",
+        hint: "Yellow (double), blue, red horizontal stripes. Coat of arms in center.",
+        aspectRatio: 2/3,
+        colorOverrides: {
+            'gold': '#FFD100',
+            'blue': '#0033A0',
+            'red': '#EF3340'
+        },
+        target: {
+            base: { type: 'horizontal-stripes', count: 3, colors: ['gold', 'blue', 'red'], ratios: [2, 1, 1] },
+            overlays: [],
+            symbols: [
+                {
+                    type: 'seal',
+                    src: 'https://upload.wikimedia.org/wikipedia/commons/e/e7/Coat_of_arms_of_Ecuador.svg',
+                    color: null,
+                    scale: 1.5
+                }
+            ]
+        }
+    },
+    {
+        id: 52,
+        name: "Egypt",
+        difficulty: "Intermediate",
+        description: "The Eagle of Saladin.",
+        hint: "Red, white, black horizontal stripes. Eagle emblem in center.",
+        aspectRatio: 2/3,
+        colorOverrides: {
+            'red': '#CE1126',
+            'black': '#000000'
+        },
+        target: {
+            base: { type: 'horizontal-stripes', count: 3, colors: ['red', 'white', 'black'] },
+            overlays: [],
+            symbols: [
+                {
+                    type: 'seal',
+                    src: 'https://upload.wikimedia.org/wikipedia/commons/c/c2/Coat_of_arms_of_Egypt_%28on_flag%29.svg',
+                    color: null,
+                    aspectRatio: 4.4/6,
+                    scale: 1.0
+                }
+            ]
+        }
+    },
+    {
+        id: 53,
+        name: "El Salvador",
+        difficulty: "Intermediate",
+        description: "Dios, Unión, Libertad.",
+        hint: "Blue, white, blue horizontal stripes. Coat of arms in center.",
+        aspectRatio: 189/335,
+        colorOverrides: {
+            'blue': '#0047AB'
+        },
+        target: {
+            base: { type: 'horizontal-stripes', count: 3, colors: ['blue', 'white', 'blue'] },
+            overlays: [],
+            symbols: [
+                {
+                    type: 'seal',
+                    src: 'https://upload.wikimedia.org/wikipedia/commons/e/e6/Coat_of_arms_of_El_Salvador.svg',
+                    color: null,
+                    scale: 1
+                }
+            ]
+        }
     }
 ];

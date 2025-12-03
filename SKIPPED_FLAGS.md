@@ -25,6 +25,11 @@ This document tracks flags that have been skipped due to complexity or missing c
 - **Status**: Incomplete - stars in arc need to rotate to point toward center star; small star sizing may need adjustment
 - **Notes**: Arc layout works, but stars maintain fixed rotation instead of rotating as they move around the arc
 
+### Dominica
+- **Reason**: Complex design with Sisserou parrot, 10 stars in a circle, and multi-colored cross
+- **ID**: Not yet added
+- **Status**: Skipped - needs parrot SVG and complex layered cross
+
 ### Democratic Republic of the Congo (DRC)
 - **Reason**: Diagonal stripe with star not yet supported
 - **ID**: Not yet added

@@ -26,6 +26,8 @@ export const BaseOptionPreview = ({type}) => {
                 return {colors: [yellow, greyBg]};
             case 'quadrisection-diagonal':
                 return {colors: [yellow, greyBg, yellow, greyBg]};
+            case 'quartered':
+                return {colors: [yellow, greyBg, greyBg, yellow]};
             case 'serrated-vertical':
                 // Serrated: index 0 (foreground) = yellow, index 1 (bg) = greyBg
                 return {colors: [yellow, greyBg], count: 3, baseState: {xRatio: 0.4, serrationDepth: 0.2}};

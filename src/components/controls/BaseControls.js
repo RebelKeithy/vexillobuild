@@ -9,6 +9,7 @@ const BASE_TYPES = [
     'bisection-diagonal-left',
     'bisection-diagonal-right',
     'quadrisection-diagonal',
+    'quartered',
     'solid',
     'serrated-vertical'
 ];

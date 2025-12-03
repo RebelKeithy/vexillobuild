@@ -116,6 +116,18 @@ export const renderFlagBase = ({type, width, height, colors, count, ratios, base
                     {renderPolygon ? renderPolygon(3, qbl, 'bl') : <polygon points={qbl} fill={colors[3]}/>}
                 </g>
             );
+        case 'quartered':
+            // Four rectangular quarters: top-left, top-right, bottom-left, bottom-right
+            const qw = width / 2;
+            const qh = height / 2;
+            return (
+                <g>
+                    {_renderRect(0, 0, 0, qw, qh, 'tl')}
+                    {_renderRect(1, qw, 0, qw, qh, 'tr')}
+                    {_renderRect(2, 0, qh, qw, qh, 'bl')}
+                    {_renderRect(3, qw, qh, qw, qh, 'br')}
+                </g>
+            );
         default:
             return <g>{_renderRect(0, 0, 0, width, height)}</g>;
     }
@@ -151,6 +163,9 @@ export const renderFlagOverlay = ({type, width, height, overlayConfig, renderSha
         case 'saltire':
             const saltirePoints = SHAPE_GENERATORS.saltire({w: width, h: height, args: overlayConfig});
             return renderShape('polygon', {points: saltirePoints, strokeLinejoin: "miter"});
+        case 'cross':
+            const crossPoints = SHAPE_GENERATORS.cross({w: width, h: height, args: overlayConfig});
+            return renderShape('polygon', {points: crossPoints});
         case 'nordic-cross':
             const nordicCrossPoints = SHAPE_GENERATORS.nordicCross({w: width, h: height, args: overlayConfig});
             return renderShape('polygon', {points: nordicCrossPoints});

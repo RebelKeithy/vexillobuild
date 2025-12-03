@@ -252,6 +252,31 @@ export const SHAPE_GENERATORS = {
 
         return points.join(' ');
     },
+    cross: ({w, h, args}) => {
+        // Centered cross (+ shape)
+        const crossWidth = args.crossWidth || 0.2;  // Width of cross arms as ratio of height
+        const bandWidth = h * crossWidth;
+        const hBarY = (h - bandWidth) / 2;
+        const vBarX = (w - bandWidth) / 2;
+
+        // Single 12-point polygon for centered cross
+        const points = [
+            `${vBarX},${0}`,
+            `${vBarX + bandWidth},${0}`,
+            `${vBarX + bandWidth},${hBarY}`,
+            `${w},${hBarY}`,
+            `${w},${hBarY + bandWidth}`,
+            `${vBarX + bandWidth},${hBarY + bandWidth}`,
+            `${vBarX + bandWidth},${h}`,
+            `${vBarX},${h}`,
+            `${vBarX},${hBarY + bandWidth}`,
+            `${0},${hBarY + bandWidth}`,
+            `${0},${hBarY}`,
+            `${vBarX},${hBarY}`
+        ];
+
+        return points.join(' ');
+    },
     nordicCross: ({w, h, args}) => {
         // Nordic/Scandinavian cross - offset towards hoist
         // Default proportions based on Danish flag (12:4:21 horizontal, 12:4:12 vertical)
