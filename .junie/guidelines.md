@@ -4,10 +4,37 @@ This guide is designed to help LLMs (and human developers) understand the projec
 
 ## 1. Project Structure Overview
 
-The project is a React application that renders flags based on structured data.
+The project is a React application that renders flags based on structured data. The codebase has been refactored into a modular structure for better maintainability.
 
+### Core Files
 -   **`src/flags.js`**: The single source of truth for flag data. It exports a `LEVELS` array where each object represents a flag level.
--   **`src/App.js`**: Contains the main application logic, including the `FlagPreview` component which is responsible for rendering the flags.
+-   **`src/App.js`**: Main application component that orchestrates the UI, manages state, and handles user interactions.
+
+### Components
+-   **`src/components/flag-renderer/FlagRenderer.js`**: Contains the `FlagPreview` component which is responsible for rendering the flags.
+-   **`src/components/flag-renderer/BaseLayer.js`**: Renders the base layer (background patterns, stripes, etc.).
+-   **`src/components/flag-renderer/OverlayLayer.js`**: Renders geometric overlay shapes (triangles, cantons, etc.).
+-   **`src/components/flag-renderer/SymbolLayer.js`**: Renders symbols (stars, crescents, seals, etc.).
+-   **`src/components/Header.js`**: Application header with level selector.
+-   **`src/components/LevelInfo.js`**: Displays level information (name, difficulty, hints).
+-   **`src/components/Palette.js`**: Color palette component for selecting colors.
+-   **`src/components/DraggableColor.js`**: Individual draggable color swatches.
+-   **`src/components/ControlPanel.js`**: Main control panel with tabs for base, overlays, and symbols.
+-   **`src/components/controls/BaseControls.js`**: Controls for configuring the base layer pattern.
+-   **`src/components/controls/OverlayControls.js`**: Controls for adding and configuring overlay shapes.
+-   **`src/components/controls/SymbolControls.js`**: Controls for adding and configuring symbols.
+-   **`src/components/previews/BaseOptionPreview.js`**: Preview thumbnails for base pattern options.
+-   **`src/components/previews/OverlayOptionPreview.js`**: Preview thumbnails for overlay shape options.
+
+### Hooks
+-   **`src/hooks/useGameState.js`**: Custom hook managing game state, validation logic, and state update functions.
+
+### Core Utilities
+-   **`src/core/constants.js`**: Defines color palettes and other constants.
+-   **`src/core/shape-generators.js`**: Shape generation functions for complex SVG paths (stars, crescents, palls, etc.).
+-   **`src/core/utils.js`**: Utility functions for flag rendering.
+
+### Configuration
 -   **`src/index.css` / `tailwind.config.js`**: Styling configuration.
 
 ## 2. How to Add Flags
@@ -58,55 +85,99 @@ Each flag object must adhere to the following structure:
 ```
 
 ### Supported Base Types
-These are defined in the `renderBase` function in `src/App.js`:
+These are defined in `src/components/flag-renderer/BaseLayer.js`:
 -   `solid`: Single color.
 -   `vertical-tricolor`: Three vertical stripes.
 -   `horizontal-stripes`: N horizontal stripes (requires `count`, supports `ratios`).
 -   `bisection-horizontal`: Two horizontal halves.
 -   `bisection-vertical`: Two vertical halves.
+-   `bisection-diagonal-left`: Diagonal division (top-left to bottom-right).
+-   `bisection-diagonal-right`: Diagonal division (top-right to bottom-left).
 -   `serrated-vertical`: Vertical division with a serrated edge.
 
+### Common Overlay Types
+These are defined in `src/components/flag-renderer/OverlayLayer.js`:
+-   `canton`: Rectangular area in the top-left corner.
+-   `triangle`: Left-aligned triangle.
+-   `triangle-corner`: Triangle in a corner (requires `corner` property).
+-   `pall`: Y-shaped division (requires geometry configuration).
+
 ### Common Symbol Types
-These are defined in the `renderSymbol` function in `src/App.js`:
--   `star`: Geometric star.
+These are defined in `src/components/flag-renderer/SymbolLayer.js`:
+-   `star`: Geometric star (uses `SHAPE_GENERATORS.star`).
 -   `circle`: Geometric circle.
--   `crescent-star`: Crescent moon with a star.
--   `rising-sun`: Sun with rays.
+-   `crescent-star`: Crescent moon with a star (uses `SHAPE_GENERATORS.crescentStar`).
+-   `rising-sun`: Sun with rays (uses `SHAPE_GENERATORS.risingSun`).
+-   `diamond`: Diamond shape (uses `SHAPE_GENERATORS.diamond`).
 -   `external`: External SVG/Image (requires `src`).
 -   `seal`: Similar to external but specifically for coats of arms (renders as image).
 
 ## 3. How to Add New Flag Components
 
-New components are required when a flag has a unique geometric pattern or symbol that isn't covered by existing types. This involves modifying `src/App.js`.
+New components are required when a flag has a unique geometric pattern or symbol that isn't covered by existing types.
 
 ### Conceptual Overview
-The `FlagPreview` component inside `src/App.js` uses helper functions to render each layer:
-1.  `renderBase(highlightMode)`: Renders the background/stripes.
-2.  `renderOverlay(overlay, index, highlightMode)`: Renders geometric overlays (triangles, cantons).
-3.  `renderSymbol(symbol, index, highlightMode)`: Renders central symbols or images.
+The flag rendering system is organized into three layers:
+1.  **BaseLayer** (`src/components/flag-renderer/BaseLayer.js`): Renders the background/stripes.
+2.  **OverlayLayer** (`src/components/flag-renderer/OverlayLayer.js`): Renders geometric overlays (triangles, cantons, palls).
+3.  **SymbolLayer** (`src/components/flag-renderer/SymbolLayer.js`): Renders central symbols or images.
+
+These are composed together in `FlagPreview` component (`src/components/flag-renderer/FlagRenderer.js`).
 
 ### Technical Steps
 
 #### 1. Adding a New Base Pattern
-1.  Locate `renderBase` function in `src/App.js`.
-2.  Add a new `case 'new-type-name':` to the switch statement.
-3.  Implement the SVG logic (usually returning a `<g>` containing `<rect>`s or `<polygon>`s).
-4.  Ensure you handle `isSelected` and `isHovered` states if the user needs to interact with specific parts (see existing cases for examples).
+1.  Open `src/components/flag-renderer/BaseLayer.js`.
+2.  Locate the `renderBasePattern` function.
+3.  Add a new `case 'new-type-name':` to the switch statement.
+4.  Implement the SVG logic (usually returning a `<g>` containing `<rect>`s or `<polygon>`s).
+5.  Ensure you handle `isSelected` and `isHovered` states if the user needs to interact with specific parts.
+6.  Add the new type to the `BASE_TYPES` array in `src/components/controls/BaseControls.js` so users can select it.
+7.  If needed, create a preview in `src/components/previews/BaseOptionPreview.js`.
 
 #### 2. Adding a New Geometric Shape (for Overlays/Symbols)
-1.  If the shape is complex (e.g., a specific cross or polygon), add a generator function to the `SHAPE_GENERATORS` object in `src/App.js`.
+1.  If the shape is complex (e.g., a specific cross or polygon), add a generator function to the `SHAPE_GENERATORS` object in `src/core/shape-generators.js`.
     *   Input: `{ w, h, args }` or `{ cx, cy, r, args }`.
     *   Output: SVG path data string or points string.
-2.  **For Overlays**: Update `renderOverlay`. Add an `if` block for your new type that calls the generator.
-3.  **For Symbols**: Update `renderSymbol`. Add an `if` block for your new type.
+2.  **For Overlays**:
+    *   Update `src/components/flag-renderer/OverlayLayer.js`.
+    *   Add logic for your new type in the `renderOverlay` function.
+    *   Add the new type to the options in `src/components/controls/OverlayControls.js`.
+    *   Create a preview in `src/components/previews/OverlayOptionPreview.js`.
+3.  **For Symbols**:
+    *   Update `src/components/flag-renderer/SymbolLayer.js`.
+    *   Add logic for your new type in the `renderSymbol` function.
+    *   Add the new type to the options in `src/components/controls/SymbolControls.js`.
 
 #### 3. Adding a New Symbol
-1.  Locate `renderSymbol` in `src/App.js`.
-2.  Add a condition `if (mergedSymbol.type === 'your-new-symbol')`.
-3.  Implement rendering using SVG primitives (`<circle>`, `<path>`, etc.) or call a generator from `SHAPE_GENERATORS`.
+1.  Open `src/components/flag-renderer/SymbolLayer.js`.
+2.  Locate the `renderSymbol` function.
+3.  Add a condition `if (mergedSymbol.type === 'your-new-symbol')`.
+4.  Implement rendering using:
+    *   SVG primitives (`<circle>`, `<path>`, etc.), or
+    *   Call a generator from `SHAPE_GENERATORS` (imported from `src/core/shape-generators.js`).
+5.  Make sure to add the new symbol type to the options in `src/components/controls/SymbolControls.js`.
 
-## 4. Maintenance
+## 4. Key Workflow Patterns
 
--   **Guide Updates**: If `src/App.js` is refactored (e.g., splitting `FlagPreview` into its own file), this guide **must** be updated to reflect the new file path.
+### State Management
+-   The `useGameState` hook (`src/hooks/useGameState.js`) manages all game state and validation.
+-   Use `updateColor()`, `updateProp()`, `addItem()`, and `removeItem()` to modify state.
+-   Validation logic is in the `validate()` function.
+
+### Adding New Controls
+-   Base pattern controls: `src/components/controls/BaseControls.js`
+-   Overlay controls: `src/components/controls/OverlayControls.js`
+-   Symbol controls: `src/components/controls/SymbolControls.js`
+
+### Color System
+-   Colors are defined in `src/core/constants.js` in the `COLORS` object.
+-   To add a new color, add it to the `COLORS` constant.
+-   Update the `Palette` component (`src/components/Palette.js`) if needed.
+
+## 5. Maintenance
+
 -   **Data Integrity**: When adding flags, ensure `id`s in `src/flags.js` remain unique.
--   **Colors**: Use the `COLORS` constant in `src/App.js` as a reference for available color keys. If a new standard color is needed, add it to that constant.
+-   **Color Reference**: Use the `COLORS` constant in `src/core/constants.js`. If a new standard color is needed, add it there.
+-   **Shape Generators**: Complex SVG shapes should be added to `src/core/shape-generators.js` for reusability.
+-   **Testing**: After adding new flags or components, run the test suite with `npm test` to ensure rendering remains consistent.

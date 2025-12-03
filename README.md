@@ -52,7 +52,29 @@ Tests are defined in `src/flags.test.js`. They verify that the `FlagPreview` com
 
 ## Project Structure
 
--   `src/App.js`: Main application logic, state management, and UI components.
+### Core Files
+-   `src/App.js`: Main application component that orchestrates the UI and handles user interactions.
 -   `src/flags.js`: Configuration file defining all flag levels, including their shapes, colors, and construction rules.
 -   `src/flags.test.js`: Snapshot tests for flag rendering.
 -   `src/index.js`: Entry point.
+
+### Components
+-   `src/components/flag-renderer/`: Flag rendering components
+    -   `FlagRenderer.js`: Main flag preview component
+    -   `BaseLayer.js`: Renders base patterns (stripes, bisections, etc.)
+    -   `OverlayLayer.js`: Renders overlay shapes (triangles, cantons, palls)
+    -   `SymbolLayer.js`: Renders symbols (stars, crescents, seals)
+-   `src/components/controls/`: User controls for flag construction
+    -   `BaseControls.js`: Base pattern selection
+    -   `OverlayControls.js`: Overlay management
+    -   `SymbolControls.js`: Symbol management
+-   `src/components/previews/`: Preview thumbnails for shape options
+-   `src/components/`: UI components (Header, Palette, LevelInfo, ControlPanel, etc.)
+
+### Hooks
+-   `src/hooks/useGameState.js`: Custom hook managing game state and validation logic.
+
+### Core Utilities
+-   `src/core/constants.js`: Color definitions and constants.
+-   `src/core/shape-generators.js`: Complex SVG shape generation functions.
+-   `src/core/utils.js`: Utility functions for flag rendering.

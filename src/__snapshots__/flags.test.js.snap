@@ -1546,6 +1546,128 @@ exports[`Flag Snapshots renders Brazil correctly 1`] = `
 </div>
 `;
 
+exports[`Flag Snapshots renders Bulgaria correctly 1`] = `
+<div>
+  <div
+    class="w-full flex justify-center bg-gray-100 rounded-lg p-4 shadow-inner"
+  >
+    <svg
+      class="shadow-xl select-none"
+      style="width: 100%; height: auto; max-width: 600px; background-color: rgb(255, 255, 255);"
+      viewBox="0 0 600 360"
+    >
+      <mask
+        id="flag-mask"
+      >
+        <rect
+          fill="white"
+          height="360"
+          width="600"
+        />
+      </mask>
+      <g
+        mask="url(#flag-mask)"
+      >
+        <g>
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#FFFFFF"
+            height="120"
+            width="600"
+            x="0"
+            y="0"
+          />
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#007A3D"
+            height="120"
+            width="600"
+            x="0"
+            y="120"
+          />
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#EF3340"
+            height="120"
+            width="600"
+            x="0"
+            y="240"
+          />
+        </g>
+      </g>
+      <rect
+        class="pointer-events-none"
+        fill="none"
+        height="360"
+        stroke="#ddd"
+        stroke-width="1"
+        width="600"
+      />
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`Flag Snapshots renders Burkina Faso correctly 1`] = `
+<div>
+  <div
+    class="w-full flex justify-center bg-gray-100 rounded-lg p-4 shadow-inner"
+  >
+    <svg
+      class="shadow-xl select-none"
+      style="width: 100%; height: auto; max-width: 600px; background-color: rgb(255, 255, 255);"
+      viewBox="0 0 600 400"
+    >
+      <mask
+        id="flag-mask"
+      >
+        <rect
+          fill="white"
+          height="400"
+          width="600"
+        />
+      </mask>
+      <g
+        mask="url(#flag-mask)"
+      >
+        <g>
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#EF3340"
+            height="200"
+            width="600"
+            x="0"
+            y="0"
+          />
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#007A3D"
+            height="200"
+            width="600"
+            x="0"
+            y="200"
+          />
+        </g>
+        <polygon
+          class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+          display="block"
+          fill="#FFD700"
+          points="300,140 313.4720379825435,181.4573304889262 357.0633909777092,181.45898033750316 321.7982153534849,207.0826695110738 335.2671151375484,248.54101966249686 300,222.92000000000002 264.7328848624516,248.54101966249686 278.2017846465151,207.0826695110738 242.93660902229078,181.45898033750316 286.5279620174565,181.4573304889262"
+        />
+      </g>
+      <rect
+        class="pointer-events-none"
+        fill="none"
+        height="400"
+        stroke="#ddd"
+        stroke-width="1"
+        width="600"
+      />
+    </svg>
+  </div>
+</div>
+`;
+
 exports[`Flag Snapshots renders Chile correctly 1`] = `
 <div>
   <div

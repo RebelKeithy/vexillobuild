@@ -635,5 +635,38 @@ export const LEVELS = [
                 }
             ]
         }
+    },
+    {
+        id: 32,
+        name: "Bulgaria",
+        difficulty: "Novice",
+        description: "The Three Colors.",
+        hint: "Horizontal bands: White, Green, Red.",
+        aspectRatio: 3/5,
+        target: {
+            base: { type: 'horizontal-stripes', count: 3, colors: ['white', 'green', 'red'] },
+            overlays: [],
+            symbols: []
+        }
+    },
+    {
+        id: 33,
+        name: "Burkina Faso",
+        difficulty: "Intermediate",
+        description: "Land of Upright People.",
+        hint: "Horizontal Bisection (Red top, Green bottom). Yellow Star in the center.",
+        aspectRatio: 2/3,
+        target: {
+            base: { type: 'bisection-horizontal', colors: ['red', 'green'] },
+            overlays: [],
+            symbols: [
+                {
+                    type: 'star',
+                    color: 'gold',
+                    points: 5,
+                    scale: 1.0
+                }
+            ]
+        }
     }
 ];

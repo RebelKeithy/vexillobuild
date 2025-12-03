@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react';
-import { FlagPreview } from './App';
+import { FlagPreview } from './components/flag-renderer/FlagRenderer';
 import { LEVELS } from './flags';
 
 describe('Flag Snapshots', () => {
