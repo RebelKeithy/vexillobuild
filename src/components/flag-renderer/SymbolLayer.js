@@ -153,10 +153,13 @@ export const SymbolLayer = ({
         );
     }
     if (mergedSymbol.type === 'star') {
-        // Convert circleRadius from percentage to absolute value if needed
+        // Convert circleRadius and spacing from percentage to absolute value if needed
         const argsWithAbsoluteRadius = {...mergedSymbol};
         if (argsWithAbsoluteRadius.circleRadius !== undefined) {
             argsWithAbsoluteRadius.circleRadius = height * argsWithAbsoluteRadius.circleRadius;
+        }
+        if (argsWithAbsoluteRadius.spacing !== undefined) {
+            argsWithAbsoluteRadius.spacing = height * argsWithAbsoluteRadius.spacing;
         }
 
         const starResult = SHAPE_GENERATORS.star({cx, cy, r, args: argsWithAbsoluteRadius});

@@ -929,5 +929,45 @@ export const LEVELS = [
             overlays: [],
             symbols: []
         }
+    },
+    {
+        id: 42,
+        name: "Comoros",
+        difficulty: "Advanced",
+        description: "Four stars for four islands.",
+        hint: "Four horizontal stripes (Yellow, White, Red, Blue). Green triangle at hoist with white crescent and four stars.",
+        aspectRatio: 3/5,
+        colorOverrides: {
+            'gold': '#FFC61E',
+            'red': '#CE1126',
+            'blue': '#3A75C4',
+            'green': '#3D8E33'
+        },
+        target: {
+            base: { type: 'horizontal-stripes', count: 4, colors: ['gold', 'white', 'red', 'blue'] },
+            overlays: [
+                { type: 'triangle', position: 'hoist', color: 'green', vertexXRatio: 13/15 }
+            ],
+            symbols: [
+                {
+                    type: 'crescent',
+                    color: 'white',
+                    outerRadius: 68/144 * 0.5,
+                    innerRadius: 66/144 * 0.5,
+                    innerOffset: 13/140,
+                    xOffset: 41/240 - 0.5
+                },
+                {
+                    type: 'star',
+                    color: 'white',
+                    points: 5,
+                    count: 4,
+                    layout: 'vertical',
+                    radius: 0.04,
+                    spacing: 15/144,
+                    xOffset: 50/240 - 0.5
+                }
+            ]
+        }
     }
 ];

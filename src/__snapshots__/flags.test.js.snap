@@ -2389,6 +2389,119 @@ exports[`Flag Snapshots renders Colombia correctly 1`] = `
 </div>
 `;
 
+exports[`Flag Snapshots renders Comoros correctly 1`] = `
+<div>
+  <div
+    class="w-full flex justify-center bg-gray-100 rounded-lg p-4 shadow-inner"
+  >
+    <svg
+      class="shadow-xl select-none"
+      style="width: 100%; height: auto; max-width: 600px; background-color: rgb(255, 255, 255);"
+      viewBox="0 0 600 360"
+    >
+      <mask
+        id="flag-mask"
+      >
+        <rect
+          fill="white"
+          height="360"
+          width="600"
+        />
+      </mask>
+      <g
+        mask="url(#flag-mask)"
+      >
+        <g>
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#FFC61E"
+            height="90"
+            width="600"
+            x="0"
+            y="0"
+          />
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#FFFFFF"
+            height="90"
+            width="600"
+            x="0"
+            y="90"
+          />
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#CE1126"
+            height="90"
+            width="600"
+            x="0"
+            y="180"
+          />
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#3A75C4"
+            height="90"
+            width="600"
+            x="0"
+            y="270"
+          />
+        </g>
+        <polygon
+          class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+          fill="#3D8E33"
+          points="0,0 312,180 0,360"
+          stroke="none"
+          stroke-linejoin="round"
+          stroke-width="0"
+        />
+        <path
+          class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+          d="
+      M 152.85,119.4088455698759
+      A 54 54 0 1 0 152.85,182.99115443012408
+      A 43.199999999999996 43.199999999999996 0 1 1 152.85,119.4088455698759
+      Z
+    "
+          display="block"
+          fill="#FFFFFF"
+        />
+        <polygon
+          class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+          display="block"
+          fill="#FFFFFF"
+          points="109.19999999999999,64.79999999999998 112.43328911581042,74.74975931734228 122.8952138346502,74.75015528100074 114.43157168483637,80.8998406826577 117.6641076330116,90.84984471899924 109.19999999999999,84.70079999999999 100.73589236698838,90.84984471899924 103.9684283151636,80.8998406826577 95.50478616534977,74.75015528100074 105.96671088418955,74.74975931734228"
+        />
+        <polygon
+          class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+          display="block"
+          fill="#FFFFFF"
+          points="109.19999999999999,131.4 112.43328911581042,141.3497593173423 122.8952138346502,141.35015528100078 114.43157168483637,147.49984068265772 117.6641076330116,157.44984471899926 109.19999999999999,151.3008 100.73589236698838,157.44984471899926 103.9684283151636,147.49984068265772 95.50478616534977,141.35015528100078 105.96671088418955,141.3497593173423"
+        />
+        <polygon
+          class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+          display="block"
+          fill="#FFFFFF"
+          points="109.19999999999999,198 112.43328911581042,207.94975931734228 122.8952138346502,207.95015528100078 114.43157168483637,214.0998406826577 117.6641076330116,224.04984471899925 109.19999999999999,217.9008 100.73589236698838,224.04984471899925 103.9684283151636,214.0998406826577 95.50478616534977,207.95015528100078 105.96671088418955,207.94975931734228"
+        />
+        <polygon
+          class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+          display="block"
+          fill="#FFFFFF"
+          points="109.19999999999999,264.6 112.43328911581042,274.5497593173423 122.8952138346502,274.55015528100074 114.43157168483637,280.69984068265774 117.6641076330116,290.64984471899925 109.19999999999999,284.5008 100.73589236698838,290.64984471899925 103.9684283151636,280.69984068265774 95.50478616534977,274.55015528100074 105.96671088418955,274.5497593173423"
+        />
+      </g>
+      <rect
+        class="pointer-events-none"
+        fill="none"
+        height="360"
+        stroke="#ddd"
+        stroke-width="1"
+        width="600"
+      />
+    </svg>
+  </div>
+</div>
+`;
+
 exports[`Flag Snapshots renders Cuba correctly 1`] = `
 <div>
   <div
