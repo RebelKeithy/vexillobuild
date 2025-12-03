@@ -151,6 +151,9 @@ export const renderFlagOverlay = ({type, width, height, overlayConfig, renderSha
         case 'saltire':
             const saltirePoints = SHAPE_GENERATORS.saltire({w: width, h: height, args: overlayConfig});
             return renderShape('polygon', {points: saltirePoints, strokeLinejoin: "miter"});
+        case 'nordic-cross':
+            const nordicCrossPoints = SHAPE_GENERATORS.nordicCross({w: width, h: height, args: overlayConfig});
+            return renderShape('polygon', {points: nordicCrossPoints});
         default:
             return null;
     }

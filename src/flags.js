@@ -1089,5 +1089,72 @@ export const LEVELS = [
                 }
             ]
         }
+    },
+    {
+        id: 47,
+        name: "Cyprus",
+        difficulty: "Intermediate",
+        description: "The Island of Copper.",
+        hint: "White field. Copper-colored silhouette of the island. Two green olive branches below.",
+        aspectRatio: 2/3,
+        target: {
+            base: { type: 'solid', colors: ['white'] },
+            overlays: [],
+            symbols: [
+                {
+                    type: 'seal',
+                    src: 'Flag_of_Cyprus.svg',
+                    color: null,
+                    scale: 3.33,
+                    aspectRatio: 1200/800
+                }
+            ]
+        }
+    },
+    {
+        id: 48,
+        name: "Denmark",
+        difficulty: "Intermediate",
+        description: "The Dannebrog - oldest national flag in continuous use.",
+        hint: "Red field. White Nordic cross offset towards the hoist.",
+        aspectRatio: 28/37,
+        colorOverrides: {
+            'red': '#C60C30'
+        },
+        target: {
+            base: { type: 'solid', colors: ['red'] },
+            overlays: [
+                { type: 'nordic-cross', color: 'white', verticalOffset: 12/37, crossWidth: 4/28 }
+            ],
+            symbols: []
+        }
+    },
+    {
+        id: 49,
+        name: "Djibouti",
+        difficulty: "Intermediate",
+        description: "Unity, Equality, Peace.",
+        hint: "Light blue over green. White triangle at hoist. Red star in the triangle.",
+        aspectRatio: 2/3,
+        colorOverrides: {
+            'lightBlue': '#6AB2E7',
+            'green': '#12AD2B',
+            'red': '#D7141A'
+        },
+        target: {
+            base: { type: 'bisection-horizontal', colors: ['lightBlue', 'green'] },
+            overlays: [
+                { type: 'triangle', position: 'hoist', color: 'white', equilateral: true }
+            ],
+            symbols: [
+                {
+                    type: 'star',
+                    color: 'red',
+                    points: 5,
+                    radius: 5/30,
+                    xOffset: -0.28
+                }
+            ]
+        }
     }
 ];

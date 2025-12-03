@@ -2903,6 +2903,62 @@ exports[`Flag Snapshots renders Cuba correctly 1`] = `
 </div>
 `;
 
+exports[`Flag Snapshots renders Cyprus correctly 1`] = `
+<div>
+  <div
+    class="w-full flex justify-center bg-gray-100 rounded-lg p-4 shadow-inner"
+  >
+    <svg
+      class="shadow-xl select-none"
+      style="width: 100%; height: auto; max-width: 600px; background-color: rgb(255, 255, 255);"
+      viewBox="0 0 600 400"
+    >
+      <mask
+        id="flag-mask"
+      >
+        <rect
+          fill="white"
+          height="400"
+          width="600"
+        />
+      </mask>
+      <g
+        mask="url(#flag-mask)"
+      >
+        <g>
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#FFFFFF"
+            height="400"
+            width="600"
+            x="0"
+            y="0"
+          />
+        </g>
+        <image
+          class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+          display="block"
+          fill="#E2E8F0"
+          height="399.6"
+          href="Flag_of_Cyprus.svg"
+          width="599.4000000000001"
+          x="0.2999999999999545"
+          y="0.19999999999998863"
+        />
+      </g>
+      <rect
+        class="pointer-events-none"
+        fill="none"
+        height="400"
+        stroke="#ddd"
+        stroke-width="1"
+        width="600"
+      />
+    </svg>
+  </div>
+</div>
+`;
+
 exports[`Flag Snapshots renders Czech Republic correctly 1`] = `
 <div>
   <div
@@ -2950,6 +3006,127 @@ exports[`Flag Snapshots renders Czech Republic correctly 1`] = `
           stroke="none"
           stroke-linejoin="round"
           stroke-width="0"
+        />
+      </g>
+      <rect
+        class="pointer-events-none"
+        fill="none"
+        height="400"
+        stroke="#ddd"
+        stroke-width="1"
+        width="600"
+      />
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`Flag Snapshots renders Denmark correctly 1`] = `
+<div>
+  <div
+    class="w-full flex justify-center bg-gray-100 rounded-lg p-4 shadow-inner"
+  >
+    <svg
+      class="shadow-xl select-none"
+      style="width: 100%; height: auto; max-width: 600px; background-color: rgb(255, 255, 255);"
+      viewBox="0 0 600 454.05405405405406"
+    >
+      <mask
+        id="flag-mask"
+      >
+        <rect
+          fill="white"
+          height="454.05405405405406"
+          width="600"
+        />
+      </mask>
+      <g
+        mask="url(#flag-mask)"
+      >
+        <g>
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#C60C30"
+            height="454.05405405405406"
+            width="600"
+            x="0"
+            y="0"
+          />
+        </g>
+        <polygon
+          class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+          fill="#FFFFFF"
+          points="194.5945945945946,0 259.4594594594595,0 259.4594594594595,194.5945945945946 600,194.5945945945946 600,259.4594594594595 259.4594594594595,259.4594594594595 259.4594594594595,454.05405405405406 194.5945945945946,454.05405405405406 194.5945945945946,259.4594594594595 0,259.4594594594595 0,194.5945945945946 194.5945945945946,194.5945945945946"
+          stroke="none"
+          stroke-width="0"
+        />
+      </g>
+      <rect
+        class="pointer-events-none"
+        fill="none"
+        height="454.05405405405406"
+        stroke="#ddd"
+        stroke-width="1"
+        width="600"
+      />
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`Flag Snapshots renders Djibouti correctly 1`] = `
+<div>
+  <div
+    class="w-full flex justify-center bg-gray-100 rounded-lg p-4 shadow-inner"
+  >
+    <svg
+      class="shadow-xl select-none"
+      style="width: 100%; height: auto; max-width: 600px; background-color: rgb(255, 255, 255);"
+      viewBox="0 0 600 400"
+    >
+      <mask
+        id="flag-mask"
+      >
+        <rect
+          fill="white"
+          height="400"
+          width="600"
+        />
+      </mask>
+      <g
+        mask="url(#flag-mask)"
+      >
+        <g>
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#6AB2E7"
+            height="200"
+            width="600"
+            x="0"
+            y="0"
+          />
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#12AD2B"
+            height="200"
+            width="600"
+            x="0"
+            y="200"
+          />
+        </g>
+        <polygon
+          class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+          fill="#FFFFFF"
+          points="0,0 346.41016151377545,200 0,400"
+          stroke="none"
+          stroke-linejoin="round"
+          stroke-width="0"
+        />
+        <polygon
+          class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+          display="block"
+          fill="#D7141A"
+          points="131.99999999999997,133.33333333333334 146.96893109171495,179.39703387658466 195.4037677530102,179.39886704167017 156.22023928164987,207.869632790082 171.18568348616483,253.93446629166317 131.99999999999997,225.46666666666667 92.81431651383511,253.93446629166317 107.77976071835006,207.869632790082 68.59623224698973,179.39886704167017 117.031068908285,179.3970338765847"
         />
       </g>
       <rect

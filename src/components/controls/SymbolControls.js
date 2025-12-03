@@ -1,5 +1,5 @@
 import React from 'react';
-import {Star, Circle, Moon, Layout, Image as ImageIcon, Stamp, Cog, Sun, Anchor, GripVertical, Building2, Leaf, Flag} from 'lucide-react';
+import {Star, Circle, Moon, Layout, Image as ImageIcon, Stamp, Cog, Sun, Anchor, GripVertical, Building2, Leaf, Flag, Map} from 'lucide-react';
 
 export const SymbolControls = ({gameState, selectedElement, setSelectedElement, updateProp, removeItem, addItem}) => {
     return (
@@ -107,6 +107,10 @@ export const SymbolControls = ({gameState, selectedElement, setSelectedElement, 
                 <button onClick={() => addItem('symbols', {type: 'external', src: 'https://upload.wikimedia.org/wikipedia/commons/a/a5/Flag_of_the_United_Kingdom_%281-2%29.svg', color: null, aspectRatio: 2})}
                         className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
                     <Flag size={14}/> Union Jack
+                </button>
+                <button onClick={() => addItem('symbols', {type: 'seal', src: 'Flag_of_Cyprus.svg', color: null, aspectRatio: 1200/800})}
+                        className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
+                    <Map size={14}/> Country
                 </button>
             </div>
         </>

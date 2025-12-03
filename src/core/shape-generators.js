@@ -251,5 +251,33 @@ export const SHAPE_GENERATORS = {
         ];
 
         return points.join(' ');
+    },
+    nordicCross: ({w, h, args}) => {
+        // Nordic/Scandinavian cross - offset towards hoist
+        // Default proportions based on Danish flag (12:4:21 horizontal, 12:4:12 vertical)
+        const verticalOffset = args.verticalOffset || 12/37;  // Where vertical bar starts (from left)
+        const crossWidth = args.crossWidth || 4/28;           // Width of cross arms as ratio of height
+
+        const bandWidth = h * crossWidth;
+        const vBarX = w * verticalOffset;
+        const hBarY = (h - bandWidth) / 2;
+
+        // Single 12-point polygon for the cross shape (clockwise from top-left of vertical bar)
+        const points = [
+            `${vBarX},${0}`,                           // 1: Top-left of vertical bar
+            `${vBarX + bandWidth},${0}`,               // 2: Top-right of vertical bar
+            `${vBarX + bandWidth},${hBarY}`,           // 3: Inner corner (top-right)
+            `${w},${hBarY}`,                           // 4: Right edge, top of horizontal
+            `${w},${hBarY + bandWidth}`,               // 5: Right edge, bottom of horizontal
+            `${vBarX + bandWidth},${hBarY + bandWidth}`, // 6: Inner corner (bottom-right)
+            `${vBarX + bandWidth},${h}`,               // 7: Bottom-right of vertical bar
+            `${vBarX},${h}`,                           // 8: Bottom-left of vertical bar
+            `${vBarX},${hBarY + bandWidth}`,           // 9: Inner corner (bottom-left)
+            `${0},${hBarY + bandWidth}`,               // 10: Left edge, bottom of horizontal
+            `${0},${hBarY}`,                           // 11: Left edge, top of horizontal
+            `${vBarX},${hBarY}`                        // 12: Inner corner (top-left)
+        ];
+
+        return points.join(' ');
     }
 };
