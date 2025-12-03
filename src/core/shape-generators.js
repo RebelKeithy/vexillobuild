@@ -1,5 +1,81 @@
 import {generatePallPoints} from "../shapes/pall";
 
+// Helper function to calculate positions for multiple stars
+const calculateStarPositions = (count, cx, cy, r, args) => {
+    const layout = args.layout || 'auto'; // 'auto', 'horizontal', 'vertical', 'grid', 'arc'
+
+    const positions = [];
+
+    if (count === 1) {
+        positions.push({cx, cy});
+        return positions;
+    }
+
+    // Determine layout based on count or explicit layout parameter
+    let actualLayout = layout;
+    if (layout === 'auto') {
+        if (count <= 3) actualLayout = 'horizontal';
+        else if (count <= 6) actualLayout = 'arc';
+        else actualLayout = 'grid';
+    }
+
+    if (actualLayout === 'horizontal') {
+        // Support both new 'spacing' (direct distance) and legacy 'spacing' (multiplier)
+        const spacing = args.spacing || (r * 2.5);
+        const totalWidth = (count - 1) * spacing;
+        const startX = cx - totalWidth / 2;
+        for (let i = 0; i < count; i++) {
+            positions.push({
+                cx: startX + i * spacing,
+                cy: cy
+            });
+        }
+    } else if (actualLayout === 'vertical') {
+        const spacing = args.spacing || (r * 2.5);
+        const totalHeight = (count - 1) * spacing;
+        const startY = cy - totalHeight / 2;
+        for (let i = 0; i < count; i++) {
+            positions.push({
+                cx: cx,
+                cy: startY + i * spacing
+            });
+        }
+    } else if (actualLayout === 'arc') {
+        // Arrange stars in a full circle
+        // Use explicit circleRadius if provided, otherwise use legacy spacing calculation
+        const arcRadius = args.circleRadius || (r * (args.spacing || 2.5) * 1.5);
+        const startAngle = -Math.PI / 2; // Start from top (12 o'clock position)
+        const angleStep = (2 * Math.PI) / count; // Full circle
+
+        for (let i = 0; i < count; i++) {
+            const angle = startAngle + i * angleStep;
+            positions.push({
+                cx: cx + arcRadius * Math.cos(angle),
+                cy: cy + arcRadius * Math.sin(angle)
+            });
+        }
+    } else if (actualLayout === 'grid') {
+        const spacing = args.spacing || (r * 2.5);
+        const cols = Math.ceil(Math.sqrt(count));
+        const rows = Math.ceil(count / cols);
+        const gridWidth = (cols - 1) * spacing;
+        const gridHeight = (rows - 1) * spacing;
+        const startX = cx - gridWidth / 2;
+        const startY = cy - gridHeight / 2;
+
+        for (let i = 0; i < count; i++) {
+            const row = Math.floor(i / cols);
+            const col = i % cols;
+            positions.push({
+                cx: startX + col * spacing,
+                cy: startY + row * spacing
+            });
+        }
+    }
+
+    return positions;
+};
+
 export const SHAPE_GENERATORS = {
     triangle: ({w, h, args}) => {
         const th = args.height ? h * args.height : h
@@ -36,16 +112,30 @@ export const SHAPE_GENERATORS = {
         const pointsCount = args.points || 5;
         const innerRadius = args.innerRadius || (pointsCount === 5 ? 0.382 : 0.4);
         const rotation = args.rotation || 0;
+        const count = args.count || 1;
 
-        const points = [];
-        const offset = (rotation * Math.PI) / 180;
+        const generateSingleStar = (centerX, centerY) => {
+            const points = [];
+            const offset = (rotation * Math.PI) / 180;
 
-        for (let i = 0; i < pointsCount * 2; i++) {
-            const ang = (i * Math.PI) / pointsCount - (Math.PI / 2) + offset;
-            const rad = i % 2 === 0 ? r : r * innerRadius;
-            points.push(`${cx + rad * Math.cos(ang)},${cy + rad * Math.sin(ang)}`);
+            for (let i = 0; i < pointsCount * 2; i++) {
+                const ang = (i * Math.PI) / pointsCount - (Math.PI / 2) + offset;
+                const rad = i % 2 === 0 ? r : r * innerRadius;
+                points.push(`${centerX + rad * Math.cos(ang)},${centerY + rad * Math.sin(ang)}`);
+            }
+            return points;
+        };
+
+        if (count === 1) {
+            return generateSingleStar(cx, cy).join(' ');
         }
-        return points.join(' ');
+
+        // For multiple stars, return metadata for group rendering
+        // This will be handled specially in SymbolLayer
+        return {
+            count,
+            positions: calculateStarPositions(count, cx, cy, r, args)
+        };
     },
     risingSun: ({cx, cy, r, args}) => {
         const points = 9;

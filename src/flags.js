@@ -7,6 +7,11 @@ export const LEVELS = [
         description: "Construct the Tricolour.",
         hint: "Three vertical bands: Blue, White, Red.",
         aspectRatio: 2/3,
+        "colorOverrides": {
+            "blue": "#000091",
+            "white": "#FFFFFF",
+            "red": "#E1000F"
+        },
         target: {
             base: { type: 'vertical-tricolor', colors: ['blue', 'white', 'red'] },
             overlays: [],
@@ -728,6 +733,65 @@ export const LEVELS = [
                     innerRadius: 0.577,
                     xOffset: 0.127 * 3/5,
                     yOffset: 0.0733
+                }
+            ]
+        }
+    },
+    {
+        id: 35,
+        name: "Cabo Verde",
+        difficulty: "Advanced",
+        description: "Ten stars for ten islands.",
+        hint: "Three horizontal stripes (Blue/White/Red). Ten yellow stars in a circle.",
+        aspectRatio: 2/3,
+        colorOverrides: {
+            'blue': '#003893',
+            'red': '#CF2027',
+            'gold': '#F7D116',
+        },
+        target: {
+            base: { type: 'horizontal-stripes', count: 5, colors: ['blue', 'white', 'red', 'white', 'blue'], ratios: [0.5, 1/12, 1/12, 1/12, 0.25] },
+            overlays: [],
+            symbols: [
+                {
+                    type: 'star',
+                    color: 'gold',
+                    count: 10,
+                    layout: 'arc',
+                    radius: 17/360,
+                    xOffset: -76/612,
+                    yOffset: 45/360,
+                    circleRadius: 19 / 72
+                }
+            ]
+        }
+    },
+    {
+        id: 36,
+        name: "Cambodia",
+        difficulty: "Intermediate",
+        description: "Angkor Wat - The Temple.",
+        hint: "Three horizontal stripes (Blue/Red/Blue). White Angkor Wat temple in the center.",
+        aspectRatio: 2/3,
+        colorOverrides: {
+            'blue': '#032EA1',
+            'red': '#E00025'
+        },
+        target: {
+            base: {
+                type: 'horizontal-stripes',
+                count: 3,
+                colors: ['blue', 'red', 'blue'],
+                ratios: [1, 2, 1]
+            },
+            overlays: [],
+            symbols: [
+                {
+                    type: 'external',
+                    src: 'https://upload.wikimedia.org/wikipedia/commons/0/06/Angkor_Wat_in_Flag_of_Cambodia.svg',
+                    color: null,
+                    width: 0.5,           // 50% of flag width
+                    height: 168 / 360     // 168/360 of flag height
                 }
             ]
         }

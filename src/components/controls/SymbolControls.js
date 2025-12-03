@@ -1,5 +1,5 @@
 import React from 'react';
-import {Star, Circle, Moon, Layout, Image as ImageIcon, Stamp, Cog, Sun, Anchor, GripVertical} from 'lucide-react';
+import {Star, Circle, Moon, Layout, Image as ImageIcon, Stamp, Cog, Sun, Anchor, GripVertical, Building2} from 'lucide-react';
 
 export const SymbolControls = ({gameState, selectedElement, setSelectedElement, updateProp, removeItem, addItem}) => {
     return (
@@ -20,7 +20,7 @@ export const SymbolControls = ({gameState, selectedElement, setSelectedElement, 
                         {s.type === 'external' ? 'Image' : s.type === 'seal' ? 'Seal' : s.type}
                     </div>
                     <select
-                        className="w-full bg-slate-800 text-xs p-1 rounded border border-slate-600 outline-none focus:border-blue-400"
+                        className="w-full bg-slate-800 text-xs p-1 rounded border border-slate-600 outline-none focus:border-blue-400 mb-2"
                         value={s.parentIndex ?? -1}
                         onChange={(e) => updateProp('symbols', i, 'parentIndex', parseInt(e.target.value) === -1 ? null : parseInt(e.target.value))}
                         onClick={(e) => e.stopPropagation()}
@@ -28,6 +28,23 @@ export const SymbolControls = ({gameState, selectedElement, setSelectedElement, 
                         <option value={-1}>Center</option>
                         {gameState.overlays.map((o, idx) => <option key={idx} value={idx}>Layer {idx + 1} ({o.type})</option>)}
                     </select>
+
+                    {/* Star count control - only show for star symbols */}
+                    {s.type === 'star' && (
+                        <div className="mt-2" onClick={(e) => e.stopPropagation()}>
+                            <label className="text-xs text-slate-300 block mb-1">
+                                Star Count: {s.count || 1}
+                            </label>
+                            <input
+                                type="range"
+                                min="1"
+                                max="20"
+                                value={s.count || 1}
+                                onChange={(e) => updateProp('symbols', i, 'count', parseInt(e.target.value))}
+                                className="w-full h-2 bg-slate-600 rounded-lg appearance-none cursor-pointer accent-blue-500"
+                            />
+                        </div>
+                    )}
                 </div>
             ))}
             <div className="grid grid-cols-5 gap-2 mt-4">
@@ -78,6 +95,10 @@ export const SymbolControls = ({gameState, selectedElement, setSelectedElement, 
                 <button onClick={() => addItem('symbols', {type: 'external', src: 'https://upload.wikimedia.org/wikipedia/commons/9/99/Belarus_flag_pattern.svg', color: null, rotation: 90, aspectRatio: 4.5})}
                         className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
                     <GripVertical size={14}/> Pattern
+                </button>
+                <button onClick={() => addItem('symbols', {type: 'external', src: 'https://upload.wikimedia.org/wikipedia/commons/0/06/Angkor_Wat_in_Flag_of_Cambodia.svg', color: null, aspectRatio: 1.2})}
+                        className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
+                    <Building2 size={14}/> Temple
                 </button>
             </div>
         </>

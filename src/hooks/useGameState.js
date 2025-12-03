@@ -120,6 +120,15 @@ export const useGameState = (currentLevelId) => {
             if (tType === 'seal') continue;
             if (t.symbols[i].color !== u.symbols[i].color)
                 return setFeedback({type: 'error', msg: `Symbol ${i + 1} mismatch.`});
+
+            // Check star count if specified in target
+            if (tType === 'star' && t.symbols[i].count !== undefined) {
+                const targetCount = t.symbols[i].count;
+                const userCount = u.symbols[i].count || 1;
+                if (targetCount !== userCount) {
+                    return setFeedback({type: 'error', msg: `Symbol ${i + 1}: Wrong number of stars.`});
+                }
+            }
         }
 
         setFeedback({type: 'success', msg: "Flag Reconstructed Successfully!"});
