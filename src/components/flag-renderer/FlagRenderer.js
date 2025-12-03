@@ -9,6 +9,7 @@ export const FlagPreview = ({flagState, onInteraction, selectedElement, currentL
     const [hovered, setHovered] = useState(null);
 
     const currentLevel = useMemo(() => LEVELS.find(l => l.id === currentLevelId), [currentLevelId]);
+    const colorOverrides = currentLevel?.colorOverrides || {};
 
     const width = 600;
     const ratio = currentLevel?.aspectRatio || 2 / 3;
@@ -90,6 +91,7 @@ export const FlagPreview = ({flagState, onInteraction, selectedElement, currentL
                         isSelected={isSelected}
                         isHovered={isHovered}
                         getHighlightStyles={getHighlightStyles}
+                        colorOverrides={colorOverrides}
                     />
                     {overlays.map((o, i) => (
                         <OverlayLayer
@@ -104,6 +106,7 @@ export const FlagPreview = ({flagState, onInteraction, selectedElement, currentL
                             isSelected={isSelected}
                             isHovered={isHovered}
                             getHighlightStyles={getHighlightStyles}
+                            colorOverrides={colorOverrides}
                         />
                     ))}
                     {symbols.map((s, i) => (
@@ -120,6 +123,7 @@ export const FlagPreview = ({flagState, onInteraction, selectedElement, currentL
                             isSelected={isSelected}
                             isHovered={isHovered}
                             getHighlightStyles={getHighlightStyles}
+                            colorOverrides={colorOverrides}
                         />
                     ))}
                 </g>
@@ -141,6 +145,7 @@ export const FlagPreview = ({flagState, onInteraction, selectedElement, currentL
                                 isHovered={isHovered}
                                 highlightMode="selection"
                                 getHighlightStyles={getHighlightStyles}
+                                colorOverrides={colorOverrides}
                             />
                         )}
                         {selectedElement.type === 'overlay' && (
@@ -156,6 +161,7 @@ export const FlagPreview = ({flagState, onInteraction, selectedElement, currentL
                                 isHovered={isHovered}
                                 highlightMode="selection"
                                 getHighlightStyles={getHighlightStyles}
+                                colorOverrides={colorOverrides}
                             />
                         )}
                         {selectedElement.type === 'symbol' && (
@@ -172,6 +178,7 @@ export const FlagPreview = ({flagState, onInteraction, selectedElement, currentL
                                 isHovered={isHovered}
                                 highlightMode="selection"
                                 getHighlightStyles={getHighlightStyles}
+                                colorOverrides={colorOverrides}
                             />
                         )}
                     </g>
@@ -190,6 +197,7 @@ export const FlagPreview = ({flagState, onInteraction, selectedElement, currentL
                                 isHovered={isHovered}
                                 highlightMode="hover"
                                 getHighlightStyles={getHighlightStyles}
+                                colorOverrides={colorOverrides}
                             />
                         )}
                         {hovered.type === 'overlay' && (
@@ -205,6 +213,7 @@ export const FlagPreview = ({flagState, onInteraction, selectedElement, currentL
                                 isHovered={isHovered}
                                 highlightMode="hover"
                                 getHighlightStyles={getHighlightStyles}
+                                colorOverrides={colorOverrides}
                             />
                         )}
                         {hovered.type === 'symbol' && (
@@ -221,6 +230,7 @@ export const FlagPreview = ({flagState, onInteraction, selectedElement, currentL
                                 isHovered={isHovered}
                                 highlightMode="hover"
                                 getHighlightStyles={getHighlightStyles}
+                                colorOverrides={colorOverrides}
                             />
                         )}
                     </g>

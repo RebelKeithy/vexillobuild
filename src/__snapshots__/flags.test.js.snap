@@ -149,7 +149,7 @@ exports[`Flag Snapshots renders Andorra correctly 1`] = `
         <g>
           <rect
             class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
-            fill="#00205B"
+            fill="#0055A4"
             height="420"
             width="200"
             x="0"
@@ -296,7 +296,7 @@ exports[`Flag Snapshots renders Antigua and Barbuda correctly 1`] = `
           />
           <rect
             class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
-            fill="#00205B"
+            fill="#0055A4"
             height="100"
             width="600"
             x="0"
@@ -452,7 +452,7 @@ exports[`Flag Snapshots renders Armenia correctly 1`] = `
           />
           <rect
             class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
-            fill="#00205B"
+            fill="#0055A4"
             height="100"
             width="600"
             x="0"
@@ -506,7 +506,7 @@ exports[`Flag Snapshots renders Australia correctly 1`] = `
         <g>
           <rect
             class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
-            fill="#00205B"
+            fill="#00008B"
             height="300"
             width="600"
             x="0"
@@ -515,7 +515,7 @@ exports[`Flag Snapshots renders Australia correctly 1`] = `
         </g>
         <rect
           class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
-          fill="#00205B"
+          fill="#00008B"
           height="150"
           stroke="none"
           stroke-width="0"
@@ -846,7 +846,7 @@ exports[`Flag Snapshots renders Barbados correctly 1`] = `
         <g>
           <rect
             class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
-            fill="#00205B"
+            fill="#0055A4"
             height="400"
             width="200"
             x="0"
@@ -862,7 +862,7 @@ exports[`Flag Snapshots renders Barbados correctly 1`] = `
           />
           <rect
             class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
-            fill="#00205B"
+            fill="#0055A4"
             height="400"
             width="200"
             x="400"
@@ -1056,7 +1056,7 @@ exports[`Flag Snapshots renders Belize correctly 1`] = `
           />
           <rect
             class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
-            fill="#00205B"
+            fill="#0055A4"
             height="333.33333333333337"
             width="600"
             x="0"
@@ -1321,7 +1321,7 @@ exports[`Flag Snapshots renders Bosnia and Herzegovina correctly 1`] = `
         <g>
           <rect
             class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
-            fill="#00205B"
+            fill="#0055A4"
             height="300"
             width="600"
             x="0"
@@ -1529,7 +1529,7 @@ exports[`Flag Snapshots renders Brazil correctly 1`] = `
           cx="300"
           cy="210"
           display="block"
-          fill="#00205B"
+          fill="#0055A4"
           r="105"
         />
       </g>
@@ -1802,7 +1802,7 @@ exports[`Flag Snapshots renders Chile correctly 1`] = `
         </g>
         <rect
           class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
-          fill="#00205B"
+          fill="#0055A4"
           height="200"
           stroke="none"
           stroke-width="0"
@@ -1853,7 +1853,7 @@ exports[`Flag Snapshots renders Cuba correctly 1`] = `
         <g>
           <rect
             class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
-            fill="#00205B"
+            fill="#002A8F"
             height="60"
             width="600"
             x="0"
@@ -1869,7 +1869,7 @@ exports[`Flag Snapshots renders Cuba correctly 1`] = `
           />
           <rect
             class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
-            fill="#00205B"
+            fill="#002A8F"
             height="60"
             width="600"
             x="0"
@@ -1885,7 +1885,7 @@ exports[`Flag Snapshots renders Cuba correctly 1`] = `
           />
           <rect
             class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
-            fill="#00205B"
+            fill="#002A8F"
             height="60"
             width="600"
             x="0"
@@ -1962,7 +1962,7 @@ exports[`Flag Snapshots renders Czech Republic correctly 1`] = `
         </g>
         <polygon
           class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
-          fill="#00205B"
+          fill="#0055A4"
           points="0,0 300,200 0,400"
           stroke="none"
           stroke-linejoin="round"
@@ -2007,7 +2007,7 @@ exports[`Flag Snapshots renders France correctly 1`] = `
         <g>
           <rect
             class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
-            fill="#00205B"
+            fill="#0055A4"
             height="400"
             width="200"
             x="0"
@@ -2193,7 +2193,7 @@ exports[`Flag Snapshots renders South Africa correctly 1`] = `
           />
           <rect
             class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
-            fill="#00205B"
+            fill="#001489"
             height="200"
             width="600"
             x="0"
@@ -2220,7 +2220,7 @@ exports[`Flag Snapshots renders South Africa correctly 1`] = `
           class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
           fill="#000000"
           points="0,80 180,200 0,320"
-          stroke="#FFD700"
+          stroke="#FFB612"
           stroke-linejoin="round"
           stroke-width="16"
         />
@@ -2438,7 +2438,7 @@ exports[`Flag Snapshots renders United States correctly 1`] = `
         </g>
         <rect
           class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
-          fill="#00205B"
+          fill="#3C3B6E"
           height="170.5263157894737"
           stroke="none"
           stroke-width="0"

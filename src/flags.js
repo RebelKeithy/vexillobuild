@@ -80,6 +80,9 @@ export const LEVELS = [
         description: "Stripes, a triangle, and a lone star.",
         hint: "5 Horizontal Stripes (Blue/White). Red Triangle. White Star.",
         aspectRatio: 1/2,
+        colorOverrides: {
+            blue: '#002A8F'
+        },
         target: {
             base: { type: 'horizontal-stripes', count: 5, colors: ['blue', 'white'] },
             overlays: [
@@ -97,6 +100,9 @@ export const LEVELS = [
         description: "Old Glory.",
         hint: "13 Stripes. Blue Canton. Star Field.",
         aspectRatio: 10/19,
+        colorOverrides: {
+            blue: '#3C3B6E'
+        },
         target: {
             base: { type: 'horizontal-stripes', count: 13, colors: ['red', 'white'] },
             overlays: [
@@ -114,6 +120,10 @@ export const LEVELS = [
         description: "Complex layering with borders.",
         hint: "Red/Blue Bisection. Green Pall (Y-shape). Black Triangle.",
         aspectRatio: 2/3,
+        colorOverrides: {
+            blue: '#001489',
+            gold: '#FFB612'
+        },
         target: {
             base: { type: 'bisection-horizontal', colors: ['red', 'blue'] },
             overlays: [
@@ -278,6 +288,9 @@ export const LEVELS = [
         description: "The Commonwealth Star and the Southern Cross.",
         hint: "Blue field. Union Jack in Canton. Large 7-point star below it. Southern Cross on the fly.",
         aspectRatio: 1/2,
+        colorOverrides: {
+            blue: '#00008B'
+        },
         target: {
             base: { type: 'solid', colors: ['blue'] },
             overlays: [

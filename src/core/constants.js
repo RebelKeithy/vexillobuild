@@ -3,7 +3,7 @@ export const COLORS = {
     white: '#FFFFFF',
     black: '#000000',
     red: '#EF3340',
-    blue: '#00205B', // Darker blue for Australia/UK match
+    blue: '#0055A4', // Medium/royal blue (common in flags)
     lightBlue: '#69B3E7',
     green: '#007A3D',
     aquamarine: '#00778B',

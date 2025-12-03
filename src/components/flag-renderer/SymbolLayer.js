@@ -14,7 +14,8 @@ export const SymbolLayer = ({
     isSelected,
     isHovered,
     highlightMode = null,
-    getHighlightStyles
+    getHighlightStyles,
+    colorOverrides = {}
 }) => {
     // Intelligent Matching: match nth symbol of type T to nth target symbol of type T
     const myTypeIndex = symbols.slice(0, index).filter(s => s.type === symbol.type).length;
@@ -46,7 +47,7 @@ export const SymbolLayer = ({
         }
     }
 
-    const color = resolveColor(mergedSymbol.color, index, 5);
+    const color = resolveColor(mergedSymbol.color, index, colorOverrides);
     const styles = highlightMode ? getHighlightStyles(true, highlightMode === 'selection') : {};
     const commonProps = {
         fill: highlightMode ? 'none' : color,

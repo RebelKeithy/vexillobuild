@@ -14,7 +14,8 @@ export const OverlayLayer = ({
     isSelected,
     isHovered,
     highlightMode = null,
-    getHighlightStyles
+    getHighlightStyles,
+    colorOverrides = {}
 }) => {
     const currentlySelected = isSelected('overlay', index);
     const currentlyHovered = isHovered('overlay', index);
@@ -37,8 +38,8 @@ export const OverlayLayer = ({
     const {color: _c, borderColor: _bc, ...geoProps} = targetOverride;
     const mergedOverlay = {...overlay, ...geoProps};
 
-    const color = resolveColor(mergedOverlay.color, index, 3);
-    const borderColor = mergedOverlay.borderColor ? COLORS[mergedOverlay.borderColor] : 'none';
+    const color = resolveColor(mergedOverlay.color, index, colorOverrides);
+    const borderColor = mergedOverlay.borderColor ? (colorOverrides[mergedOverlay.borderColor] || COLORS[mergedOverlay.borderColor]) : 'none';
     const borderW = mergedOverlay.borderColor ? height * 0.04 : 0;
 
     const styles = highlightMode ? getHighlightStyles(true, highlightMode === 'selection') : {};

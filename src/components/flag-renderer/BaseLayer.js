@@ -2,7 +2,7 @@ import React from 'react';
 import {renderFlagBase} from '../../utils/flagRenderers';
 import {resolveColor} from '../../core/utils';
 
-export const BaseLayer = ({base, width, height, bindEvents, isSelected, isHovered, highlightMode = null, getHighlightStyles}) => {
+export const BaseLayer = ({base, width, height, bindEvents, isSelected, isHovered, highlightMode = null, getHighlightStyles, colorOverrides = {}}) => {
     const {type, colors, count, ratios} = base;
 
     const renderRect = (idx, x, y, w, h, uniqueKey = idx) => {
@@ -13,7 +13,7 @@ export const BaseLayer = ({base, width, height, bindEvents, isSelected, isHovere
         if (highlightMode === 'hover' && !currentlyHovered) return null;
 
         const highlightProps = highlightMode ? getHighlightStyles(true, highlightMode === 'selection') : {};
-        const fill = highlightMode ? 'none' : resolveColor(colors[idx], idx);
+        const fill = highlightMode ? 'none' : resolveColor(colors[idx], idx, colorOverrides);
 
         if (highlightMode) {
             delete highlightProps.style;
@@ -43,7 +43,7 @@ export const BaseLayer = ({base, width, height, bindEvents, isSelected, isHovere
         if (highlightMode === 'hover' && !currentlyHovered) return null;
 
         const highlightProps = highlightMode ? getHighlightStyles(true, highlightMode === 'selection') : {};
-        const fill = highlightMode ? 'none' : resolveColor(colors[idx], idx);
+        const fill = highlightMode ? 'none' : resolveColor(colors[idx], idx, colorOverrides);
 
         if (highlightMode) {
             delete highlightProps.style;
