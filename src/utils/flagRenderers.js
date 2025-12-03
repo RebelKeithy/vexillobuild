@@ -10,7 +10,19 @@ export const renderFlagBase = ({type, width, height, colors, count, ratios, base
         case 'solid':
             return <g>{_renderRect(0, 0, 0, width, height)}</g>;
         case 'vertical-tricolor':
-            return <g>{[0, 1, 2].map(i => _renderRect(i, (width / 3) * i, 0, width / 3, height))}</g>;
+            if (ratios && ratios.length === 3) {
+                const totalRatio = ratios.reduce((a, b) => a + b, 0);
+                const unitWidth = width / totalRatio;
+                let currentX = 0;
+                return <g>{ratios.map((r, i) => {
+                    const w = r * unitWidth;
+                    const rEl = _renderRect(i, currentX, 0, w, height, i);
+                    currentX += w;
+                    return rEl;
+                })}</g>;
+            } else {
+                return <g>{[0, 1, 2].map(i => _renderRect(i, (width / 3) * i, 0, width / 3, height))}</g>;
+            }
         case 'horizontal-stripes':
             const c = count || 3;
             if (ratios && ratios.length === c) {

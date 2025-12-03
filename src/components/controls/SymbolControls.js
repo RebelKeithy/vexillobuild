@@ -1,5 +1,5 @@
 import React from 'react';
-import {Star, Circle, Moon, Layout, Image as ImageIcon, Stamp, Cog, Sun, Anchor, GripVertical, Building2} from 'lucide-react';
+import {Star, Circle, Moon, Layout, Image as ImageIcon, Stamp, Cog, Sun, Anchor, GripVertical, Building2, Leaf} from 'lucide-react';
 
 export const SymbolControls = ({gameState, selectedElement, setSelectedElement, updateProp, removeItem, addItem}) => {
     return (
@@ -64,7 +64,7 @@ export const SymbolControls = ({gameState, selectedElement, setSelectedElement, 
                         className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
                     <Layout size={14}/> Field
                 </button>
-                <button onClick={() => addItem('symbols', {type: 'external', src: 'https://upload.wikimedia.org/wikipedia/commons/b/b7/Albanian_Eagle.svg', color: null})}
+                <button onClick={() => addItem('symbols', {type: 'external', src: 'https://upload.wikimedia.org/wikipedia/commons/b/b7/Albanian_Eagle.svg', color: 'grey'})}
                         className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
                     <ImageIcon size={14}/> Eagle
                 </button>
@@ -72,7 +72,7 @@ export const SymbolControls = ({gameState, selectedElement, setSelectedElement, 
                         className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
                     <Stamp size={14}/> Seal
                 </button>
-                <button onClick={() => addItem('symbols', {type: 'external', src: 'https://upload.wikimedia.org/wikipedia/commons/0/02/Machete_and_Gear.svg', color: null})}
+                <button onClick={() => addItem('symbols', {type: 'external', src: 'https://upload.wikimedia.org/wikipedia/commons/0/02/Machete_and_Gear.svg', color: 'grey'})}
                         className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
                     <Cog size={14}/> Gear
                 </button>
@@ -84,7 +84,7 @@ export const SymbolControls = ({gameState, selectedElement, setSelectedElement, 
                         className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
                     <Sun size={14}/> Sun of May
                 </button>
-                <button onClick={() => addItem('symbols', {type: 'external', src: 'https://upload.wikimedia.org/wikipedia/commons/a/a7/Barbados_trident.svg', color: null})}
+                <button onClick={() => addItem('symbols', {type: 'external', src: 'https://upload.wikimedia.org/wikipedia/commons/a/a7/Barbados_trident.svg', color: 'grey'})}
                         className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
                     <Anchor size={14}/> Trident
                 </button>
@@ -99,6 +99,10 @@ export const SymbolControls = ({gameState, selectedElement, setSelectedElement, 
                 <button onClick={() => addItem('symbols', {type: 'external', src: 'https://upload.wikimedia.org/wikipedia/commons/0/06/Angkor_Wat_in_Flag_of_Cambodia.svg', color: null, aspectRatio: 1.2})}
                         className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
                     <Building2 size={14}/> Temple
+                </button>
+                <button onClick={() => addItem('symbols', {type: 'external', src: 'https://upload.wikimedia.org/wikipedia/commons/6/66/Flag_of_Canada_%28leaf%29.svg', color: 'grey'})}
+                        className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
+                    <Leaf size={14}/> Maple Leaf
                 </button>
             </div>
         </>

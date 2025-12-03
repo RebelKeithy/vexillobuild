@@ -32,19 +32,19 @@ exports[`Flag Snapshots renders Albania correctly 1`] = `
             y="0"
           />
         </g>
-        <foreignobject
-          class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
-          display="block"
-          fill="#000000"
-          height="285.42857142857144"
-          width="285.42857142857144"
-          x="157.28571428571428"
-          y="71.57142857142856"
-        >
-          <div
-            style="width: 100%; height: 100%; background-color: rgb(0, 0, 0); mask-image: url(https://upload.wikimedia.org/wikipedia/commons/b/b7/Albanian_Eagle.svg); mask-size: contain; mask-repeat: no-repeat; mask-position: center;"
-          />
-        </foreignobject>
+        <g>
+          <foreignobject
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            height="285.42857142857144"
+            width="285.42857142857144"
+            x="157.28571428571428"
+            y="71.57142857142856"
+          >
+            <div
+              style="width: 100%; height: 100%; background-color: rgb(0, 0, 0); mask-image: url(https://upload.wikimedia.org/wikipedia/commons/b/b7/Albanian_Eagle.svg); mask-size: contain; mask-repeat: no-repeat; mask-position: center;"
+            />
+          </foreignobject>
+        </g>
       </g>
       <rect
         class="pointer-events-none"
@@ -236,19 +236,19 @@ exports[`Flag Snapshots renders Angola correctly 1`] = `
             y="200"
           />
         </g>
-        <foreignobject
-          class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
-          display="block"
-          fill="#FFD700"
-          height="180"
-          width="180"
-          x="210"
-          y="110"
-        >
-          <div
-            style="width: 100%; height: 100%; background-color: rgb(255, 215, 0); mask-image: url(https://upload.wikimedia.org/wikipedia/commons/0/02/Machete_and_Gear.svg); mask-size: contain; mask-repeat: no-repeat; mask-position: center;"
-          />
-        </foreignobject>
+        <g>
+          <foreignobject
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            height="180"
+            width="180"
+            x="210"
+            y="110"
+          >
+            <div
+              style="width: 100%; height: 100%; background-color: rgb(255, 215, 0); mask-image: url(https://upload.wikimedia.org/wikipedia/commons/0/02/Machete_and_Gear.svg); mask-size: contain; mask-repeat: no-repeat; mask-position: center;"
+            />
+          </foreignobject>
+        </g>
       </g>
       <rect
         class="pointer-events-none"
@@ -869,19 +869,19 @@ exports[`Flag Snapshots renders Barbados correctly 1`] = `
             y="0"
           />
         </g>
-        <foreignobject
-          class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
-          display="block"
-          fill="#000000"
-          height="192"
-          width="192"
-          x="204"
-          y="104"
-        >
-          <div
-            style="width: 100%; height: 100%; background-color: rgb(0, 0, 0); mask-image: url(https://upload.wikimedia.org/wikipedia/commons/a/a7/Barbados_trident.svg); mask-size: contain; mask-repeat: no-repeat; mask-position: center;"
-          />
-        </foreignobject>
+        <g>
+          <foreignobject
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            height="192"
+            width="192"
+            x="204"
+            y="104"
+          >
+            <div
+              style="width: 100%; height: 100%; background-color: rgb(0, 0, 0); mask-image: url(https://upload.wikimedia.org/wikipedia/commons/a/a7/Barbados_trident.svg); mask-size: contain; mask-repeat: no-repeat; mask-position: center;"
+            />
+          </foreignobject>
+        </g>
       </g>
       <rect
         class="pointer-events-none"
@@ -1948,6 +1948,211 @@ exports[`Flag Snapshots renders Cambodia correctly 1`] = `
           x="150"
           y="106.66666666666667"
         />
+      </g>
+      <rect
+        class="pointer-events-none"
+        fill="none"
+        height="400"
+        stroke="#ddd"
+        stroke-width="1"
+        width="600"
+      />
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`Flag Snapshots renders Cameroon correctly 1`] = `
+<div>
+  <div
+    class="w-full flex justify-center bg-gray-100 rounded-lg p-4 shadow-inner"
+  >
+    <svg
+      class="shadow-xl select-none"
+      style="width: 100%; height: auto; max-width: 600px; background-color: rgb(255, 255, 255);"
+      viewBox="0 0 600 400"
+    >
+      <mask
+        id="flag-mask"
+      >
+        <rect
+          fill="white"
+          height="400"
+          width="600"
+        />
+      </mask>
+      <g
+        mask="url(#flag-mask)"
+      >
+        <g>
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#007A5E"
+            height="400"
+            width="200"
+            x="0"
+            y="0"
+          />
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#CE1126"
+            height="400"
+            width="200"
+            x="200"
+            y="0"
+          />
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#FCD116"
+            height="400"
+            width="200"
+            x="400"
+            y="0"
+          />
+        </g>
+        <polygon
+          class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+          display="block"
+          fill="#FCD116"
+          points="300,140 313.4720379825435,181.4573304889262 357.0633909777092,181.45898033750316 321.7982153534849,207.0826695110738 335.2671151375484,248.54101966249686 300,222.92000000000002 264.7328848624516,248.54101966249686 278.2017846465151,207.0826695110738 242.93660902229078,181.45898033750316 286.5279620174565,181.4573304889262"
+        />
+      </g>
+      <rect
+        class="pointer-events-none"
+        fill="none"
+        height="400"
+        stroke="#ddd"
+        stroke-width="1"
+        width="600"
+      />
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`Flag Snapshots renders Canada correctly 1`] = `
+<div>
+  <div
+    class="w-full flex justify-center bg-gray-100 rounded-lg p-4 shadow-inner"
+  >
+    <svg
+      class="shadow-xl select-none"
+      style="width: 100%; height: auto; max-width: 600px; background-color: rgb(255, 255, 255);"
+      viewBox="0 0 600 300"
+    >
+      <mask
+        id="flag-mask"
+      >
+        <rect
+          fill="white"
+          height="300"
+          width="600"
+        />
+      </mask>
+      <g
+        mask="url(#flag-mask)"
+      >
+        <g>
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#FF0000"
+            height="300"
+            width="150"
+            x="0"
+            y="0"
+          />
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#FFFFFF"
+            height="300"
+            width="300"
+            x="150"
+            y="0"
+          />
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#FF0000"
+            height="300"
+            width="150"
+            x="450"
+            y="0"
+          />
+        </g>
+        <g>
+          <foreignobject
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            height="253.125"
+            width="243.75"
+            x="178.125"
+            y="23.4375"
+          >
+            <div
+              style="width: 100%; height: 100%; background-color: rgb(255, 0, 0); mask-image: url(https://upload.wikimedia.org/wikipedia/commons/8/8f/Maple_Leaf.svg); mask-size: contain; mask-repeat: no-repeat; mask-position: center;"
+            />
+          </foreignobject>
+        </g>
+      </g>
+      <rect
+        class="pointer-events-none"
+        fill="none"
+        height="300"
+        stroke="#ddd"
+        stroke-width="1"
+        width="600"
+      />
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`Flag Snapshots renders Chad correctly 1`] = `
+<div>
+  <div
+    class="w-full flex justify-center bg-gray-100 rounded-lg p-4 shadow-inner"
+  >
+    <svg
+      class="shadow-xl select-none"
+      style="width: 100%; height: auto; max-width: 600px; background-color: rgb(255, 255, 255);"
+      viewBox="0 0 600 400"
+    >
+      <mask
+        id="flag-mask"
+      >
+        <rect
+          fill="white"
+          height="400"
+          width="600"
+        />
+      </mask>
+      <g
+        mask="url(#flag-mask)"
+      >
+        <g>
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#002664"
+            height="400"
+            width="200"
+            x="0"
+            y="0"
+          />
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#FECB00"
+            height="400"
+            width="200"
+            x="200"
+            y="0"
+          />
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#C60C30"
+            height="400"
+            width="200"
+            x="400"
+            y="0"
+          />
+        </g>
       </g>
       <rect
         class="pointer-events-none"

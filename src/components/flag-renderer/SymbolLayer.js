@@ -130,17 +130,26 @@ export const SymbolLayer = ({
         }
 
         return (
-            <foreignObject key={index} x={cx - w / 2} y={cy - h / 2} width={w} height={h}
-                           transform={transform} {...commonProps}>
-                <div style={{
-                    width: '100%', height: '100%',
-                    backgroundColor: highlightMode ? 'transparent' : color,
-                    WebkitMaskImage: `url(${mergedSymbol.src})`, maskImage: `url(${mergedSymbol.src})`,
-                    WebkitMaskSize: 'contain', maskSize: 'contain',
-                    WebkitMaskRepeat: 'no-repeat', maskRepeat: 'no-repeat', maskPosition: 'center',
-                    border: highlightMode ? (highlightMode === 'selection' ? '4px solid #3B82F6' : '4px solid #FACC15') : 'none'
-                }}/>
-            </foreignObject>
+            <g key={index}>
+                <foreignObject x={cx - w / 2} y={cy - h / 2} width={w} height={h}
+                               transform={transform} {...(!highlightMode ? bindEvents('symbol', index) : {})}>
+                    <div style={{
+                        width: '100%', height: '100%',
+                        backgroundColor: color,
+                        WebkitMaskImage: `url(${mergedSymbol.src})`, maskImage: `url(${mergedSymbol.src})`,
+                        WebkitMaskSize: 'contain', maskSize: 'contain',
+                        WebkitMaskRepeat: 'no-repeat', maskRepeat: 'no-repeat', maskPosition: 'center'
+                    }}/>
+                </foreignObject>
+                {highlightMode && (
+                    <rect x={cx - w / 2} y={cy - h / 2} width={w} height={h}
+                          transform={transform}
+                          fill="none"
+                          stroke={styles.stroke || '#3B82F6'}
+                          strokeWidth={styles.strokeWidth || 4}
+                    />
+                )}
+            </g>
         );
     }
     if (mergedSymbol.type === 'star') {

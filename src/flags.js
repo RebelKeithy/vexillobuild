@@ -795,5 +795,72 @@ export const LEVELS = [
                 }
             ]
         }
+    },
+    {
+        id: 37,
+        name: "Cameroon",
+        difficulty: "Intermediate",
+        description: "Peace, Work, Fatherland.",
+        hint: "Vertical tricolor (Green, Red, Yellow). Yellow star in the center.",
+        aspectRatio: 2/3,
+        colorOverrides: {
+            'green': '#007A5E',
+            'red': '#CE1126',
+            'gold': '#FCD116'
+        },
+        target: {
+            base: { type: 'vertical-tricolor', colors: ['green', 'red', 'gold'] },
+            overlays: [],
+            symbols: [
+                {
+                    type: 'star',
+                    color: 'gold',
+                    points: 5,
+                    scale: 1.0
+                }
+            ]
+        }
+    },
+    {
+        id: 38,
+        name: "Canada",
+        difficulty: "Intermediate",
+        description: "The Maple Leaf.",
+        hint: "Three vertical bands (Red, White, Red) with a red maple leaf in the center.",
+        aspectRatio: 1/2,
+        colorOverrides: {
+            'red': '#FF0000'
+        },
+        target: {
+            base: { type: 'vertical-tricolor', colors: ['red', 'white', 'red'], ratios: [1, 2, 1] },
+            overlays: [],
+            symbols: [
+                {
+                    type: 'external',
+                    src: 'https://upload.wikimedia.org/wikipedia/commons/8/8f/Maple_Leaf.svg',
+                    color: "red",
+                    height: 108/128,
+                    width: 104/256
+                }
+            ]
+        }
+    },
+    {
+        id: 39,
+        name: "Chad",
+        difficulty: "Novice",
+        description: "Liberty, Equality, Fraternity.",
+        hint: "Vertical tricolor: Blue, Gold, Red.",
+        aspectRatio: 2/3,
+        colorOverrides: {
+            'blue': '#002664',
+            'gold': '#FECB00',
+            'red': '#C60C30'
+        },
+        target: {
+            base: { type: 'vertical-tricolor', colors: ['blue', 'gold', 'red'] },
+            overlays: [],
+            symbols: []
+        }
     }
 ];
