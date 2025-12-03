@@ -309,9 +309,10 @@ export const LEVELS = [
             symbols: [
                 // Union Jack (Use aspect ratio 2 to stretch it)
                 {
-                    type: 'seal',
+                    type: 'external',
                     src: 'https://upload.wikimedia.org/wikipedia/commons/a/a5/Flag_of_the_United_Kingdom_%281-2%29.svg',
                     parentIndex: 0,
+                    color: null,
                     scale: 3.33,
                     aspectRatio: 2
                 },
@@ -966,6 +967,45 @@ export const LEVELS = [
                     radius: 0.04,
                     spacing: 15/144,
                     xOffset: 50/240 - 0.5
+                }
+            ]
+        }
+    },
+    {
+        id: 43,
+        name: "Cook Islands",
+        difficulty: "Advanced",
+        description: "Fifteen stars for fifteen islands.",
+        hint: "Blue field. Union Jack in the canton. Circle of 15 white stars on the fly.",
+        aspectRatio: 1/2,
+        colorOverrides: {
+            'blue': '#012169'
+        },
+        target: {
+            base: { type: 'solid', colors: ['blue'] },
+            overlays: [
+                { type: 'canton', position: 'top-left', color: 'blue', widthRatio: 0.5, heightRatio: 0.5 }
+            ],
+            symbols: [
+                {
+                    type: 'external',
+                    src: 'https://upload.wikimedia.org/wikipedia/commons/a/a5/Flag_of_the_United_Kingdom_%281-2%29.svg',
+                    parentIndex: 0,
+                    color: null,
+                    scale: 3.33,
+                    aspectRatio: 2
+                },
+                {
+                    type: 'star',
+                    color: 'white',
+                    count: 15,
+                    layout: 'arc',
+                    radius: 9/120,
+                    xOffset: 0.25,
+                    yOffset: 0,
+                    circleRadius: 44/120,
+                    arcSpan: 2 * Math.PI,
+                    rotateRadially: true
                 }
             ]
         }

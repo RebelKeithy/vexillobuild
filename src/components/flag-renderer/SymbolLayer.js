@@ -171,10 +171,10 @@ export const SymbolLayer = ({
 
         // Handle multiple stars (returns object with positions)
         const {positions} = starResult;
-        const generateSingleStarPoints = (centerX, centerY) => {
+        const generateSingleStarPoints = (centerX, centerY, customRotation = null) => {
             const pointsCount = mergedSymbol.points || 5;
             const innerRadius = mergedSymbol.innerRadius || (pointsCount === 5 ? 0.382 : 0.4);
-            const rotation = mergedSymbol.rotation || 0;
+            const rotation = customRotation !== null ? customRotation : (mergedSymbol.rotation || 0);
 
             const points = [];
             const offset = (rotation * Math.PI) / 180;
@@ -210,14 +210,25 @@ export const SymbolLayer = ({
         return (
             <g key={index}>
                 {/* Render all stars in the group */}
-                {positions.map((pos, i) => (
-                    <polygon
-                        key={`star-${i}`}
-                        points={generateSingleStarPoints(pos.cx, pos.cy)}
-                        fill={highlightMode ? 'none' : color}
-                        {...(!highlightMode ? {} : {})}
-                    />
-                ))}
+                {positions.map((pos, i) => {
+                    // Calculate radial rotation if enabled
+                    let starRotation = null;
+                    if (mergedSymbol.rotateRadially && mergedSymbol.layout === 'arc') {
+                        // Calculate angle from center (cx, cy) to this star's position
+                        const angle = Math.atan2(pos.cy - cy, pos.cx - cx);
+                        // Convert to degrees and add 90 to point outward
+                        starRotation = (angle * 180 / Math.PI) + 90;
+                    }
+
+                    return (
+                        <polygon
+                            key={`star-${i}`}
+                            points={generateSingleStarPoints(pos.cx, pos.cy, starRotation)}
+                            fill={highlightMode ? 'none' : color}
+                            {...(!highlightMode ? {} : {})}
+                        />
+                    );
+                })}
                 {/* Single invisible rect for interaction - covers the entire group */}
                 <rect
                     x={minX - padding}

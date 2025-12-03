@@ -25,6 +25,16 @@ This document tracks flags that have been skipped due to complexity or missing c
 - **Status**: Incomplete - stars in arc need to rotate to point toward center star; small star sizing may need adjustment
 - **Notes**: Arc layout works, but stars maintain fixed rotation instead of rotating as they move around the arc
 
+### Democratic Republic of the Congo (DRC)
+- **Reason**: Diagonal stripe with star not yet supported
+- **ID**: Not yet added
+- **Status**: Skipped - needs diagonal bend overlay capability (diagonal stripe running from lower hoist to upper fly with star on it)
+
+### Republic of the Congo
+- **Reason**: Diagonal stripe not yet supported
+- **ID**: Not yet added
+- **Status**: Skipped - needs diagonal bend overlay capability (diagonal stripe running from lower hoist to upper fly)
+
 ---
 
 **Note**: This list will be updated as new flags are added or when capabilities are enhanced to support these flags.
