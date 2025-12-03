@@ -142,7 +142,6 @@ export const renderFlagOverlay = ({type, width, height, overlayConfig, renderSha
             const sX = side === 'right' ? width - sW : 0;
             return renderShape('rect', {x: sX, width: sW, height});
         case 'diamond':
-            console.log(`DIAMOND OVERLAY CONFIG: ${JSON.stringify(overlayConfig, null, 2)}`)
             const cx = 0;
             const cy = 0;
             const diamond_height = 0.75;

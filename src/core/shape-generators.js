@@ -182,21 +182,18 @@ export const SHAPE_GENERATORS = {
     diamond: ({h, w, cx, cy, width, height, args}) => {
         width = args.widthRatio ? args.widthRatio : width;
         height = args.heightRatio || height;
-        console.log(`Diamond params: ${h}, ${w}, ${cx}, ${cy}, ${width}, ${height}`)
         const x1 = h * cx + w / 2 - h * width / 2;
         const x2 = h * cx + w / 2;
         const x3 = h * cx + w / 2 + h * width / 2;
         const y1 = h * cy + h / 2 + h * height / 2;
         const y2 = h * cy + h / 2;
         const y3 = h * cy + h / 2 - h * height / 2;
-        console.log(`Diamond points: ${x1}`)
         const points = [
             `${x1},${y2}`,
             `${x2},${y3}`,
             `${x3},${y2}`,
             `${x2},${y1}`
-        ]
-        console.log(`Diamond points: ${points.join(' ')}`)
+        ];
         return points.join(' ');
     },
     saltire: ({w, h, args}) => {
