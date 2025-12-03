@@ -1668,6 +1668,98 @@ exports[`Flag Snapshots renders Burkina Faso correctly 1`] = `
 </div>
 `;
 
+exports[`Flag Snapshots renders Burundi correctly 1`] = `
+<div>
+  <div
+    class="w-full flex justify-center bg-gray-100 rounded-lg p-4 shadow-inner"
+  >
+    <svg
+      class="shadow-xl select-none"
+      style="width: 100%; height: auto; max-width: 600px; background-color: rgb(255, 255, 255);"
+      viewBox="0 0 600 360"
+    >
+      <mask
+        id="flag-mask"
+      >
+        <rect
+          fill="white"
+          height="360"
+          width="600"
+        />
+      </mask>
+      <g
+        mask="url(#flag-mask)"
+      >
+        <g>
+          <polygon
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#EF3340"
+            points="0,0 600,0 300,180"
+          />
+          <polygon
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#007A3D"
+            points="600,0 600,360 300,180"
+          />
+          <polygon
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#EF3340"
+            points="600,360 0,360 300,180"
+          />
+          <polygon
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#007A3D"
+            points="0,360 0,0 300,180"
+          />
+        </g>
+        <polygon
+          class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+          fill="#FFFFFF"
+          points="0,27.988569095257446 0,0 46.647615158762406,0 300,152.01143090474255 553.3523848412376,0 600,0 600,27.988569095257446 346.6476151587624,180 600,332.01143090474255 600,360 553.3523848412376,360 300,207.98856909525745 46.647615158762406,360 0,360 0,332.01143090474255 253.3523848412376,180"
+          stroke="none"
+          stroke-linejoin="miter"
+          stroke-width="0"
+        />
+        <circle
+          class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+          cx="300"
+          cy="180"
+          display="block"
+          fill="#FFFFFF"
+          r="107.73000000000002"
+        />
+        <polygon
+          class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+          display="block"
+          fill="#EF3340"
+          points="300,100.44 307.7895,113.94819023444222 323.38268590217984,113.94 315.579,127.44 323.38268590217984,140.94 307.7895,140.93180976555777 300,154.44 292.2105,140.93180976555777 276.61731409782016,140.94 284.421,127.44 276.61731409782016,113.94 292.21049999999997,113.94819023444224"
+        />
+        <polygon
+          class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+          display="block"
+          fill="#EF3340"
+          points="254.28,179.388 262.0695,192.89619023444223 277.6626859021798,192.888 269.859,206.388 277.6626859021799,219.888 262.0695,219.87980976555778 254.28,233.388 246.4905,219.87980976555778 230.89731409782016,219.888 238.701,206.388 230.89731409782016,192.888 246.4905,192.89619023444223"
+        />
+        <polygon
+          class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+          display="block"
+          fill="#EF3340"
+          points="345.72,179.388 353.5095,192.89619023444223 369.10268590217987,192.888 361.29900000000004,206.388 369.10268590217987,219.888 353.5095,219.87980976555778 345.72,233.388 337.93050000000005,219.87980976555778 322.3373140978202,219.888 330.141,206.388 322.3373140978202,192.888 337.9305,192.89619023444223"
+        />
+      </g>
+      <rect
+        class="pointer-events-none"
+        fill="none"
+        height="360"
+        stroke="#ddd"
+        stroke-width="1"
+        width="600"
+      />
+    </svg>
+  </div>
+</div>
+`;
+
 exports[`Flag Snapshots renders Chile correctly 1`] = `
 <div>
   <div

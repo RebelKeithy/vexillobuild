@@ -85,7 +85,7 @@ Each flag object must adhere to the following structure:
 ```
 
 ### Supported Base Types
-These are defined in `src/components/flag-renderer/BaseLayer.js`:
+These are defined in `src/utils/flagRenderers.js`:
 -   `solid`: Single color.
 -   `vertical-tricolor`: Three vertical stripes.
 -   `horizontal-stripes`: N horizontal stripes (requires `count`, supports `ratios`).
@@ -93,14 +93,18 @@ These are defined in `src/components/flag-renderer/BaseLayer.js`:
 -   `bisection-vertical`: Two vertical halves.
 -   `bisection-diagonal-left`: Diagonal division (top-left to bottom-right).
 -   `bisection-diagonal-right`: Diagonal division (top-right to bottom-left).
+-   `quadrisection-diagonal`: Four diagonal quadrants meeting at center.
 -   `serrated-vertical`: Vertical division with a serrated edge.
 
 ### Common Overlay Types
-These are defined in `src/components/flag-renderer/OverlayLayer.js`:
+These are defined in `src/utils/flagRenderers.js`:
 -   `canton`: Rectangular area in the top-left corner.
 -   `triangle`: Left-aligned triangle.
 -   `triangle-corner`: Triangle in a corner (requires `corner` property).
 -   `pall`: Y-shaped division (requires geometry configuration).
+-   `side`: Vertical band on left or right edge (requires `side` property).
+-   `diamond`: Diamond/rhombus shape centered on flag.
+-   `saltire`: X-shaped diagonal cross (requires `widthRatio` property).
 
 ### Common Symbol Types
 These are defined in `src/components/flag-renderer/SymbolLayer.js`:
@@ -127,27 +131,130 @@ These are composed together in `FlagPreview` component (`src/components/flag-ren
 ### Technical Steps
 
 #### 1. Adding a New Base Pattern
-1.  Open `src/components/flag-renderer/BaseLayer.js`.
-2.  Locate the `renderBasePattern` function.
-3.  Add a new `case 'new-type-name':` to the switch statement.
-4.  Implement the SVG logic (usually returning a `<g>` containing `<rect>`s or `<polygon>`s).
-5.  Ensure you handle `isSelected` and `isHovered` states if the user needs to interact with specific parts.
-6.  Add the new type to the `BASE_TYPES` array in `src/components/controls/BaseControls.js` so users can select it.
-7.  If needed, create a preview in `src/components/previews/BaseOptionPreview.js`.
 
-#### 2. Adding a New Geometric Shape (for Overlays/Symbols)
-1.  If the shape is complex (e.g., a specific cross or polygon), add a generator function to the `SHAPE_GENERATORS` object in `src/core/shape-generators.js`.
-    *   Input: `{ w, h, args }` or `{ cx, cy, r, args }`.
-    *   Output: SVG path data string or points string.
-2.  **For Overlays**:
-    *   Update `src/components/flag-renderer/OverlayLayer.js`.
-    *   Add logic for your new type in the `renderOverlay` function.
-    *   Add the new type to the options in `src/components/controls/OverlayControls.js`.
-    *   Create a preview in `src/components/previews/OverlayOptionPreview.js`.
-3.  **For Symbols**:
-    *   Update `src/components/flag-renderer/SymbolLayer.js`.
-    *   Add logic for your new type in the `renderSymbol` function.
-    *   Add the new type to the options in `src/components/controls/SymbolControls.js`.
+**Implementation Steps:**
+1.  **Add Shape Generator** (if needed):
+    *   Open `src/core/shape-generators.js`.
+    *   Add a generator function to the `SHAPE_GENERATORS` object if the pattern requires complex geometry.
+    *   Input: `{ w, h, args }` for width/height-based shapes.
+    *   Output: SVG points string (e.g., `"0,0 100,50 0,100"`).
+
+2.  **Update Renderer**:
+    *   Open `src/utils/flagRenderers.js`.
+    *   Locate the `renderFlagBase` function.
+    *   Add a new `case 'new-type-name':` to the switch statement.
+    *   Implement the SVG logic (usually returning a `<g>` containing `<rect>`s or `<polygon>`s).
+    *   Use `renderRect` or `renderPolygon` callbacks to ensure proper interactivity.
+
+3.  **Register in UI Controls**:
+    *   Open `src/components/controls/BaseControls.js`.
+    *   Add `'new-type-name'` to the `BASE_TYPES` array.
+    *   This makes the pattern selectable in the UI.
+
+4.  **Add Preview**:
+    *   Open `src/components/previews/BaseOptionPreview.js`.
+    *   Add a case for your new type in the `getPreviewConfig()` function.
+    *   Provide appropriate colors and configuration for the preview thumbnail.
+
+**Example: Adding `quadrisection-diagonal`**
+```javascript
+// 1. In flagRenderers.js
+case 'quadrisection-diagonal':
+    const cx = width / 2;
+    const cy = height / 2;
+    const qtl = `0,0 ${width},0 ${cx},${cy}`;
+    const qtr = `${width},0 ${width},${height} ${cx},${cy}`;
+    const qbr = `${width},${height} 0,${height} ${cx},${cy}`;
+    const qbl = `0,${height} 0,0 ${cx},${cy}`;
+    return (
+        <g>
+            {renderPolygon(0, qtl, 'tl')}
+            {renderPolygon(1, qtr, 'tr')}
+            {renderPolygon(2, qbr, 'br')}
+            {renderPolygon(3, qbl, 'bl')}
+        </g>
+    );
+
+// 2. In BaseControls.js
+const BASE_TYPES = [
+    'vertical-tricolor',
+    'horizontal-stripes',
+    // ... other types
+    'quadrisection-diagonal',  // ADD THIS
+    'solid'
+];
+
+// 3. In BaseOptionPreview.js
+case 'quadrisection-diagonal':
+    return {colors: [yellow, greyBg, yellow, greyBg]};
+```
+
+#### 2. Adding a New Overlay Type
+
+**Implementation Steps:**
+1.  **Add Shape Generator** (if needed):
+    *   Open `src/core/shape-generators.js`.
+    *   Add a generator function to the `SHAPE_GENERATORS` object.
+    *   For overlays with borders, return a **single polygon** (not multiple) to enable proper stroke rendering.
+    *   Input: `{ w, h, args }` for width/height-based shapes.
+    *   Output: SVG points string.
+
+2.  **Update Renderer**:
+    *   Open `src/utils/flagRenderers.js`.
+    *   Locate the `renderFlagOverlay` function.
+    *   Add a new `case 'new-overlay-type':` to the switch statement.
+    *   Call your shape generator and use `renderShape('polygon', {...})` to render it.
+    *   Use `strokeLinejoin: "miter"` or `"round"` as appropriate for clean corners.
+
+3.  **Register in UI Controls**:
+    *   Open `src/components/controls/OverlayControls.js`.
+    *   Add a button in the overlay options grid that calls `addItem('overlays', {...})` with your new type.
+    *   Include default properties (e.g., `color: null`, `widthRatio: 0.15`).
+
+4.  **Add Preview**:
+    *   Open `src/components/previews/OverlayOptionPreview.js`.
+    *   The preview should automatically work if you're using `renderFlagOverlay`, but verify it renders correctly.
+    *   If needed, pass `defaultProps` to configure the preview appearance.
+
+**Example: Adding `saltire`**
+```javascript
+// 1. In shape-generators.js
+saltire: ({w, h, args}) => {
+    const bandWidth = h * (args.widthRatio || 0.15);
+    const halfWidth = bandWidth / 2;
+    const len = Math.sqrt(w * w + h * h);
+    const dx = halfWidth * (len / h);
+    const dy = halfWidth * (len / w);
+
+    // Return single polygon with 16 points for 4 arms
+    const points = [
+        `${0},${dy}`, `${0},${0}`, `${dx},${0}`,
+        `${w/2},${h/2 - dy}`,
+        `${w - dx},${0}`, `${w},${0}`, `${w},${dy}`,
+        // ... continue for all 4 arms
+    ];
+    return points.join(' ');
+}
+
+// 2. In flagRenderers.js
+case 'saltire':
+    const saltirePoints = SHAPE_GENERATORS.saltire({w: width, h: height, args: overlayConfig});
+    return renderShape('polygon', {points: saltirePoints, strokeLinejoin: "miter"});
+
+// 3. In OverlayControls.js
+<button onClick={() => addItem('overlays', {type: 'saltire', color: null, widthRatio: 0.15})}
+        className="flex flex-col items-center gap-2 p-2 bg-slate-700 hover:bg-slate-600 rounded border border-slate-600 text-xs transition-all">
+    <div className="w-full aspect-[3/2] bg-slate-800/50 rounded overflow-hidden shadow-sm">
+        <OverlayOptionPreview type="saltire" defaultProps={{widthRatio: 0.15}}/>
+    </div>
+    <span className="font-medium">Saltire</span>
+</button>
+```
+
+**Important Notes for Overlays:**
+- **Single Polygon**: Always generate overlays as a single polygon, not multiple separate shapes, to support border rendering.
+- **Border Support**: Overlays can have `borderColor` property which renders as a stroke around the shape.
+- **Interactivity**: The `OverlayLayer` component handles selection and hover states automatically.
 
 #### 3. Adding a New Symbol
 1.  Open `src/components/flag-renderer/SymbolLayer.js`.

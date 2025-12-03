@@ -114,5 +114,61 @@ export const SHAPE_GENERATORS = {
         ]
         console.log(`Diamond points: ${points.join(' ')}`)
         return points.join(' ');
+    },
+    saltire: ({w, h, args}) => {
+        // Saltire is an X-shaped cross
+        // Returns a single polygon with 12 points (corners are beveled/flat)
+
+        // Safety check for args
+        const ratio = (args && args.widthRatio) ? args.widthRatio : 0.15;
+        const bandWidth = h * ratio;
+        const halfWidth = bandWidth / 2;
+        const len = Math.sqrt(w * w + h * h);
+
+        // Calculate axis intercepts (The "scissors" effect)
+        // Instead of perpendicular offsets, we calculate how far the band
+        // extends along the X and Y axes.
+        // dx: Distance from corner/center along the X-axis
+        // dy: Distance from corner/center along the Y-axis
+        const dx = halfWidth * (len / h);
+        const dy = halfWidth * (len / w);
+
+        // Create the 12 vertices.
+        // Order: Clockwise starting from the Top-Left arm's left side.
+        const points = [
+            // Top-Left Arm
+            `${0},${dy}`,           // Hits Left Edge
+            `${0},${0}`,
+            `${dx},${0}`,           // Hits Top Edge
+
+            // Top Center Notch (Armpit)
+            `${w/2},${h/2 - dy}`,
+
+            // Top-Right Arm
+            `${w - dx},${0}`,       // Hits Top Edge
+            `${w},${0}`,
+            `${w},${dy}`,           // Hits Right Edge
+
+            // Right Center Notch
+            `${w/2 + dx},${h/2}`,
+
+            // Bottom-Right Arm
+            `${w},${h - dy}`,       // Hits Right Edge
+            `${w},${h}`,
+            `${w - dx},${h}`,       // Hits Bottom Edge
+
+            // Bottom Center Notch
+            `${w/2},${h/2 + dy}`,
+
+            // Bottom-Left Arm
+            `${dx},${h}`,           // Hits Bottom Edge
+            `${0},${h}`,
+            `${0},${h - dy}`,       // Hits Left Edge
+
+            // Left Center Notch
+            `${w/2 - dx},${h/2}`
+        ];
+
+        return points.join(' ');
     }
 };

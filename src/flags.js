@@ -668,5 +668,55 @@ export const LEVELS = [
                 }
             ]
         }
+    },
+    {
+        id: 34,
+        name: "Burundi",
+        difficulty: "Advanced",
+        description: "Unity, Work, Progress.",
+        hint: "Diagonal quadrisection (Red/Green). White Saltire. Three Red Stars with Green borders in the center.",
+        aspectRatio: 3/5,
+        target: {
+            base: { type: 'quadrisection-diagonal', colors: ['red', 'green', 'red', 'green'] },
+            overlays: [
+                { type: 'saltire', color: 'white', widthRatio: 20/150 }
+            ],
+            symbols: [
+                {
+                    type: 'circle',
+                    color: 'white',
+                    scale: 1.33
+                },
+                {
+                    type: 'star',
+                    color: 'red',
+                    borderColor: 'green',
+                    points: 6,
+                    scale: 0.5,
+                    innerRadius: 0.577,
+                    yOffset: -0.146
+                },
+                {
+                    type: 'star',
+                    color: 'red',
+                    borderColor: 'green',
+                    points: 6,
+                    scale: 0.5,
+                    innerRadius: 0.577,
+                    xOffset: -0.127 * 3/5,
+                    yOffset: 0.0733
+                },
+                {
+                    type: 'star',
+                    color: 'red',
+                    borderColor: 'green',
+                    points: 6,
+                    scale: 0.5,
+                    innerRadius: 0.577,
+                    xOffset: 0.127 * 3/5,
+                    yOffset: 0.0733
+                }
+            ]
+        }
     }
 ];

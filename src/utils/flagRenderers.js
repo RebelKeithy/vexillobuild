@@ -88,6 +88,22 @@ export const renderFlagBase = ({type, width, height, colors, count, ratios, base
                     {poly}
                 </g>
             );
+        case 'quadrisection-diagonal':
+            // Four triangular sections: top-left, top-right, bottom-left, bottom-right
+            const cx = width / 2;
+            const cy = height / 2;
+            const qtl = `0,0 ${width},0 ${cx},${cy}`;
+            const qtr = `${width},0 ${width},${height} ${cx},${cy}`;
+            const qbr = `${width},${height} 0,${height} ${cx},${cy}`;
+            const qbl = `0,${height} 0,0 ${cx},${cy}`;
+            return (
+                <g>
+                    {renderPolygon ? renderPolygon(0, qtl, 'tl') : <polygon points={qtl} fill={colors[0]}/>}
+                    {renderPolygon ? renderPolygon(1, qtr, 'tr') : <polygon points={qtr} fill={colors[1]}/>}
+                    {renderPolygon ? renderPolygon(2, qbr, 'br') : <polygon points={qbr} fill={colors[2]}/>}
+                    {renderPolygon ? renderPolygon(3, qbl, 'bl') : <polygon points={qbl} fill={colors[3]}/>}
+                </g>
+            );
         default:
             return <g>{_renderRect(0, 0, 0, width, height)}</g>;
     }
@@ -121,6 +137,9 @@ export const renderFlagOverlay = ({type, width, height, overlayConfig, renderSha
             const diamond_width = 0.75 * width / height;
             const points = SHAPE_GENERATORS.diamond({w: width, h: height, cx, cy, width: diamond_width, height: diamond_height, args: overlayConfig});
             return renderShape('polygon', {points: points, strokeLinejoin: "round"});
+        case 'saltire':
+            const saltirePoints = SHAPE_GENERATORS.saltire({w: width, h: height, args: overlayConfig});
+            return renderShape('polygon', {points: saltirePoints, strokeLinejoin: "miter"});
         default:
             return null;
     }

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Saltire Test</title>
+    <style>
+        body {
+            margin: 20px;
+            background: #1e293b;
+            font-family: monospace;
+            color: white;
+        }
+        .container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .test-case {
+            background: #334155;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        svg {
+            border: 1px solid #475569;
+            background: white;
+        }
+        h3 { margin-top: 0; }
+        code {
+            background: #0f172a;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Saltire Test Cases</h1>
+
+    <div class="container">
+        <div class="test-case">
+            <h3>Current Implementation</h3>
+            <p>Width: 300, Height: 180, Band Width: 27</p>
+            <svg viewBox="0 0 300 180" width="300" height="180">
+                <rect width="300" height="180" fill="#e5e5e5"/>
+                <g id="current-saltire"></g>
+            </svg>
+        </div>
+
+        <div class="test-case">
+            <h3>Fixed Implementation</h3>
+            <p>Width: 300, Height: 180, Band Width: 27</p>
+            <svg viewBox="0 0 300 180" width="300" height="180">
+                <rect width="300" height="180" fill="#e5e5e5"/>
+                <g id="fixed-saltire"></g>
+            </svg>
+        </div>
+
+        <div class="test-case">
+            <h3>Square Flag</h3>
+            <p>Width: 200, Height: 200, Band Width: 30</p>
+            <svg viewBox="0 0 200 200" width="200" height="200">
+                <rect width="200" height="200" fill="#e5e5e5"/>
+                <g id="square-saltire"></g>
+            </svg>
+        </div>
+    </div>
+
+    <script>
+        // Current implementation (from your code)
+        function currentSaltire(w, h, bandWidth) {
+            const cx = w / 2;
+            const cy = h / 2;
+
+            const diagonal1Length = Math.sqrt(w * w + h * h);
+            const diagonal2Length = diagonal1Length;
+
+            const angle1 = Math.atan2(h, w);
+            const angle2 = Math.atan2(h, -w);
+
+            const offset = bandWidth / 2;
+            const dx1 = offset * Math.sin(angle1);
+            const dy1 = offset * Math.cos(angle1);
+            const dx2 = offset * Math.sin(angle2);
+            const dy2 = offset * Math.cos(angle2);
+
+            const band1 = [
+                `${0 + dx1},${0 - dy1}`,
+                `${0 - dx1},${0 + dy1}`,
+                `${w - dx1},${h + dy1}`,
+                `${w + dx1},${h - dy1}`
+            ].join(' ');
+
+            const band2 = [
+                `${w - dx2},${0 - dy2}`,
+                `${w + dx2},${0 + dy2}`,
+                `${0 + dx2},${h + dy2}`,
+                `${0 - dx2},${h - dy2}`
+            ].join(' ');
+
+            return { band1, band2 };
+        }
+
+        // Fixed implementation - single polygon with proper perpendicular offsets
+        function fixedSaltire(w, h, bandWidth) {
+            const halfWidth = bandWidth / 2;
+
+            // Calculate the perpendicular offsets for each diagonal
+            // For a line from (0,0) to (w,h), the perpendicular unit vector is (-h, w) / length
+            const len1 = Math.sqrt(w * w + h * h);
+            const dx1 = (-h / len1) * halfWidth;
+            const dy1 = (w / len1) * halfWidth;
+
+            // For a line from (w,0) to (0,h), the perpendicular unit vector is (h, w) / length
+            const dx2 = (h / len1) * halfWidth;
+            const dy2 = (w / len1) * halfWidth;
+
+            // Four arms of the saltire meeting at center
+            const points = [
+                // Top-left arm (from top edge to center)
+                `${w/2 - dx1 - dx2},${0}`,
+                `${w/2 + dx1 - dx2},${0}`,
+                `${w/2 + dx1},${h/2 - dy1}`,
+
+                // Right arm (from center to right edge)
+                `${w},${h/2 - dy1 - dy2}`,
+                `${w},${h/2 + dy1 - dy2}`,
+                `${w/2 + dx1},${h/2 + dy1}`,
+
+                // Bottom-right arm (from center to bottom edge)
+                `${w/2 + dx1 + dx2},${h}`,
+                `${w/2 - dx1 + dx2},${h}`,
+                `${w/2 - dx1},${h/2 + dy1}`,
+
+                // Left arm (from center to left edge)
+                `${0},${h/2 + dy1 + dy2}`,
+                `${0},${h/2 - dy1 + dy2}`,
+                `${w/2 - dx1},${h/2 - dy1}`
+            ];
+
+            return points.join(' ');
+        }
+
+        // Render current implementation
+        const current = currentSaltire(300, 180, 27);
+        document.getElementById('current-saltire').innerHTML = `
+            <polygon points="${current.band1}" fill="#dc2626" stroke="none"/>
+            <polygon points="${current.band2}" fill="#dc2626" stroke="none"/>
+        `;
+
+        // Render fixed implementation
+        const fixed = fixedSaltire(300, 180, 27);
+        document.getElementById('fixed-saltire').innerHTML = `
+            <polygon points="${fixed}" fill="#dc2626" stroke="#166534" stroke-width="3"/>
+        `;
+
+        // Render square test
+        const square = fixedSaltire(200, 200, 30);
+        document.getElementById('square-saltire').innerHTML = `
+            <polygon points="${square}" fill="#dc2626" stroke="#166534" stroke-width="3"/>
+        `;
+    </script>
+</body>
+</html>

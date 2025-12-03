@@ -91,6 +91,13 @@ export const OverlayControls = ({gameState, selectedElement, setSelectedElement,
                     </div>
                     <span className="font-medium">Diamond</span>
                 </button>
+                <button onClick={() => addItem('overlays', {type: 'saltire', color: null, widthRatio: 0.15})}
+                        className="flex flex-col items-center gap-2 p-2 bg-slate-700 hover:bg-slate-600 rounded border border-slate-600 text-xs transition-all">
+                    <div className="w-full aspect-[3/2] bg-slate-800/50 rounded overflow-hidden shadow-sm">
+                        <OverlayOptionPreview type="saltire" defaultProps={{widthRatio: 0.15}}/>
+                    </div>
+                    <span className="font-medium">Saltire</span>
+                </button>
             </div>
         </>
     );
