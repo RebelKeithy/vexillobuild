@@ -1255,5 +1255,96 @@ export const LEVELS = [
                 }
             ]
         }
+    },
+    {
+        id: 54,
+        name: "England",
+        difficulty: "Novice",
+        description: "St George's Cross.",
+        hint: "White field. Red centered cross.",
+        aspectRatio: 3/5,
+        colorOverrides: {
+            'red': '#CE1126'
+        },
+        target: {
+            base: { type: 'solid', colors: ['white'] },
+            overlays: [
+                { type: 'cross', color: 'red', crossWidth: 0.2 }
+            ],
+            symbols: []
+        }
+    },
+    {
+        id: 55,
+        name: "Equatorial Guinea",
+        difficulty: "Intermediate",
+        description: "Unidad, Paz, Justicia.",
+        hint: "Green, white, red horizontal stripes. Blue triangle at hoist. Coat of arms in center.",
+        aspectRatio: 2/3,
+        colorOverrides: {
+            'green': '#3E9A00',
+            'red': '#E32118',
+            'blue': '#0073CE'
+        },
+        target: {
+            base: { type: 'horizontal-stripes', count: 3, colors: ['green', 'white', 'red'] },
+            overlays: [
+                { type: 'triangle', position: 'hoist', color: 'blue', vertexXRatio: 9/24 }
+            ],
+            symbols: [
+                {
+                    type: 'seal',
+                    src: 'https://upload.wikimedia.org/wikipedia/commons/f/f8/Coat_of_arms_of_Equatorial_Guinea.svg',
+                    color: null,
+                    aspectRatio: 1277/1527,
+                    scale: 1
+                }
+            ]
+        }
+    },
+    {
+        id: 56,
+        name: "Eritrea",
+        difficulty: "Intermediate",
+        description: "The Red Sea nation.",
+        hint: "Green and blue triangles. Large red triangle from hoist. Gold olive wreath emblem.",
+        aspectRatio: 1/2,
+        colorOverrides: {
+            'green': '#12AD2B',
+            'blue': '#4189DD',
+            'red': '#EA0437'
+        },
+        target: {
+            base: { type: 'bisection-horizontal', colors: ['green', 'blue'] },
+            overlays: [
+                { type: 'triangle', position: 'hoist', color: 'red', vertexXRatio: 2 }
+            ],
+            symbols: [
+                {
+                    type: 'seal',
+                    src: 'https://upload.wikimedia.org/wikipedia/commons/0/02/Insigne_Eritreae.svg',
+                    color: null,
+                    scale: 1.7,
+                    xOffset: -0.25
+                }
+            ]
+        }
+    },
+    {
+        id: 57,
+        name: "Estonia",
+        difficulty: "Novice",
+        description: "The Nordic-Baltic tricolor.",
+        hint: "Blue, black, white horizontal stripes.",
+        aspectRatio: 7/11,
+        colorOverrides: {
+            'blue': '#0072CE',
+            'black': '#000000'
+        },
+        target: {
+            base: { type: 'horizontal-stripes', count: 3, colors: ['blue', 'black', 'white'] },
+            overlays: [],
+            symbols: []
+        }
     }
 ];
