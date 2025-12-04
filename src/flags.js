@@ -1346,5 +1346,162 @@ export const LEVELS = [
             overlays: [],
             symbols: []
         }
+    },
+    {
+        id: 58,
+        name: "Eswatini",
+        difficulty: "Intermediate",
+        description: "The Kingdom of Eswatini.",
+        hint: "Blue, yellow, red, yellow, blue stripes. Nguni shield with spears in center.",
+        aspectRatio: 2/3,
+        colorOverrides: {
+            'blue': '#3E5EB9',
+            'gold': '#FFD900',
+            'red': '#B10C0C'
+        },
+        target: {
+            base: { type: 'horizontal-stripes', count: 5, colors: ['blue', 'gold', 'red', 'gold', 'blue'], ratios: [3, 1, 8, 1, 3] },
+            overlays: [],
+            symbols: [
+                {
+                    type: 'seal',
+                    src: 'Eswatini.svg',
+                    color: null,
+                    aspectRatio: 3/2,
+                    scale: 3.3
+                }
+            ]
+        }
+    },
+    {
+        id: 59,
+        name: "Ethiopia",
+        difficulty: "Intermediate",
+        description: "Land of Origins.",
+        hint: "Green, yellow, red horizontal stripes. Blue circle with gold star in center.",
+        aspectRatio: 1/2,
+        colorOverrides: {
+            'green': '#078930',
+            'gold': '#FCDD09',
+            'red': '#DA121A',
+            'blue': '#0F47AF'
+        },
+        target: {
+            base: { type: 'horizontal-stripes', count: 3, colors: ['green', 'gold', 'red'] },
+            overlays: [],
+            symbols: [
+                {
+                    type: 'circle',
+                    color: 'blue',
+                    radius: 1/3
+                },
+                {
+                    type: 'seal',
+                    src: 'Ethiopia.svg',
+                    color: null,
+                    scale: 2.2
+                }
+            ]
+        }
+    },
+    {
+        id: 60,
+        name: "European Union",
+        difficulty: "Intermediate",
+        description: "United in diversity.",
+        hint: "Blue field. Circle of 12 gold stars.",
+        aspectRatio: 2/3,
+        colorOverrides: {
+            'blue': '#003399',
+            'gold': '#FFCC00'
+        },
+        target: {
+            base: { type: 'solid', colors: ['blue'] },
+            overlays: [],
+            symbols: [
+                {
+                    type: 'star',
+                    color: 'gold',
+                    points: 5,
+                    count: 12,
+                    layout: 'arc',
+                    radius: 1/18,
+                    circleRadius: 1/3,
+                    arcSpan: 2 * Math.PI
+                }
+            ]
+        }
+    },
+    {
+        id: 61,
+        name: "Faroe Islands",
+        difficulty: "Intermediate",
+        description: "The Merkið - Banner of the Faroese.",
+        hint: "White field. Blue-bordered red Nordic cross.",
+        aspectRatio: 8/11,
+        colorOverrides: {
+            'blue': '#005EB8',
+            'red': '#ED2939'
+        },
+        target: {
+            base: { type: 'solid', colors: ['white'] },
+            overlays: [
+                { type: 'nordic-cross', color: 'blue', verticalOffset: 6/22, crossWidth: 4/16 },
+                { type: 'nordic-cross', color: 'red', verticalOffset: 7/22, crossWidth: 2/16 }
+            ],
+            symbols: []
+        }
+    },
+    {
+        id: 62,
+        name: "Fiji",
+        difficulty: "Intermediate",
+        description: "Rerevaka na Kalou ka Doka na Tui.",
+        hint: "Light blue field. Union Jack in canton. Shield on the fly.",
+        aspectRatio: 1/2,
+        colorOverrides: {
+            'lightBlue': '#68BFE5'
+        },
+        target: {
+            base: { type: 'solid', colors: ['lightBlue'] },
+            overlays: [
+                { type: 'canton', position: 'top-left', color: 'blue', widthRatio: 0.5, heightRatio: 0.5 }
+            ],
+            symbols: [
+                {
+                    type: 'external',
+                    src: 'https://upload.wikimedia.org/wikipedia/commons/a/a5/Flag_of_the_United_Kingdom_%281-2%29.svg',
+                    parentIndex: 0,
+                    color: null,
+                    scale: 3.33,
+                    aspectRatio: 2
+                },
+                {
+                    type: 'seal',
+                    src: 'https://upload.wikimedia.org/wikipedia/commons/4/4e/Arms_of_Fiji.svg',
+                    color: null,
+                    scale: 1.8,
+                    xOffset: 0.25
+                }
+            ]
+        }
+    },
+    {
+        id: 63,
+        name: "Finland",
+        difficulty: "Novice",
+        description: "The Blue Cross Flag.",
+        hint: "White field. Blue Nordic cross.",
+        aspectRatio: 11/18,
+        colorOverrides: {
+            'blue': '#003580'
+        },
+        target: {
+            base: { type: 'solid', colors: ['white'] },
+            overlays: [
+                { type: 'nordic-cross', color: 'blue', verticalOffset: 5/18, crossWidth: 3/11 }
+            ],
+            symbols: []
+        }
     }
 ];
