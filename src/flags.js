@@ -1503,5 +1503,212 @@ export const LEVELS = [
             ],
             symbols: []
         }
+    },
+    {
+        id: 64,
+        name: "French Polynesia",
+        difficulty: "Intermediate",
+        description: "Tahiti Nui.",
+        hint: "Red, white, red horizontal stripes (1:2:1). Coat of arms in center.",
+        aspectRatio: 2/3,
+        colorOverrides: {
+            'red': '#CE1126'
+        },
+        target: {
+            base: { type: 'horizontal-stripes', count: 3, colors: ['red', 'white', 'red'], ratios: [1, 2, 1] },
+            overlays: [],
+            symbols: [
+                {
+                    type: 'seal',
+                    src: 'https://upload.wikimedia.org/wikipedia/commons/6/65/Coat_of_arms_of_French_Polynesia.svg',
+                    color: null,
+                    scale: 1.6
+                }
+            ]
+        }
+    },
+    {
+        id: 65,
+        name: "Gabon",
+        difficulty: "Novice",
+        description: "Union, Travail, Justice.",
+        hint: "Green, yellow, blue horizontal stripes.",
+        aspectRatio: 3/4,
+        colorOverrides: {
+            'green': '#009E60',
+            'gold': '#FCD116',
+            'blue': '#3A75C4'
+        },
+        target: {
+            base: { type: 'horizontal-stripes', count: 3, colors: ['green', 'gold', 'blue'] },
+            overlays: [],
+            symbols: []
+        }
+    },
+    {
+        id: 66,
+        name: "The Gambia",
+        difficulty: "Novice",
+        description: "Progress, Peace, Prosperity.",
+        hint: "Red, white, blue, white, green horizontal stripes.",
+        aspectRatio: 2/3,
+        colorOverrides: {
+            'red': '#CE1126',
+            'blue': '#0C1C8C',
+            'green': '#3A7728'
+        },
+        target: {
+            base: { type: 'horizontal-stripes', count: 5, colors: ['red', 'white', 'blue', 'white', 'green'], ratios: [6, 1, 4, 1, 6] },
+            overlays: [],
+            symbols: []
+        }
+    },
+    {
+        id: 67,
+        name: "Georgia",
+        difficulty: "Advanced",
+        description: "The Five Cross Flag.",
+        hint: "White field. Large red cross. Four small red Bolnisi crosses in each quadrant.",
+        aspectRatio: 2/3,
+        colorOverrides: {
+            'red': '#FF0000'
+        },
+        target: {
+            base: { type: 'solid', colors: ['white'] },
+            overlays: [
+                { type: 'cross', color: 'red', crossWidth: 1/5 }
+            ],
+            symbols: [
+                { type: 'cross', color: 'red', radius: 0.08, thickness: 0.5, xOffset: -0.3, yOffset: -0.3 },
+                { type: 'cross', color: 'red', radius: 0.08, thickness: 0.5, xOffset: 0.3, yOffset: -0.3 },
+                { type: 'cross', color: 'red', radius: 0.08, thickness: 0.5, xOffset: -0.3, yOffset: 0.3 },
+                { type: 'cross', color: 'red', radius: 0.08, thickness: 0.5, xOffset: 0.3, yOffset: 0.3 }
+            ]
+        }
+    },
+    {
+        id: 68,
+        name: "Germany",
+        difficulty: "Novice",
+        description: "Einigkeit und Recht und Freiheit.",
+        hint: "Three horizontal stripes: Black, Red, Gold.",
+        aspectRatio: 3/5,
+        target: {
+            base: { type: 'horizontal-stripes', count: 3, colors: ['black', 'red', 'gold'] },
+            overlays: [],
+            symbols: []
+        }
+    },
+    {
+        id: 69,
+        name: "Ghana",
+        difficulty: "Intermediate",
+        description: "Freedom and Justice.",
+        hint: "Three horizontal stripes: Red, Gold, Green. Black star in the center.",
+        aspectRatio: 2/3,
+        target: {
+            base: { type: 'horizontal-stripes', count: 3, colors: ['red', 'gold', 'green'] },
+            overlays: [],
+            symbols: [
+                {
+                    type: 'star',
+                    color: 'black',
+                    points: 5,
+                    scale: 1.23,
+                    yOffset: 0.017,
+                }
+            ]
+        }
+    },
+    {
+        id: 70,
+        name: "Greece",
+        difficulty: "Intermediate",
+        description: "Eleftheria i Thanatos (Freedom or Death).",
+        hint: "Nine horizontal stripes: Blue and White alternating. Blue canton with white cross.",
+        aspectRatio: 2/3,
+        colorOverrides: {
+            'blue': '#0D5EAF'
+        },
+        target: {
+            base: { type: 'horizontal-stripes', count: 9, colors: ['blue', 'white'] },
+            overlays: [
+                { type: 'canton', position: 'top-left', color: 'blue', widthRatio: 10/27, heightRatio: 5/9 }
+            ],
+            symbols: [
+                {
+                    type: 'cross',
+                    color: 'white',
+                    parentIndex: 0,
+                    radius: 0.278,
+                    thickness: 0.4
+                }
+            ]
+        }
+    },
+    {
+        id: 71,
+        name: "Greenland",
+        difficulty: "Intermediate",
+        description: "Kalaallit Nunaat.",
+        hint: "White and red horizontal halves. Counter-changed disk offset toward the hoist.",
+        aspectRatio: 2/3,
+        colorOverrides: {
+            'red': '#C8102E'
+        },
+        target: {
+            base: { type: 'bisection-horizontal', colors: ['white', 'red'] },
+            overlays: [],
+            symbols: [
+                {
+                    type: 'circle',
+                    counterChanged: true,
+                    colors: ['red', 'white'],
+                    radius: 3/9,
+                    xOffset: -1/9
+                }
+            ]
+        }
+    },
+    {
+        id: 72,
+        name: "Grenada",
+        difficulty: "Advanced",
+        description: "Isle of Spice.",
+        hint: "Red border. Diagonal gold and green quarters. Red circle with gold star. Six stars in border. Nutmeg on hoist.",
+        aspectRatio: 3/5,
+        colorOverrides: {
+            'red': '#CE1126',
+            'gold': '#FCD116',
+            'green': '#007A5E'
+        },
+        target: {
+            base: { type: 'quadrisection-diagonal', colors: ['gold', 'green', 'gold', 'green'] },
+            overlays: [
+                { type: 'border', color: 'red', widthRatio: 84/600 }
+            ],
+            symbols: [
+                // Red circle in center
+                { type: 'circle', color: 'red', radius: 0.12 },
+                // Gold 7-pointed star in center circle
+                { type: 'star', color: 'gold', points: 5, scale: 0.75 },
+                // 3 stars at top border
+                { type: 'star', color: 'gold', points: 5, scale: 0.4, xOffset: -0.2, yOffset: 42/600 - 0.5 },
+                { type: 'star', color: 'gold', points: 5, scale: 0.4, xOffset: 0, yOffset: 42/600 - 0.5 },
+                { type: 'star', color: 'gold', points: 5, scale: 0.4, xOffset: 0.2, yOffset: 42/600 - 0.5 },
+                // 3 stars at bottom border
+                { type: 'star', color: 'gold', points: 5, scale: 0.35, xOffset: -0.2, yOffset: -42/600 + 0.5 },
+                { type: 'star', color: 'gold', points: 5, scale: 0.35, xOffset: 0, yOffset: -42/600 + 0.5 },
+                { type: 'star', color: 'gold', points: 5, scale: 0.35, xOffset: 0.2, yOffset: -42/600 + 0.5 },
+                // Nutmeg on left green triangle
+                {
+                    type: 'seal',
+                    src: 'Grenada.svg',
+                    color: null,
+                    scale: 0.6,
+                    xOffset: -0.32
+                }
+            ]
+        }
     }
 ];

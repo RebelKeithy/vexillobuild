@@ -169,6 +169,16 @@ export const renderFlagOverlay = ({type, width, height, overlayConfig, renderSha
         case 'nordic-cross':
             const nordicCrossPoints = SHAPE_GENERATORS.nordicCross({w: width, h: height, args: overlayConfig});
             return renderShape('polygon', {points: nordicCrossPoints});
+        case 'border':
+            // Rectangular border/frame - rendered as a path with outer and inner rectangles
+            console.log('Border widthRatio:', overlayConfig.widthRatio, 'from config:', overlayConfig);
+            const borderWidth = height * (overlayConfig.widthRatio || 1/6);
+            // Calculate inner border height to maintain visual consistency
+            const borderHeight = borderWidth; // Same absolute width on all sides
+            const borderPath = `M 0 0 L ${width} 0 L ${width} ${height} L 0 ${height} Z ` +
+                `M ${borderWidth} ${borderHeight} L ${borderWidth} ${height - borderHeight} ` +
+                `L ${width - borderWidth} ${height - borderHeight} L ${width - borderWidth} ${borderHeight} Z`;
+            return renderShape('path', {d: borderPath, fillRule: 'evenodd'});
         default:
             return null;
     }

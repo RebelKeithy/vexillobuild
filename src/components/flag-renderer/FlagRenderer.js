@@ -22,11 +22,11 @@ export const FlagPreview = ({flagState, onInteraction, selectedElement, currentL
         hovered && hovered.type === type && hovered.index === index;
 
     // --- INTERACTION HANDLER ---
-    const bindEvents = (type, index) => ({
+    const bindEvents = (type, index, colorIndex = null) => ({
         onDragOver: (e) => {
             e.preventDefault();
             e.dataTransfer.dropEffect = "copy";
-            if (!isHovered(type, index)) setHovered({type, index});
+            if (!isHovered(type, index)) setHovered({type, index, colorIndex});
         },
         onDrop: (e) => {
             e.preventDefault();
@@ -37,7 +37,7 @@ export const FlagPreview = ({flagState, onInteraction, selectedElement, currentL
                 try {
                     const data = JSON.parse(rawData);
                     if (data.source === 'palette') {
-                        onInteraction('drop', {target: {type, index}, data});
+                        onInteraction('drop', {target: {type, index, colorIndex}, data});
                     }
                 } catch (err) {
                     console.error(err);
@@ -46,9 +46,9 @@ export const FlagPreview = ({flagState, onInteraction, selectedElement, currentL
         },
         onClick: (e) => {
             e.stopPropagation();
-            onInteraction('click', {type, index});
+            onInteraction('click', {type, index, colorIndex});
         },
-        onMouseEnter: () => setHovered({type, index}),
+        onMouseEnter: () => setHovered({type, index, colorIndex}),
         onMouseLeave: () => setHovered(null),
         className: "cursor-pointer transition-opacity hover:opacity-90 outline-none"
     });
@@ -177,6 +177,7 @@ export const FlagPreview = ({flagState, onInteraction, selectedElement, currentL
                                 isSelected={isSelected}
                                 isHovered={isHovered}
                                 highlightMode="selection"
+                                highlightColorIndex={selectedElement.colorIndex}
                                 getHighlightStyles={getHighlightStyles}
                                 colorOverrides={colorOverrides}
                             />
@@ -229,6 +230,7 @@ export const FlagPreview = ({flagState, onInteraction, selectedElement, currentL
                                 isSelected={isSelected}
                                 isHovered={isHovered}
                                 highlightMode="hover"
+                                highlightColorIndex={hovered.colorIndex}
                                 getHighlightStyles={getHighlightStyles}
                                 colorOverrides={colorOverrides}
                             />

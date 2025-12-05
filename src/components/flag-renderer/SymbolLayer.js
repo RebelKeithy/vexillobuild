@@ -13,6 +13,7 @@ export const SymbolLayer = ({
     isSelected,
     isHovered,
     highlightMode = null,
+    highlightColorIndex = null,
     getHighlightStyles,
     colorOverrides = {}
 }) => {
@@ -21,8 +22,9 @@ export const SymbolLayer = ({
     const targetSymbolsOfType = currentLevel?.target.symbols.filter(s => s.type === symbol.type) || [];
     const targetOverride = targetSymbolsOfType[myTypeIndex] || targetSymbolsOfType[0] || {};
 
-    const {color: _c, ...geoProps} = targetOverride;
+    const {color: _c, colors: _cs, ...geoProps} = targetOverride;
     const mergedSymbol = {...geoProps, ...symbol};
+    console.log(`Start ${mergedSymbol.radius}`)
 
     let cx = width / 2;
     let cy = height / 2;
@@ -76,6 +78,7 @@ export const SymbolLayer = ({
     // Look up and call the appropriate renderer
     const renderer = SYMBOL_RENDERERS[mergedSymbol.type];
     if (!renderer) return null;
+    console.log(`Final ${mergedSymbol.radius}`)
 
     return renderer({
         index,
@@ -87,8 +90,10 @@ export const SymbolLayer = ({
         mergedSymbol,
         commonProps,
         highlightMode,
+        highlightColorIndex,
         styles,
         bindEvents,
-        color
+        color,
+        resolveColor: (c) => resolveColor(c, index, colorOverrides)
     });
 };

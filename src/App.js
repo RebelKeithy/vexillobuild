@@ -38,7 +38,7 @@ export default function App() {
     const handlePaletteClick = (colorKey) => {
         if (selectedElement) {
             // If a shape is selected, apply this color to it immediately
-            updateColor(selectedElement.type, selectedElement.index, colorKey);
+            updateColor(selectedElement.type, selectedElement.index, colorKey, selectedElement.colorIndex);
         } else {
             // Toggle selection of color
             if (selectedColor === colorKey) setSelectedColor(null);
@@ -47,18 +47,18 @@ export default function App() {
     };
 
     const handleFlagInteraction = (action, payload) => {
-        const {type, index} = payload.target || payload;
+        const {type, index, colorIndex} = payload.target || payload;
 
         if (action === 'click') {
             if (selectedColor) {
                 // Painting mode
-                updateColor(type, index, selectedColor);
+                updateColor(type, index, selectedColor, colorIndex);
             } else {
                 // Selection mode
-                if (selectedElement && selectedElement.type === type && selectedElement.index === index) {
+                if (selectedElement && selectedElement.type === type && selectedElement.index === index && selectedElement.colorIndex === colorIndex) {
                     setSelectedElement(null); // Deselect
                 } else {
-                    setSelectedElement({type, index});
+                    setSelectedElement({type, index, colorIndex});
                     // Switch tab to match selection
                     setActiveTab(type === 'base' ? 'base' : type + 's');
                 }
@@ -67,7 +67,7 @@ export default function App() {
             const {data} = payload;
             if (data.source === 'palette') {
                 // Standard drop from palette
-                updateColor(type, index, data.color);
+                updateColor(type, index, data.color, colorIndex);
             }
         }
     };

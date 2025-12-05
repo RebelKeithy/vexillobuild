@@ -22,6 +22,7 @@ export const OverlayOptionPreview = ({type, defaultProps = {}}) => {
                     const common = {fill: yellow};
                     if (shapeType === 'polygon') return <polygon {...props} {...common} />;
                     if (shapeType === 'rect') return <rect {...props} {...common} />;
+                    if (shapeType === 'path') return <path {...props} {...common} />;
                     return null;
                 }
             })}

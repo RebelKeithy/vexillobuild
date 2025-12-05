@@ -112,6 +112,13 @@ export const OverlayControls = ({gameState, selectedElement, setSelectedElement,
                     </div>
                     <span className="font-medium">Cross</span>
                 </button>
+                <button onClick={() => addItem('overlays', {type: 'border', color: null, widthRatio: 1/6})}
+                        className="flex flex-col items-center gap-2 p-2 bg-slate-700 hover:bg-slate-600 rounded border border-slate-600 text-xs transition-all">
+                    <div className="w-full aspect-[3/2] bg-slate-800/50 rounded overflow-hidden shadow-sm">
+                        <OverlayOptionPreview type="border" defaultProps={{widthRatio: 1/6}}/>
+                    </div>
+                    <span className="font-medium">Border</span>
+                </button>
             </div>
         </>
     );

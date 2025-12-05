@@ -21,7 +21,7 @@ export const useGameState = (currentLevelId) => {
         setSelectedElement(null);
     }, [currentLevelId]);
 
-    const updateColor = (type, index, color) => {
+    const updateColor = (type, index, color, colorIndex = null) => {
         setGameState(prev => {
             const next = {...prev};
             if (type === 'base') {
@@ -34,7 +34,14 @@ export const useGameState = (currentLevelId) => {
                 next.overlays = arr;
             } else if (type === 'symbol') {
                 const arr = [...next.symbols];
-                arr[index] = {...arr[index], color: color};
+                // Support multi-color symbols (e.g., counter-changed circles)
+                if (colorIndex !== null && arr[index].colors) {
+                    const colors = [...arr[index].colors];
+                    colors[colorIndex] = color;
+                    arr[index] = {...arr[index], colors: colors};
+                } else {
+                    arr[index] = {...arr[index], color: color};
+                }
                 next.symbols = arr;
             }
             return next;
@@ -118,8 +125,17 @@ export const useGameState = (currentLevelId) => {
 
             if (tType !== uType) return setFeedback({type: 'error', msg: `Symbol ${i + 1} mismatch.`});
             if (tType === 'seal') continue;
-            if (t.symbols[i].color !== u.symbols[i].color)
+
+            // Check colors for counter-changed symbols (e.g., circles with two halves)
+            if (t.symbols[i].colors && t.symbols[i].counterChanged) {
+                const tColors = t.symbols[i].colors;
+                const uColors = u.symbols[i].colors || [];
+                if (tColors.length !== uColors.length || !tColors.every((c, idx) => c === uColors[idx])) {
+                    return setFeedback({type: 'error', msg: `Symbol ${i + 1} colors mismatch.`});
+                }
+            } else if (t.symbols[i].color !== u.symbols[i].color) {
                 return setFeedback({type: 'error', msg: `Symbol ${i + 1} mismatch.`});
+            }
 
             // Check star count if specified in target
             if (tType === 'star' && t.symbols[i].count !== undefined) {

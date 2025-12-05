@@ -1,5 +1,5 @@
 import React from 'react';
-import {Star, Circle, Moon, Layout, Image as ImageIcon, Stamp, Cog, Sun, Anchor, GripVertical, Building2, Leaf, Flag, Map} from 'lucide-react';
+import {Star, Circle, Moon, Layout, Image as ImageIcon, Stamp, Cog, Sun, Anchor, GripVertical, Building2, Leaf, Flag, Map, Plus} from 'lucide-react';
 
 export const SymbolControls = ({gameState, selectedElement, setSelectedElement, updateProp, removeItem, addItem}) => {
     return (
@@ -52,9 +52,13 @@ export const SymbolControls = ({gameState, selectedElement, setSelectedElement, 
                         className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
                     <Star size={14}/> Star
                 </button>
-                <button onClick={() => addItem('symbols', {type: 'circle', color: null})}
+                <button onClick={() => addItem('symbols', {type: 'circle', color: null, colors: [null, null]})}
                         className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
                     <Circle size={14}/> Circle
+                </button>
+                <button onClick={() => addItem('symbols', {type: 'cross', color: null})}
+                        className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
+                    <Plus size={14}/> Cross
                 </button>
                 <button onClick={() => addItem('symbols', {type: 'crescent', color: null})}
                         className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">

@@ -55,6 +55,7 @@ export const OverlayLayer = ({
     const renderShape = (shapeType, shapeProps) => {
         if (shapeType === 'polygon') return <polygon key={index} {...shapeProps} {...props} />;
         if (shapeType === 'rect') return <rect key={index} {...shapeProps} {...props} />;
+        if (shapeType === 'path') return <path key={index} {...shapeProps} {...props} />;
         return null;
     };
 

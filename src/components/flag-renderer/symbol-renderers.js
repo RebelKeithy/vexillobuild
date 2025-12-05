@@ -200,8 +200,75 @@ const renderStar = ({index, cx, cy, r, height, mergedSymbol, commonProps, highli
     );
 };
 
-const renderCircle = ({index, cx, cy, r, height, mergedSymbol, commonProps}) => {
+const renderCircle = ({index, cx, cy, r, height, mergedSymbol, commonProps, resolveColor, highlightMode, highlightColorIndex, styles, bindEvents}) => {
     const circleR = mergedSymbol.radius !== undefined ? height * mergedSymbol.radius : r * 1.5;
+
+    // Counter-changed circle (two halves with different colors)
+    if (mergedSymbol.counterChanged && mergedSymbol.colors) {
+        const topColor = resolveColor(mergedSymbol.colors[0]);
+        const bottomColor = resolveColor(mergedSymbol.colors[1]);
+        const clipIdTop = `clip-circle-top-${index}`;
+        const clipIdBottom = `clip-circle-bottom-${index}`;
+
+        // In highlight mode, only show highlight for the specific half
+        const showTopHighlight = highlightMode && highlightColorIndex === 0;
+        const showBottomHighlight = highlightMode && highlightColorIndex === 1;
+
+        // Semicircle paths for proper outline (arc + diameter line)
+        // Top semicircle: arc from left to right, then line back
+        const topPath = `M ${cx - circleR} ${cy} A ${circleR} ${circleR} 0 0 1 ${cx + circleR} ${cy} Z`;
+        // Bottom semicircle: arc from right to left, then line back
+        const bottomPath = `M ${cx + circleR} ${cy} A ${circleR} ${circleR} 0 0 1 ${cx - circleR} ${cy} Z`;
+
+        return (
+            <g key={index}>
+                {!highlightMode && (
+                    <>
+                        <defs>
+                            <clipPath id={clipIdTop}>
+                                <rect x={cx - circleR} y={cy - circleR} width={circleR * 2} height={circleR} />
+                            </clipPath>
+                            <clipPath id={clipIdBottom}>
+                                <rect x={cx - circleR} y={cy} width={circleR * 2} height={circleR} />
+                            </clipPath>
+                        </defs>
+                        <circle
+                            cx={cx}
+                            cy={cy}
+                            r={circleR}
+                            fill={topColor}
+                            clipPath={`url(#${clipIdTop})`}
+                            {...bindEvents('symbol', index, 0)}
+                        />
+                        <circle
+                            cx={cx}
+                            cy={cy}
+                            r={circleR}
+                            fill={bottomColor}
+                            clipPath={`url(#${clipIdBottom})`}
+                            {...bindEvents('symbol', index, 1)}
+                        />
+                    </>
+                )}
+                {showTopHighlight && (
+                    <path
+                        d={topPath}
+                        fill="none"
+                        stroke={styles.stroke || '#3B82F6'}
+                        strokeWidth={styles.strokeWidth || 4}
+                    />
+                )}
+                {showBottomHighlight && (
+                    <path
+                        d={bottomPath}
+                        fill="none"
+                        stroke={styles.stroke || '#3B82F6'}
+                        strokeWidth={styles.strokeWidth || 4}
+                    />
+                )}
+            </g>
+        );
+    }
 
     if (mergedSymbol.aspectRatio) {
         const ry = circleR;
@@ -210,6 +277,34 @@ const renderCircle = ({index, cx, cy, r, height, mergedSymbol, commonProps}) => 
     }
 
     return <circle key={index} cx={cx} cy={cy} r={circleR} {...commonProps} />;
+};
+
+const renderCross = ({index, cx, cy, r, height, mergedSymbol, commonProps}) => {
+    // Cross symbol - a + shape centered at cx, cy
+    const size = mergedSymbol.radius !== undefined ? height * mergedSymbol.radius : r;
+    const thickness = mergedSymbol.thickness !== undefined ?mergedSymbol.thickness : 0.4;
+    const armWidth = size * thickness;
+    const halfArm = armWidth / 2;
+
+    console.log(`${mergedSymbol.radius} ${size} ${mergedSymbol.thickness}`)
+
+    // Build 12-point polygon for cross shape
+    const points = [
+        `${cx - halfArm},${cy - size}`,     // Top of vertical arm, left
+        `${cx + halfArm},${cy - size}`,     // Top of vertical arm, right
+        `${cx + halfArm},${cy - halfArm}`,  // Inner top-right
+        `${cx + size},${cy - halfArm}`,     // Right arm, top
+        `${cx + size},${cy + halfArm}`,     // Right arm, bottom
+        `${cx + halfArm},${cy + halfArm}`,  // Inner bottom-right
+        `${cx + halfArm},${cy + size}`,     // Bottom of vertical arm, right
+        `${cx - halfArm},${cy + size}`,     // Bottom of vertical arm, left
+        `${cx - halfArm},${cy + halfArm}`,  // Inner bottom-left
+        `${cx - size},${cy + halfArm}`,     // Left arm, bottom
+        `${cx - size},${cy - halfArm}`,     // Left arm, top
+        `${cx - halfArm},${cy - halfArm}`   // Inner top-left
+    ].join(' ');
+
+    return <polygon key={index} points={points} {...commonProps} />;
 };
 
 const renderStarField = ({index, cx, cy, height, mergedSymbol, commonProps, highlightMode, color}) => {
@@ -247,5 +342,6 @@ export const SYMBOL_RENDERERS = {
     'external': renderExternal,
     'star': renderStar,
     'circle': renderCircle,
+    'cross': renderCross,
     'star-field': renderStarField,
 };
