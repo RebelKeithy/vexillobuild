@@ -47,6 +47,43 @@ const renderSeal = ({index, cx, cy, r, mergedSymbol, commonProps, highlightMode}
     );
 };
 
+const renderPattern = ({index, cx, cy, r, width, height, mergedSymbol, commonProps, highlightMode}) => {
+    // Pattern renderer - for decorative patterns like Iran's Kufic script or Belarus ornament
+    // Similar to seal but supports width/height as percentage of flag dimensions
+    let w, h;
+    if (mergedSymbol.width !== undefined || mergedSymbol.height !== undefined) {
+        w = mergedSymbol.width !== undefined ? width * mergedSymbol.width : null;
+        h = mergedSymbol.height !== undefined ? height * mergedSymbol.height : null;
+        if (w && !h && mergedSymbol.aspectRatio) {
+            h = w / mergedSymbol.aspectRatio;
+        } else if (h && !w && mergedSymbol.aspectRatio) {
+            w = h * mergedSymbol.aspectRatio;
+        }
+    } else {
+        h = r * 2;
+        w = mergedSymbol.aspectRatio ? h * mergedSymbol.aspectRatio : h;
+    }
+
+    const rotation = mergedSymbol.rotation || 0;
+    const transform = rotation ? `rotate(${rotation} ${cx} ${cy})` : undefined;
+
+    if (highlightMode) {
+        return <rect x={cx - w / 2} y={cy - h / 2} width={w} height={h} transform={transform} fill="none" {...commonProps} />;
+    }
+    return (
+        <image
+            key={index}
+            href={mergedSymbol.src}
+            x={cx - w / 2}
+            y={cy - h / 2}
+            width={w}
+            height={h}
+            transform={transform}
+            {...commonProps}
+        />
+    );
+};
+
 const renderExternal = ({index, cx, cy, r, width, height, mergedSymbol, commonProps, highlightMode, styles, bindEvents, color}) => {
     // Support direct width/height (percentage of flag dimensions) or legacy radius-based sizing
     let w, h;
@@ -355,6 +392,7 @@ export const SYMBOL_RENDERERS = {
     'rising-sun': renderRisingSun,
     'crescent': renderCrescent,
     'seal': renderSeal,
+    'pattern': renderPattern,
     'external': renderExternal,
     'star': renderStar,
     'circle': renderCircle,

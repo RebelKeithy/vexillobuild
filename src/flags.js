@@ -478,7 +478,7 @@ export const LEVELS = [
             overlays: [],
             symbols: [
                 {
-                    type: 'external',
+                    type: 'pattern',
                     src: 'https://upload.wikimedia.org/wikipedia/commons/9/99/Belarus_flag_pattern.svg',
                     color: null,
                     rotation: 90,
@@ -1896,6 +1896,120 @@ export const LEVELS = [
                 { type: 'nordic-cross', color: 'white', verticalOffset: 7/25, crossWidth: 4/18 },
                 { type: 'nordic-cross', color: 'red', verticalOffset: 8/25, crossWidth: 2/18 }
             ],
+            symbols: []
+        }
+    },
+    {
+        id: 81,
+        name: "India",
+        difficulty: "Intermediate",
+        description: "Satyameva Jayate - Truth Alone Triumphs.",
+        hint: "Three horizontal stripes: Saffron, White, Green. Ashoka Chakra (24-spoke wheel) in center.",
+        aspectRatio: 2/3,
+        colorOverrides: {
+            'orange': '#FF9933',
+            'green': '#138808',
+            'blue': '#000080'
+        },
+        target: {
+            base: { type: 'horizontal-stripes', count: 3, colors: ['orange', 'white', 'green'] },
+            overlays: [],
+            symbols: [
+                {
+                    type: 'seal',
+                    src: 'https://upload.wikimedia.org/wikipedia/commons/6/6a/Ashoka_Chakra_1.svg',
+                    color: null,
+                    scale: 1.0
+                }
+            ]
+        }
+    },
+    {
+        id: 82,
+        name: "Indonesia",
+        difficulty: "Novice",
+        description: "Sang Saka Merah-Putih.",
+        hint: "Two horizontal stripes: Red over White.",
+        aspectRatio: 2/3,
+        colorOverrides: {
+            'red': '#CE1126'
+        },
+        target: {
+            base: { type: 'bisection-horizontal', colors: ['red', 'white'] },
+            overlays: [],
+            symbols: []
+        }
+    },
+    {
+        id: 83,
+        name: "Iran",
+        difficulty: "Advanced",
+        description: "Allahu Akbar.",
+        hint: "Green, white, red horizontal stripes. Emblem in center. Kufic script pattern on stripe borders.",
+        aspectRatio: 4/7,
+        colorOverrides: {
+            'green': '#239F40',
+            'red': '#DA0000'
+        },
+        target: {
+            base: { type: 'horizontal-stripes', count: 3, colors: ['green', 'white', 'red'] },
+            overlays: [],
+            symbols: [
+                {
+                    type: 'pattern',
+                    src: 'Iran.svg',
+                    color: null,
+                    width: 1,
+                    aspectRatio: 985/254
+                },
+                {
+                    type: 'external',
+                    src: 'https://upload.wikimedia.org/wikipedia/commons/4/4e/Emblem_of_Iran.svg',
+                    color: 'red',
+                    scale: 1.0
+                }
+            ]
+        }
+    },
+    {
+        id: 84,
+        name: "Iraq",
+        difficulty: "Intermediate",
+        description: "Allahu Akbar - God is Greatest.",
+        hint: "Red, white, black horizontal stripes. Green Takbir script in the center.",
+        aspectRatio: 2/3,
+        colorOverrides: {
+            'red': '#CE1126',
+            'green': '#007A3D'
+        },
+        target: {
+            base: { type: 'horizontal-stripes', count: 3, colors: ['red', 'white', 'black'] },
+            overlays: [],
+            symbols: [
+                {
+                    type: 'external',
+                    src: 'Iraq.svg',
+                    color: 'green',
+                    width: 0.45,
+                    aspectRatio: 4500/1650
+                }
+            ]
+        }
+    },
+    {
+        id: 85,
+        name: "Ireland",
+        difficulty: "Novice",
+        description: "The Irish Tricolour.",
+        hint: "Three vertical stripes: Green, White, Orange.",
+        aspectRatio: 1/2,
+        colorOverrides: {
+            'green': '#169B62',
+            'orange': '#FF883E'
+        },
+        target: {
+            base: { type: 'vertical-tricolor', colors: ['green', 'white', 'orange'] },
+            overlays: [],
             symbols: []
         }
     }

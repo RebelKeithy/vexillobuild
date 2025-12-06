@@ -76,6 +76,14 @@ export const SymbolControls = ({gameState, selectedElement, setSelectedElement, 
                         className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
                     <ImageIcon size={14}/> Eagle
                 </button>
+                <button onClick={() => addItem('symbols', {type: 'external', src: 'https://upload.wikimedia.org/wikipedia/commons/4/4e/Emblem_of_Iran.svg', color: 'grey'})}
+                        className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
+                    <ImageIcon size={14}/> Iran
+                </button>
+                <button onClick={() => addItem('symbols', {type: 'external', src: 'Iraq.svg', color: 'grey', aspectRatio: 4500/1650})}
+                        className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
+                    <ImageIcon size={14}/> Takbir
+                </button>
                 <button onClick={() => addItem('symbols', {type: 'seal', color: null})}
                         className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
                     <Stamp size={14}/> Seal
@@ -100,7 +108,7 @@ export const SymbolControls = ({gameState, selectedElement, setSelectedElement, 
                         className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
                     <ImageIcon size={14}/> Dragon
                 </button>
-                <button onClick={() => addItem('symbols', {type: 'external', src: 'https://upload.wikimedia.org/wikipedia/commons/9/99/Belarus_flag_pattern.svg', color: null, rotation: 90, aspectRatio: 4.5})}
+                <button onClick={() => addItem('symbols', {type: 'pattern', color: null})}
                         className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
                     <GripVertical size={14}/> Pattern
                 </button>
