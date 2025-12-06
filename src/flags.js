@@ -42,7 +42,7 @@ export const LEVELS = [
             base: { type: 'solid', colors: ['white'] },
             overlays: [],
             symbols: [
-                { type: 'circle', color: 'red', scale: 1.8 }
+                { type: 'circle', color: 'red', radius: 6/20 }
             ]
         }
     },
@@ -2011,6 +2011,81 @@ export const LEVELS = [
             base: { type: 'vertical-tricolor', colors: ['green', 'white', 'orange'] },
             overlays: [],
             symbols: []
+        }
+    },
+    {
+        id: 86,
+        name: "Israel",
+        difficulty: "Intermediate",
+        description: "The Star of David.",
+        hint: "White field with two blue horizontal stripes. Blue Star of David in the center.",
+        aspectRatio: 8/11,
+        colorOverrides: {
+            'blue': '#0038B8'
+        },
+        target: {
+            base: {
+                type: 'horizontal-stripes',
+                count: 5,
+                colors: ['white', 'blue', 'white', 'blue', 'white'],
+                ratios: [4, 3, 18, 3, 4]
+            },
+            overlays: [],
+            symbols: [
+                {
+                    type: 'external',
+                    src: 'https://upload.wikimedia.org/wikipedia/commons/4/49/Star_of_David.svg',
+                    color: 'blue',
+                    scale: 1.7
+                }
+            ]
+        }
+    },
+    {
+        id: 87,
+        name: "Jamaica",
+        difficulty: "Intermediate",
+        description: "Out of Many, One People.",
+        hint: "Gold saltire (diagonal cross). Green triangles top and bottom. Black triangles left and right.",
+        aspectRatio: 1/2,
+        colorOverrides: {
+            'gold': '#FED100',
+            'green': '#009B3A'
+        },
+        target: {
+            base: { type: 'quadrisection-diagonal', colors: ['green', 'black', 'green', 'black'] },
+            overlays: [
+                { type: 'saltire', color: 'gold', widthRatio: 1/6 }
+            ],
+            symbols: []
+        }
+    },
+    {
+        id: 88,
+        name: "Jordan",
+        difficulty: "Intermediate",
+        description: "The Hashemite Kingdom.",
+        hint: "Three horizontal stripes: Black, White, Green. Red triangle at hoist with a white 7-pointed star.",
+        aspectRatio: 1/2,
+        colorOverrides: {
+            'red': '#CE1126',
+            'green': '#007A3D'
+        },
+        target: {
+            base: { type: 'horizontal-stripes', count: 3, colors: ['black', 'white', 'green'] },
+            overlays: [
+                { type: 'triangle', position: 'hoist', color: 'red', vertexXRatio: 1 }
+            ],
+            symbols: [
+                {
+                    type: 'star',
+                    color: 'white',
+                    points: 7,
+                    parentIndex: 0,
+                    innerRadius: 0.5,
+                    outerRadius: 6/42,
+                }
+            ]
         }
     }
 ];

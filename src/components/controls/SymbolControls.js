@@ -128,6 +128,10 @@ export const SymbolControls = ({gameState, selectedElement, setSelectedElement, 
                         className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
                     <Map size={14}/> Country
                 </button>
+                <button onClick={() => addItem('symbols', {type: 'external', src: 'https://upload.wikimedia.org/wikipedia/commons/4/49/Star_of_David.svg', color: 'grey'})}
+                        className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
+                    <Star size={14}/> Star of David
+                </button>
             </div>
         </>
     );

@@ -5838,6 +5838,97 @@ exports[`Flag Snapshots renders Ireland correctly 1`] = `
 </div>
 `;
 
+exports[`Flag Snapshots renders Israel correctly 1`] = `
+<div>
+  <div
+    class="w-full flex justify-center bg-gray-100 rounded-lg p-4 shadow-inner"
+  >
+    <svg
+      class="shadow-xl select-none"
+      style="width: 100%; height: auto; max-width: 600px; background-color: rgb(255, 255, 255);"
+      viewBox="0 0 600 436.3636363636364"
+    >
+      <mask
+        id="flag-mask"
+      >
+        <rect
+          fill="white"
+          height="436.3636363636364"
+          width="600"
+        />
+      </mask>
+      <g
+        mask="url(#flag-mask)"
+      >
+        <g>
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#FFFFFF"
+            height="54.54545454545455"
+            width="600"
+            x="0"
+            y="0"
+          />
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#0038B8"
+            height="40.90909090909091"
+            width="600"
+            x="0"
+            y="54.54545454545455"
+          />
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#FFFFFF"
+            height="245.45454545454547"
+            width="600"
+            x="0"
+            y="95.45454545454545"
+          />
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#0038B8"
+            height="40.90909090909091"
+            width="600"
+            x="0"
+            y="340.90909090909093"
+          />
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#FFFFFF"
+            height="54.54545454545455"
+            width="600"
+            x="0"
+            y="381.81818181818187"
+          />
+        </g>
+        <g>
+          <foreignobject
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            height="222.54545454545453"
+            width="222.54545454545453"
+            x="188.72727272727275"
+            y="106.90909090909092"
+          >
+            <div
+              style="width: 100%; height: 100%; background-color: rgb(0, 56, 184); mask-image: url(https://upload.wikimedia.org/wikipedia/commons/4/49/Star_of_David.svg); mask-size: contain; mask-repeat: no-repeat; mask-position: center;"
+            />
+          </foreignobject>
+        </g>
+      </g>
+      <rect
+        class="pointer-events-none"
+        fill="none"
+        height="436.3636363636364"
+        stroke="#ddd"
+        stroke-width="1"
+        width="600"
+      />
+    </svg>
+  </div>
+</div>
+`;
+
 exports[`Flag Snapshots renders Italy correctly 1`] = `
 <div>
   <div
@@ -5962,6 +6053,72 @@ exports[`Flag Snapshots renders Ivory Coast correctly 1`] = `
 </div>
 `;
 
+exports[`Flag Snapshots renders Jamaica correctly 1`] = `
+<div>
+  <div
+    class="w-full flex justify-center bg-gray-100 rounded-lg p-4 shadow-inner"
+  >
+    <svg
+      class="shadow-xl select-none"
+      style="width: 100%; height: auto; max-width: 600px; background-color: rgb(255, 255, 255);"
+      viewBox="0 0 600 300"
+    >
+      <mask
+        id="flag-mask"
+      >
+        <rect
+          fill="white"
+          height="300"
+          width="600"
+        />
+      </mask>
+      <g
+        mask="url(#flag-mask)"
+      >
+        <g>
+          <polygon
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#009B3A"
+            points="0,0 600,0 300,150"
+          />
+          <polygon
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#000000"
+            points="600,0 600,300 300,150"
+          />
+          <polygon
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#009B3A"
+            points="600,300 0,300 300,150"
+          />
+          <polygon
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#000000"
+            points="0,300 0,0 300,150"
+          />
+        </g>
+        <polygon
+          class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+          fill="#FED100"
+          points="0,27.95084971874737 0,0 55.90169943749474,0 300,122.04915028125262 544.0983005625053,0 600,0 600,27.95084971874737 355.90169943749476,150 600,272.04915028125265 600,300 544.0983005625053,300 300,177.95084971874738 55.90169943749474,300 0,300 0,272.04915028125265 244.09830056250524,150"
+          stroke="none"
+          stroke-linejoin="miter"
+          stroke-width="0"
+        />
+      </g>
+      <rect
+        class="pointer-events-none"
+        fill="none"
+        height="300"
+        stroke="#ddd"
+        stroke-width="1"
+        width="600"
+      />
+    </svg>
+  </div>
+</div>
+`;
+
 exports[`Flag Snapshots renders Japan correctly 1`] = `
 <div>
   <div
@@ -6000,13 +6157,89 @@ exports[`Flag Snapshots renders Japan correctly 1`] = `
           cy="200"
           display="block"
           fill="#EF3340"
-          r="162"
+          r="120"
         />
       </g>
       <rect
         class="pointer-events-none"
         fill="none"
         height="400"
+        stroke="#ddd"
+        stroke-width="1"
+        width="600"
+      />
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`Flag Snapshots renders Jordan correctly 1`] = `
+<div>
+  <div
+    class="w-full flex justify-center bg-gray-100 rounded-lg p-4 shadow-inner"
+  >
+    <svg
+      class="shadow-xl select-none"
+      style="width: 100%; height: auto; max-width: 600px; background-color: rgb(255, 255, 255);"
+      viewBox="0 0 600 300"
+    >
+      <mask
+        id="flag-mask"
+      >
+        <rect
+          fill="white"
+          height="300"
+          width="600"
+        />
+      </mask>
+      <g
+        mask="url(#flag-mask)"
+      >
+        <g>
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#000000"
+            height="100"
+            width="600"
+            x="0"
+            y="0"
+          />
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#FFFFFF"
+            height="100"
+            width="600"
+            x="0"
+            y="100"
+          />
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#007A3D"
+            height="100"
+            width="600"
+            x="0"
+            y="200"
+          />
+        </g>
+        <polygon
+          class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+          fill="#CE1126"
+          points="0,0 300,150 0,300"
+          stroke="none"
+          stroke-linejoin="round"
+          stroke-width="0"
+        />
+        <polygon
+          class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+          display="block"
+          fill="#FFFFFF"
+          points="105,127.5 109.88119206507253,139.86410023609778 122.59120835553067,135.9714794581785 115.96793901204552,147.49663949299148 126.93587802409104,155.00672101401707 113.79560417776534,157.01426027091074 114.76238413014505,170.27179952780443 105,161.25 95.23761586985495,170.27179952780443 96.20439582223466,157.01426027091074 83.06412197590896,155.00672101401707 94.03206098795448,147.49663949299148 87.40879164446933,135.9714794581785 100.11880793492747,139.86410023609778"
+        />
+      </g>
+      <rect
+        class="pointer-events-none"
+        fill="none"
+        height="300"
         stroke="#ddd"
         stroke-width="1"
         width="600"
