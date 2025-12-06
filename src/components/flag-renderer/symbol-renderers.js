@@ -138,6 +138,12 @@ const renderStar = ({index, cx, cy, r, height, mergedSymbol, commonProps, highli
     if (args.spacing !== undefined) {
         args.spacing = height * args.spacing;
     }
+    if (args.spacingX !== undefined) {
+        args.spacingX = height * args.spacingX;
+    }
+    if (args.spacingY !== undefined) {
+        args.spacingY = height * args.spacingY;
+    }
 
     const starResult = SHAPE_GENERATORS.star({cx, cy, r, args});
 
@@ -307,6 +313,16 @@ const renderCross = ({index, cx, cy, r, height, mergedSymbol, commonProps}) => {
     return <polygon key={index} points={points} {...commonProps} />;
 };
 
+const renderBox = ({index, cx, cy, r, height, mergedSymbol, commonProps}) => {
+    // Box/rectangle symbol centered at cx, cy
+    const size = mergedSymbol.radius !== undefined ? height * mergedSymbol.radius : r * 1.5;
+    const aspectRatio = mergedSymbol.aspectRatio || 1; // width/height ratio
+    const w = size * 2 * aspectRatio;
+    const h = size * 2;
+
+    return <rect key={index} x={cx - w / 2} y={cy - h / 2} width={w} height={h} {...commonProps} />;
+};
+
 const renderStarField = ({index, cx, cy, height, mergedSymbol, commonProps, highlightMode, color}) => {
     const fieldW = mergedSymbol.parentIndex !== null ? cx * 2 : mergedSymbol.width || 0.4;
     const fieldH = mergedSymbol.parentIndex !== null ? cy * 2 : mergedSymbol.height || 0.54;
@@ -343,5 +359,6 @@ export const SYMBOL_RENDERERS = {
     'star': renderStar,
     'circle': renderCircle,
     'cross': renderCross,
+    'box': renderBox,
     'star-field': renderStarField,
 };

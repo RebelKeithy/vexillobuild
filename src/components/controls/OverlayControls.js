@@ -56,6 +56,13 @@ export const OverlayControls = ({gameState, selectedElement, setSelectedElement,
                     </div>
                     <span className="font-medium">Triangle</span>
                 </button>
+                <button onClick={() => addItem('overlays', {type: 'pile', color: null})}
+                        className="flex flex-col items-center gap-2 p-2 bg-slate-700 hover:bg-slate-600 rounded border border-slate-600 text-xs transition-all">
+                    <div className="w-full aspect-[3/2] bg-slate-800/50 rounded overflow-hidden shadow-sm">
+                        <OverlayOptionPreview type="pile"/>
+                    </div>
+                    <span className="font-medium">Pile</span>
+                </button>
                 <button onClick={() => addItem('overlays', {type: 'canton', color: null, position: 'top-left'})}
                         className="flex flex-col items-center gap-2 p-2 bg-slate-700 hover:bg-slate-600 rounded border border-slate-600 text-xs transition-all">
                     <div className="w-full aspect-[3/2] bg-slate-800/50 rounded overflow-hidden shadow-sm">

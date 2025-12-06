@@ -4287,11 +4287,11 @@ exports[`Flag Snapshots renders French Polynesia correctly 1`] = `
           class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
           display="block"
           fill="#E2E8F0"
-          height="180"
+          height="192"
           href="https://upload.wikimedia.org/wikipedia/commons/6/65/Coat_of_arms_of_French_Polynesia.svg"
-          width="180"
-          x="210"
-          y="110"
+          width="192"
+          x="204"
+          y="104"
         />
       </g>
       <rect
@@ -4408,45 +4408,29 @@ exports[`Flag Snapshots renders Georgia correctly 1`] = `
           stroke="none"
           stroke-width="0"
         />
-        <image
+        <polygon
           class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
           display="block"
-          fill="#E2E8F0"
-          height="72"
-          href="https://upload.wikimedia.org/wikipedia/commons/a/a9/Bolnisi_cross.svg"
-          width="72"
-          x="84"
-          y="44"
+          fill="#FF0000"
+          points="112,48 128,48 128,72 152,72 152,88 128,88 128,112 112,112 112,88 88,88 88,72 112,72"
         />
-        <image
+        <polygon
           class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
           display="block"
-          fill="#94A3B8"
-          height="72"
-          href="https://upload.wikimedia.org/wikipedia/commons/a/a9/Bolnisi_cross.svg"
-          width="72"
-          x="444"
-          y="44"
+          fill="#FF0000"
+          points="472,48 488,48 488,72 512,72 512,88 488,88 488,112 472,112 472,88 448,88 448,72 472,72"
         />
-        <image
+        <polygon
           class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
           display="block"
-          fill="#CBD5E1"
-          height="72"
-          href="https://upload.wikimedia.org/wikipedia/commons/a/a9/Bolnisi_cross.svg"
-          width="72"
-          x="84"
-          y="284"
+          fill="#FF0000"
+          points="112,288 128,288 128,312 152,312 152,328 128,328 128,352 112,352 112,328 88,328 88,312 112,312"
         />
-        <image
+        <polygon
           class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
           display="block"
-          fill="#64748B"
-          height="72"
-          href="https://upload.wikimedia.org/wikipedia/commons/a/a9/Bolnisi_cross.svg"
-          width="72"
-          x="444"
-          y="284"
+          fill="#FF0000"
+          points="472,288 488,288 488,312 512,312 512,328 488,328 488,352 472,352 472,328 448,328 448,312 472,312"
         />
       </g>
       <rect
@@ -4576,7 +4560,7 @@ exports[`Flag Snapshots renders Ghana correctly 1`] = `
           class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
           display="block"
           fill="#000000"
-          points="300,140 313.4720379825435,181.4573304889262 357.0633909777092,181.45898033750316 321.7982153534849,207.0826695110738 335.2671151375484,248.54101966249686 300,222.92000000000002 264.7328848624516,248.54101966249686 278.2017846465151,207.0826695110738 242.93660902229078,181.45898033750316 286.5279620174565,181.4573304889262"
+          points="300,133 316.5706067185285,183.99251650137924 370.1879709025823,183.9945458151289 326.81180488478645,215.51168349862078 343.3785516191845,266.50545418487116 300,234.9916 256.6214483808155,266.50545418487116 273.18819511521355,215.51168349862078 229.81202909741768,183.9945458151289 283.4293932814715,183.99251650137924"
         />
       </g>
       <rect
@@ -4700,7 +4684,7 @@ exports[`Flag Snapshots renders Greece correctly 1`] = `
           class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
           display="block"
           fill="#FFFFFF"
-          points="83.1111111111111,-48.888888888888886 139.1111111111111,-48.888888888888886 139.1111111111111,83.11111111111111 271.1111111111111,83.11111111111111 271.1111111111111,139.11111111111111 139.1111111111111,139.11111111111111 139.1111111111111,271.1111111111111 83.1111111111111,271.1111111111111 83.1111111111111,139.11111111111111 -48.8888888888889,139.11111111111111 -48.8888888888889,83.11111111111111 83.1111111111111,83.11111111111111"
+          points="88.87111111111109,-0.08888888888890278 133.3511111111111,-0.08888888888890278 133.3511111111111,88.8711111111111 222.31111111111113,88.8711111111111 222.31111111111113,133.35111111111112 133.3511111111111,133.35111111111112 133.3511111111111,222.31111111111113 88.87111111111109,222.31111111111113 88.87111111111109,133.35111111111112 -0.088888888888917,133.35111111111112 -0.088888888888917,88.8711111111111 88.87111111111109,88.8711111111111"
         />
       </g>
       <rect
@@ -4756,16 +4740,46 @@ exports[`Flag Snapshots renders Greenland correctly 1`] = `
             y="200"
           />
         </g>
-        <image
-          class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
-          display="block"
-          fill="#E2E8F0"
-          height="399.6"
-          href="Greenland.svg"
-          width="599.4000000000001"
-          x="0.2999999999999545"
-          y="0.19999999999998863"
-        />
+        <g>
+          <defs>
+            <clippath
+              id="clip-circle-top-0"
+            >
+              <rect
+                height="133.33333333333331"
+                width="266.66666666666663"
+                x="100.00000000000003"
+                y="66.66666666666669"
+              />
+            </clippath>
+            <clippath
+              id="clip-circle-bottom-0"
+            >
+              <rect
+                height="133.33333333333331"
+                width="266.66666666666663"
+                x="100.00000000000003"
+                y="200"
+              />
+            </clippath>
+          </defs>
+          <circle
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            clip-path="url(#clip-circle-top-0)"
+            cx="233.33333333333334"
+            cy="200"
+            fill="#C8102E"
+            r="133.33333333333331"
+          />
+          <circle
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            clip-path="url(#clip-circle-bottom-0)"
+            cx="233.33333333333334"
+            cy="200"
+            fill="#FFFFFF"
+            r="133.33333333333331"
+          />
+        </g>
       </g>
       <rect
         class="pointer-events-none"
@@ -4803,15 +4817,35 @@ exports[`Flag Snapshots renders Grenada correctly 1`] = `
         mask="url(#flag-mask)"
       >
         <g>
-          <rect
+          <polygon
             class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
-            fill="#CE1126"
-            height="360"
-            width="600"
-            x="0"
-            y="0"
+            fill="#FCD116"
+            points="0,0 600,0 300,180"
+          />
+          <polygon
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#007A5E"
+            points="600,0 600,360 300,180"
+          />
+          <polygon
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#FCD116"
+            points="600,360 0,360 300,180"
+          />
+          <polygon
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#007A5E"
+            points="0,360 0,0 300,180"
           />
         </g>
+        <path
+          class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+          d="M 0 0 L 600 0 L 600 360 L 0 360 Z M 50.400000000000006 50.400000000000006 L 50.400000000000006 309.6 L 549.6 309.6 L 549.6 50.400000000000006 Z"
+          fill="#CE1126"
+          fill-rule="evenodd"
+          stroke="none"
+          stroke-width="0"
+        />
         <circle
           class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
           cx="300"
@@ -4824,43 +4858,43 @@ exports[`Flag Snapshots renders Grenada correctly 1`] = `
           class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
           display="block"
           fill="#FCD116"
-          points="300,142.2 306.56032213545745,166.37735071731544 329.55323003729154,156.43208548973988 314.74091003218916,176.63548347858054 336.8522750804729,188.4112913035487 311.8212920149166,189.42716580410405 316.4008053386437,214.05662320671144 300,195.12 283.5991946613563,214.05662320671144 288.1787079850834,189.42716580410405 263.1477249195271,188.4112913035487 285.25908996781084,176.63548347858054 270.44676996270846,156.43208548973988 293.43967786454255,166.3773507173154"
+          points="300,139.5 309.09362563821685,167.4836980800252 338.5177889099537,167.48481172781464 314.71379536360234,184.7808019199748 323.80530271784517,212.76518827218536 300,195.471 276.19469728215483,212.76518827218536 285.28620463639766,184.7808019199748 261.4822110900463,167.48481172781464 290.90637436178315,167.4836980800252"
         />
         <polygon
           class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
           display="block"
           fill="#FCD116"
-          points="135,31.500000000000007 139.2436919645012,44.55905910401176 152.9749681579784,44.5595788063135 141.86643783634776,52.63104089598825 146.10914126832773,65.69042119368652 135,57.619800000000005 123.89085873167227,65.69042119368652 128.13356216365224,52.63104089598825 117.0250318420216,44.5595788063135 130.7563080354988,44.55905910401176"
+          points="180,3.599999999999987 184.84993367371567,18.52463897601342 200.5428207519753,18.525232921501125 187.84735752725456,27.749761023986554 192.69616144951743,42.67476707849886 180,33.451199999999986 167.30383855048257,42.67476707849886 172.15264247274544,27.749761023986554 159.4571792480247,18.52523292150113 175.15006632628433,18.52463897601342"
         />
         <polygon
           class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
           display="block"
           fill="#FCD116"
-          points="300,31.500000000000007 304.2436919645012,44.55905910401176 317.9749681579784,44.5595788063135 306.86643783634776,52.63104089598825 311.10914126832773,65.69042119368652 300,57.619800000000005 288.89085873167227,65.69042119368652 293.13356216365224,52.63104089598825 282.0250318420216,44.5595788063135 295.7563080354988,44.55905910401176"
+          points="300,3.599999999999987 304.84993367371567,18.52463897601342 320.54282075197534,18.525232921501125 307.8473575272546,27.749761023986554 312.69616144951743,42.67476707849886 300,33.451199999999986 287.30383855048257,42.67476707849886 292.1526424727454,27.749761023986554 279.45717924802466,18.52523292150113 295.15006632628433,18.52463897601342"
         />
         <polygon
           class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
           display="block"
           fill="#FCD116"
-          points="465,31.500000000000007 469.2436919645012,44.55905910401176 482.9749681579784,44.5595788063135 471.86643783634776,52.63104089598825 476.10914126832773,65.69042119368652 465,57.619800000000005 453.89085873167227,65.69042119368652 458.13356216365224,52.63104089598825 447.0250318420216,44.5595788063135 460.7563080354988,44.55905910401176"
+          points="420,3.599999999999987 424.84993367371567,18.52463897601342 440.54282075197534,18.525232921501125 427.8473575272546,27.749761023986554 432.69616144951743,42.67476707849886 420,33.451199999999986 407.30383855048257,42.67476707849886 412.1526424727454,27.749761023986554 399.45717924802466,18.52523292150113 415.15006632628433,18.52463897601342"
         />
         <polygon
           class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
           display="block"
           fill="#FCD116"
-          points="135,290.70000000000005 139.2436919645012,303.7590591040118 152.9749681579784,303.7595788063135 141.86643783634776,311.8310408959883 146.10914126832773,324.8904211936865 135,316.81980000000004 123.89085873167227,324.8904211936865 128.13356216365224,311.8310408959883 117.0250318420216,303.7595788063135 130.7563080354988,303.7590591040118"
+          points="180,315.90000000000003 184.2436919645012,328.95905910401177 197.9749681579784,328.9595788063135 186.86643783634776,337.03104089598827 191.10914126832773,350.0904211936865 180,342.01980000000003 168.89085873167227,350.0904211936865 173.13356216365224,337.03104089598827 162.0250318420216,328.9595788063135 175.7563080354988,328.95905910401177"
         />
         <polygon
           class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
           display="block"
           fill="#FCD116"
-          points="300,290.70000000000005 304.2436919645012,303.7590591040118 317.9749681579784,303.7595788063135 306.86643783634776,311.8310408959883 311.10914126832773,324.8904211936865 300,316.81980000000004 288.89085873167227,324.8904211936865 293.13356216365224,311.8310408959883 282.0250318420216,303.7595788063135 295.7563080354988,303.7590591040118"
+          points="300,315.90000000000003 304.2436919645012,328.95905910401177 317.9749681579784,328.9595788063135 306.86643783634776,337.03104089598827 311.10914126832773,350.0904211936865 300,342.01980000000003 288.89085873167227,350.0904211936865 293.13356216365224,337.03104089598827 282.0250318420216,328.9595788063135 295.7563080354988,328.95905910401177"
         />
         <polygon
           class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
           display="block"
           fill="#FCD116"
-          points="465,290.70000000000005 469.2436919645012,303.7590591040118 482.9749681579784,303.7595788063135 471.86643783634776,311.8310408959883 476.10914126832773,324.8904211936865 465,316.81980000000004 453.89085873167227,324.8904211936865 458.13356216365224,311.8310408959883 447.0250318420216,303.7595788063135 460.7563080354988,303.7590591040118"
+          points="420,315.90000000000003 424.2436919645012,328.95905910401177 437.9749681579784,328.9595788063135 426.86643783634776,337.03104089598827 431.10914126832773,350.0904211936865 420,342.01980000000003 408.89085873167227,350.0904211936865 413.13356216365224,337.03104089598827 402.0250318420216,328.9595788063135 415.7563080354988,328.95905910401177"
         />
         <image
           class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
@@ -4869,7 +4903,7 @@ exports[`Flag Snapshots renders Grenada correctly 1`] = `
           height="64.8"
           href="Grenada.svg"
           width="64.8"
-          x="135.6"
+          x="75.6"
           y="147.6"
         />
       </g>
@@ -4877,6 +4911,574 @@ exports[`Flag Snapshots renders Grenada correctly 1`] = `
         class="pointer-events-none"
         fill="none"
         height="360"
+        stroke="#ddd"
+        stroke-width="1"
+        width="600"
+      />
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`Flag Snapshots renders Guatemala correctly 1`] = `
+<div>
+  <div
+    class="w-full flex justify-center bg-gray-100 rounded-lg p-4 shadow-inner"
+  >
+    <svg
+      class="shadow-xl select-none"
+      style="width: 100%; height: auto; max-width: 600px; background-color: rgb(255, 255, 255);"
+      viewBox="0 0 600 375"
+    >
+      <mask
+        id="flag-mask"
+      >
+        <rect
+          fill="white"
+          height="375"
+          width="600"
+        />
+      </mask>
+      <g
+        mask="url(#flag-mask)"
+      >
+        <g>
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#4997D0"
+            height="375"
+            width="200"
+            x="0"
+            y="0"
+          />
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#FFFFFF"
+            height="375"
+            width="200"
+            x="200"
+            y="0"
+          />
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#4997D0"
+            height="375"
+            width="200"
+            x="400"
+            y="0"
+          />
+        </g>
+        <image
+          class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+          display="block"
+          fill="#E2E8F0"
+          height="180"
+          href="https://upload.wikimedia.org/wikipedia/commons/1/15/Coat_of_arms_of_Guatemala.svg"
+          width="180"
+          x="210"
+          y="97.5"
+        />
+      </g>
+      <rect
+        class="pointer-events-none"
+        fill="none"
+        height="375"
+        stroke="#ddd"
+        stroke-width="1"
+        width="600"
+      />
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`Flag Snapshots renders Guinea correctly 1`] = `
+<div>
+  <div
+    class="w-full flex justify-center bg-gray-100 rounded-lg p-4 shadow-inner"
+  >
+    <svg
+      class="shadow-xl select-none"
+      style="width: 100%; height: auto; max-width: 600px; background-color: rgb(255, 255, 255);"
+      viewBox="0 0 600 400"
+    >
+      <mask
+        id="flag-mask"
+      >
+        <rect
+          fill="white"
+          height="400"
+          width="600"
+        />
+      </mask>
+      <g
+        mask="url(#flag-mask)"
+      >
+        <g>
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#CE1126"
+            height="400"
+            width="200"
+            x="0"
+            y="0"
+          />
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#FCD116"
+            height="400"
+            width="200"
+            x="200"
+            y="0"
+          />
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#009460"
+            height="400"
+            width="200"
+            x="400"
+            y="0"
+          />
+        </g>
+      </g>
+      <rect
+        class="pointer-events-none"
+        fill="none"
+        height="400"
+        stroke="#ddd"
+        stroke-width="1"
+        width="600"
+      />
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`Flag Snapshots renders Guinea-Bissau correctly 1`] = `
+<div>
+  <div
+    class="w-full flex justify-center bg-gray-100 rounded-lg p-4 shadow-inner"
+  >
+    <svg
+      class="shadow-xl select-none"
+      style="width: 100%; height: auto; max-width: 600px; background-color: rgb(255, 255, 255);"
+      viewBox="0 0 600 300"
+    >
+      <mask
+        id="flag-mask"
+      >
+        <rect
+          fill="white"
+          height="300"
+          width="600"
+        />
+      </mask>
+      <g
+        mask="url(#flag-mask)"
+      >
+        <g>
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#FCD116"
+            height="150"
+            width="600"
+            x="0"
+            y="0"
+          />
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#009E49"
+            height="150"
+            width="600"
+            x="0"
+            y="150"
+          />
+        </g>
+        <rect
+          class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+          fill="#CE1126"
+          height="300"
+          stroke="none"
+          stroke-width="0"
+          width="200"
+          x="0"
+        />
+        <polygon
+          class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+          display="block"
+          fill="#000000"
+          points="100,105 110.10402848690761,136.09299786669465 142.7975432332819,136.09423525312738 116.34866151511369,155.31200213330536 126.45033635316129,186.40576474687265 100,167.19 73.54966364683871,186.40576474687265 83.65133848488631,155.31200213330536 57.202456766718086,136.09423525312738 89.89597151309238,136.09299786669465"
+        />
+      </g>
+      <rect
+        class="pointer-events-none"
+        fill="none"
+        height="300"
+        stroke="#ddd"
+        stroke-width="1"
+        width="600"
+      />
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`Flag Snapshots renders Guyana correctly 1`] = `
+<div>
+  <div
+    class="w-full flex justify-center bg-gray-100 rounded-lg p-4 shadow-inner"
+  >
+    <svg
+      class="shadow-xl select-none"
+      style="width: 100%; height: auto; max-width: 600px; background-color: rgb(255, 255, 255);"
+      viewBox="0 0 600 360"
+    >
+      <mask
+        id="flag-mask"
+      >
+        <rect
+          fill="white"
+          height="360"
+          width="600"
+        />
+      </mask>
+      <g
+        mask="url(#flag-mask)"
+      >
+        <g>
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#009E49"
+            height="360"
+            width="600"
+            x="0"
+            y="0"
+          />
+        </g>
+        <polygon
+          class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+          fill="#FFFFFF"
+          points="0,0 600,180 0,360"
+          stroke="none"
+          stroke-linejoin="round"
+          stroke-width="0"
+        />
+        <polygon
+          class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+          fill="#FCD116"
+          points="0,0 552,180 0,360"
+          stroke="none"
+          stroke-linejoin="round"
+          stroke-width="0"
+        />
+        <polygon
+          class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+          fill="#000000"
+          points="0,0 276,180 0,360"
+          stroke="none"
+          stroke-linejoin="round"
+          stroke-width="0"
+        />
+        <polygon
+          class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+          fill="#CE1126"
+          points="0,0 252,180 0,360"
+          stroke="none"
+          stroke-linejoin="round"
+          stroke-width="0"
+        />
+      </g>
+      <rect
+        class="pointer-events-none"
+        fill="none"
+        height="360"
+        stroke="#ddd"
+        stroke-width="1"
+        width="600"
+      />
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`Flag Snapshots renders Haiti correctly 1`] = `
+<div>
+  <div
+    class="w-full flex justify-center bg-gray-100 rounded-lg p-4 shadow-inner"
+  >
+    <svg
+      class="shadow-xl select-none"
+      style="width: 100%; height: auto; max-width: 600px; background-color: rgb(255, 255, 255);"
+      viewBox="0 0 600 360"
+    >
+      <mask
+        id="flag-mask"
+      >
+        <rect
+          fill="white"
+          height="360"
+          width="600"
+        />
+      </mask>
+      <g
+        mask="url(#flag-mask)"
+      >
+        <g>
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#00209F"
+            height="180"
+            width="600"
+            x="0"
+            y="0"
+          />
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#D21034"
+            height="180"
+            width="600"
+            x="0"
+            y="180"
+          />
+        </g>
+        <rect
+          class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+          display="block"
+          fill="#FFFFFF"
+          height="158.4"
+          width="158.4"
+          x="220.8"
+          y="100.8"
+        />
+        <image
+          class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+          display="block"
+          fill="#94A3B8"
+          height="145.8"
+          href="https://upload.wikimedia.org/wikipedia/commons/7/75/Coat_of_arms_of_Haiti.svg"
+          width="145.8"
+          x="227.1"
+          y="107.1"
+        />
+      </g>
+      <rect
+        class="pointer-events-none"
+        fill="none"
+        height="360"
+        stroke="#ddd"
+        stroke-width="1"
+        width="600"
+      />
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`Flag Snapshots renders Honduras correctly 1`] = `
+<div>
+  <div
+    class="w-full flex justify-center bg-gray-100 rounded-lg p-4 shadow-inner"
+  >
+    <svg
+      class="shadow-xl select-none"
+      style="width: 100%; height: auto; max-width: 600px; background-color: rgb(255, 255, 255);"
+      viewBox="0 0 600 300"
+    >
+      <mask
+        id="flag-mask"
+      >
+        <rect
+          fill="white"
+          height="300"
+          width="600"
+        />
+      </mask>
+      <g
+        mask="url(#flag-mask)"
+      >
+        <g>
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#0073CF"
+            height="100"
+            width="600"
+            x="0"
+            y="0"
+          />
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#FFFFFF"
+            height="100"
+            width="600"
+            x="0"
+            y="100"
+          />
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#0073CF"
+            height="100"
+            width="600"
+            x="0"
+            y="200"
+          />
+        </g>
+        <polygon
+          class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+          display="block"
+          fill="#0073CF"
+          points="300,132 304.04161139476304,144.43719914667787 317.11901729331277,144.43769410125094 306.5394646060455,152.12480085332214 310.5801345412645,164.56230589874906 300,156.876 289.4198654587355,164.56230589874906 293.4605353939545,152.12480085332214 282.88098270668723,144.43769410125094 295.95838860523696,144.43719914667787"
+        />
+        <polygon
+          class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+          display="block"
+          fill="#0073CF"
+          points="210,96 214.04161139476304,108.43719914667786 227.11901729331277,108.43769410125094 216.53946460604547,116.12480085332214 220.58013454126453,128.56230589874906 210,120.876 199.41986545873547,128.56230589874906 203.46053539395453,116.12480085332214 192.88098270668723,108.43769410125095 205.95838860523696,108.43719914667786"
+        />
+        <polygon
+          class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+          display="block"
+          fill="#0073CF"
+          points="390,96 394.04161139476304,108.43719914667786 407.11901729331277,108.43769410125094 396.5394646060455,116.12480085332214 400.5801345412645,128.56230589874906 390,120.876 379.4198654587355,128.56230589874906 383.4605353939545,116.12480085332214 372.88098270668723,108.43769410125095 385.95838860523696,108.43719914667786"
+        />
+        <polygon
+          class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+          display="block"
+          fill="#0073CF"
+          points="210,168 214.04161139476304,180.43719914667787 227.11901729331277,180.43769410125094 216.53946460604547,188.12480085332214 220.58013454126453,200.56230589874906 210,192.876 199.41986545873547,200.56230589874906 203.46053539395453,188.12480085332214 192.88098270668723,180.43769410125094 205.95838860523696,180.43719914667787"
+        />
+        <polygon
+          class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+          display="block"
+          fill="#0073CF"
+          points="390,168 394.04161139476304,180.43719914667787 407.11901729331277,180.43769410125094 396.5394646060455,188.12480085332214 400.5801345412645,200.56230589874906 390,192.876 379.4198654587355,200.56230589874906 383.4605353939545,188.12480085332214 372.88098270668723,180.43769410125094 385.95838860523696,180.43719914667787"
+        />
+      </g>
+      <rect
+        class="pointer-events-none"
+        fill="none"
+        height="300"
+        stroke="#ddd"
+        stroke-width="1"
+        width="600"
+      />
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`Flag Snapshots renders Hungary correctly 1`] = `
+<div>
+  <div
+    class="w-full flex justify-center bg-gray-100 rounded-lg p-4 shadow-inner"
+  >
+    <svg
+      class="shadow-xl select-none"
+      style="width: 100%; height: auto; max-width: 600px; background-color: rgb(255, 255, 255);"
+      viewBox="0 0 600 300"
+    >
+      <mask
+        id="flag-mask"
+      >
+        <rect
+          fill="white"
+          height="300"
+          width="600"
+        />
+      </mask>
+      <g
+        mask="url(#flag-mask)"
+      >
+        <g>
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#CE2939"
+            height="100"
+            width="600"
+            x="0"
+            y="0"
+          />
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#FFFFFF"
+            height="100"
+            width="600"
+            x="0"
+            y="100"
+          />
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#477050"
+            height="100"
+            width="600"
+            x="0"
+            y="200"
+          />
+        </g>
+      </g>
+      <rect
+        class="pointer-events-none"
+        fill="none"
+        height="300"
+        stroke="#ddd"
+        stroke-width="1"
+        width="600"
+      />
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`Flag Snapshots renders Iceland correctly 1`] = `
+<div>
+  <div
+    class="w-full flex justify-center bg-gray-100 rounded-lg p-4 shadow-inner"
+  >
+    <svg
+      class="shadow-xl select-none"
+      style="width: 100%; height: auto; max-width: 600px; background-color: rgb(255, 255, 255);"
+      viewBox="0 0 600 432"
+    >
+      <mask
+        id="flag-mask"
+      >
+        <rect
+          fill="white"
+          height="432"
+          width="600"
+        />
+      </mask>
+      <g
+        mask="url(#flag-mask)"
+      >
+        <g>
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#02529C"
+            height="432"
+            width="600"
+            x="0"
+            y="0"
+          />
+        </g>
+        <polygon
+          class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+          fill="#FFFFFF"
+          points="168.00000000000003,0 264,0 264,168 600,168 600,264 264,264 264,432 168.00000000000003,432 168.00000000000003,264 0,264 0,168 168.00000000000003,168"
+          stroke="none"
+          stroke-width="0"
+        />
+        <polygon
+          class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+          fill="#DC1E35"
+          points="192,0 240,0 240,192 600,192 600,240 240,240 240,432 192,432 192,240 0,240 0,192 192,192"
+          stroke="none"
+          stroke-width="0"
+        />
+      </g>
+      <rect
+        class="pointer-events-none"
+        fill="none"
+        height="432"
         stroke="#ddd"
         stroke-width="1"
         width="600"

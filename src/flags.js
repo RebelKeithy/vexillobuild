@@ -1317,7 +1317,7 @@ export const LEVELS = [
         target: {
             base: { type: 'bisection-horizontal', colors: ['green', 'blue'] },
             overlays: [
-                { type: 'triangle', position: 'hoist', color: 'red', vertexXRatio: 2 }
+                { type: 'pile', color: 'red' }
             ],
             symbols: [
                 {
@@ -1709,6 +1709,194 @@ export const LEVELS = [
                     xOffset: -0.32
                 }
             ]
+        }
+    },
+    {
+        id: 73,
+        name: "Guatemala",
+        difficulty: "Intermediate",
+        description: "Libertad 15 de Septiembre de 1821.",
+        hint: "Three vertical stripes: Light Blue, White, Light Blue. Coat of arms in the center.",
+        aspectRatio: 5/8,
+        colorOverrides: {
+            'lightBlue': '#4997D0'
+        },
+        target: {
+            base: { type: 'vertical-tricolor', colors: ['lightBlue', 'white', 'lightBlue'] },
+            overlays: [],
+            symbols: [
+                {
+                    type: 'seal',
+                    src: 'https://upload.wikimedia.org/wikipedia/commons/1/15/Coat_of_arms_of_Guatemala.svg',
+                    color: null,
+                    scale: 1.6
+                }
+            ]
+        }
+    },
+    {
+        id: 74,
+        name: "Guinea",
+        difficulty: "Novice",
+        description: "Travail, Justice, Solidarité.",
+        hint: "Three vertical stripes: Red, Yellow, Green.",
+        aspectRatio: 2/3,
+        colorOverrides: {
+            'red': '#CE1126',
+            'gold': '#FCD116',
+            'green': '#009460'
+        },
+        target: {
+            base: { type: 'vertical-tricolor', colors: ['red', 'gold', 'green'] },
+            overlays: [],
+            symbols: []
+        }
+    },
+    {
+        id: 75,
+        name: "Guinea-Bissau",
+        difficulty: "Intermediate",
+        description: "Unidade, Luta, Progresso.",
+        hint: "Red vertical stripe at hoist with black star. Yellow and green horizontal stripes on fly.",
+        aspectRatio: 1/2,
+        colorOverrides: {
+            'red': '#CE1126',
+            'gold': '#FCD116',
+            'green': '#009E49'
+        },
+        target: {
+            base: { type: 'bisection-horizontal', colors: ['gold', 'green'] },
+            overlays: [
+                { type: 'side', color: 'red', widthRatio: 1/3, side: 'left' }
+            ],
+            symbols: [
+                {
+                    type: 'star',
+                    color: 'black',
+                    points: 5,
+                    scale: 1.0,
+                    xOffset: -1/3
+                }
+            ]
+        }
+    },
+    {
+        id: 76,
+        name: "Guyana",
+        difficulty: "Intermediate",
+        description: "The Golden Arrowhead.",
+        hint: "Green field. Golden arrow from hoist. Red triangle with black border inside.",
+        aspectRatio: 3/5,
+        colorOverrides: {
+            'green': '#009E49',
+            'gold': '#FCD116',
+            'red': '#CE1126'
+        },
+        target: {
+            base: { type: 'solid', colors: ['green'] },
+            overlays: [
+                { type: 'pile', color: 'white' },
+                { type: 'pile', color: 'gold', vertexXRatio: 0.93, height: 0.95 },
+                { type: 'triangle', color: 'black', vertexXRatio: 0.5 * 5/3 },
+                { type: 'triangle', color: 'red', vertexXRatio: 0.43 * 5/3, height: 0.85 }
+            ],
+            symbols: []
+        }
+    },
+    {
+        id: 77,
+        name: "Haiti",
+        difficulty: "Intermediate",
+        description: "L'Union Fait La Force.",
+        hint: "Blue over red horizontal bisection. White square in center with coat of arms.",
+        aspectRatio: 3/5,
+        colorOverrides: {
+            'blue': '#00209F',
+            'red': '#D21034'
+        },
+        target: {
+            base: { type: 'bisection-horizontal', colors: ['blue', 'red'] },
+            overlays: [],
+            symbols: [
+                {
+                    type: 'box',
+                    color: 'white',
+                    radius: 0.2,
+                    aspectRatio: 900/716
+                },
+                {
+                    type: 'seal',
+                    src: 'https://upload.wikimedia.org/wikipedia/commons/7/75/Coat_of_arms_of_Haiti.svg',
+                    color: null,
+                    aspectRatio: 900/716,
+                    scale: 1.35
+                }
+            ]
+        }
+    },
+    {
+        id: 78,
+        name: "Honduras",
+        difficulty: "Intermediate",
+        description: "Libre, Soberana e Independiente.",
+        hint: "Blue, white, blue horizontal stripes. Five blue stars in X pattern in center.",
+        aspectRatio: 1/2,
+        colorOverrides: {
+            'blue': '#00bce4'
+        },
+        target: {
+            base: { type: 'horizontal-stripes', count: 3, colors: ['blue', 'white', 'blue'] },
+            overlays: [],
+            symbols: [
+                {
+                    type: 'star',
+                    color: 'blue',
+                    points: 5,
+                    count: 5,
+                    layout: 'quincunx',
+                    scale: 0.4,
+                    radius: 2/36,
+                    spacingX: 10/36,
+                    spacingY: 3/36
+                }
+            ]
+        }
+    },
+    {
+        id: 79,
+        name: "Hungary",
+        difficulty: "Novice",
+        description: "Strength, Fidelity, Hope.",
+        hint: "Three horizontal stripes: Red, White, Green.",
+        aspectRatio: 1/2,
+        colorOverrides: {
+            'red': '#CE2939',
+            'green': '#477050'
+        },
+        target: {
+            base: { type: 'horizontal-stripes', count: 3, colors: ['red', 'white', 'green'] },
+            overlays: [],
+            symbols: []
+        }
+    },
+    {
+        id: 80,
+        name: "Iceland",
+        difficulty: "Intermediate",
+        description: "The Blue Field with Fire and Ice.",
+        hint: "Blue field. White-bordered red Nordic cross.",
+        aspectRatio: 18/25,
+        colorOverrides: {
+            'blue': '#02529C',
+            'red': '#DC1E35'
+        },
+        target: {
+            base: { type: 'solid', colors: ['blue'] },
+            overlays: [
+                { type: 'nordic-cross', color: 'white', verticalOffset: 7/25, crossWidth: 4/18 },
+                { type: 'nordic-cross', color: 'red', verticalOffset: 8/25, crossWidth: 2/18 }
+            ],
+            symbols: []
         }
     }
 ];

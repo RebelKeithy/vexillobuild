@@ -78,6 +78,17 @@ const calculateStarPositions = (count, cx, cy, r, args) => {
                 cy: startY + row * spacing
             });
         }
+    } else if (actualLayout === 'quincunx') {
+        // X pattern (like 5 on a die): center + 4 corners
+        const spacingX = args.spacingX || args.spacing || (r * 3);
+        const spacingY = args.spacingY || args.spacing || (r * 3);
+        // Center
+        positions.push({cx, cy});
+        // Top-left, Top-right, Bottom-left, Bottom-right
+        positions.push({cx: cx - spacingX, cy: cy - spacingY});
+        positions.push({cx: cx + spacingX, cy: cy - spacingY});
+        positions.push({cx: cx - spacingX, cy: cy + spacingY});
+        positions.push({cx: cx + spacingX, cy: cy + spacingY});
     }
 
     return positions;
@@ -87,6 +98,18 @@ export const SHAPE_GENERATORS = {
     triangle: ({w, h, args}) => {
         const th = args.height ? h * args.height : h
         let vx = args.vertexXRatio ? h * args.vertexXRatio : w * 0.5
+        if (args.equilateral) {
+            vx = th * Math.sqrt(3) / 2
+        }
+        return `0,${h/2 - th/2} ${vx},${h/2} 0,${th/2 + h/2}`;
+    },
+    pile: ({w, h, args}) => {
+        // Full-width triangle from hoist extending to fly
+        // vertexXRatio determines how far across the flag the point extends (default: 1 = full width)
+        // const vertexX = w * (args.vertexXRatio || 1);
+        // return `0,0 ${vertexX},${h/2} 0,${h}`;
+        const th = args.height ? h * args.height : h
+        let vx = args.vertexXRatio ? w * args.vertexXRatio : w
         if (args.equilateral) {
             vx = th * Math.sqrt(3) / 2
         }

@@ -138,6 +138,9 @@ export const renderFlagOverlay = ({type, width, height, overlayConfig, renderSha
         case 'triangle':
             const tPoints = SHAPE_GENERATORS.triangle({w: width, h: height, args: overlayConfig});
             return renderShape('polygon', {points: tPoints, strokeLinejoin: "round"});
+        case 'pile':
+            const pilePoints = SHAPE_GENERATORS.pile({w: width, h: height, args: overlayConfig});
+            return renderShape('polygon', {points: pilePoints, strokeLinejoin: "round"});
         case 'triangle-corner':
             const tcPoints = SHAPE_GENERATORS.triangleCorner({w: width, h: height, args: overlayConfig});
             return renderShape('polygon', {points: tcPoints, strokeLinejoin: "round"});
