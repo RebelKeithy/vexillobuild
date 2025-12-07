@@ -2454,5 +2454,345 @@ export const LEVELS = [
                 }
             ]
         }
+    },
+    {
+        id: 101,
+        name: "Lithuania",
+        difficulty: "Novice",
+        description: "The Tricolor of the Baltics.",
+        hint: "Three horizontal stripes: Yellow, Green, Red.",
+        aspectRatio: 3/5,
+        colorOverrides: {
+            'gold': '#FDB913',
+            'green': '#006A44',
+            'red': '#C1272D'
+        },
+        target: {
+            base: { type: 'horizontal-stripes', count: 3, colors: ['gold', 'green', 'red'] },
+            overlays: [],
+            symbols: []
+        }
+    },
+    {
+        id: 102,
+        name: "Luxembourg",
+        difficulty: "Novice",
+        description: "The Red, White and Blue.",
+        hint: "Three horizontal stripes: Red, White, Light Blue.",
+        aspectRatio: 3/5,
+        colorOverrides: {
+            'red': '#EF3340',
+            'lightBlue': '#00A2E1'
+        },
+        target: {
+            base: { type: 'horizontal-stripes', count: 3, colors: ['red', 'white', 'lightBlue'] },
+            overlays: [],
+            symbols: []
+        }
+    },
+    {
+        id: 103,
+        name: "Madagascar",
+        difficulty: "Intermediate",
+        description: "The Great Red Island.",
+        hint: "White vertical band at hoist. Red over green horizontal bands on the fly.",
+        aspectRatio: 2/3,
+        colorOverrides: {
+            'red': '#FC3D32',
+            'green': '#007E3A'
+        },
+        target: {
+            base: { type: 'bisection-horizontal', colors: ['red', 'green'] },
+            overlays: [
+                { type: 'side', color: 'white', widthRatio: 1/3, side: 'left' }
+            ],
+            symbols: []
+        }
+    },
+    {
+        id: 104,
+        name: "Malawi",
+        difficulty: "Intermediate",
+        description: "The Warm Heart of Africa.",
+        hint: "Three horizontal stripes: Black, Red, Green. Rising sun with 31 rays in the black stripe.",
+        aspectRatio: 2/3,
+        colorOverrides: {
+            'red': '#CE1126',
+            'green': '#339E35'
+        },
+        target: {
+            base: { type: 'horizontal-stripes', count: 3, colors: ['black', 'red', 'green'] },
+            overlays: [],
+            symbols: [
+                {
+                    type: 'external',
+                    src: 'malawi_sun.svg',
+                    color: 'red',
+                    scale: 1.5,
+                    yOffset: -1/3
+                }
+            ]
+        }
+    },
+    {
+        id: 105,
+        name: "Malaysia",
+        difficulty: "Advanced",
+        description: "Jalur Gemilang - Stripes of Glory.",
+        hint: "14 red and white horizontal stripes. Dark blue canton with yellow crescent and 14-pointed star.",
+        aspectRatio: 1/2,
+        colorOverrides: {
+            'red': '#CC0001',
+            'blue': '#010066',
+            'gold': '#FFCC00'
+        },
+        target: {
+            base: { type: 'horizontal-stripes', count: 14, colors: ['red', 'white'] },
+            overlays: [
+                { type: 'canton', position: 'top-left', color: 'blue', widthRatio: 1/2, heightRatio: 8/14 }
+            ],
+            symbols: [
+                {
+                    type: 'crescent',
+                    color: 'gold',
+                    outerRadius: 3/14,
+                    innerRadius: 16/3/28,
+                    innerOffset: 2/3/14,
+                    xOffset: -0.5 + 23/4/28,
+                    yOffset: -0.5 + 4/14
+                },
+                {
+                    type: 'star',
+                    color: 'gold',
+                    points: 14,
+                    outerRadius: 5/28,
+                    innerRadius: 2/5,
+                    xOffset: -0.5 + 35/4/28,
+                    yOffset: -0.5 + 4/14
+                }
+            ]
+        }
+    },
+    {
+        id: 106,
+        name: "Maldives",
+        difficulty: "Intermediate",
+        description: "The Island Nation.",
+        hint: "Green field with red border. White crescent facing the fly.",
+        aspectRatio: 2/3,
+        colorOverrides: {
+            'red': '#D21034',
+            'green': '#007E3A'
+        },
+        target: {
+            base: { type: 'solid', colors: ['green'] },
+            overlays: [
+                { type: 'border', color: 'red', widthRatio: 6/24 }
+            ],
+            symbols: [
+                {
+                    type: 'crescent',
+                    color: 'white',
+                    outerRadius: 8/48,
+                    innerRadius: 8/48,
+                    innerOffset: 3/48
+                }
+            ]
+        }
+    },
+    {
+        id: 107,
+        name: "Mali",
+        difficulty: "Novice",
+        description: "One People, One Goal, One Faith.",
+        hint: "Three vertical stripes: Green, Gold, Red.",
+        aspectRatio: 2/3,
+        colorOverrides: {
+            'green': '#14B53A',
+            'gold': '#FCD116',
+            'red': '#CE1126'
+        },
+        target: {
+            base: { type: 'vertical-tricolor', colors: ['green', 'gold', 'red'] },
+            overlays: [],
+            symbols: []
+        }
+    },
+    {
+        id: 108,
+        name: "Malta",
+        difficulty: "Intermediate",
+        description: "The George Cross Island.",
+        hint: "Two vertical stripes: White and Red. George Cross in the upper left corner.",
+        aspectRatio: 2/3,
+        colorOverrides: {
+            'red': '#CF142B'
+        },
+        target: {
+            base: { type: 'bisection-vertical', colors: ['white', 'red'] },
+            overlays: [],
+            symbols: [
+                {
+                    type: 'seal',
+                    src: 'https://upload.wikimedia.org/wikipedia/commons/6/6e/George_Cross_Malta.svg',
+                    color: null,
+                    scale: 27/30,
+                    aspectRatio: 1,
+                    xOffset: -0.5 + (4 + 13.5)/150,
+                    yOffset: -0.5 + (4 + 13.5)/100
+                }
+            ]
+        }
+    },
+    {
+        id: 109,
+        name: "Mauritania",
+        difficulty: "Intermediate",
+        description: "The Islamic Republic.",
+        hint: "Red, green, red horizontal stripes (1:3:1). Gold crescent with horns pointing up. Gold star above.",
+        aspectRatio: 2/3,
+        colorOverrides: {
+            'green': '#00A95C',
+            'gold': '#FFD700',
+            'red': '#CD2A3E'
+        },
+        target: {
+            base: {
+                type: 'horizontal-stripes',
+                count: 3,
+                colors: ['red', 'green', 'red'],
+                ratios: [1, 3, 1]
+            },
+            overlays: [],
+            symbols: [
+                {
+                    type: 'crescent',
+                    color: 'gold',
+                    yOffset: -150/1000,
+                    outerRadius: 375/1000,
+                    innerRadiusX: 375/1000,
+                    innerRadiusY: 273/1000,
+                    arc: 'top'
+                },
+                {
+                    type: 'star',
+                    color: 'gold',
+                    points: 5,
+                    radius: 107/1000,
+                    yOffset: -1/2 + (300 + 107)/1000
+                }
+            ]
+        }
+    },
+    {
+        id: 110,
+        name: "Mauritius",
+        difficulty: "Novice",
+        description: "The Four Bands.",
+        hint: "Four equal horizontal stripes: Red, Blue, Yellow, Green.",
+        aspectRatio: 2/3,
+        colorOverrides: {
+            'red': '#EA2839',
+            'blue': '#1A206D',
+            'gold': '#FFD500',
+            'green': '#00A551'
+        },
+        target: {
+            base: { type: 'horizontal-stripes', count: 4, colors: ['red', 'blue', 'gold', 'green'] },
+            overlays: [],
+            symbols: []
+        }
+    },
+    {
+        id: 111,
+        name: "Mexico",
+        difficulty: "Intermediate",
+        description: "The Eagle and Serpent.",
+        hint: "Three vertical stripes: Green, White, Red. Coat of arms in the center.",
+        aspectRatio: 4/7,
+        colorOverrides: {
+            'green': '#006341',
+            'red': '#CE1126'
+        },
+        target: {
+            base: { type: 'vertical-tricolor', colors: ['green', 'white', 'red'] },
+            overlays: [],
+            symbols: [
+                {
+                    type: 'seal',
+                    src: 'https://upload.wikimedia.org/wikipedia/commons/2/2a/Coat_of_arms_of_Mexico.svg',
+                    color: null,
+                    scale: 1.4
+                }
+            ]
+        }
+    },
+    {
+        id: 112,
+        name: "Micronesia",
+        difficulty: "Intermediate",
+        description: "Federated States of Micronesia.",
+        hint: "Light blue field. Four white stars in a diamond pattern.",
+        aspectRatio: 10/19,
+        colorOverrides: {
+            'lightBlue': '#75B2DD'
+        },
+        target: {
+            base: { type: 'solid', colors: ['lightBlue'] },
+            overlays: [],
+            symbols: [
+                {
+                    type: 'star',
+                    color: 'white',
+                    points: 5,
+                    count: 4,
+                    layout: 'arc',
+                    circleRadius: 6/20,
+                    scale: 2/20/0.15,
+                    rotateRadially: true,
+                }
+            ]
+        }
+    },
+    {
+        id: 113,
+        name: "Moldova",
+        difficulty: "Intermediate",
+        description: "The Aurochs Head.",
+        hint: "Three vertical stripes: Blue, Yellow, Red. Coat of arms in the center.",
+        aspectRatio: 1/2,
+        colorOverrides: {
+            'blue': '#0046AE',
+            'gold': '#FFD200',
+            'red': '#CC0000'
+        },
+        target: {
+            base: { type: 'vertical-tricolor', colors: ['blue', 'gold', 'red'] },
+            overlays: [],
+            symbols: [
+                {
+                    type: 'seal',
+                    src: 'https://upload.wikimedia.org/wikipedia/commons/a/a3/Coat_of_arms_of_Moldova.svg',
+                    color: null,
+                    scale: 168/90
+                }
+            ]
+        }
+    },
+    {
+        id: 114,
+        name: "Monaco",
+        difficulty: "Novice",
+        description: "The Principality.",
+        hint: "Two horizontal stripes: Red on top, White on bottom.",
+        aspectRatio: 4/5,
+        colorOverrides: {
+            'red': '#CE1126'
+        },
+        target: {
+            base: { type: 'bisection-horizontal', colors: ['red', 'white'] },
+            overlays: [],
+            symbols: []
+        }
     }
 ];

@@ -24,6 +24,14 @@ const renderRisingSun = ({index, cx, cy, r, mergedSymbol, commonProps}) => {
 
 const renderCrescent = ({index, cx, cy, height, mergedSymbol, commonProps}) => {
     const pathData = SHAPE_GENERATORS.crescent({cx, cy, h: height, args: mergedSymbol});
+    const rotation = mergedSymbol.rotation || 0;
+    if (rotation) {
+        return (
+            <g key={index} transform={`rotate(${rotation} ${cx} ${cy})`}>
+                <path d={pathData} {...commonProps} />
+            </g>
+        );
+    }
     return <path key={index} d={pathData} {...commonProps} />;
 };
 

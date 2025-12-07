@@ -184,23 +184,47 @@ export const SHAPE_GENERATORS = {
     },
     crescent: ({cx, cy, h, args}) => {
         const rOuter = h * (args.outerRadius || 0.25);
-        const rInner = h * (args.innerRadius || 0.2);
-        const xInner = args.innerOffset !== undefined ? h * args.innerOffset : h * 0.1;
-        const d = xInner;
-        const a = (rOuter * rOuter - rInner * rInner + d * d) / (2 * d);
+        const rInnerX = h * (args.innerRadiusX !== undefined ? args.innerRadiusX : (args.innerRadius || 0.2));
+        const rInnerY = h * (args.innerRadiusY !== undefined ? args.innerRadiusY : (args.innerRadius || 0.2));
+        const innerOffset = args.innerOffset !== undefined ? h * args.innerOffset : 0;
+        const arc = args.arc || 'full'; // 'full', 'top', 'bottom'
+
+        if (arc === 'bottom') {
+            // Bottom half crescent: outer circle bottom arc + inner ellipse bottom arc (reversed)
+            return `
+                M ${cx - rOuter},${cy}
+                A ${rOuter} ${rOuter} 0 0 1 ${cx + rOuter},${cy}
+                L ${cx + rInnerX + innerOffset},${cy}
+                A ${rInnerX} ${rInnerY} 0 0 0 ${cx - rInnerX + innerOffset},${cy}
+                Z
+            `;
+        } else if (arc === 'top') {
+            // Top half crescent: outer circle top arc + inner ellipse top arc (reversed)
+            return `
+                M ${cx - rOuter},${cy}
+                A ${rOuter} ${rOuter} 0 0 0 ${cx + rOuter},${cy}
+                L ${cx + rInnerX + innerOffset},${cy}
+                A ${rInnerX} ${rInnerY} 0 0 1 ${cx - rInnerX + innerOffset},${cy}
+                Z
+            `;
+        }
+
+        // Full crescent (original logic with ellipse support)
+        const d = innerOffset || h * 0.1;
+        const a = (rOuter * rOuter - rInnerX * rInnerX + d * d) / (2 * d);
         const term = rOuter * rOuter - a * a;
         let hDist = 0;
         if (term > 0.0001) hDist = Math.sqrt(term);
         else return "";
         const xIntersect = a;
         const yIntersect = hDist;
-        const largeArcInner = xIntersect > xInner ? 1 : 0;
+        const largeArcInner = xIntersect > d ? 1 : 0;
         return `
-      M ${cx + xIntersect},${cy - yIntersect}
-      A ${rOuter} ${rOuter} 0 1 0 ${cx + xIntersect},${cy + yIntersect}
-      A ${rInner} ${rInner} 0 ${largeArcInner} 1 ${cx + xIntersect},${cy - yIntersect}
-      Z
-    `;
+            M ${cx + xIntersect},${cy - yIntersect}
+            A ${rOuter} ${rOuter} 0 1 0 ${cx + xIntersect},${cy + yIntersect}
+            A ${rInnerX} ${rInnerY} 0 ${largeArcInner} 1 ${cx + xIntersect},${cy - yIntersect}
+            Z
+        `;
     },
     diamond: ({h, w, cx, cy, width, height, args}) => {
         width = args.widthRatio ? args.widthRatio : width;

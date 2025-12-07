@@ -39,7 +39,7 @@ export const BaseControls = ({gameState, updateProp}) => {
                     <input
                         type="range"
                         min="2"
-                        max="13"
+                        max="14"
                         value={gameState.base.count || (gameState.base.type === 'serrated-vertical' ? 5 : 3)}
                         onChange={(e) => updateProp('base', null, 'count', parseInt(e.target.value))}
                         className="w-full accent-blue-500"

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Star, Circle, Moon, Layout, Image as ImageIcon, Stamp, Cog, Sun, Anchor, GripVertical, Building2, Leaf, Flag, Map, Plus, Square, TreePine, Crown} from 'lucide-react';
+import {Star, Circle, Moon, Layout, Image as ImageIcon, Stamp, Cog, Sun, Anchor, GripVertical, Building2, Leaf, Flag, Map, Plus, Square, TreePine, Crown, Medal} from 'lucide-react';
 
 export const SymbolControls = ({gameState, selectedElement, setSelectedElement, updateProp, removeItem, addItem}) => {
     return (
@@ -147,6 +147,14 @@ export const SymbolControls = ({gameState, selectedElement, setSelectedElement, 
                 <button onClick={() => addItem('symbols', {type: 'seal', src: 'https://upload.wikimedia.org/wikipedia/commons/7/7f/Liechtenstein_Crown.svg', color: null, aspectRatio: 206/179})}
                         className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
                     <Crown size={14}/> Crown
+                </button>
+                <button onClick={() => addItem('symbols', {type: 'external', src: 'malawi_sun.svg', color: 'grey', aspectRatio: 900/600})}
+                        className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
+                    <Sun size={14}/> Malawi Sun
+                </button>
+                <button onClick={() => addItem('symbols', {type: 'seal', src: 'https://upload.wikimedia.org/wikipedia/commons/6/6e/George_Cross_Malta.svg', color: null, aspectRatio: 1})}
+                        className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
+                    <Medal size={14}/> George Cross
                 </button>
             </div>
         </>
