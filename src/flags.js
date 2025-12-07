@@ -2087,5 +2087,372 @@ export const LEVELS = [
                 }
             ]
         }
+    },
+    {
+        id: 89,
+        name: "Kazakhstan",
+        difficulty: "Advanced",
+        description: "The Golden Sun and Steppe Eagle.",
+        hint: "Light blue field. Golden sun with 32 rays. Golden eagle below. Golden ornamental pattern at hoist.",
+        aspectRatio: 1/2,
+        colorOverrides: {
+            'lightBlue': '#00abc2',
+            'gold': '#FFEC2D'
+        },
+        target: {
+            base: { type: 'solid', colors: ['lightBlue'] },
+            overlays: [],
+            symbols: [
+                {
+                    type: 'external',
+                    src: 'kazakastan_symbol.svg',
+                    color: 'gold',
+                    scale: 2.2,
+                    xOffset: 36/400/2
+                },
+                {
+                    type: 'pattern',
+                    src: 'kazakastan_pattern.svg',
+                    color: null,
+                    height: 1,
+                    aspectRatio: 100/500,
+                    xOffset: -0.45
+                }
+            ]
+        }
+    },
+    {
+        id: 90,
+        name: "Kenya",
+        difficulty: "Advanced",
+        description: "Harambee - Let us all pull together.",
+        hint: "Black, red, green horizontal stripes with white fimbriations. Maasai shield and spears in center.",
+        aspectRatio: 2/3,
+        colorOverrides: {
+            'red': '#BB0000',
+            'green': '#006600'
+        },
+        target: {
+            base: {
+                type: 'horizontal-stripes',
+                count: 5,
+                colors: ['black', 'white', 'red', 'white', 'green'],
+                ratios: [3, 1, 4, 1, 3]
+            },
+            overlays: [],
+            symbols: [
+                {
+                    type: 'seal',
+                    src: 'http://upload.wikimedia.org/wikipedia/commons/e/e2/Flag_of_Kenya_%28shield%29.svg',
+                    color: null,
+                    scale: 2.5,
+                    yOffset: -0.02,
+                    aspectRatio: 2.5/4,
+                }
+            ]
+        }
+    },
+    {
+        id: 91,
+        name: "Kosovo",
+        difficulty: "Intermediate",
+        description: "The youngest European nation.",
+        hint: "Blue field. Golden map of Kosovo. Six white stars in an arc above.",
+        aspectRatio: 5/7,
+        colorOverrides: {
+            'blue': '#244AA5',
+            'gold': '#D0A650'
+        },
+        target: {
+            base: { type: 'solid', colors: ['blue'] },
+            overlays: [],
+            symbols: [
+                {
+                    type: 'star',
+                    color: 'white',
+                    points: 5,
+                    count: 6,
+                    layout: 'arc',
+                    radius: 1/20,
+                    yOffset: 0.5,
+                    circleRadius: 225/280,
+                    arcSpan: Math.PI * 0.25,
+                    startAngle: -Math.PI * 112.5/180
+                },
+                {
+                    type: 'external',
+                    src: 'kosovo_country.svg',
+                    color: 'gold',
+                    scale: 2.2,
+                    yOffset: 0.12
+                }
+            ]
+        }
+    },
+    {
+        id: 92,
+        name: "Kyrgyzstan",
+        difficulty: "Intermediate",
+        description: "The 40-Ray Sun and Tunduk.",
+        hint: "Red field. Golden sun with 40 rays and a tunduk (yurt crown) in the center.",
+        aspectRatio: 3/5,
+        colorOverrides: {
+            'red': '#FF0000',
+            'gold': '#FFFF00'
+        },
+        target: {
+            base: { type: 'solid', colors: ['red'] },
+            overlays: [],
+            symbols: [
+                {
+                    type: 'external',
+                    src: 'kyrgyzstan_sun.svg',
+                    color: 'gold',
+                    scale: 2
+                }
+            ]
+        }
+    },
+    {
+        id: 93,
+        name: "Laos",
+        difficulty: "Intermediate",
+        description: "The Land of a Million Elephants.",
+        hint: "Red, blue, red horizontal stripes (1:2:1 ratio). White circle in the center.",
+        aspectRatio: 2/3,
+        colorOverrides: {
+            'red': '#CE1126',
+            'blue': '#002868'
+        },
+        target: {
+            base: {
+                type: 'horizontal-stripes',
+                count: 3,
+                colors: ['red', 'blue', 'red'],
+                ratios: [1, 2, 1]
+            },
+            overlays: [],
+            symbols: [
+                {
+                    type: 'circle',
+                    color: 'white',
+                    radius: 2/10
+                }
+            ]
+        }
+    },
+    {
+        id: 94,
+        name: "Kuwait",
+        difficulty: "Intermediate",
+        description: "Pearl of the Gulf.",
+        hint: "Green, white, red horizontal stripes. Black trapezoid at hoist.",
+        aspectRatio: 1/2,
+        colorOverrides: {
+            'green': '#007A3D',
+            'red': '#CE1126'
+        },
+        target: {
+            base: {
+                type: 'horizontal-stripes',
+                count: 3,
+                colors: ['green', 'white', 'red']
+            },
+            overlays: [
+                {
+                    type: 'trapezoid',
+                    color: 'black',
+                    widthRatio: 0.25,
+                    heightRatio: 1/3
+                }
+            ],
+            symbols: []
+        }
+    },
+    {
+        id: 95,
+        name: "Latvia",
+        difficulty: "Easy",
+        description: "The Carmine Banner.",
+        hint: "Carmine (dark red), white, carmine horizontal stripes (2:1:2 ratio).",
+        aspectRatio: 1/2,
+        colorOverrides: {
+            'red': '#9D2235'
+        },
+        target: {
+            base: {
+                type: 'horizontal-stripes',
+                count: 3,
+                colors: ['red', 'white', 'red'],
+                ratios: [2, 1, 2]
+            },
+            overlays: [],
+            symbols: []
+        }
+    },
+    {
+        id: 96,
+        name: "Lebanon",
+        difficulty: "Intermediate",
+        description: "The Cedar of Lebanon.",
+        hint: "Red, white, red horizontal stripes (1:2:1 ratio). Green cedar tree in center.",
+        aspectRatio: 2/3,
+        colorOverrides: {
+            'red': '#ED1C24',
+            'green': '#00A651'
+        },
+        target: {
+            base: {
+                type: 'horizontal-stripes',
+                count: 3,
+                colors: ['red', 'white', 'red'],
+                ratios: [1, 2, 1]
+            },
+            overlays: [],
+            symbols: [
+                {
+                    type: 'external',
+                    src: 'https://upload.wikimedia.org/wikipedia/commons/f/fd/Arms_of_Lebanon.svg',
+                    color: 'green',
+                    scale: 1.67
+                }
+            ]
+        }
+    },
+    {
+        id: 97,
+        name: "Lesotho",
+        difficulty: "Intermediate",
+        description: "The Kingdom in the Sky.",
+        hint: "Blue, white, green horizontal stripes (3:4:3 ratio). Black Basotho hat (mokorotlo) in center.",
+        aspectRatio: 2/3,
+        colorOverrides: {
+            'blue': '#00209F',
+            'green': '#009543'
+        },
+        target: {
+            base: {
+                type: 'horizontal-stripes',
+                count: 3,
+                colors: ['blue', 'white', 'green'],
+                ratios: [3, 4, 3]
+            },
+            overlays: [],
+            symbols: [
+                {
+                    type: 'external',
+                    src: 'https://upload.wikimedia.org/wikipedia/commons/a/aa/Lesotho_Mokorotlo.svg',
+                    color: 'black',
+                    scale: 92/75,
+                    aspectRatio: 195/220
+                }
+            ]
+        }
+    },
+    {
+        id: 98,
+        name: "Liberia",
+        difficulty: "Intermediate",
+        description: "The Lone Star.",
+        hint: "11 red and white horizontal stripes. Blue canton with a single white star.",
+        aspectRatio: 10/19,
+        colorOverrides: {
+            'red': '#BF0A30',
+            'blue': '#002868'
+        },
+        target: {
+            base: {
+                type: 'horizontal-stripes',
+                count: 11,
+                colors: ['red', 'white']
+            },
+            overlays: [
+                {
+                    type: 'canton',
+                    color: 'blue',
+                    widthRatio: 50/209,
+                    heightRatio: 5/11
+                }
+            ],
+            symbols: [
+                {
+                    type: 'star',
+                    color: 'white',
+                    points: 5,
+                    parentIndex: 0,
+                    radius: 0.12
+                }
+            ]
+        }
+    },
+    {
+        id: 99,
+        name: "Libya",
+        difficulty: "Intermediate",
+        description: "The Land of the Free.",
+        hint: "Red, black, green horizontal stripes (1:2:1 ratio). White crescent and star in center.",
+        aspectRatio: 1/2,
+        colorOverrides: {
+            'red': '#E70013',
+            'green': '#239E46'
+        },
+        target: {
+            base: {
+                type: 'horizontal-stripes',
+                count: 3,
+                colors: ['red', 'black', 'green'],
+                ratios: [1, 2, 1]
+            },
+            overlays: [],
+            symbols: [
+                {
+                    type: 'crescent',
+                    color: 'white',
+                    outerRadius: 3/24,
+                    innerRadius: 2.605/24,
+                    innerOffset: 1/24
+                },
+                {
+                    type: 'star',
+                    color: 'white',
+                    points: 5,
+                    radius: 0.065,
+                    xOffset: 0.0768,
+                    rotation: -90
+                }
+            ]
+        }
+    },
+    {
+        id: 100,
+        name: "Liechtenstein",
+        difficulty: "Intermediate",
+        description: "The Princely Crown.",
+        hint: "Blue and red horizontal stripes. Gold crown in upper hoist corner.",
+        aspectRatio: 3/5,
+        colorOverrides: {
+            'blue': '#002B7F',
+            'red': '#CE1126',
+            'gold': '#FFD83D'
+        },
+        target: {
+            base: {
+                type: 'horizontal-stripes',
+                count: 2,
+                colors: ['blue', 'red']
+            },
+            overlays: [],
+            symbols: [
+                {
+                    type: 'seal',
+                    src: 'https://upload.wikimedia.org/wikipedia/commons/7/7f/Liechtenstein_Crown.svg',
+                    color: null,
+                    height: 3/12,
+                    aspectRatio: 4/3,
+                    xOffset: (4 - 10)/20,
+                    yOffset: (3 - 6)/12
+                }
+            ]
+        }
     }
 ];

@@ -24,7 +24,6 @@ export const SymbolLayer = ({
 
     const {color: _c, colors: _cs, ...geoProps} = targetOverride;
     const mergedSymbol = {...geoProps, ...symbol};
-    console.log(`Start ${mergedSymbol.radius}`)
 
     let cx = width / 2;
     let cy = height / 2;
@@ -78,7 +77,6 @@ export const SymbolLayer = ({
     // Look up and call the appropriate renderer
     const renderer = SYMBOL_RENDERERS[mergedSymbol.type];
     if (!renderer) return null;
-    console.log(`Final ${mergedSymbol.radius}`)
 
     return renderer({
         index,

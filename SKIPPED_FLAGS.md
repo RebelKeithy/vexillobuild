@@ -30,6 +30,11 @@ This document tracks flags that have been skipped due to complexity or missing c
 - **ID**: Not yet added
 - **Status**: Skipped - needs parrot SVG and complex layered cross
 
+### Kiribati
+- **Reason**: Complex design with rising sun over ocean waves and frigate bird
+- **ID**: Not yet added
+- **Status**: Skipped - needs wavy stripes and frigate bird SVG
+
 ### Democratic Republic of the Congo (DRC)
 - **Reason**: Diagonal stripe with star not yet supported
 - **ID**: Not yet added

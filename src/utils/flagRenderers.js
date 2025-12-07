@@ -174,7 +174,6 @@ export const renderFlagOverlay = ({type, width, height, overlayConfig, renderSha
             return renderShape('polygon', {points: nordicCrossPoints});
         case 'border':
             // Rectangular border/frame - rendered as a path with outer and inner rectangles
-            console.log('Border widthRatio:', overlayConfig.widthRatio, 'from config:', overlayConfig);
             const borderWidth = height * (overlayConfig.widthRatio || 1/6);
             // Calculate inner border height to maintain visual consistency
             const borderHeight = borderWidth; // Same absolute width on all sides
@@ -182,6 +181,9 @@ export const renderFlagOverlay = ({type, width, height, overlayConfig, renderSha
                 `M ${borderWidth} ${borderHeight} L ${borderWidth} ${height - borderHeight} ` +
                 `L ${width - borderWidth} ${height - borderHeight} L ${width - borderWidth} ${borderHeight} Z`;
             return renderShape('path', {d: borderPath, fillRule: 'evenodd'});
+        case 'trapezoid':
+            const trapPoints = SHAPE_GENERATORS.trapezoid({w: width, h: height, args: overlayConfig});
+            return renderShape('polygon', {points: trapPoints, strokeLinejoin: "round"});
         default:
             return null;
     }

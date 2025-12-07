@@ -1,5 +1,5 @@
 import React from 'react';
-import {Star, Circle, Moon, Layout, Image as ImageIcon, Stamp, Cog, Sun, Anchor, GripVertical, Building2, Leaf, Flag, Map, Plus, Square} from 'lucide-react';
+import {Star, Circle, Moon, Layout, Image as ImageIcon, Stamp, Cog, Sun, Anchor, GripVertical, Building2, Leaf, Flag, Map, Plus, Square, TreePine, Crown} from 'lucide-react';
 
 export const SymbolControls = ({gameState, selectedElement, setSelectedElement, updateProp, removeItem, addItem}) => {
     return (
@@ -72,7 +72,7 @@ export const SymbolControls = ({gameState, selectedElement, setSelectedElement, 
                         className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
                     <Layout size={14}/> Field
                 </button>
-                <button onClick={() => addItem('symbols', {type: 'external', src: 'https://upload.wikimedia.org/wikipedia/commons/b/b7/Albanian_Eagle.svg', color: 'grey'})}
+                <button onClick={() => addItem('symbols', {type: 'external', color: 'grey'})}
                         className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
                     <ImageIcon size={14}/> Eagle
                 </button>
@@ -124,13 +124,29 @@ export const SymbolControls = ({gameState, selectedElement, setSelectedElement, 
                         className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
                     <Flag size={14}/> Union Jack
                 </button>
-                <button onClick={() => addItem('symbols', {type: 'seal', src: 'Flag_of_Cyprus.svg', color: null, aspectRatio: 1200/800})}
+                <button onClick={() => addItem('symbols', {type: 'external', color: 'grey'})}
                         className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
                     <Map size={14}/> Country
                 </button>
                 <button onClick={() => addItem('symbols', {type: 'external', src: 'https://upload.wikimedia.org/wikipedia/commons/4/49/Star_of_David.svg', color: 'grey'})}
                         className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
                     <Star size={14}/> Star of David
+                </button>
+                <button onClick={() => addItem('symbols', {type: 'external', src: 'kyrgyzstan_sun.svg', color: 'grey'})}
+                        className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
+                    <Sun size={14}/> Tunduk
+                </button>
+                <button onClick={() => addItem('symbols', {type: 'external', src: 'https://upload.wikimedia.org/wikipedia/commons/f/fd/Arms_of_Lebanon.svg', color: 'grey', aspectRatio: 512/341})}
+                        className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
+                    <TreePine size={14}/> Cedar
+                </button>
+                <button onClick={() => addItem('symbols', {type: 'external', src: 'https://upload.wikimedia.org/wikipedia/commons/a/aa/Lesotho_Mokorotlo.svg', color: 'grey', aspectRatio: 195/220})}
+                        className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
+                    <Crown size={14}/> Mokorotlo
+                </button>
+                <button onClick={() => addItem('symbols', {type: 'seal', src: 'https://upload.wikimedia.org/wikipedia/commons/7/7f/Liechtenstein_Crown.svg', color: null, aspectRatio: 206/179})}
+                        className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
+                    <Crown size={14}/> Crown
                 </button>
             </div>
         </>

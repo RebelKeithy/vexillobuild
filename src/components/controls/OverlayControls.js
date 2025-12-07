@@ -84,12 +84,26 @@ export const OverlayControls = ({gameState, selectedElement, setSelectedElement,
                     </div>
                     <span className="font-medium">Corner Tri</span>
                 </button>
+                <button onClick={() => addItem('overlays', {type: 'triangle-corner', color: null, corner: 'bottom-left', widthRatio: 0.5})}
+                        className="flex flex-col items-center gap-2 p-2 bg-slate-700 hover:bg-slate-600 rounded border border-slate-600 text-xs transition-all">
+                    <div className="w-full aspect-[3/2] bg-slate-800/50 rounded overflow-hidden shadow-sm">
+                        <OverlayOptionPreview type="triangle-corner" defaultProps={{corner: 'bottom-right', widthRatio: 0.5}}/>
+                    </div>
+                    <span className="font-medium">Corner Tri</span>
+                </button>
                 <button onClick={() => addItem('overlays', {type: 'side', color: null, side: 'left', widthRatio: 0.33})}
                         className="flex flex-col items-center gap-2 p-2 bg-slate-700 hover:bg-slate-600 rounded border border-slate-600 text-xs transition-all">
                     <div className="w-full aspect-[3/2] bg-slate-800/50 rounded overflow-hidden shadow-sm">
                         <OverlayOptionPreview type="side" defaultProps={{side: 'left', widthRatio: 0.33}}/>
                     </div>
                     <span className="font-medium">Side</span>
+                </button>
+                <button onClick={() => addItem('overlays', {type: 'trapezoid', color: null, widthRatio: 0.25, heightRatio: 1/3})}
+                        className="flex flex-col items-center gap-2 p-2 bg-slate-700 hover:bg-slate-600 rounded border border-slate-600 text-xs transition-all">
+                    <div className="w-full aspect-[3/2] bg-slate-800/50 rounded overflow-hidden shadow-sm">
+                        <OverlayOptionPreview type="trapezoid" defaultProps={{widthRatio: 0.25, heightRatio: 1/3}}/>
+                    </div>
+                    <span className="font-medium">Trapezoid</span>
                 </button>
                 <button onClick={() => addItem('overlays', {type: 'diamond', color: null})}
                         className="flex flex-col items-center gap-2 p-2 bg-slate-700 hover:bg-slate-600 rounded border border-slate-600 text-xs transition-all">

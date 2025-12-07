@@ -329,8 +329,6 @@ const renderCross = ({index, cx, cy, r, height, mergedSymbol, commonProps}) => {
     const armWidth = size * thickness;
     const halfArm = armWidth / 2;
 
-    console.log(`${mergedSymbol.radius} ${size} ${mergedSymbol.thickness}`)
-
     // Build 12-point polygon for cross shape
     const points = [
         `${cx - halfArm},${cy - size}`,     // Top of vertical arm, left

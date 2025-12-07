@@ -327,5 +327,26 @@ export const SHAPE_GENERATORS = {
         ];
 
         return points.join(' ');
+    },
+    trapezoid: ({w, h, args}) => {
+        // Trapezoid at hoist side - wider at hoist, narrower at the fly end
+        // widthRatio: how far into the flag the trapezoid extends (default 0.25)
+        // heightRatio: height of the narrow end as ratio of flag height (default 0.5)
+        const widthRatio = args.widthRatio || 0.25;
+        const heightRatio = args.heightRatio || 0.5;
+
+        const trapWidth = w * widthRatio;
+        const narrowHeight = h * heightRatio;
+        const topOffset = (h - narrowHeight) / 2;
+
+        // Four points: top-left, top-right (narrow), bottom-right (narrow), bottom-left
+        const points = [
+            `0,0`,                              // Top-left (full height at hoist)
+            `${trapWidth},${topOffset}`,        // Top-right (narrow end)
+            `${trapWidth},${h - topOffset}`,    // Bottom-right (narrow end)
+            `0,${h}`                            // Bottom-left (full height at hoist)
+        ];
+
+        return points.join(' ');
     }
 };
