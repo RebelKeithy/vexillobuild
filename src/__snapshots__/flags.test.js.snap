@@ -8152,7 +8152,7 @@ exports[`Flag Snapshots renders Moldova correctly 1`] = `
           />
           <rect
             class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
-            fill="#FFD700"
+            fill="#FFD200"
             height="300"
             width="200"
             x="200"
@@ -8236,6 +8236,507 @@ exports[`Flag Snapshots renders Monaco correctly 1`] = `
         class="pointer-events-none"
         fill="none"
         height="480"
+        stroke="#ddd"
+        stroke-width="1"
+        width="600"
+      />
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`Flag Snapshots renders Mongolia correctly 1`] = `
+<div>
+  <div
+    class="w-full flex justify-center bg-gray-100 rounded-lg p-4 shadow-inner"
+  >
+    <svg
+      class="shadow-xl select-none"
+      style="width: 100%; height: auto; max-width: 600px; background-color: rgb(255, 255, 255);"
+      viewBox="0 0 600 300"
+    >
+      <mask
+        id="flag-mask"
+      >
+        <rect
+          fill="white"
+          height="300"
+          width="600"
+        />
+      </mask>
+      <g
+        mask="url(#flag-mask)"
+      >
+        <g>
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#C4272F"
+            height="300"
+            width="200"
+            x="0"
+            y="0"
+          />
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#015197"
+            height="300"
+            width="200"
+            x="200"
+            y="0"
+          />
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#C4272F"
+            height="300"
+            width="200"
+            x="400"
+            y="0"
+          />
+        </g>
+        <g>
+          <foreignobject
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            height="213.88888888888889"
+            width="109.99999999999999"
+            x="45.00000000000001"
+            y="43.05555555555556"
+          >
+            <div
+              style="width: 100%; height: 100%; background-color: rgb(255, 215, 0); mask-image: url(https://upload.wikimedia.org/wikipedia/commons/6/68/Soyombo_yellow.svg); mask-size: contain; mask-repeat: no-repeat; mask-position: center;"
+            />
+          </foreignobject>
+        </g>
+      </g>
+      <rect
+        class="pointer-events-none"
+        fill="none"
+        height="300"
+        stroke="#ddd"
+        stroke-width="1"
+        width="600"
+      />
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`Flag Snapshots renders Montenegro correctly 1`] = `
+<div>
+  <div
+    class="w-full flex justify-center bg-gray-100 rounded-lg p-4 shadow-inner"
+  >
+    <svg
+      class="shadow-xl select-none"
+      style="width: 100%; height: auto; max-width: 600px; background-color: rgb(255, 255, 255);"
+      viewBox="0 0 600 300"
+    >
+      <mask
+        id="flag-mask"
+      >
+        <rect
+          fill="white"
+          height="300"
+          width="600"
+        />
+      </mask>
+      <g
+        mask="url(#flag-mask)"
+      >
+        <g>
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#C40308"
+            height="300"
+            width="600"
+            x="0"
+            y="0"
+          />
+        </g>
+        <path
+          class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+          d="M 0 0 L 600 0 L 600 300 L 0 300 Z M 15 15 L 15 285 L 585 285 L 585 15 Z"
+          fill="#D4AF37"
+          fill-rule="evenodd"
+          stroke="none"
+          stroke-width="0"
+        />
+        <g>
+          <foreignobject
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            height="206.99999999999997"
+            width="172.49999999999997"
+            x="213.75"
+            y="46.500000000000014"
+          >
+            <div
+              style="width: 100%; height: 100%; background-color: rgb(212, 175, 55); mask-image: url(https://upload.wikimedia.org/wikipedia/commons/2/23/Coat_of_arms_of_Montenegro.svg); mask-size: contain; mask-repeat: no-repeat; mask-position: center;"
+            />
+          </foreignobject>
+        </g>
+      </g>
+      <rect
+        class="pointer-events-none"
+        fill="none"
+        height="300"
+        stroke="#ddd"
+        stroke-width="1"
+        width="600"
+      />
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`Flag Snapshots renders Morocco correctly 1`] = `
+<div>
+  <div
+    class="w-full flex justify-center bg-gray-100 rounded-lg p-4 shadow-inner"
+  >
+    <svg
+      class="shadow-xl select-none"
+      style="width: 100%; height: auto; max-width: 600px; background-color: rgb(255, 255, 255);"
+      viewBox="0 0 600 400"
+    >
+      <mask
+        id="flag-mask"
+      >
+        <rect
+          fill="white"
+          height="400"
+          width="600"
+        />
+      </mask>
+      <g
+        mask="url(#flag-mask)"
+      >
+        <g>
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#C1272D"
+            height="400"
+            width="600"
+            x="0"
+            y="0"
+          />
+        </g>
+        <g>
+          <foreignobject
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            height="180"
+            width="180"
+            x="210"
+            y="110"
+          >
+            <div
+              style="width: 100%; height: 100%; background-color: rgb(0, 98, 51); mask-image: url(https://upload.wikimedia.org/wikipedia/commons/2/28/Star_of_Morocco_%28unbordered%29.svg); mask-size: contain; mask-repeat: no-repeat; mask-position: center;"
+            />
+          </foreignobject>
+        </g>
+      </g>
+      <rect
+        class="pointer-events-none"
+        fill="none"
+        height="400"
+        stroke="#ddd"
+        stroke-width="1"
+        width="600"
+      />
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`Flag Snapshots renders Mozambique correctly 1`] = `
+<div>
+  <div
+    class="w-full flex justify-center bg-gray-100 rounded-lg p-4 shadow-inner"
+  >
+    <svg
+      class="shadow-xl select-none"
+      style="width: 100%; height: auto; max-width: 600px; background-color: rgb(255, 255, 255);"
+      viewBox="0 0 600 400"
+    >
+      <mask
+        id="flag-mask"
+      >
+        <rect
+          fill="white"
+          height="400"
+          width="600"
+        />
+      </mask>
+      <g
+        mask="url(#flag-mask)"
+      >
+        <g>
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#007168"
+            height="125"
+            width="600"
+            x="0"
+            y="0"
+          />
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#FFFFFF"
+            height="12.5"
+            width="600"
+            x="0"
+            y="125"
+          />
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#000000"
+            height="125"
+            width="600"
+            x="0"
+            y="137.5"
+          />
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#FFFFFF"
+            height="12.5"
+            width="600"
+            x="0"
+            y="262.5"
+          />
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#FCE100"
+            height="125"
+            width="600"
+            x="0"
+            y="275"
+          />
+        </g>
+        <polygon
+          class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+          fill="#D21034"
+          points="0,0 262.5,200 0,400"
+          stroke="none"
+          stroke-linejoin="round"
+          stroke-width="0"
+        />
+        <polygon
+          class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+          display="block"
+          fill="#FCE100"
+          points="91.875,125 110.49307349715794,182.29315987966584 170.73540765299782,182.29543993574234 121.99967572344516,217.70684012033416 140.61341229622496,275.00140915215155 91.875,239.59369817578772 43.136587703775035,275.00140915215155 61.750324276554835,217.70684012033416 13.014592347002178,182.29543993574237 73.25692650284205,182.29315987966584"
+        />
+        <image
+          class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+          display="block"
+          fill="#94A3B8"
+          height="150"
+          href="mozambique_symbol.svg"
+          width="157.714"
+          x="13.018"
+          y="125"
+        />
+      </g>
+      <rect
+        class="pointer-events-none"
+        fill="none"
+        height="400"
+        stroke="#ddd"
+        stroke-width="1"
+        width="600"
+      />
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`Flag Snapshots renders Myanmar correctly 1`] = `
+<div>
+  <div
+    class="w-full flex justify-center bg-gray-100 rounded-lg p-4 shadow-inner"
+  >
+    <svg
+      class="shadow-xl select-none"
+      style="width: 100%; height: auto; max-width: 600px; background-color: rgb(255, 255, 255);"
+      viewBox="0 0 600 400"
+    >
+      <mask
+        id="flag-mask"
+      >
+        <rect
+          fill="white"
+          height="400"
+          width="600"
+        />
+      </mask>
+      <g
+        mask="url(#flag-mask)"
+      >
+        <g>
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#FECB00"
+            height="133.33333333333334"
+            width="600"
+            x="0"
+            y="0"
+          />
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#34B233"
+            height="133.33333333333334"
+            width="600"
+            x="0"
+            y="133.33333333333334"
+          />
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#EA2839"
+            height="133.33333333333334"
+            width="600"
+            x="0"
+            y="266.6666666666667"
+          />
+        </g>
+        <polygon
+          class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+          display="block"
+          fill="#FFFFFF"
+          points="300,66.73333333333332 333.08133771269013,168.53411153391878 440.12232673415264,168.53816282875775 353.5267288124463,231.45855513274788 386.6003605044244,333.2618371712423 300,270.348 213.39963949557563,333.2618371712423 246.4732711875537,231.45855513274788 159.87767326584736,168.53816282875778 266.91866228730987,168.5341115339188"
+        />
+      </g>
+      <rect
+        class="pointer-events-none"
+        fill="none"
+        height="400"
+        stroke="#ddd"
+        stroke-width="1"
+        width="600"
+      />
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`Flag Snapshots renders Nauru correctly 1`] = `
+<div>
+  <div
+    class="w-full flex justify-center bg-gray-100 rounded-lg p-4 shadow-inner"
+  >
+    <svg
+      class="shadow-xl select-none"
+      style="width: 100%; height: auto; max-width: 600px; background-color: rgb(255, 255, 255);"
+      viewBox="0 0 600 300"
+    >
+      <mask
+        id="flag-mask"
+      >
+        <rect
+          fill="white"
+          height="300"
+          width="600"
+        />
+      </mask>
+      <g
+        mask="url(#flag-mask)"
+      >
+        <g>
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#002B7F"
+            height="137.5"
+            width="600"
+            x="0"
+            y="0"
+          />
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#FFC61E"
+            height="25"
+            width="600"
+            x="0"
+            y="137.5"
+          />
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#002B7F"
+            height="137.5"
+            width="600"
+            x="0"
+            y="162.5"
+          />
+        </g>
+        <polygon
+          class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+          display="block"
+          fill="#FFFFFF"
+          points="150,162.5 156.47047612756302,188.3518543427733 175,169.19872981077805 167.6776695296637,194.8223304703363 193.30127018922192,187.5 174.1481456572267,206.02952387243698 200,212.5 174.1481456572267,218.97047612756302 193.30127018922195,237.5 167.6776695296637,230.1776695296637 175,255.80127018922195 156.47047612756302,236.6481456572267 150,262.5 143.52952387243698,236.6481456572267 125.00000000000001,255.80127018922195 132.3223304703363,230.1776695296637 106.69872981077808,237.50000000000003 125.8518543427733,218.97047612756302 100,212.5 125.8518543427733,206.02952387243698 106.69872981077808,187.5 132.3223304703363,194.8223304703363 124.99999999999997,169.19872981077808 143.52952387243695,188.3518543427733"
+        />
+      </g>
+      <rect
+        class="pointer-events-none"
+        fill="none"
+        height="300"
+        stroke="#ddd"
+        stroke-width="1"
+        width="600"
+      />
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`Flag Snapshots renders Netherlands correctly 1`] = `
+<div>
+  <div
+    class="w-full flex justify-center bg-gray-100 rounded-lg p-4 shadow-inner"
+  >
+    <svg
+      class="shadow-xl select-none"
+      style="width: 100%; height: auto; max-width: 600px; background-color: rgb(255, 255, 255);"
+      viewBox="0 0 600 400"
+    >
+      <mask
+        id="flag-mask"
+      >
+        <rect
+          fill="white"
+          height="400"
+          width="600"
+        />
+      </mask>
+      <g
+        mask="url(#flag-mask)"
+      >
+        <g>
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#AE1C28"
+            height="133.33333333333334"
+            width="600"
+            x="0"
+            y="0"
+          />
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#FFFFFF"
+            height="133.33333333333334"
+            width="600"
+            x="0"
+            y="133.33333333333334"
+          />
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#21468B"
+            height="133.33333333333334"
+            width="600"
+            x="0"
+            y="266.6666666666667"
+          />
+        </g>
+      </g>
+      <rect
+        class="pointer-events-none"
+        fill="none"
+        height="400"
         stroke="#ddd"
         stroke-width="1"
         width="600"

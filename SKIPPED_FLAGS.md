@@ -35,6 +35,16 @@ This document tracks flags that have been skipped due to complexity or missing c
 - **ID**: Not yet added
 - **Status**: Skipped - needs wavy stripes and frigate bird SVG
 
+### Namibia
+- **Reason**: Diagonal band from corner to corner not yet supported
+- **ID**: Not yet added
+- **Status**: Skipped - needs diagonal band overlay (from lower hoist to upper fly) with sun symbol in upper hoist triangle
+
+### Nepal
+- **Reason**: Non-rectangular flag shape (double pennant)
+- **ID**: Not yet added
+- **Status**: Skipped - unique shape not supported by current rectangular flag system
+
 ### Democratic Republic of the Congo (DRC)
 - **Reason**: Diagonal stripe with star not yet supported
 - **ID**: Not yet added

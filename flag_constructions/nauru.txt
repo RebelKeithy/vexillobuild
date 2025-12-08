@@ -1,0 +1,4 @@
+h = 24
+w = 48
+3 strips, 11:2:11, blue, gold, blue
+12 pointed star, centered on x=12 and y=7 from the bottom left. Outer diameter = 8, inner diameter = 4

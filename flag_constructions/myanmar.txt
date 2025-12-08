@@ -1,0 +1,4 @@
+h = 12
+w = 18
+3 even horizontal strips, (yellow, green, red)
+White star, 5 points, r=4.42, center offset down by 0.422

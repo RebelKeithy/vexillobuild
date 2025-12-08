@@ -1,5 +1,5 @@
 import React from 'react';
-import {Star, Circle, Moon, Layout, Image as ImageIcon, Stamp, Cog, Sun, Anchor, GripVertical, Building2, Leaf, Flag, Map, Plus, Square, TreePine, Crown, Medal} from 'lucide-react';
+import {Star, Circle, Moon, Layout, Image as ImageIcon, Stamp, Cog, Sun, Anchor, GripVertical, Building2, Leaf, Flag, Map, Plus, Square, TreePine, Crown, Medal, Crosshair} from 'lucide-react';
 
 export const SymbolControls = ({gameState, selectedElement, setSelectedElement, updateProp, removeItem, addItem}) => {
     return (
@@ -155,6 +155,18 @@ export const SymbolControls = ({gameState, selectedElement, setSelectedElement, 
                 <button onClick={() => addItem('symbols', {type: 'seal', src: 'https://upload.wikimedia.org/wikipedia/commons/6/6e/George_Cross_Malta.svg', color: null, aspectRatio: 1})}
                         className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
                     <Medal size={14}/> George Cross
+                </button>
+                <button onClick={() => addItem('symbols', {type: 'external', src: 'https://upload.wikimedia.org/wikipedia/commons/6/68/Soyombo_yellow.svg', color: 'grey', aspectRatio: 90/175})}
+                        className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
+                    <Star size={14}/> Soyombo
+                </button>
+                <button onClick={() => addItem('symbols', {type: 'external', src: 'https://upload.wikimedia.org/wikipedia/commons/2/28/Star_of_Morocco_%28unbordered%29.svg', color: 'grey', aspectRatio: 1})}
+                        className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
+                    <Star size={14}/> Pentagram
+                </button>
+                <button onClick={() => addItem('symbols', {type: 'external', src: 'mozambique_symbol.svg', color: null, aspectRatio: 236.571/225})}
+                        className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
+                    <Crosshair size={14}/> Mozambique
                 </button>
             </div>
         </>

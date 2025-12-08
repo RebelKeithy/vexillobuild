@@ -2794,5 +2794,200 @@ export const LEVELS = [
             overlays: [],
             symbols: []
         }
+    },
+    {
+        id: 115,
+        name: "Mongolia",
+        difficulty: "Intermediate",
+        description: "Land of the Eternal Blue Sky.",
+        hint: "Three vertical stripes: Red, Blue, Red. Yellow Soyombo symbol in the left stripe.",
+        aspectRatio: 1/2,
+        colorOverrides: {
+            'red': '#C4272F',
+            'blue': '#015197'
+        },
+        target: {
+            base: { type: 'vertical-tricolor', colors: ['red', 'blue', 'red'] },
+            overlays: [],
+            symbols: [
+                {
+                    type: 'external',
+                    src: 'https://upload.wikimedia.org/wikipedia/commons/6/68/Soyombo_yellow.svg',
+                    color: 'gold',
+                    width: 22/120,
+                    aspectRatio: 90/175,
+                    xOffset: -1/3
+                }
+            ]
+        }
+    },
+    {
+        id: 116,
+        name: "Montenegro",
+        difficulty: "Intermediate",
+        description: "The Land of the Black Mountain.",
+        hint: "Red field with gold border. Coat of arms in the center.",
+        aspectRatio: 1/2,
+        colorOverrides: {
+            'red': '#C40308',
+            'gold': '#D4AF37'
+        },
+        target: {
+            base: { type: 'solid', colors: ['red'] },
+            overlays: [
+                { type: 'border', color: 'gold', widthRatio: 1/20 }
+            ],
+            symbols: [
+                {
+                    type: 'external',
+                    src: 'https://upload.wikimedia.org/wikipedia/commons/2/23/Coat_of_arms_of_Montenegro.svg',
+                    color: 'gold',
+                    aspectRatio: 5/6,
+                    scale: 2.3
+                }
+            ]
+        }
+    },
+    {
+        id: 117,
+        name: "Morocco",
+        difficulty: "Intermediate",
+        description: "The Sharifian Star.",
+        hint: "Red field. Green five-pointed star (pentagram) in the center.",
+        aspectRatio: 2/3,
+        colorOverrides: {
+            'red': '#C1272D',
+            'green': '#006233'
+        },
+        target: {
+            base: { type: 'solid', colors: ['red'] },
+            overlays: [],
+            symbols: [
+                {
+                    type: 'external',
+                    src: 'https://upload.wikimedia.org/wikipedia/commons/2/28/Star_of_Morocco_%28unbordered%29.svg',
+                    color: 'green',
+                    scale: 1.5
+                }
+            ]
+        }
+    },
+    {
+        id: 118,
+        name: "Mozambique",
+        difficulty: "Advanced",
+        description: "The AK-47 Flag.",
+        hint: "Green, white, black, white, yellow stripes. Red triangle at hoist with emblem.",
+        aspectRatio: 2/3,
+        colorOverrides: {
+            'green': '#007168',
+            'gold': '#FCE100',
+            'red': '#D21034'
+        },
+        target: {
+            base: {
+                type: 'horizontal-stripes',
+                count: 5,
+                colors: ['green', 'white', 'black', 'white', 'gold'],
+                ratios: [10, 1, 10, 1, 10]
+            },
+            overlays: [
+                { type: 'triangle', color: 'red', vertexXRatio: 21/32 }
+            ],
+            symbols: [
+                {
+                    type: 'star',
+                    color: 'gold',
+                    points: 5,
+                    radius: 12/32/1.809,
+                    xOffset: -17/48,
+                    yOffset: 0.0955 * 12/32/1.809,
+                    parentIndex: 0
+                },
+                {
+                    type: 'external',
+                    src: 'mozambique_symbol.svg',
+                    color: null,
+                    aspectRatio: 236.571/225,
+                    scale: 2.5,
+                    parentIndex: 0
+                }
+            ]
+        }
+    },
+    {
+        id: 119,
+        name: "Myanmar",
+        difficulty: "Intermediate",
+        description: "The Golden Land.",
+        hint: "Three horizontal stripes: Yellow, Green, Red. Large white star in the center.",
+        aspectRatio: 12/18,
+        colorOverrides: {
+            'gold': '#FECB00',
+            'green': '#34B233',
+            'red': '#EA2839'
+        },
+        target: {
+            base: { type: 'horizontal-stripes', count: 3, colors: ['gold', 'green', 'red'] },
+            overlays: [],
+            symbols: [
+                {
+                    type: 'star',
+                    color: 'white',
+                    points: 5,
+                    radius: 4.42/12,
+                    yOffset: 0.422/12
+                }
+            ]
+        }
+    },
+    {
+        id: 120,
+        name: "Nauru",
+        difficulty: "Intermediate",
+        description: "The Pleasant Island.",
+        hint: "Blue field with gold horizontal stripe. White 12-pointed star in lower hoist.",
+        aspectRatio: 1/2,
+        colorOverrides: {
+            'blue': '#002B7F',
+            'gold': '#FFC61E'
+        },
+        target: {
+            base: {
+                type: 'horizontal-stripes',
+                count: 3,
+                colors: ['blue', 'gold', 'blue'],
+                ratios: [11, 2, 11]
+            },
+            overlays: [],
+            symbols: [
+                {
+                    type: 'star',
+                    color: 'white',
+                    points: 12,
+                    radius: 4/24,
+                    innerRadius: 1/2,
+                    xOffset: (12 - 24)/48,
+                    yOffset: (17 - 12)/24
+                }
+            ]
+        }
+    },
+    {
+        id: 121,
+        name: "Netherlands",
+        difficulty: "Novice",
+        description: "The Dutch Tricolor.",
+        hint: "Three horizontal stripes: Red, White, Blue.",
+        aspectRatio: 2/3,
+        colorOverrides: {
+            'red': '#AE1C28',
+            'blue': '#21468B'
+        },
+        target: {
+            base: { type: 'horizontal-stripes', count: 3, colors: ['red', 'white', 'blue'] },
+            overlays: [],
+            symbols: []
+        }
     }
 ];
