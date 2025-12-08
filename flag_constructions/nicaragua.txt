@@ -1,0 +1,4 @@
+h = 60
+w = 100
+3 horizontal strips, blue, white, blue
+seal centered, with radius 9

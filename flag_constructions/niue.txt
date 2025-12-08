@@ -1,0 +1,6 @@
+h = 60
+w = 120
+canton is (60x30) in the top left with union jack.
+blue circle in center of canton, r=5
+yellow star on top of the circle, r=5
+4 yellow stars on the union jack, up, down, left and right from the center star. These are smaller, fitting just inside the red band of the union jack.

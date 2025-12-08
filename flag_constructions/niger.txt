@@ -1,0 +1,4 @@
+h = 12
+w = 14
+3 horizontal stripes, orange, white, green
+orange circle in the center with radius 3.4

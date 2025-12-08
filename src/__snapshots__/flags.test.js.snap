@@ -8746,6 +8746,316 @@ exports[`Flag Snapshots renders Netherlands correctly 1`] = `
 </div>
 `;
 
+exports[`Flag Snapshots renders Nicaragua correctly 1`] = `
+<div>
+  <div
+    class="w-full flex justify-center bg-gray-100 rounded-lg p-4 shadow-inner"
+  >
+    <svg
+      class="shadow-xl select-none"
+      style="width: 100%; height: auto; max-width: 600px; background-color: rgb(255, 255, 255);"
+      viewBox="0 0 600 360"
+    >
+      <mask
+        id="flag-mask"
+      >
+        <rect
+          fill="white"
+          height="360"
+          width="600"
+        />
+      </mask>
+      <g
+        mask="url(#flag-mask)"
+      >
+        <g>
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#0067C6"
+            height="120"
+            width="600"
+            x="0"
+            y="0"
+          />
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#FFFFFF"
+            height="120"
+            width="600"
+            x="0"
+            y="120"
+          />
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#0067C6"
+            height="120"
+            width="600"
+            x="0"
+            y="240"
+          />
+        </g>
+        <image
+          class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+          display="block"
+          fill="#E2E8F0"
+          height="108"
+          href="https://upload.wikimedia.org/wikipedia/commons/c/cc/Coat_of_arms_of_Nicaragua.svg"
+          width="108"
+          x="246"
+          y="126"
+        />
+      </g>
+      <rect
+        class="pointer-events-none"
+        fill="none"
+        height="360"
+        stroke="#ddd"
+        stroke-width="1"
+        width="600"
+      />
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`Flag Snapshots renders Niger correctly 1`] = `
+<div>
+  <div
+    class="w-full flex justify-center bg-gray-100 rounded-lg p-4 shadow-inner"
+  >
+    <svg
+      class="shadow-xl select-none"
+      style="width: 100%; height: auto; max-width: 600px; background-color: rgb(255, 255, 255);"
+      viewBox="0 0 600 514.2857142857142"
+    >
+      <mask
+        id="flag-mask"
+      >
+        <rect
+          fill="white"
+          height="514.2857142857142"
+          width="600"
+        />
+      </mask>
+      <g
+        mask="url(#flag-mask)"
+      >
+        <g>
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#E05206"
+            height="171.42857142857142"
+            width="600"
+            x="0"
+            y="0"
+          />
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#FFFFFF"
+            height="171.42857142857142"
+            width="600"
+            x="0"
+            y="171.42857142857142"
+          />
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#0DB02B"
+            height="171.42857142857142"
+            width="600"
+            x="0"
+            y="342.85714285714283"
+          />
+        </g>
+        <circle
+          class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+          cx="300"
+          cy="257.1428571428571"
+          display="block"
+          fill="#E05206"
+          r="72.85714285714285"
+        />
+      </g>
+      <rect
+        class="pointer-events-none"
+        fill="none"
+        height="514.2857142857142"
+        stroke="#ddd"
+        stroke-width="1"
+        width="600"
+      />
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`Flag Snapshots renders Nigeria correctly 1`] = `
+<div>
+  <div
+    class="w-full flex justify-center bg-gray-100 rounded-lg p-4 shadow-inner"
+  >
+    <svg
+      class="shadow-xl select-none"
+      style="width: 100%; height: auto; max-width: 600px; background-color: rgb(255, 255, 255);"
+      viewBox="0 0 600 300"
+    >
+      <mask
+        id="flag-mask"
+      >
+        <rect
+          fill="white"
+          height="300"
+          width="600"
+        />
+      </mask>
+      <g
+        mask="url(#flag-mask)"
+      >
+        <g>
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#008751"
+            height="300"
+            width="200"
+            x="0"
+            y="0"
+          />
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#FFFFFF"
+            height="300"
+            width="200"
+            x="200"
+            y="0"
+          />
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#008751"
+            height="300"
+            width="200"
+            x="400"
+            y="0"
+          />
+        </g>
+      </g>
+      <rect
+        class="pointer-events-none"
+        fill="none"
+        height="300"
+        stroke="#ddd"
+        stroke-width="1"
+        width="600"
+      />
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`Flag Snapshots renders Niue correctly 1`] = `
+<div>
+  <div
+    class="w-full flex justify-center bg-gray-100 rounded-lg p-4 shadow-inner"
+  >
+    <svg
+      class="shadow-xl select-none"
+      style="width: 100%; height: auto; max-width: 600px; background-color: rgb(255, 255, 255);"
+      viewBox="0 0 600 300"
+    >
+      <mask
+        id="flag-mask"
+      >
+        <rect
+          fill="white"
+          height="300"
+          width="600"
+        />
+      </mask>
+      <g
+        mask="url(#flag-mask)"
+      >
+        <g>
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="#FFF200"
+            height="300"
+            width="600"
+            x="0"
+            y="0"
+          />
+        </g>
+        <rect
+          class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+          fill="#012169"
+          height="150"
+          stroke="none"
+          stroke-width="0"
+          width="300"
+        />
+        <image
+          class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+          display="block"
+          fill="#E2E8F0"
+          height="149.85"
+          href="https://upload.wikimedia.org/wikipedia/commons/a/a5/Flag_of_the_United_Kingdom_%281-2%29.svg"
+          width="299.7"
+          x="0.15000000000000568"
+          y="0.07500000000000284"
+        />
+        <circle
+          class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+          cx="150"
+          cy="75"
+          display="block"
+          fill="#012169"
+          r="25"
+        />
+        <polygon
+          class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+          display="block"
+          fill="#FFF200"
+          points="150,50 155.61334915939312,67.27388770371925 173.77641290737884,67.27457514062631 159.0825897306187,77.95111229628074 164.69463130731182,95.22542485937369 150,84.55 135.30536869268818,95.22542485937369 140.9174102693813,77.95111229628075 126.22358709262116,67.27457514062633 144.38665084060688,67.27388770371925"
+        />
+        <g>
+          <polygon
+            fill="#FFF200"
+            points="150,20 153.36800949563587,30.36433262223155 164.2658477444273,30.36474508437579 155.44955383837123,36.77066737776845 158.8167787843871,47.135254915624216 150,40.730000000000004 141.18322121561292,47.135254915624216 144.55044616162877,36.77066737776845 135.7341522555727,30.36474508437579 146.63199050436413,30.36433262223155"
+          />
+          <polygon
+            fill="#FFF200"
+            points="150,100 153.36800949563587,110.36433262223156 164.2658477444273,110.36474508437578 155.44955383837123,116.77066737776845 158.8167787843871,127.13525491562422 150,120.73 141.18322121561292,127.13525491562422 144.55044616162877,116.77066737776845 135.7341522555727,110.36474508437578 146.63199050436413,110.36433262223156"
+          />
+          <polygon
+            fill="#FFF200"
+            points="70,60 73.36800949563587,70.36433262223156 84.2658477444273,70.36474508437578 75.44955383837123,76.77066737776845 78.8167787843871,87.13525491562422 70,80.73 61.1832212156129,87.13525491562422 64.55044616162877,76.77066737776845 55.734152255572695,70.36474508437578 66.63199050436413,70.36433262223156"
+          />
+          <polygon
+            fill="#FFF200"
+            points="230,60 233.36800949563587,70.36433262223156 244.2658477444273,70.36474508437578 235.44955383837123,76.77066737776845 238.8167787843871,87.13525491562422 230,80.73 221.18322121561292,87.13525491562422 224.55044616162877,76.77066737776845 215.7341522555727,70.36474508437578 226.63199050436413,70.36433262223156"
+          />
+          <rect
+            class="cursor-pointer transition-opacity hover:opacity-90 outline-none"
+            fill="transparent"
+            height="113.13525491562422"
+            stroke="none"
+            stroke-width="0"
+            width="194.5316954888546"
+            x="52.734152255572695"
+            y="17"
+          />
+        </g>
+      </g>
+      <rect
+        class="pointer-events-none"
+        fill="none"
+        height="300"
+        stroke="#ddd"
+        stroke-width="1"
+        width="600"
+      />
+    </svg>
+  </div>
+</div>
+`;
+
 exports[`Flag Snapshots renders South Africa correctly 1`] = `
 <div>
   <div

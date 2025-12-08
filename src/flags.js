@@ -2989,5 +2989,130 @@ export const LEVELS = [
             overlays: [],
             symbols: []
         }
+    },
+    {
+        id: 122,
+        name: "Nicaragua",
+        difficulty: "Intermediate",
+        description: "En Dios Confiamos.",
+        hint: "Blue, white, blue horizontal stripes. Coat of arms in center.",
+        aspectRatio: 3/5,
+        colorOverrides: {
+            'blue': '#0067C6'
+        },
+        target: {
+            base: { type: 'horizontal-stripes', count: 3, colors: ['blue', 'white', 'blue'] },
+            overlays: [],
+            symbols: [
+                {
+                    type: 'seal',
+                    src: 'https://upload.wikimedia.org/wikipedia/commons/c/cc/Coat_of_arms_of_Nicaragua.svg',
+                    color: null,
+                    scale: 1
+                }
+            ]
+        }
+    },
+    {
+        id: 123,
+        name: "Niger",
+        difficulty: "Easy",
+        description: "The Sun of the Sahel.",
+        hint: "Orange, white, green horizontal stripes. Orange circle in center.",
+        aspectRatio: 6/7,
+        colorOverrides: {
+            'orange': '#E05206',
+            'green': '#0DB02B'
+        },
+        target: {
+            base: { type: 'horizontal-stripes', count: 3, colors: ['orange', 'white', 'green'] },
+            overlays: [],
+            symbols: [
+                {
+                    type: 'circle',
+                    color: 'orange',
+                    radius: 3.4/24
+                }
+            ]
+        }
+    },
+    {
+        id: 124,
+        name: "Nigeria",
+        difficulty: "Novice",
+        description: "Unity and Faith, Peace and Progress.",
+        hint: "Three vertical stripes: Green, White, Green.",
+        aspectRatio: 1/2,
+        colorOverrides: {
+            'green': '#008751'
+        },
+        target: {
+            base: { type: 'vertical-tricolor', count: 3, colors: ['green', 'white', 'green'] },
+            overlays: [],
+            symbols: []
+        }
+    },
+    {
+        id: 125,
+        name: "Niue",
+        difficulty: "Advanced",
+        description: "A self-governing territory in free association with New Zealand.",
+        hint: "Gold field. Union Jack canton with blue circle and yellow stars.",
+        aspectRatio: 1/2,
+        colorOverrides: {
+            'gold': '#FFF200',
+            'blue': '#012169'
+        },
+        target: {
+            base: { type: 'solid', colors: ['gold'] },
+            overlays: [
+                { type: 'canton', position: 'top-left', color: 'blue', widthRatio: 0.5, heightRatio: 0.5 }
+            ],
+            symbols: [
+                // Union Jack in canton
+                {
+                    type: 'external',
+                    src: 'https://upload.wikimedia.org/wikipedia/commons/a/a5/Flag_of_the_United_Kingdom_%281-2%29.svg',
+                    parentIndex: 0,
+                    color: null,
+                    scale: 3.33,
+                    aspectRatio: 2
+                },
+                // Blue circle in center of canton
+                {
+                    type: 'circle',
+                    color: 'blue',
+                    radius: 5/60,
+                    xOffset: -0.25,
+                    yOffset: -0.25
+                },
+                // Yellow star on top of circle
+                {
+                    type: 'star',
+                    color: 'gold',
+                    points: 5,
+                    radius: 5/60,
+                    xOffset: -0.25,
+                    yOffset: -0.25
+                },
+                // 4 smaller yellow stars on Union Jack arms
+                {
+                    type: 'star',
+                    color: 'gold',
+                    points: 5,
+                    count: 4,
+                    layout: 'custom',
+                    radius: 3/60,
+                    xOffset: -0.25,
+                    yOffset: -0.25,
+                    positions: [
+                        {x: 0, y: -8/60},      // Up
+                        {x: 0, y: 8/60},       // Down
+                        {x: -16/120, y: 0},    // Left
+                        {x: 16/120, y: 0}      // Right
+                    ]
+                }
+            ]
+        }
     }
 ];

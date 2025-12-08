@@ -174,7 +174,7 @@ const renderExternal = ({index, cx, cy, r, width, height, mergedSymbol, commonPr
     );
 };
 
-const renderStar = ({index, cx, cy, r, height, mergedSymbol, commonProps, highlightMode, styles, bindEvents, color}) => {
+const renderStar = ({index, cx, cy, r, width, height, mergedSymbol, commonProps, highlightMode, styles, bindEvents, color}) => {
     // Convert circleRadius and spacing from percentage to absolute value if needed
     const args = {...mergedSymbol};
     if (args.circleRadius !== undefined) {
@@ -189,6 +189,9 @@ const renderStar = ({index, cx, cy, r, height, mergedSymbol, commonProps, highli
     if (args.spacingY !== undefined) {
         args.spacingY = height * args.spacingY;
     }
+    // Pass flag dimensions for custom layout
+    args.flagHeight = height;
+    args.flagWidth = width;
 
     const starResult = SHAPE_GENERATORS.star({cx, cy, r, args});
 

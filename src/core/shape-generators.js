@@ -89,6 +89,20 @@ const calculateStarPositions = (count, cx, cy, r, args) => {
         positions.push({cx: cx + spacingX, cy: cy - spacingY});
         positions.push({cx: cx - spacingX, cy: cy + spacingY});
         positions.push({cx: cx + spacingX, cy: cy + spacingY});
+    } else if (actualLayout === 'custom') {
+        // Custom positions: array of {x, y} offsets from center
+        // x is fraction of flag width, y is fraction of flag height
+        const customPositions = args.positions || [];
+        const flagHeight = args.flagHeight || 1;
+        const flagWidth = args.flagWidth || flagHeight * 2;
+        const numStars = Math.min(count, customPositions.length);
+        for (let i = 0; i < numStars; i++) {
+            const pos = customPositions[i];
+            positions.push({
+                cx: cx + (pos.x || 0) * flagWidth,
+                cy: cy + (pos.y || 0) * flagHeight
+            });
+        }
     }
 
     return positions;
