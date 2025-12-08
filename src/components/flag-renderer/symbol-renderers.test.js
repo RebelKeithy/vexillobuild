@@ -7,24 +7,29 @@ describe('Cross Symbol Renderer', () => {
     const cx = 225;
     const cy = 150;
 
-    const baseParams = {
-        index: 0,
+    const makeParams = (overrides = {}) => ({
         cx,
         cy,
         r: 45, // default when no radius
-        width,
-        height,
+        flagWidth: width,
+        flagHeight: height,
+        resolvedColor: 'red',
+        thickness: 0.4,
+        ...overrides,
+    });
+
+    const baseRenderArgs = {
+        index: 0,
         commonProps: { fill: 'red' },
         highlightMode: null,
         styles: {},
         bindEvents: () => ({}),
-        color: 'red'
     };
 
     test('renders with default size when no radius specified', () => {
         const result = renderCross({
-            ...baseParams,
-            mergedSymbol: { type: 'cross', thickness: 0.4 }
+            ...baseRenderArgs,
+            params: makeParams({ type: 'cross' }),
         });
 
         expect(result.props.points).toBeDefined();
@@ -35,13 +40,13 @@ describe('Cross Symbol Renderer', () => {
 
     test('radius parameter changes the rendered size', () => {
         const smallCross = renderCross({
-            ...baseParams,
-            mergedSymbol: { type: 'cross', radius: 0.05, thickness: 0.4 }
+            ...baseRenderArgs,
+            params: makeParams({ type: 'cross', radius: height * 0.05 }),
         });
 
         const largeCross = renderCross({
-            ...baseParams,
-            mergedSymbol: { type: 'cross', radius: 0.15, thickness: 0.4 }
+            ...baseRenderArgs,
+            params: makeParams({ type: 'cross', radius: height * 0.15 }),
         });
 
         expect(smallCross.props.points).not.toEqual(largeCross.props.points);
@@ -51,8 +56,8 @@ describe('Cross Symbol Renderer', () => {
         const radiusValues = [0.05, 0.08, 0.10, 0.15, 0.20];
         const results = radiusValues.map(radius =>
             renderCross({
-                ...baseParams,
-                mergedSymbol: { type: 'cross', radius, thickness: 0.4 }
+                ...baseRenderArgs,
+                params: makeParams({ type: 'cross', radius: height * radius }),
             }).props.points
         );
 
@@ -62,8 +67,8 @@ describe('Cross Symbol Renderer', () => {
 
     test('radius: 0.08 produces size of 24px (height * 0.08)', () => {
         const result = renderCross({
-            ...baseParams,
-            mergedSymbol: { type: 'cross', radius: 0.08, thickness: 0.4 }
+            ...baseRenderArgs,
+            params: makeParams({ type: 'cross', radius: height * 0.08 }),
         });
 
         // size = 300 * 0.08 = 24
@@ -77,8 +82,8 @@ describe('Cross Symbol Renderer', () => {
 
     test('radius: 0.15 produces size of 45px (height * 0.15)', () => {
         const result = renderCross({
-            ...baseParams,
-            mergedSymbol: { type: 'cross', radius: 0.15, thickness: 0.4 }
+            ...baseRenderArgs,
+            params: makeParams({ type: 'cross', radius: height * 0.15 }),
         });
 
         // size = 300 * 0.15 = 45

@@ -196,15 +196,9 @@ export const SHAPE_GENERATORS = {
         }
         return `M ${cx - innerR},${cy} L ${polyPoints.join(' L ')} L ${cx + innerR},${cy} Z`;
     },
-    crescent: ({cx, cy, h, args}) => {
-        const rOuter = h * (args.outerRadius || 0.25);
-        const rInnerX = h * (args.innerRadiusX !== undefined ? args.innerRadiusX : (args.innerRadius || 0.2));
-        const rInnerY = h * (args.innerRadiusY !== undefined ? args.innerRadiusY : (args.innerRadius || 0.2));
-        const innerOffset = args.innerOffset !== undefined ? h * args.innerOffset : 0;
-        const arc = args.arc || 'full'; // 'full', 'top', 'bottom'
-
+    // Crescent expects pre-converted absolute values for all radii
+    crescent: ({cx, cy, rOuter, rInnerX, rInnerY, innerOffset, arc}) => {
         if (arc === 'bottom') {
-            // Bottom half crescent: outer circle bottom arc + inner ellipse bottom arc (reversed)
             return `
                 M ${cx - rOuter},${cy}
                 A ${rOuter} ${rOuter} 0 0 1 ${cx + rOuter},${cy}
@@ -213,7 +207,6 @@ export const SHAPE_GENERATORS = {
                 Z
             `;
         } else if (arc === 'top') {
-            // Top half crescent: outer circle top arc + inner ellipse top arc (reversed)
             return `
                 M ${cx - rOuter},${cy}
                 A ${rOuter} ${rOuter} 0 0 0 ${cx + rOuter},${cy}
@@ -223,8 +216,8 @@ export const SHAPE_GENERATORS = {
             `;
         }
 
-        // Full crescent (original logic with ellipse support)
-        const d = innerOffset || h * 0.1;
+        // Full crescent
+        const d = innerOffset || rOuter * 0.4;
         const a = (rOuter * rOuter - rInnerX * rInnerX + d * d) / (2 * d);
         const term = rOuter * rOuter - a * a;
         let hDist = 0;

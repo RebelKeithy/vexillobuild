@@ -2900,7 +2900,7 @@ export const LEVELS = [
                     color: 'gold',
                     points: 5,
                     radius: 12/32/1.809,
-                    xOffset: -17/48,
+                    // xOffset removed - with consistent parent positioning, offsets are relative to parent center
                     yOffset: 0.0955 * 12/32/1.809,
                     parentIndex: 0
                 },
