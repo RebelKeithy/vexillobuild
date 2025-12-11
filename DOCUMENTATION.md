@@ -246,7 +246,7 @@ An offset Scandinavian-style cross, shifted toward the hoist.
 | Parameter | Type | Default | Description |
 |-----------|------|---------|-------------|
 | `color` | string | required | Fill color |
-| `verticalOffset` | number | `0.35` | Horizontal position of vertical arm's center as fraction of flag width (0-1). Lower = more left |
+| `verticalOffset` | number | `0.35` | Horizontal position of vertical arm's left edge as fraction of flag width (0-1). Lower = more left |
 | `crossWidth` | number | `0.15` | Width of both arms as fraction of flag height (0-1) |
 
 **How it renders:**
