@@ -3111,5 +3111,172 @@ export const LEVELS = [
                 }
             ]
         }
+    },
+    {
+        id: 126,
+        name: "North Korea",
+        difficulty: "Intermediate",
+        description: "The Flag of the DPRK.",
+        hint: "Blue/White/Red/White/Blue bands. Star in a white disk.",
+        aspectRatio: 1 / 2,
+        colorOverrides: {
+            blue: '#024FA2',
+            red: '#ED1C27'
+        },
+        target: {
+            base: {
+                type: 'horizontal-stripes',
+                count: 5,
+                colors: ['blue', 'white', 'red', 'white', 'blue'],
+                ratios: [6, 2, 22, 2, 6]
+            },
+            overlays: [],
+            symbols: [
+                {
+                    type: 'circle',
+                    color: 'white',
+                    radius: 4 / 19,
+                    xOffset: -1 / 6
+                },
+                {
+                    type: 'star',
+                    color: 'red',
+                    points: 5,
+                    radius: 4 / 19,
+                    xOffset: -1 / 6
+                }
+            ]
+        },
+    },
+    {
+        id: 127,
+        name: "Northern Ireland",
+        difficulty: "Easy",
+        description: "The St Patrick's Saltire, representing Northern Ireland.",
+        hint: "White background with a red diagonal cross.",
+        colorOverrides: {
+            red: '#C7042C'
+        },
+        target: {
+            base: {
+                type: 'solid',
+                color: 'white'
+            },
+            overlays: [
+                {
+                    type: 'saltire',
+                    color: 'red',
+                    widthRatio: 0.15
+                }
+            ],
+            symbols: []
+        }
+    },
+    {
+        id: 128,
+        name: "Norway",
+        difficulty: "Easy",
+        description: "The flag of Norway.",
+        hint: "Red with a white-fimbriated blue Nordic cross.",
+        aspectRatio: 8 / 11,
+        colorOverrides: {
+            red: '#BA0C2F',
+            blue: '#00205B'
+        },
+        target: {
+            base: {
+                type: 'solid',
+                color: 'red'
+            },
+            overlays: [
+                {
+                    type: 'nordic-cross',
+                    color: 'white',
+                    verticalOffset: 6 / 22,
+                    crossWidth: 4 / 16
+                },
+                {
+                    type: 'nordic-cross',
+                    color: 'blue',
+                    verticalOffset: 7 / 22,
+                    crossWidth: 2 / 16
+                }
+            ],
+            symbols: []
+        }
+    },
+    {
+        id: 129,
+        name: "Oman",
+        difficulty: "Intermediate",
+        description: "The Dagger and Swords.",
+        hint: "White/Red/Green horizontal bands. Vertical Red band at hoist with Emblem.",
+        aspectRatio: 4 / 7,
+        colorOverrides: {
+            red: '#CE1126',
+            green: '#007e3c'
+        },
+        target: {
+            base: {
+                type: 'horizontal-stripes',
+                count: 3,
+                colors: ['white', 'red', 'green']
+            },
+            overlays: [
+                {
+                    type: 'side',
+                    color: 'red',
+                    widthRatio: 1 / 3,
+                    side: 'left'
+                }
+            ],
+            symbols: [
+                {
+                    type: 'external',
+                    src: 'https://upload.wikimedia.org/wikipedia/commons/7/7b/National_emblem_of_Oman.svg',
+                    color: 'white',
+                    scale: 1,
+                    xOffset: -1 / 3,
+                    yOffset: -0.33
+                }
+            ]
+        }
+    },
+    {
+        id: 130,
+        name: "Pakistan",
+        difficulty: "Intermediate",
+        description: "The Flag of the Star and Crescent.",
+        hint: "Dark green field with a white vertical stripe at the hoist. White crescent and star in the center of the green field.",
+        aspectRatio: 2 / 3,
+        colorOverrides: {
+            'green': '#00401A'
+        },
+        target: {
+            base: { type: 'solid', colors: ['green'] },
+            overlays: [
+                { type: 'side', color: 'white', widthRatio: 1 / 4, side: 'left' }
+            ],
+            symbols: [
+                {
+                    type: 'crescent',
+                    color: 'white',
+                    rotation: -45,
+                    outerRadius: 3 / 10,
+                    innerRadius: 11 / 40,
+                    innerOffset: 2 / 20,
+                    xOffset: 1 / 8
+                },
+                {
+                    type: 'star',
+                    color: 'white',
+                    points: 5,
+                    rotation: 45,
+                    radius: 1 / 10,
+                    xOffset: 1 / 8 + 0.09965, // 4 units along diagonal of 22.5x20 rect
+                    yOffset: -0.13287 // 4 units along diagonal
+                }
+            ]
+        }
     }
 ];

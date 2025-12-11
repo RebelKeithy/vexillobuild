@@ -1,16 +1,15 @@
 import React from 'react';
-import {Star, Circle, Moon, Layout, Image as ImageIcon, Stamp, Cog, Sun, Anchor, GripVertical, Building2, Leaf, Flag, Map, Plus, Square, TreePine, Crown, Medal, Crosshair} from 'lucide-react';
+import { Star, Circle, Moon, Layout, Image as ImageIcon, Stamp, Cog, Sun, Anchor, GripVertical, Building2, Leaf, Flag, Map, Plus, Square, TreePine, Crown, Medal, Crosshair } from 'lucide-react';
 
-export const SymbolControls = ({gameState, selectedElement, setSelectedElement, updateProp, removeItem, addItem}) => {
+export const SymbolControls = ({ gameState, selectedElement, setSelectedElement, updateProp, removeItem, addItem }) => {
     return (
         <>
             {gameState.symbols.map((s, i) => (
                 <div
                     key={i}
-                    className={`bg-slate-700/50 p-3 rounded border relative transition-all ${
-                        selectedElement?.type === 'symbol' && selectedElement?.index === i ? 'border-blue-400 ring-1 ring-blue-400' : 'border-slate-600'
-                    }`}
-                    onClick={() => setSelectedElement({type: 'symbol', index: i})}
+                    className={`bg-slate-700/50 p-3 rounded border relative transition-all ${selectedElement?.type === 'symbol' && selectedElement?.index === i ? 'border-blue-400 ring-1 ring-blue-400' : 'border-slate-600'
+                        }`}
+                    onClick={() => setSelectedElement({ type: 'symbol', index: i })}
                 >
                     <button onClick={(e) => {
                         e.stopPropagation();
@@ -48,125 +47,129 @@ export const SymbolControls = ({gameState, selectedElement, setSelectedElement, 
                 </div>
             ))}
             <div className="grid grid-cols-5 gap-2 mt-4">
-                <button onClick={() => addItem('symbols', {type: 'star', color: null})}
-                        className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
-                    <Star size={14}/> Star
+                <button onClick={() => addItem('symbols', { type: 'star', color: null })}
+                    className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
+                    <Star size={14} /> Star
                 </button>
-                <button onClick={() => addItem('symbols', {type: 'circle', color: null, colors: [null, null]})}
-                        className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
-                    <Circle size={14}/> Circle
+                <button onClick={() => addItem('symbols', { type: 'circle', color: null, colors: [null, null] })}
+                    className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
+                    <Circle size={14} /> Circle
                 </button>
-                <button onClick={() => addItem('symbols', {type: 'cross', color: null})}
-                        className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
-                    <Plus size={14}/> Cross
+                <button onClick={() => addItem('symbols', { type: 'cross', color: null })}
+                    className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
+                    <Plus size={14} /> Cross
                 </button>
-                <button onClick={() => addItem('symbols', {type: 'box', color: null})}
-                        className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
-                    <Square size={14}/> Box
+                <button onClick={() => addItem('symbols', { type: 'box', color: null })}
+                    className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
+                    <Square size={14} /> Box
                 </button>
-                <button onClick={() => addItem('symbols', {type: 'crescent', color: null})}
-                        className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
-                    <Moon size={14}/> Crescent
+                <button onClick={() => addItem('symbols', { type: 'crescent', color: null })}
+                    className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
+                    <Moon size={14} /> Crescent
                 </button>
-                <button onClick={() => addItem('symbols', {type: 'star-field', color: null})}
-                        className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
-                    <Layout size={14}/> Field
+                <button onClick={() => addItem('symbols', { type: 'star-field', color: null })}
+                    className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
+                    <Layout size={14} /> Field
                 </button>
-                <button onClick={() => addItem('symbols', {type: 'external', color: 'grey'})}
-                        className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
-                    <ImageIcon size={14}/> Eagle
+                <button onClick={() => addItem('symbols', { type: 'external', color: 'grey' })}
+                    className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
+                    <ImageIcon size={14} /> Eagle
                 </button>
-                <button onClick={() => addItem('symbols', {type: 'external', src: 'https://upload.wikimedia.org/wikipedia/commons/4/4e/Emblem_of_Iran.svg', color: 'grey'})}
-                        className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
-                    <ImageIcon size={14}/> Iran
+                <button onClick={() => addItem('symbols', { type: 'external', src: 'https://upload.wikimedia.org/wikipedia/commons/4/4e/Emblem_of_Iran.svg', color: 'grey' })}
+                    className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
+                    <ImageIcon size={14} /> Iran
                 </button>
-                <button onClick={() => addItem('symbols', {type: 'external', src: 'Iraq.svg', color: 'grey', aspectRatio: 4500/1650})}
-                        className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
-                    <ImageIcon size={14}/> Takbir
+                <button onClick={() => addItem('symbols', { type: 'external', src: 'Iraq.svg', color: 'grey', aspectRatio: 4500 / 1650 })}
+                    className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
+                    <ImageIcon size={14} /> Takbir
                 </button>
-                <button onClick={() => addItem('symbols', {type: 'seal', color: null})}
-                        className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
-                    <Stamp size={14}/> Seal
+                <button onClick={() => addItem('symbols', { type: 'seal', color: null })}
+                    className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
+                    <Stamp size={14} /> Seal
                 </button>
-                <button onClick={() => addItem('symbols', {type: 'external', src: 'https://upload.wikimedia.org/wikipedia/commons/0/02/Machete_and_Gear.svg', color: 'grey'})}
-                        className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
-                    <Cog size={14}/> Gear
+                <button onClick={() => addItem('symbols', { type: 'external', src: 'https://upload.wikimedia.org/wikipedia/commons/0/02/Machete_and_Gear.svg', color: 'grey' })}
+                    className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
+                    <Cog size={14} /> Gear
                 </button>
-                <button onClick={() => addItem('symbols', {type: 'rising-sun', color: null})}
-                        className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
-                    <Sun size={14}/> Rising Sun
+                <button onClick={() => addItem('symbols', { type: 'rising-sun', color: null })}
+                    className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
+                    <Sun size={14} /> Rising Sun
                 </button>
-                <button onClick={() => addItem('symbols', {type: 'seal', src: 'https://upload.wikimedia.org/wikipedia/commons/9/9d/Sol_de_Mayo-Bandera_de_Argentina.svg', color: null})}
-                        className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
-                    <Sun size={14}/> Sun of May
+                <button onClick={() => addItem('symbols', { type: 'seal', src: 'https://upload.wikimedia.org/wikipedia/commons/9/9d/Sol_de_Mayo-Bandera_de_Argentina.svg', color: null })}
+                    className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
+                    <Sun size={14} /> Sun of May
                 </button>
-                <button onClick={() => addItem('symbols', {type: 'external', src: 'https://upload.wikimedia.org/wikipedia/commons/a/a7/Barbados_trident.svg', color: 'grey'})}
-                        className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
-                    <Anchor size={14}/> Trident
+                <button onClick={() => addItem('symbols', { type: 'external', src: 'https://upload.wikimedia.org/wikipedia/commons/a/a7/Barbados_trident.svg', color: 'grey' })}
+                    className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
+                    <Anchor size={14} /> Trident
                 </button>
-                <button onClick={() => addItem('symbols', {type: 'external', src: 'https://upload.wikimedia.org/wikipedia/commons/6/6c/Dragon_from_Flag_of_Bhutan.svg', color: null})}
-                        className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
-                    <ImageIcon size={14}/> Dragon
+                <button onClick={() => addItem('symbols', { type: 'external', src: 'https://upload.wikimedia.org/wikipedia/commons/6/6c/Dragon_from_Flag_of_Bhutan.svg', color: null })}
+                    className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
+                    <ImageIcon size={14} /> Dragon
                 </button>
-                <button onClick={() => addItem('symbols', {type: 'pattern', color: null})}
-                        className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
-                    <GripVertical size={14}/> Pattern
+                <button onClick={() => addItem('symbols', { type: 'pattern', color: null })}
+                    className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
+                    <GripVertical size={14} /> Pattern
                 </button>
-                <button onClick={() => addItem('symbols', {type: 'external', src: 'https://upload.wikimedia.org/wikipedia/commons/0/06/Angkor_Wat_in_Flag_of_Cambodia.svg', color: null, aspectRatio: 1.2})}
-                        className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
-                    <Building2 size={14}/> Temple
+                <button onClick={() => addItem('symbols', { type: 'external', src: 'https://upload.wikimedia.org/wikipedia/commons/0/06/Angkor_Wat_in_Flag_of_Cambodia.svg', color: null, aspectRatio: 1.2 })}
+                    className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
+                    <Building2 size={14} /> Temple
                 </button>
-                <button onClick={() => addItem('symbols', {type: 'external', src: 'https://upload.wikimedia.org/wikipedia/commons/6/66/Flag_of_Canada_%28leaf%29.svg', color: 'grey'})}
-                        className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
-                    <Leaf size={14}/> Maple Leaf
+                <button onClick={() => addItem('symbols', { type: 'external', src: 'https://upload.wikimedia.org/wikipedia/commons/6/66/Flag_of_Canada_%28leaf%29.svg', color: 'grey' })}
+                    className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
+                    <Leaf size={14} /> Maple Leaf
                 </button>
-                <button onClick={() => addItem('symbols', {type: 'external', src: 'https://upload.wikimedia.org/wikipedia/commons/a/a5/Flag_of_the_United_Kingdom_%281-2%29.svg', color: null, aspectRatio: 2})}
-                        className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
-                    <Flag size={14}/> Union Jack
+                <button onClick={() => addItem('symbols', { type: 'external', src: 'https://upload.wikimedia.org/wikipedia/commons/a/a5/Flag_of_the_United_Kingdom_%281-2%29.svg', color: null, aspectRatio: 2 })}
+                    className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
+                    <Flag size={14} /> Union Jack
                 </button>
-                <button onClick={() => addItem('symbols', {type: 'external', color: 'grey'})}
-                        className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
-                    <Map size={14}/> Country
+                <button onClick={() => addItem('symbols', { type: 'external', color: 'grey' })}
+                    className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
+                    <Map size={14} /> Country
                 </button>
-                <button onClick={() => addItem('symbols', {type: 'external', src: 'https://upload.wikimedia.org/wikipedia/commons/4/49/Star_of_David.svg', color: 'grey'})}
-                        className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
-                    <Star size={14}/> Star of David
+                <button onClick={() => addItem('symbols', { type: 'external', src: 'https://upload.wikimedia.org/wikipedia/commons/4/49/Star_of_David.svg', color: 'grey' })}
+                    className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
+                    <Star size={14} /> Star of David
                 </button>
-                <button onClick={() => addItem('symbols', {type: 'external', src: 'kyrgyzstan_sun.svg', color: 'grey'})}
-                        className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
-                    <Sun size={14}/> Tunduk
+                <button onClick={() => addItem('symbols', { type: 'external', src: 'kyrgyzstan_sun.svg', color: 'grey' })}
+                    className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
+                    <Sun size={14} /> Tunduk
                 </button>
-                <button onClick={() => addItem('symbols', {type: 'external', src: 'https://upload.wikimedia.org/wikipedia/commons/f/fd/Arms_of_Lebanon.svg', color: 'grey', aspectRatio: 512/341})}
-                        className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
-                    <TreePine size={14}/> Cedar
+                <button onClick={() => addItem('symbols', { type: 'external', src: 'https://upload.wikimedia.org/wikipedia/commons/f/fd/Arms_of_Lebanon.svg', color: 'grey', aspectRatio: 512 / 341 })}
+                    className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
+                    <TreePine size={14} /> Cedar
                 </button>
-                <button onClick={() => addItem('symbols', {type: 'external', src: 'https://upload.wikimedia.org/wikipedia/commons/a/aa/Lesotho_Mokorotlo.svg', color: 'grey', aspectRatio: 195/220})}
-                        className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
-                    <Crown size={14}/> Mokorotlo
+                <button onClick={() => addItem('symbols', { type: 'external', src: 'https://upload.wikimedia.org/wikipedia/commons/a/aa/Lesotho_Mokorotlo.svg', color: 'grey', aspectRatio: 195 / 220 })}
+                    className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
+                    <Crown size={14} /> Mokorotlo
                 </button>
-                <button onClick={() => addItem('symbols', {type: 'seal', src: 'https://upload.wikimedia.org/wikipedia/commons/7/7f/Liechtenstein_Crown.svg', color: null, aspectRatio: 206/179})}
-                        className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
-                    <Crown size={14}/> Crown
+                <button onClick={() => addItem('symbols', { type: 'seal', src: 'https://upload.wikimedia.org/wikipedia/commons/7/7f/Liechtenstein_Crown.svg', color: null, aspectRatio: 206 / 179 })}
+                    className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
+                    <Crown size={14} /> Crown
                 </button>
-                <button onClick={() => addItem('symbols', {type: 'external', src: 'malawi_sun.svg', color: 'grey', aspectRatio: 900/600})}
-                        className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
-                    <Sun size={14}/> Malawi Sun
+                <button onClick={() => addItem('symbols', { type: 'external', src: 'malawi_sun.svg', color: 'grey', aspectRatio: 900 / 600 })}
+                    className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
+                    <Sun size={14} /> Malawi Sun
                 </button>
-                <button onClick={() => addItem('symbols', {type: 'seal', src: 'https://upload.wikimedia.org/wikipedia/commons/6/6e/George_Cross_Malta.svg', color: null, aspectRatio: 1})}
-                        className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
-                    <Medal size={14}/> George Cross
+                <button onClick={() => addItem('symbols', { type: 'seal', src: 'https://upload.wikimedia.org/wikipedia/commons/6/6e/George_Cross_Malta.svg', color: null, aspectRatio: 1 })}
+                    className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
+                    <Medal size={14} /> George Cross
                 </button>
-                <button onClick={() => addItem('symbols', {type: 'external', src: 'https://upload.wikimedia.org/wikipedia/commons/6/68/Soyombo_yellow.svg', color: 'grey', aspectRatio: 90/175})}
-                        className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
-                    <Star size={14}/> Soyombo
+                <button onClick={() => addItem('symbols', { type: 'external', src: 'https://upload.wikimedia.org/wikipedia/commons/6/68/Soyombo_yellow.svg', color: 'grey', aspectRatio: 90 / 175 })}
+                    className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
+                    <Star size={14} /> Soyombo
                 </button>
-                <button onClick={() => addItem('symbols', {type: 'external', src: 'https://upload.wikimedia.org/wikipedia/commons/2/28/Star_of_Morocco_%28unbordered%29.svg', color: 'grey', aspectRatio: 1})}
-                        className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
-                    <Star size={14}/> Pentagram
+                <button onClick={() => addItem('symbols', { type: 'external', src: 'https://upload.wikimedia.org/wikipedia/commons/2/28/Star_of_Morocco_%28unbordered%29.svg', color: 'grey', aspectRatio: 1 })}
+                    className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
+                    <Star size={14} /> Pentagram
                 </button>
-                <button onClick={() => addItem('symbols', {type: 'external', src: 'mozambique_symbol.svg', color: null, aspectRatio: 236.571/225})}
-                        className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
-                    <Crosshair size={14}/> Mozambique
+                <button onClick={() => addItem('symbols', { type: 'external', src: 'mozambique_symbol.svg', color: null, aspectRatio: 236.571 / 225 })}
+                    className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
+                    <Crosshair size={14} /> Mozambique
+                </button>
+                <button onClick={() => addItem('symbols', { type: 'external', src: 'https://upload.wikimedia.org/wikipedia/commons/7/7b/National_emblem_of_Oman.svg', color: 'white', scale: 1, aspectRatio: 1 })}
+                    className="p-2 bg-slate-700 hover:bg-slate-600 rounded text-xs flex flex-col items-center gap-1 transition-colors">
+                    <ImageIcon size={14} /> Oman
                 </button>
             </div>
         </>
