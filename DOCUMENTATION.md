@@ -343,6 +343,8 @@ A rectangular border/frame around the flag edge.
 ---
 
 ### `polygon`
+> [!WARNING]
+> **DEPRECATED**: This overlay type is deprecated and should not be used for new flags. It is not supported in the builder UI. New flags should use specific shape overlays (e.g. `triangle`, `diagonal`, etc.) instead.
 
 A custom polygon defined by explicit coordinate points.
 

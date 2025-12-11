@@ -5,14 +5,14 @@ This document tracks flags that have been skipped due to complexity or missing c
 ## Flags to Implement Later
 
 ### Bosnia and Herzegovina
-- **Reason**: Yellow triangle shape not yet supported
-- **ID**: 29 (placeholder exists)
-- **Status**: Skipped - needs triangle overlay capability
+- **Reason**: UI does not support 'polygon' shape selection
+- **ID**: 29 (implementation exists in code but hidden from UI)
+- **Status**: Skipped - technically implemented with `polygon` type, but this type is deprecated and not supported in the builder UI. Needs refactor to use proper triangle overlay.
 
 ### Brunei
 - **Reason**: Diagonal stripes not yet supported
 - **ID**: Not yet added
-- **Status**: Skipped - needs diagonal stripe base type
+- **Status**: Skipped - needs `diagonal-stripe` base type or overlay capability
 
 ### Central African Republic
 - **Reason**: Complex layout with vertical band + horizontal stripes + star on center stripe
@@ -38,7 +38,7 @@ This document tracks flags that have been skipped due to complexity or missing c
 ### Namibia
 - **Reason**: Diagonal band from corner to corner not yet supported
 - **ID**: Not yet added
-- **Status**: Skipped - needs diagonal band overlay (from lower hoist to upper fly) with sun symbol in upper hoist triangle
+- **Status**: Skipped - needs `diagonal-stripe` overlay from lower hoist to upper fly
 
 ### Nepal
 - **Reason**: Non-rectangular flag shape (double pennant)
@@ -48,12 +48,12 @@ This document tracks flags that have been skipped due to complexity or missing c
 ### Democratic Republic of the Congo (DRC)
 - **Reason**: Diagonal stripe with star not yet supported
 - **ID**: Not yet added
-- **Status**: Skipped - needs diagonal bend overlay capability (diagonal stripe running from lower hoist to upper fly with star on it)
+- **Status**: Skipped - needs `diagonal-stripe` overlay capability
 
 ### Republic of the Congo
 - **Reason**: Diagonal stripe not yet supported
 - **ID**: Not yet added
-- **Status**: Skipped - needs diagonal bend overlay capability (diagonal stripe running from lower hoist to upper fly)
+- **Status**: Skipped - needs `diagonal-stripe` overlay capability
 
 ---
 

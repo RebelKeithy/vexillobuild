@@ -53,7 +53,10 @@ export const SymbolLayer = ({
     }
 
     const renderer = SYMBOL_RENDERERS[mergedSymbol.type];
-    if (!renderer) return null;
+    if (!renderer) {
+        console.warn('No renderer for type:', mergedSymbol.type);
+        return null;
+    }
 
     return renderer({
         index,
