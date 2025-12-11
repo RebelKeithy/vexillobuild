@@ -59,7 +59,7 @@ export const LEVELS = [
                 { type: 'canton', position: 'top-left', color: 'blue', widthRatio: 1/3, heightRatio: 1/2 }
             ],
             symbols: [
-                { type: 'star', color: 'white', parentIndex: 0, scale: 1.8 }
+                { type: 'star', color: 'white', parentIndex: 0, radius: 1/8 }
             ]
         }
     },
@@ -94,7 +94,7 @@ export const LEVELS = [
                 { type: 'triangle', position: 'hoist', color: 'red', vertexXRatio: 13/15, widthRatio: 1/3, heightRatio: 1/2 }
             ],
             symbols: [
-                { type: 'star', color: 'white', parentIndex: 0, scale: 1/3 /0.15 }
+                { type: 'star', color: 'white', parentIndex: 0, radius: 1/6 }
             ]
         }
     },
@@ -316,31 +316,29 @@ export const LEVELS = [
                     scale: 3.33,
                     aspectRatio: 2
                 },
-                // Commonwealth Star (7 points)
-                // baseR is already 0.15h, which matches spec, so scale should be 1.0
+                // Commonwealth Star (7 points) - radius 3/20 of flag height
                 {
                     type: 'star',
                     color: 'white',
                     points: 7,
                     innerRadius: 0.4,
-                    scale: 1.0,
+                    radius: 3/20,
                     xOffset: -0.25,
                     yOffset: 0.25
                 },
                 // Southern Cross (Crux)
-                // Major stars are 1/7 width diameter => radius 1/14 (~0.071). 0.071 / 0.15 base ≈ 0.47
-                // Minor star is 1/12 width diameter => radius 1/24 (~0.042). 0.042 / 0.15 base ≈ 0.28
+                // Major stars: 1/14 height radius, Minor star: 1/24 height radius
 
                 // Gamma Crucis (Top)
-                { type: 'star', color: 'white', points: 7, innerRadius: 0.4, scale: 0.47, xOffset: 0.25, yOffset: -0.35 },
+                { type: 'star', color: 'white', points: 7, innerRadius: 0.4, radius: 1/14, xOffset: 0.25, yOffset: -0.35 },
                 // Alpha Crucis (Bottom)
-                { type: 'star', color: 'white', points: 7, innerRadius: 0.4, scale: 0.47, xOffset: 0.25, yOffset: 0.35 },
+                { type: 'star', color: 'white', points: 7, innerRadius: 0.4, radius: 1/14, xOffset: 0.25, yOffset: 0.35 },
                 // Beta Crucis (Left)
-                { type: 'star', color: 'white', points: 7, innerRadius: 0.4, scale: 0.47, xOffset: 0.10, yOffset: 0.02 },
+                { type: 'star', color: 'white', points: 7, innerRadius: 0.4, radius: 1/14, xOffset: 0.10, yOffset: 0.02 },
                 // Delta Crucis (Right)
-                { type: 'star', color: 'white', points: 7, innerRadius: 0.4, scale: 0.47, xOffset: 0.40, yOffset: -0.05 },
+                { type: 'star', color: 'white', points: 7, innerRadius: 0.4, radius: 1/14, xOffset: 0.40, yOffset: -0.05 },
                 // Epsilon Crucis (Small, 5pt)
-                { type: 'star', color: 'white', points: 5, innerRadius: 0.38, scale: 0.28, xOffset: 0.32, yOffset: 0.16 },
+                { type: 'star', color: 'white', points: 5, innerRadius: 0.38, radius: 1/24, xOffset: 0.32, yOffset: 0.16 },
             ]
         }
     },
@@ -435,7 +433,7 @@ export const LEVELS = [
                 {
                     type: 'circle',
                     color: 'red',
-                    scale: 1.5,
+                    radius: 0.3375,
                     xOffset: -0.05
                 }
             ]
@@ -521,7 +519,7 @@ export const LEVELS = [
                 {
                     type: 'circle',
                     color: 'white',
-                    scale: 1.4
+                    radius: 0.315
                 },
                 {
                     type: 'seal',
@@ -608,15 +606,15 @@ export const LEVELS = [
             symbols: [
                 // 9 stars distributed along the diagonal from (0.17, 0) to (0.67, 1).
                 // Formula: x = 0.17 + (y / 2). y steps by 0.125.
-                { type: 'star', color: 'white', points: 5, scale: 0.5, xOffset: -0.33, yOffset: -0.5112 },   // Top (Cut off)
-                { type: 'star', color: 'white', points: 5, scale: 0.5, xOffset: -0.2675, yOffset: -0.3862 },
-                { type: 'star', color: 'white', points: 5, scale: 0.5, xOffset: -0.205, yOffset: -0.2612 },
-                { type: 'star', color: 'white', points: 5, scale: 0.5, xOffset: -0.1425, yOffset: -0.1362 },
-                { type: 'star', color: 'white', points: 5, scale: 0.5, xOffset: -0.08, yOffset: -0.0112 },   // Center
-                { type: 'star', color: 'white', points: 5, scale: 0.5, xOffset: -0.0175, yOffset: 0.1138 },
-                { type: 'star', color: 'white', points: 5, scale: 0.5, xOffset: 0.045, yOffset: 0.2388 },
-                { type: 'star', color: 'white', points: 5, scale: 0.5, xOffset: 0.1075, yOffset: 0.3638 },
-                { type: 'star', color: 'white', points: 5, scale: 0.5, xOffset: 0.17, yOffset: 0.4888 }      // Bottom (Cut off)
+                { type: 'star', color: 'white', points: 5, radius: 3/40, xOffset: -0.33, yOffset: -0.5112 },   // Top (Cut off)
+                { type: 'star', color: 'white', points: 5, radius: 3/40, xOffset: -0.2675, yOffset: -0.3862 },
+                { type: 'star', color: 'white', points: 5, radius: 3/40, xOffset: -0.205, yOffset: -0.2612 },
+                { type: 'star', color: 'white', points: 5, radius: 3/40, xOffset: -0.1425, yOffset: -0.1362 },
+                { type: 'star', color: 'white', points: 5, radius: 3/40, xOffset: -0.08, yOffset: -0.0112 },   // Center
+                { type: 'star', color: 'white', points: 5, radius: 3/40, xOffset: -0.0175, yOffset: 0.1138 },
+                { type: 'star', color: 'white', points: 5, radius: 3/40, xOffset: 0.045, yOffset: 0.2388 },
+                { type: 'star', color: 'white', points: 5, radius: 3/40, xOffset: 0.1075, yOffset: 0.3638 },
+                { type: 'star', color: 'white', points: 5, radius: 3/40, xOffset: 0.17, yOffset: 0.4888 }      // Bottom (Cut off)
             ]
         }
     },
@@ -659,7 +657,7 @@ export const LEVELS = [
                 {
                     type: 'circle',
                     color: 'blue',
-                    scale: 0.5 / 1.5 / 0.15 / 2
+                    radius: 0.25
                 }
             ]
         }
@@ -692,7 +690,7 @@ export const LEVELS = [
                     type: 'star',
                     color: 'gold',
                     points: 5,
-                    scale: 1.0
+                    radius: 3/20
                 }
             ]
         }
@@ -713,14 +711,14 @@ export const LEVELS = [
                 {
                     type: 'circle',
                     color: 'white',
-                    scale: 1.33
+                    radius: 0.29925
                 },
                 {
                     type: 'star',
                     color: 'red',
                     borderColor: 'green',
                     points: 6,
-                    scale: 0.5,
+                    radius: 3/40,
                     innerRadius: 0.577,
                     yOffset: -0.146
                 },
@@ -729,7 +727,7 @@ export const LEVELS = [
                     color: 'red',
                     borderColor: 'green',
                     points: 6,
-                    scale: 0.5,
+                    radius: 3/40,
                     innerRadius: 0.577,
                     xOffset: -0.127 * 3/5,
                     yOffset: 0.0733
@@ -739,7 +737,7 @@ export const LEVELS = [
                     color: 'red',
                     borderColor: 'green',
                     points: 6,
-                    scale: 0.5,
+                    radius: 3/40,
                     innerRadius: 0.577,
                     xOffset: 0.127 * 3/5,
                     yOffset: 0.0733
@@ -827,7 +825,7 @@ export const LEVELS = [
                     type: 'star',
                     color: 'gold',
                     points: 5,
-                    scale: 1.0
+                    radius: 3/20
                 }
             ]
         }
@@ -1033,7 +1031,7 @@ export const LEVELS = [
                 {
                     type: 'circle',
                     color: 'white',
-                    scale: 0.675,
+                    radius: 0.151875,
                     aspectRatio: 10/12,
                     xOffset: -0.5 + 0.3
                 },
@@ -1614,7 +1612,7 @@ export const LEVELS = [
                     type: 'star',
                     color: 'black',
                     points: 5,
-                    scale: 1.23,
+                    radius: 0.1845,
                     yOffset: 0.017,
                 }
             ]
@@ -1690,16 +1688,16 @@ export const LEVELS = [
             symbols: [
                 // Red circle in center
                 { type: 'circle', color: 'red', radius: 0.12 },
-                // Gold 7-pointed star in center circle
-                { type: 'star', color: 'gold', points: 5, scale: 0.75 },
+                // Gold 5-pointed star in center circle
+                { type: 'star', color: 'gold', points: 5, radius: 9/80 },
                 // 3 stars at top border
-                { type: 'star', color: 'gold', points: 5, scale: 0.4, xOffset: -0.2, yOffset: 42/600 - 0.5 },
-                { type: 'star', color: 'gold', points: 5, scale: 0.4, xOffset: 0, yOffset: 42/600 - 0.5 },
-                { type: 'star', color: 'gold', points: 5, scale: 0.4, xOffset: 0.2, yOffset: 42/600 - 0.5 },
+                { type: 'star', color: 'gold', points: 5, radius: 3/50, xOffset: -0.2, yOffset: 42/600 - 0.5 },
+                { type: 'star', color: 'gold', points: 5, radius: 3/50, xOffset: 0, yOffset: 42/600 - 0.5 },
+                { type: 'star', color: 'gold', points: 5, radius: 3/50, xOffset: 0.2, yOffset: 42/600 - 0.5 },
                 // 3 stars at bottom border
-                { type: 'star', color: 'gold', points: 5, scale: 0.35, xOffset: -0.2, yOffset: -42/600 + 0.5 },
-                { type: 'star', color: 'gold', points: 5, scale: 0.35, xOffset: 0, yOffset: -42/600 + 0.5 },
-                { type: 'star', color: 'gold', points: 5, scale: 0.35, xOffset: 0.2, yOffset: -42/600 + 0.5 },
+                { type: 'star', color: 'gold', points: 5, radius: 21/400, xOffset: -0.2, yOffset: -42/600 + 0.5 },
+                { type: 'star', color: 'gold', points: 5, radius: 21/400, xOffset: 0, yOffset: -42/600 + 0.5 },
+                { type: 'star', color: 'gold', points: 5, radius: 21/400, xOffset: 0.2, yOffset: -42/600 + 0.5 },
                 // Nutmeg on left green triangle
                 {
                     type: 'seal',
@@ -1774,7 +1772,7 @@ export const LEVELS = [
                     type: 'star',
                     color: 'black',
                     points: 5,
-                    scale: 1.0,
+                    radius: 3/20,
                     xOffset: -1/3
                 }
             ]
@@ -1854,7 +1852,6 @@ export const LEVELS = [
                     points: 5,
                     count: 5,
                     layout: 'quincunx',
-                    scale: 0.4,
                     radius: 2/36,
                     spacingX: 10/36,
                     spacingY: 3/36
@@ -2748,7 +2745,7 @@ export const LEVELS = [
                     count: 4,
                     layout: 'arc',
                     circleRadius: 6/20,
-                    scale: 2/20/0.15,
+                    radius: 1/10,
                     rotateRadially: true,
                 }
             ]

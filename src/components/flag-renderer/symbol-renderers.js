@@ -24,8 +24,7 @@ const renderBox = ({ index, params, commonProps }) => {
 };
 
 const renderCircle = ({ index, params, commonProps, resolveColor, highlightMode, highlightColorIndex, styles, bindEvents }) => {
-    const { cx, cy, r, resolvedColor } = params;
-    const circleR = params.radius ?? r * 1.5;
+    const { cx, cy, radius: circleR } = params;
 
     // Counter-changed circle (two halves with different colors)
     if (params.counterChanged && params.colors) {

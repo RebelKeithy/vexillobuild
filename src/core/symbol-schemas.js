@@ -9,7 +9,7 @@ export const SYMBOL_SCHEMAS = {
         widthPercent: [],
     },
     circle: {
-        defaults: { aspectRatio: 1 },
+        defaults: { aspectRatio: 1, radius: 0.225 },
         heightPercent: ['radius'],
         widthPercent: [],
     },
